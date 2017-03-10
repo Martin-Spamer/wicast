@@ -21,6 +21,7 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
+import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,6 +41,9 @@ public class MultiCastReceiver {
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
+		log.trace(System.getProperties().toString());
+		log.debug("args[]={}", Arrays.toString(args));
+
         final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
         MultiCastReceiver.log.debug("{}", multiCastReceiver.receiveByMulticastSocket("228.1.2.3", 1234));
         MultiCastReceiver.log.debug("{}", multiCastReceiver.receiveByMulticastSocket("228.1.2.3", 1234));

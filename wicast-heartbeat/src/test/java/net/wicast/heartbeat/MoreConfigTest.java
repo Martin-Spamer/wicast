@@ -16,11 +16,12 @@
  */
 package net.wicast.heartbeat;
 
+import java.io.File;
+import java.util.Arrays;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import net.wicast.heartbeat.Config;
 
 /**
  * A Class for testing the Config class
@@ -64,14 +65,14 @@ public class MoreConfigTest extends Config {
 
     /**
      * test load a configuration file. [code] Config config = new
-     * Config( new java.io.File(
+     * Config( new File(
      * "Application.xml") ) ; log.debug( config.toString() ) ; [/code]
      */
     @Test
     public static void test2() {
         try {
             log.debug("--- test2 : test load a configuration file.");
-            final Config config = new Config(new java.io.File("Application.xml"));
+            final Config config = new Config(new File("Application.xml"));
             log.debug(config.toString());
         } catch (final java.lang.Exception exception) {
             log.debug(exception.toString());
@@ -105,6 +106,9 @@ public class MoreConfigTest extends Config {
      *            ignored.
      */
     public static void main(final String[] args) {
+        log.trace(System.getProperties().toString());
+        log.debug("args[]={}", Arrays.toString(args));
+
         MoreConfigTest.test0();
         MoreConfigTest.test1();
         MoreConfigTest.test2();

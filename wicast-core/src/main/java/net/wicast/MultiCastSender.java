@@ -22,6 +22,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
+import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,6 +44,9 @@ public class MultiCastSender {
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
+		log.trace(System.getProperties().toString());
+		log.debug("args[]={}", Arrays.toString(args));
+
         final MultiCastSender multiCastSender = new MultiCastSender();
         while (true) {
             log.debug("{}", multiCastSender.sendByDatagramSocket("228.1.2.3", 1234, "<WICAST type=1/>".getBytes()));

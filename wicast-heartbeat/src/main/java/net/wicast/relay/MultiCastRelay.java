@@ -54,6 +54,8 @@ public class MultiCastRelay {
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
+		log.trace(System.getProperties().toString());
+
         final MultiCastRelay multiCastReceiver = new MultiCastRelay();
     }
 
