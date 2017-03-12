@@ -40,6 +40,15 @@ public class ConfigTest {
     }
 
     /**
+     * Test method for {@link net.wicast.Config#Config(Element)}.
+     */
+    @Test
+    public final void testConfigElement() {
+        final Config testInstance = new Config();
+        assertNotNull(testInstance);
+    }
+
+    /**
      * Test method for {@link net.wicast.Config#Config(java.io.File)}.
      */
     @Test
@@ -57,10 +66,10 @@ public class ConfigTest {
     }
 
     /**
-     * Test method for {@link net.wicast.Config#Config(org.w3c.dom.Element)}.
+     * Test method for {@link net.wicast.Config#load(java.io.File)}.
      */
     @Test
-    public final void testConfigElement() {
+    public final void testLoadFile() {
         final Config testInstance = new Config();
         assertNotNull(testInstance);
     }
@@ -70,15 +79,6 @@ public class ConfigTest {
      */
     @Test
     public final void testLoadString() {
-        final Config testInstance = new Config();
-        assertNotNull(testInstance);
-    }
-
-    /**
-     * Test method for {@link net.wicast.Config#load(java.io.File)}.
-     */
-    @Test
-    public final void testLoadFile() {
         final Config testInstance = new Config();
         assertNotNull(testInstance);
     }

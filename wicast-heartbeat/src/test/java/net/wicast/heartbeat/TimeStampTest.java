@@ -41,12 +41,12 @@ public class TimeStampTest {
         org.junit.Assert.assertNotNull("not null", testTimeStamp2);
         org.junit.Assert.assertNotSame("Not same", testTimeStamp1, testTimeStamp2);
 
-        log.info("{}", testTimeStamp1);
-        log.info("{}", testTimeStamp1.time);
-        log.info("{}", testTimeStamp1.toString());
-        log.info("{}", testTimeStamp2);
-        log.info("{}", testTimeStamp2.time);
-        log.info(testTimeStamp2.toString());
-        log.info(TimeStamp.FORMAT);
+        TimeStampTest.log.info("{}", testTimeStamp1);
+        TimeStampTest.log.info("{}", testTimeStamp1.time);
+        TimeStampTest.log.info("{}", testTimeStamp1.toString());
+        TimeStampTest.log.info("{}", testTimeStamp2);
+        TimeStampTest.log.info("{}", testTimeStamp2.time);
+        TimeStampTest.log.info(testTimeStamp2.toString());
+        TimeStampTest.log.info(TimeStamp.FORMAT);
     }
 }

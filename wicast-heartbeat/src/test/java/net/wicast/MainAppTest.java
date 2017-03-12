@@ -3,34 +3,30 @@
 
 package net.wicast;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 /**
  * MainAppTest.
- * 
+ *
  * @author <author@wicast.net> 20 Jun 2013
- * 
  */
-public class MainAppTest
-{
-
-    /**
-     * Test method for {@link net.wicast.MainApp#MainApp()}.
-     */
-    @Test
-    public final void testMainApp()
-    {
-        fail("Not yet implemented"); // TODO
-    }
+public class MainAppTest {
 
     /**
      * Test method for {@link net.wicast.MainApp#getConfig()}.
      */
     @Test
-    public final void testGetConfig()
-    {
+    public final void testGetConfig() {
+        fail("Not yet implemented"); // TODO
+    }
+
+    /**
+     * Test method for {@link net.wicast.MainApp#MainApp()}.
+     */
+    @Test
+    public final void testMainApp() {
         fail("Not yet implemented"); // TODO
     }
 

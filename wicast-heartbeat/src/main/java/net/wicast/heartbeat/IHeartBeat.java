@@ -2,12 +2,10 @@ package net.wicast.heartbeat;
 
 /**
  * IHeartBeat.
- * 
+ *
  * @author <author@wicast.net>
- * 
  */
-public interface IHeartBeat
-{
+public interface IHeartBeat {
 
     /**
      * beat.

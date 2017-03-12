@@ -16,17 +16,22 @@
  */
 package net.wicast;
 
+import org.w3c.dom.Attr;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 /**
  * The ApplicationScanner Class.
  */
 public class ApplicationScanner {
-    /**
-     * org.w3c.dom.Document document
-     */
-    org.w3c.dom.Document document;
+    private final Document document;
 
     /**
      * Create new ApplicationScanner with org.w3c.dom.Document.
+     *
      * @param document the document
      */
     public ApplicationScanner(final org.w3c.dom.Document document) {
@@ -37,7 +42,7 @@ public class ApplicationScanner {
      * Scan through org.w3c.dom.Document document.
      */
     public void visitDocument() {
-        final org.w3c.dom.Element element = document.getDocumentElement();
+        final Element element = this.document.getDocumentElement();
         if (element != null && element.getTagName().equals("wicast:Application")) {
             visitElement_wicast_Application(element);
         }
@@ -122,15 +127,14 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Channel.
+     * Scan through Element named Channel.
+     *
      * @param element the element
      */
-    void visitElement_Channel(final org.w3c.dom.Element element) {
-        // <Channel>
-        // element.getValue();
-        final org.w3c.dom.NamedNodeMap attrs = element.getAttributes();
+    void visitElement_Channel(final Element element) {
+        final NamedNodeMap attrs = element.getAttributes();
         for (int i = 0; i < attrs.getLength(); i++) {
-            final org.w3c.dom.Attr attr = (org.w3c.dom.Attr) attrs.item(i);
+            final Attr attr = (Attr) attrs.item(i);
             if (attr.getName().equals("port")) {
             }
             if (attr.getName().equals("ip")) {
@@ -138,20 +142,21 @@ public class ApplicationScanner {
             if (attr.getName().equals("name")) {
             }
         }
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Message")) {
                     visitElement_Message(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -160,27 +165,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named class.
+     * Scan through Element named class.
+     *
      * @param element the element
      */
-    void visitElement_class(final org.w3c.dom.Element element) {
+    void visitElement_class(final Element element) {
         // <class>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -188,26 +194,27 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Client.
+     * Scan through Element named Client.
+     *
      * @param element the element
      */
-    void visitElement_Client(final org.w3c.dom.Element element) {
+    void visitElement_Client(final Element element) {
         // <Client>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Scheduler")) {
                     visitElement_Scheduler(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -216,27 +223,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Core.
+     * Scan through Element named Core.
+     *
      * @param element the element
      */
-    void visitElement_Core(final org.w3c.dom.Element element) {
+    void visitElement_Core(final Element element) {
         // <Core>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -244,27 +252,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Description.
+     * Scan through Element named Description.
+     *
      * @param element the element
      */
-    void visitElement_Description(final org.w3c.dom.Element element) {
+    void visitElement_Description(final Element element) {
         // <Description>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -272,27 +281,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Encoding.
+     * Scan through Element named Encoding.
+     *
      * @param element the element
      */
-    void visitElement_Encoding(final org.w3c.dom.Element element) {
+    void visitElement_Encoding(final Element element) {
         // <Encoding>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -300,23 +310,24 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named File.
+     * Scan through Element named File.
+     *
      * @param element the element
      */
-    void visitElement_File(final org.w3c.dom.Element element) {
+    void visitElement_File(final Element element) {
         // <File>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -325,23 +336,24 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Id.
+     * Scan through Element named Id.
+     *
      * @param element the element
      */
-    void visitElement_Id(final org.w3c.dom.Element element) {
+    void visitElement_Id(final Element element) {
         // <Id>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -350,21 +362,22 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Licence.
+     * Scan through Element named Licence.
+     *
      * @param element the element
      */
-    void visitElement_Licence(final org.w3c.dom.Element element) {
+    void visitElement_Licence(final Element element) {
         // <Licence>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Name")) {
                     visitElement_Name(nodeElement);
                 }
@@ -378,7 +391,7 @@ public class ApplicationScanner {
                     visitElement_Title(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -387,26 +400,27 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Licenses.
+     * Scan through Element named Licenses.
+     *
      * @param element the element
      */
-    void visitElement_Licenses(final org.w3c.dom.Element element) {
+    void visitElement_Licenses(final Element element) {
         // <Licenses>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Licence")) {
                     visitElement_Licence(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -415,21 +429,22 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Message.
+     * Scan through Element named Message.
+     *
      * @param element the element
      */
-    void visitElement_Message(final org.w3c.dom.Element element) {
+    void visitElement_Message(final Element element) {
         // <Message>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Uri")) {
                     visitElement_Uri(nodeElement);
                 }
@@ -437,11 +452,11 @@ public class ApplicationScanner {
                     visitElement_File(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -449,27 +464,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named name.
+     * Scan through Element named name.
+     *
      * @param element the element
      */
-    void visitElement_name(final org.w3c.dom.Element element) {
+    void visitElement_name(final Element element) {
         // <name>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -477,27 +493,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Name.
+     * Scan through Element named Name.
+     *
      * @param element the element
      */
-    void visitElement_Name(final org.w3c.dom.Element element) {
+    void visitElement_Name(final Element element) {
         // <Name>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -505,27 +522,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Organization.
+     * Scan through Element named Organization.
+     *
      * @param element the element
      */
-    void visitElement_Organization(final org.w3c.dom.Element element) {
+    void visitElement_Organization(final Element element) {
         // <Organization>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -533,27 +551,28 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Port.
+     * Scan through Element named Port.
+     *
      * @param element the element
      */
-    void visitElement_Port(final org.w3c.dom.Element element) {
+    void visitElement_Port(final Element element) {
         // <Port>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -561,26 +580,27 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Properties.
+     * Scan through Element named Properties.
+     *
      * @param element the element
      */
-    void visitElement_Properties(final org.w3c.dom.Element element) {
+    void visitElement_Properties(final Element element) {
         // <Properties>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Encoding")) {
                     visitElement_Encoding(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -589,34 +609,35 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Scheduler.
+     * Scan through Element named Scheduler.
+     *
      * @param element the element
      */
-    void visitElement_Scheduler(final org.w3c.dom.Element element) {
+    void visitElement_Scheduler(final Element element) {
         // <Scheduler>
         // element.getValue();
-        final org.w3c.dom.NamedNodeMap attrs = element.getAttributes();
+        final NamedNodeMap attrs = element.getAttributes();
         for (int i = 0; i < attrs.getLength(); i++) {
-            final org.w3c.dom.Attr attr = (org.w3c.dom.Attr) attrs.item(i);
+            final Attr attr = (Attr) attrs.item(i);
             if (attr.getName().equals("class")) {
             }
             if (attr.getName().equals("name")) {
             }
         }
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Task")) {
                     visitElement_Task(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -625,21 +646,22 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Server.
+     * Scan through Element named Server.
+     *
      * @param element the element
      */
-    void visitElement_Server(final org.w3c.dom.Element element) {
+    void visitElement_Server(final Element element) {
         // <Server>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Scheduler")) {
                     visitElement_Scheduler(nodeElement);
                 }
@@ -647,7 +669,7 @@ public class ApplicationScanner {
                     visitElement_WebAdmin(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
+            case Node.PROCESSING_INSTRUCTION_NODE:
                 // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
                 // ((org.w3c.dom.ProcessingInstruction)node).getData();
                 break;
@@ -656,90 +678,93 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Task.
+     * Scan through Element named Task.
+     *
      * @param element the element
      */
-    void visitElement_Task(final org.w3c.dom.Element element) {
+    void visitElement_Task(final Element element) {
         // <Task>
         // element.getValue();
-        final org.w3c.dom.NamedNodeMap attrs = element.getAttributes();
+        final NamedNodeMap attrs = element.getAttributes();
         for (int i = 0; i < attrs.getLength(); i++) {
-            final org.w3c.dom.Attr attr = (org.w3c.dom.Attr) attrs.item(i);
+            final Attr attr = (Attr) attrs.item(i);
             if (attr.getName().equals("class")) {
             }
             if (attr.getName().equals("name")) {
             }
         }
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Channel")) {
                     visitElement_Channel(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Title.
+     * Scan through Element named Title.
+     *
      * @param element the element
      */
-    void visitElement_Title(final org.w3c.dom.Element element) {
+    void visitElement_Title(final Element element) {
         // <Title>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Tool.
+     * Scan through Element named Tool.
+     *
      * @param element the element
      */
-    void visitElement_Tool(final org.w3c.dom.Element element) {
+    void visitElement_Tool(final Element element) {
         // <Tool>
         // element.getValue();
-        final org.w3c.dom.NamedNodeMap attrs = element.getAttributes();
+        final NamedNodeMap attrs = element.getAttributes();
         for (int i = 0; i < attrs.getLength(); i++) {
-            final org.w3c.dom.Attr attr = (org.w3c.dom.Attr) attrs.item(i);
+            final Attr attr = (Attr) attrs.item(i);
             if (attr.getName().equals("class")) {
             }
             if (attr.getName().equals("name")) {
             }
         }
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("name")) {
                     visitElement_name(nodeElement);
                 }
@@ -747,89 +772,92 @@ public class ApplicationScanner {
                     visitElement_class(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Tools.
+     * Scan through Element named Tools.
+     *
      * @param element the element
      */
-    void visitElement_Tools(final org.w3c.dom.Element element) {
+    void visitElement_Tools(final Element element) {
         // <Tools>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Tool")) {
                     visitElement_Tool(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Uri.
+     * Scan through Element named Uri.
+     *
      * @param element the element
      */
-    void visitElement_Uri(final org.w3c.dom.Element element) {
+    void visitElement_Uri(final Element element) {
         // <Uri>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Url.
+     * Scan through Element named Url.
+     *
      * @param element the element
      */
-    void visitElement_Url(final org.w3c.dom.Element element) {
+    void visitElement_Url(final Element element) {
         // <Url>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
+            case Node.CDATA_SECTION_NODE:
                 // ((org.w3c.dom.CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
+            case Node.TEXT_NODE:
                 // ((org.w3c.dom.Text)node).getData();
                 break;
             }
@@ -837,55 +865,59 @@ public class ApplicationScanner {
     }
 
     /**
-     * Scan through org.w3c.dom.Element named Version.
+     * Scan through Element named Version.
+     *
      * @param element the element
      */
-    void visitElement_Version(final org.w3c.dom.Element element) {
+    void visitElement_Version(final Element element) {
         // <Version>
         // element.getValue();
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
-            case org.w3c.dom.Node.TEXT_NODE:
-                // ((org.w3c.dom.Text)node).getData();
+            case Node.TEXT_NODE:
+                // ((Text)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named WebAdmin.
+     * Scan through Element named WebAdmin.
+     *
      * @param element the element
      */
-    void visitElement_WebAdmin(final org.w3c.dom.Element element) {
+    void visitElement_WebAdmin(final Element element) {
         // <WebAdmin>
         // element.getValue();
-        final org.w3c.dom.NamedNodeMap attrs = element.getAttributes();
+        final NamedNodeMap attrs = element.getAttributes();
+
         for (int i = 0; i < attrs.getLength(); i++) {
-            final org.w3c.dom.Attr attr = (org.w3c.dom.Attr) attrs.item(i);
+            final Attr attr = (Attr) attrs.item(i);
             if (attr.getName().equals("class")) {
             }
         }
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Url")) {
                     visitElement_Url(nodeElement);
                 }
@@ -893,24 +925,26 @@ public class ApplicationScanner {
                     visitElement_Port(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }
     }
 
     /**
-     * Scan through org.w3c.dom.Element named wicast:Application.
+     * Scan through Element named wicast:Application.
+     *
      * @param element the element
      */
-    void visitElement_wicast_Application(final org.w3c.dom.Element element) {
+    void visitElement_wicast_Application(final Element element) {
         // <wicast:Application>
         // element.getValue();
-        final org.w3c.dom.NamedNodeMap attrs = element.getAttributes();
+        final NamedNodeMap attrs = element.getAttributes();
+
         for (int i = 0; i < attrs.getLength(); i++) {
-            final org.w3c.dom.Attr attr = (org.w3c.dom.Attr) attrs.item(i);
+            final Attr attr = (Attr) attrs.item(i);
             if (attr.getName().equals("xsi:schemaLocation")) {
             }
             if (attr.getName().equals("xmlns:xsi")) {
@@ -918,15 +952,17 @@ public class ApplicationScanner {
             if (attr.getName().equals("xmlns:wicast")) {
             }
         }
-        final org.w3c.dom.NodeList nodes = element.getChildNodes();
+
+        final NodeList nodes = element.getChildNodes();
         for (int i = 0; i < nodes.getLength(); i++) {
-            final org.w3c.dom.Node node = nodes.item(i);
+            final Node node = nodes.item(i);
             switch (node.getNodeType()) {
-            case org.w3c.dom.Node.CDATA_SECTION_NODE:
-                // ((org.w3c.dom.CDATASection)node).getData();
+            case Node.CDATA_SECTION_NODE:
+                // ((CDATASection)node).getData();
                 break;
-            case org.w3c.dom.Node.ELEMENT_NODE:
-                final org.w3c.dom.Element nodeElement = (org.w3c.dom.Element) node;
+
+            case Node.ELEMENT_NODE:
+                final Element nodeElement = (Element) node;
                 if (nodeElement.getTagName().equals("Name")) {
                     visitElement_Name(nodeElement);
                 }
@@ -961,9 +997,10 @@ public class ApplicationScanner {
                     visitElement_Client(nodeElement);
                 }
                 break;
-            case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                // ((org.w3c.dom.ProcessingInstruction)node).getTarget();
-                // ((org.w3c.dom.ProcessingInstruction)node).getData();
+
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                // ((ProcessingInstruction)node).getTarget();
+                // ((ProcessingInstruction)node).getData();
                 break;
             }
         }

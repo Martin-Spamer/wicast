@@ -6,7 +6,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.wicast</groupId>
 	<artifactId>wicast-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.2.0-SNAPSHOT</version>
+	<name>Multicast HeartBeat</name>
+	<url>http://wicast.net</url>
 
 	<parent>
 		<groupId>net.wicast</groupId>
@@ -18,7 +20,7 @@
 		<dependency>
 			<groupId>net.wicast</groupId>
 			<artifactId>wicast-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.2.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
@@ -33,10 +35,6 @@
 					<target>1.7</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

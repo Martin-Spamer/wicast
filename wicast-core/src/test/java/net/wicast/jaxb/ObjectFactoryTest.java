@@ -19,8 +19,6 @@ package net.wicast.jaxb;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Properties;
-
 import javax.xml.bind.JAXBElement;
 
 import org.junit.Test;
@@ -207,33 +205,33 @@ public class ObjectFactoryTest {
         ObjectFactoryTest.log.info(result.toString());
     }
 
-//    /**
-//     * Test of createProperties method, of class ObjectFactory.
-//     */
-//    @Test
-//    public void testCreateProperties() {
-//        ObjectFactoryTest.log.info("createProperties");
-//        final ObjectFactory instance = new ObjectFactory();
-//        assertNotNull(instance);
-//        assertTrue(instance instanceof ObjectFactory);
-//        final Properties result = instance.createProperties();
-//        assertNotNull(result);
-//        ObjectFactoryTest.log.info(result.toString());
-//    }
+    // /**
+    // * Test of createProperties method, of class ObjectFactory.
+    // */
+    // @Test
+    // public void testCreateProperties() {
+    // ObjectFactoryTest.log.info("createProperties");
+    // final ObjectFactory instance = new ObjectFactory();
+    // assertNotNull(instance);
+    // assertTrue(instance instanceof ObjectFactory);
+    // final Properties result = instance.createProperties();
+    // assertNotNull(result);
+    // ObjectFactoryTest.log.info(result.toString());
+    // }
 
-//    /**
-//     * Test of createScheduler method, of class ObjectFactory.
-//     */
-//    @Test
-//    public void testCreateScheduler() {
-//        ObjectFactoryTest.log.info("createScheduler");
-//        final ObjectFactory instance = new ObjectFactory();
-//        assertNotNull(instance);
-//        assertTrue(instance instanceof ObjectFactory);
-//        final Scheduler result = instance.createScheduler();
-//        assertNotNull(result);
-//        ObjectFactoryTest.log.info(result.toString());
-//    }
+    // /**
+    // * Test of createScheduler method, of class ObjectFactory.
+    // */
+    // @Test
+    // public void testCreateScheduler() {
+    // ObjectFactoryTest.log.info("createScheduler");
+    // final ObjectFactory instance = new ObjectFactory();
+    // assertNotNull(instance);
+    // assertTrue(instance instanceof ObjectFactory);
+    // final Scheduler result = instance.createScheduler();
+    // assertNotNull(result);
+    // ObjectFactoryTest.log.info(result.toString());
+    // }
 
     /**
      * Test of createServer method, of class ObjectFactory.

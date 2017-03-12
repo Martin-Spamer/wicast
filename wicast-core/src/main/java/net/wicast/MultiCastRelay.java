@@ -38,6 +38,7 @@ public class MultiCastRelay {
 
     /**
      * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
+     *
      * @author
      * @version 0.3
      * @since 0.1
@@ -117,6 +118,7 @@ public class MultiCastRelay {
 
     /**
      * MultiCastSender, send datagrams to Multicast group.
+     *
      * @author
      * @version 0.3
      * @since 0.1
@@ -187,6 +189,7 @@ public class MultiCastRelay {
 
         /**
          * Send Datagram to Multicast Group by Socket.
+         *
          * @param group the group
          * @param port the port
          * @param output the output
@@ -218,11 +221,12 @@ public class MultiCastRelay {
 
     /**
      * main entry point for this class.
+     *
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
-		log.trace(System.getProperties().toString());
-		log.debug("args[]={}", Arrays.toString(args));
+        MultiCastRelay.log.trace(System.getProperties().toString());
+        MultiCastRelay.log.debug("args[]={}", Arrays.toString(args));
 
         final MultiCastRelay multiCastReceiver = new MultiCastRelay();
     }

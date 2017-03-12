@@ -28,14 +28,10 @@ public class Config extends AbstractConfig {
     public Config() {
     }
 
-    public Config(final String xmlString) {
-    }
-
     public Config(final File file) {
     }
 
-    public Config subConfig(final String string) {
-        return null;
+    public Config(final String xmlString) {
     }
 
     /* (non-Javadoc)
@@ -54,6 +50,10 @@ public class Config extends AbstractConfig {
     public boolean loadXml() {
         // TODO Auto-generated method stub
         return false;
+    }
+
+    public Config subConfig(final String string) {
+        return null;
     }
 
 }

@@ -29,6 +29,7 @@ import org.slf4j.LoggerFactory;
 /**
  * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
  * <author@wicast.net>
+ *
  * @version 0.3
  * @date 01-10-2009
  */
@@ -38,11 +39,12 @@ public class MultiCastReceiver {
 
     /**
      * main entry point for this class.
+     *
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
-		log.trace(System.getProperties().toString());
-		log.debug("args[]={}", Arrays.toString(args));
+        MultiCastReceiver.log.trace(System.getProperties().toString());
+        MultiCastReceiver.log.debug("args[]={}", Arrays.toString(args));
 
         final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
         MultiCastReceiver.log.debug("{}", multiCastReceiver.receiveByMulticastSocket("228.1.2.3", 1234));

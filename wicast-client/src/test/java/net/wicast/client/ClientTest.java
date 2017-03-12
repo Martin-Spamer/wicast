@@ -16,37 +16,13 @@
  */
 package net.wicast.client;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
-/**
- * A UnitTest for Client objects.
- */
 public class ClientTest {
 
-    /**
-     * Unit Test for test client.
-     */
     @Test
     public void testClient() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Unit Test for test get config.
-     */
-    @Test
-    public void testGetConfig() {
-        fail("Not yet implemented");
-    }
-
-    /**
-     * Unit Test for test main app.
-     */
-    @Test
-    public void testMainApp() {
-        fail("Not yet implemented");
+        new Client();
     }
 
 }

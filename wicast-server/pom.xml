@@ -4,21 +4,23 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.wicast</groupId>
 	<artifactId>wicast-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-
-	<dependencies>
-		<dependency>
-			<groupId>net.wicast</groupId>
-			<artifactId>wicast-core</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
+	<version>0.2.0-SNAPSHOT</version>
+	<name>Multicast HeartBeat</name>
+	<url>http://wicast.net</url>
 
 	<parent>
 		<groupId>net.wicast</groupId>
 		<artifactId>wicast</artifactId>
 		<version>0.2.0-SNAPSHOT</version>
 	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.wicast</groupId>
+			<artifactId>wicast-core</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>

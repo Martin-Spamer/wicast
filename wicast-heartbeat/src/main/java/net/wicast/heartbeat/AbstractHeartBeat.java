@@ -33,27 +33,9 @@ import org.slf4j.LoggerFactory;
 public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractHeartBeat.class);
-    protected final java.net.InetAddress groupAddress;
+    protected final InetAddress groupAddress;
     protected final int portNo;
     protected MulticastSocket multicastSocket;
-
-    /**
-     * AbstractHeartBeat.
-     *
-     * @param groupAddressString the group address string
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
-     */
-    public AbstractHeartBeat(final String groupAddressString, final int portNo) throws HeartBeatException {
-        try {
-            this.groupAddress = InetAddress.getByName(groupAddressString);
-            this.portNo = portNo;
-            joinGroup(this.groupAddress, this.portNo);
-        } catch (final UnknownHostException unknownHostException) {
-            log.error("{}", unknownHostException);
-            throw new HeartBeatException(unknownHostException);
-        }
-    }
 
     /**
      * AbstractHeartBeat.
@@ -69,6 +51,24 @@ public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
     }
 
     /**
+     * AbstractHeartBeat.
+     *
+     * @param groupAddressString the group address string
+     * @param portNo the port no
+     * @throws HeartBeatException the heart beat exception
+     */
+    public AbstractHeartBeat(final String groupAddressString, final int portNo) throws HeartBeatException {
+        try {
+            groupAddress = InetAddress.getByName(groupAddressString);
+            this.portNo = portNo;
+            joinGroup(groupAddress, this.portNo);
+        } catch (final UnknownHostException unknownHostException) {
+            AbstractHeartBeat.log.error("{}", unknownHostException);
+            throw new HeartBeatException(unknownHostException);
+        }
+    }
+
+    /**
      * Join group.
      *
      * @param groupAddressIn the group address in
@@ -77,17 +77,17 @@ public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
      */
     protected void joinGroup(final InetAddress groupAddressIn, final int portNoIn) throws HeartBeatException {
         try {
-            this.multicastSocket = new MulticastSocket(portNoIn);
+            multicastSocket = new MulticastSocket(portNoIn);
 
             try {
-                this.multicastSocket.setTimeToLive(MIN_PRIORITY);
-                this.multicastSocket.joinGroup(groupAddressIn);
+                multicastSocket.setTimeToLive(Thread.MIN_PRIORITY);
+                multicastSocket.joinGroup(groupAddressIn);
             } catch (final SocketException socketException) {
-                log.error("{}", socketException.getLocalizedMessage());
+                AbstractHeartBeat.log.error("{}", socketException.getLocalizedMessage());
                 throw new HeartBeatException(socketException);
             }
         } catch (final IOException ioException) {
-            log.error("{}", ioException);
+            AbstractHeartBeat.log.error("{}", ioException);
             throw new HeartBeatException(ioException);
         }
     }

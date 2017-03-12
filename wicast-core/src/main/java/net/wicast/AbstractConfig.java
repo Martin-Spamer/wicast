@@ -24,6 +24,8 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Properties;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -35,6 +37,9 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 /**
@@ -45,15 +50,15 @@ import org.xml.sax.SAXException;
 public abstract class AbstractConfig implements ConfigInterface {
 
     private static final Logger log = LoggerFactory.getLogger(AbstractConfig.class);
-    private static javax.xml.parsers.DocumentBuilderFactory documentBuilderFactory = null;
-    private static javax.xml.parsers.DocumentBuilder documentBuilder = null;
+    private static DocumentBuilderFactory documentBuilderFactory = null;
+    private static DocumentBuilder documentBuilder = null;
 
     static {
-        AbstractConfig.documentBuilderFactory = javax.xml.parsers.DocumentBuilderFactory.newInstance();
+        AbstractConfig.documentBuilderFactory = DocumentBuilderFactory.newInstance();
         try {
             AbstractConfig.documentBuilder = AbstractConfig.documentBuilderFactory.newDocumentBuilder();
         } catch (final ParserConfigurationException parserConfigurationException) {
-            log.error("{}", parserConfigurationException);
+            AbstractConfig.log.error("{}", parserConfigurationException);
         }
     }
 
@@ -62,8 +67,8 @@ public abstract class AbstractConfig implements ConfigInterface {
 
     private org.w3c.dom.Document configDocument = null;
 
-    private org.w3c.dom.Element configElement = null;
-    private org.w3c.dom.NodeList context = null;
+    private Element configElement = null;
+    private NodeList context = null;
 
     private int index = 0;
 
@@ -89,9 +94,9 @@ public abstract class AbstractConfig implements ConfigInterface {
             this.configDocument = AbstractConfig.documentBuilder.parse(resourceAsStream);
             this.configElement = this.configDocument.getDocumentElement();
         } catch (final SAXException e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         } catch (final IOException e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         }
     }
 
@@ -99,21 +104,21 @@ public abstract class AbstractConfig implements ConfigInterface {
      * Dump to log.
      */
     public void dumpToLog() {
-        log.info(xmlFoo());
-        log.info(xmlToString(this.configDocument));
-        log.info(this.properties.toString());
-        log.info(this.propertiesFromXml.toString());
+        AbstractConfig.log.info(xmlFoo());
+        AbstractConfig.log.info(xmlToString(this.configDocument));
+        AbstractConfig.log.info(this.properties.toString());
+        AbstractConfig.log.info(this.propertiesFromXml.toString());
     }
 
     /**
      * return first Element with Tag Name.
      *
      * @param elementName the element name
-     * @return org.w3c.dom.Element
+     * @return Element
      */
-    protected org.w3c.dom.Element firstElementByTagName(final String elementName) {
+    protected Element firstElementByTagName(final String elementName) {
         this.context = this.configElement.getElementsByTagName(elementName);
-        return (org.w3c.dom.Element) this.context.item(this.index = 0);
+        return (Element) this.context.item(this.index = 0);
     }
 
     /**
@@ -132,7 +137,7 @@ public abstract class AbstractConfig implements ConfigInterface {
      * @param elementName the element name
      * @return org.w3c.dom.NodeList
      */
-    protected org.w3c.dom.NodeList getElementsByTagName(final String elementName) {
+    protected NodeList getElementsByTagName(final String elementName) {
         return this.configElement.getElementsByTagName(elementName);
     }
 
@@ -172,7 +177,7 @@ public abstract class AbstractConfig implements ConfigInterface {
         try {
             this.properties.load(inputStream);
         } catch (final Exception e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         }
     }
 
@@ -185,17 +190,17 @@ public abstract class AbstractConfig implements ConfigInterface {
         try {
             this.properties.load(inputStream);
         } catch (final Exception e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         }
     }
 
     /**
      * return next Element.
      *
-     * @return org.w3c.dom.Element
+     * @return Element
      */
-    protected org.w3c.dom.Element nextElementByTagName() {
-        return (org.w3c.dom.Element) this.context.item(++this.index);
+    protected Element nextElementByTagName() {
+        return (Element) this.context.item(++this.index);
     }
 
     /**
@@ -216,17 +221,14 @@ public abstract class AbstractConfig implements ConfigInterface {
                 try {
                     this.propertiesFromXml.store(fileOutputStream, "comment propertiesFromXml.store");
                 } catch (final IOException e) {
-                    log.error("{}", e);
+                    AbstractConfig.log.error("{}", e);
                 }
-
             } catch (final IOException e) {
-                log.error("{}", e);
+                AbstractConfig.log.error("{}", e);
             }
-
         } catch (final FileNotFoundException e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         }
-
         return true;
     }
 
@@ -252,15 +254,15 @@ public abstract class AbstractConfig implements ConfigInterface {
                     comment = "comment propertiesFromXml.storeToXML";
                     this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
                 } catch (final IOException e) {
-                    log.error("{}", e);
+                    AbstractConfig.log.error("{}", e);
                 }
 
             } catch (final IOException e) {
-                log.error("{}", e);
+                AbstractConfig.log.error("{}", e);
             }
 
         } catch (final Exception e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         }
 
         return true;
@@ -319,11 +321,11 @@ public abstract class AbstractConfig implements ConfigInterface {
             final Transformer transformer = tf.newTransformer();
             transformer.transform(domSource, result);
         } catch (final TransformerConfigurationException e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         } catch (final TransformerFactoryConfigurationError e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         } catch (final TransformerException e) {
-            log.error("{}", e);
+            AbstractConfig.log.error("{}", e);
         }
         return writer.toString();
     }
@@ -334,7 +336,7 @@ public abstract class AbstractConfig implements ConfigInterface {
      * @param node org.w3c.dom.Node
      * @return element CDATA as String.
      */
-    protected String xmlToString(final org.w3c.dom.Node node) {
+    protected String xmlToString(final Node node) {
         StringBuffer text = new StringBuffer("");
         if (node != null) {
             final String value = node.getNodeValue();
@@ -342,7 +344,7 @@ public abstract class AbstractConfig implements ConfigInterface {
                 text = new StringBuffer(value);
             }
             if (node.hasChildNodes()) {
-                final org.w3c.dom.NodeList children = node.getChildNodes();
+                final NodeList children = node.getChildNodes();
                 for (int i = 0; i < children.getLength(); i++) {
                     text.append(xmlToString(children.item(i)));
                 }

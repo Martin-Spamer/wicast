@@ -18,22 +18,13 @@ package net.wicast.server;
 
 import net.wicast.AbstractConfig;
 
-/**
- * The ServerConfig Class.
- */
 public class ServerConfig extends AbstractConfig {
 
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#loadProperties()
-     */
     @Override
     public boolean loadProperties() {
         return false;
     }
 
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#loadXml()
-     */
     @Override
     public boolean loadXml() {
         return false;

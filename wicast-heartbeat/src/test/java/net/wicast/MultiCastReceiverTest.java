@@ -3,43 +3,41 @@
 
 package net.wicast;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 /**
  * MultiCastReceiverTest.
- * 
+ *
  * @author <author@wicast.net> 20 Jun 2013
- * 
  */
-public class MultiCastReceiverTest
-{
+public class MultiCastReceiverTest {
 
     /**
-     * Test method for {@link net.wicast.client.MultiCastReceiver#MultiCastReceiver()}.
+     * Test method for
+     * {@link net.wicast.client.MultiCastReceiver#main(java.lang.String[])}.
      */
     @Test
-    public final void testMultiCastReceiver()
-    {
+    public final void testMain() {
         fail("Not yet implemented"); // TODO
     }
 
     /**
-     * Test method for {@link net.wicast.client.MultiCastReceiver#receiveByMulticastSocket(java.lang.String, int)}.
+     * Test method for
+     * {@link net.wicast.client.MultiCastReceiver#MultiCastReceiver()}.
      */
     @Test
-    public final void testReceiveByMulticastSocket()
-    {
+    public final void testMultiCastReceiver() {
         fail("Not yet implemented"); // TODO
     }
 
     /**
-     * Test method for {@link net.wicast.client.MultiCastReceiver#main(java.lang.String[])}.
+     * Test method for
+     * {@link net.wicast.client.MultiCastReceiver#receiveByMulticastSocket(java.lang.String, int)}.
      */
     @Test
-    public final void testMain()
-    {
+    public final void testReceiveByMulticastSocket() {
         fail("Not yet implemented"); // TODO
     }
 

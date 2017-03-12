@@ -31,14 +31,14 @@ public interface ConfigInterface {
 
     /**
      * Load properties.
-     * 
+     *
      * @return true, if successful
      */
     boolean loadProperties();
 
     /**
      * Load xml.
-     * 
+     *
      * @return true, if successful
      */
     boolean loadXml();

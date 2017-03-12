@@ -45,20 +45,20 @@ public class HeartBeatException extends Exception {
     /**
      * HeartBeatException.
      *
-     * @param cause the cause
-     */
-    public HeartBeatException(final Throwable cause) {
-        super(cause);
-    }
-
-    /**
-     * HeartBeatException.
-     *
      * @param message the message
      * @param cause the cause
      */
     public HeartBeatException(final String message, final Throwable cause) {
         super(message, cause);
+    }
+
+    /**
+     * HeartBeatException.
+     *
+     * @param cause the cause
+     */
+    public HeartBeatException(final Throwable cause) {
+        super(cause);
     }
 
 }

@@ -32,8 +32,6 @@ import net.wicast.AbstractConfig;
  */
 public class ConfigTest {
 
-    private static final Logger log = LoggerFactory.getLogger(ConfigTest.class);
-
     /**
      * MockConfig Class.
      */
@@ -48,6 +46,8 @@ public class ConfigTest {
             return false;
         }
     }
+
+    private static final Logger log = LoggerFactory.getLogger(ConfigTest.class);
 
     /**
      * Test method for {@link net.wicast.Config#Config()}.

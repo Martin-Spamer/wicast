@@ -35,34 +35,88 @@ import org.slf4j.LoggerFactory;
  */
 public class MultiCastRelay {
 
-    private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
-
     /**
-     * Creates a new instance of MultiCastReceiver.
-     */
-    public MultiCastRelay() {
-        final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
-        multiCastReceiver.start();
-
-        final MultiCastSender multiCastSender = new MultiCastSender();
-        multiCastSender.start();
-    }
-
-    /**
-     * main entry point for this class.
+     * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
      *
-     * @param args the command line arguments
+     * @author
+     * @date 01-10-2009
+     * @version 0.3
+     * @since 0.1
      */
-    public static void main(final String[] args) {
-		log.trace(System.getProperties().toString());
+    public class MultiCastReceiver extends java.lang.Thread {
 
-        final MultiCastRelay multiCastReceiver = new MultiCastRelay();
+        /**
+         * Creates a new instance of MultiCastReceiver.
+         */
+        public MultiCastReceiver() {
+        }
+
+        /**
+         * receive datagrams by joining a multicast socket.
+         *
+         * @param group multicast group address as String "X.X.X.X".
+         * @param port receiver port as int.
+         * @return status as boolean result.
+         */
+        public boolean receiveByMulticastSocket(final String group, final int port) {
+            boolean status = false;
+
+            try {
+                // Create the socket and bind it to port 'port'.
+                final MulticastSocket socket = new MulticastSocket(port);
+
+                // join the multicast group
+                socket.joinGroup(InetAddress.getByName(group));
+
+                // Now the socket is set up and we are ready to receive packets
+                // Create a DatagramPacket and do a receive
+                final byte input[] = new byte[1024];
+                final DatagramPacket packet = new DatagramPacket(input, input.length);
+                socket.receive(packet);
+
+                MultiCastRelay.log.info("Multicast Received");
+                MultiCastRelay.log.info("from: " + packet.getAddress().toString());
+                MultiCastRelay.log.info("port: " + packet.getPort());
+                MultiCastRelay.log.info("length: " + packet.getLength());
+                System.out.write(packet.getData(), 0, packet.getLength());
+
+                // And when we have finished receiving data leave the multicast
+                // group and
+                // close the socket
+                socket.leaveGroup(InetAddress.getByName(group));
+                socket.close();
+                status = true;
+            } catch (final SocketException socketException) {
+                socketException.printStackTrace(System.err);
+            } catch (final IOException ioException) {
+                ioException.printStackTrace(System.err);
+            } catch (final Exception exception) {
+                exception.printStackTrace(System.err);
+            }
+            return status;
+        }
+
+        /**
+         * @see java.lang.Thread#run()
+         */
+        @Override
+        public void run() {
+            super.run();
+
+            try {
+                while (true) {
+                    receiveByMulticastSocket("228.1.2.3", 1234);
+                    sleep(1000);
+                }
+            } catch (final InterruptedException exception) {
+            }
+        }
     }
 
     /**
      * MultiCastSender, send datagrams to Multicast group.
      *
-     * @author 
+     * @author
      * @date 01-10-2009
      * @version 0.3
      * @since 0.1
@@ -73,6 +127,25 @@ public class MultiCastRelay {
          * Creates a new instance of MultiCasterSender.
          */
         public MultiCastSender() {
+        }
+
+        /**
+         * @see java.lang.Thread#run()
+         */
+        @Override
+        public void run() {
+            int count = 1;
+            super.run();
+
+            try {
+                while (true) {
+                    final String message = String.format("<WICAST type=%d/>", count);
+                    sendByDatagramSocket("228.1.2.3", 1234, message.getBytes());
+                    sleep(1000);
+                    count++;
+                }
+            } catch (final InterruptedException exception) {
+            }
         }
 
         /**
@@ -135,103 +208,30 @@ public class MultiCastRelay {
             }
             return status;
         }
+    }
 
-        /**
-         * @see java.lang.Thread#run()
-         */
-        @Override
-        public void run() {
-            int count = 1;
-            super.run();
+    private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
 
-            try {
-                while (true) {
-                    final String message = String.format("<WICAST type=%d/>", count);
-                    sendByDatagramSocket("228.1.2.3", 1234, message.getBytes());
-                    sleep(1000);
-                    count++;
-                }
-            } catch (final InterruptedException exception) {
-            }
-        }
+    /**
+     * main entry point for this class.
+     *
+     * @param args the command line arguments
+     */
+    public static void main(final String[] args) {
+        MultiCastRelay.log.trace(System.getProperties().toString());
+
+        final MultiCastRelay multiCastReceiver = new MultiCastRelay();
     }
 
     /**
-     * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
-     *
-     * @author 
-     * @date 01-10-2009
-     * @version 0.3
-     * @since 0.1
+     * Creates a new instance of MultiCastReceiver.
      */
-    public class MultiCastReceiver extends java.lang.Thread {
+    public MultiCastRelay() {
+        final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
+        multiCastReceiver.start();
 
-        /**
-         * Creates a new instance of MultiCastReceiver.
-         */
-        public MultiCastReceiver() {
-        }
-
-        /**
-         * @see java.lang.Thread#run()
-         */
-        @Override
-        public void run() {
-            super.run();
-
-            try {
-                while (true) {
-                    receiveByMulticastSocket("228.1.2.3", 1234);
-                    sleep(1000);
-                }
-            } catch (final InterruptedException exception) {
-            }
-        }
-
-        /**
-         * receive datagrams by joining a multicast socket.
-         *
-         * @param group multicast group address as String "X.X.X.X".
-         * @param port receiver port as int.
-         * @return status as boolean result.
-         */
-        public boolean receiveByMulticastSocket(final String group, final int port) {
-            boolean status = false;
-
-            try {
-                // Create the socket and bind it to port 'port'.
-                final MulticastSocket socket = new MulticastSocket(port);
-
-                // join the multicast group
-                socket.joinGroup(InetAddress.getByName(group));
-
-                // Now the socket is set up and we are ready to receive packets
-                // Create a DatagramPacket and do a receive
-                final byte input[] = new byte[1024];
-                final DatagramPacket packet = new DatagramPacket(input, input.length);
-                socket.receive(packet);
-
-                log.info("Multicast Received");
-                log.info("from: " + packet.getAddress().toString());
-                log.info("port: " + packet.getPort());
-                log.info("length: " + packet.getLength());
-                System.out.write(packet.getData(), 0, packet.getLength());
-
-                // And when we have finished receiving data leave the multicast
-                // group and
-                // close the socket
-                socket.leaveGroup(InetAddress.getByName(group));
-                socket.close();
-                status = true;
-            } catch (final SocketException socketException) {
-                socketException.printStackTrace(System.err);
-            } catch (final IOException ioException) {
-                ioException.printStackTrace(System.err);
-            } catch (final Exception exception) {
-                exception.printStackTrace(System.err);
-            }
-            return status;
-        }
+        final MultiCastSender multiCastSender = new MultiCastSender();
+        multiCastSender.start();
     }
 
 }

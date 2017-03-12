@@ -44,13 +44,15 @@ public class MultiCastSender {
      * @param args the command line arguments
      */
     public static void main(final String[] args) {
-		log.trace(System.getProperties().toString());
-		log.debug("args[]={}", Arrays.toString(args));
+        MultiCastSender.log.trace(System.getProperties().toString());
+        MultiCastSender.log.debug("args[]={}", Arrays.toString(args));
 
         final MultiCastSender multiCastSender = new MultiCastSender();
         while (true) {
-            log.debug("{}", multiCastSender.sendByDatagramSocket("228.1.2.3", 1234, "<WICAST type=1/>".getBytes()));
-            log.debug("{}", multiCastSender.sendByMulticastSocket("228.1.2.3", 1234, "<WICAST type=2/>".getBytes()));
+            MultiCastSender.log.debug("{}",
+                    multiCastSender.sendByDatagramSocket("228.1.2.3", 1234, "<WICAST type=1/>".getBytes()));
+            MultiCastSender.log.debug("{}",
+                    multiCastSender.sendByMulticastSocket("228.1.2.3", 1234, "<WICAST type=2/>".getBytes()));
         }
     }
 

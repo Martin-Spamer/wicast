@@ -18,22 +18,13 @@ package net.wicast.client;
 
 import net.wicast.AbstractConfig;
 
-/**
- * The Config Class.
- */
-public class Config extends AbstractConfig {
+public class ClientConfig extends AbstractConfig {
 
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#loadProperties()
-     */
     @Override
     public boolean loadProperties() {
         return false;
     }
 
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#loadXml()
-     */
     @Override
     public boolean loadXml() {
         return false;

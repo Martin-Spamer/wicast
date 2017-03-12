@@ -41,13 +41,13 @@ abstract public class MainApp {
         // use the fully qualified name of the application class
         // for XML config file.
         final String filename = this.getClass().getSimpleName() + ".xml";
-        log.info("filename = {}", filename);
+        MainApp.log.info("filename = {}", filename);
 
         // open the [ApplicationName].xml file
         final File file = new File(filename);
 
         // load the configuration from the [ApplicationName].xml file.
-        this.config.load(file);
+        config.load(file);
     }
 
 }

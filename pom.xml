@@ -46,15 +46,6 @@
 		</license>
 	</licenses>
 
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>jdepend-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</reporting>
-
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -66,11 +57,6 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.gmaven</groupId>
-			<artifactId>gmaven-mojo</artifactId>
-			<version>1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>

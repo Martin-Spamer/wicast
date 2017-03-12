@@ -18,17 +18,11 @@ package net.wicast.client;
 
 import net.wicast.MainApp;
 
-/**
- * The Client Class.
- */
 public class Client extends MainApp {
 
-    /**
-     * Instantiates a new client.
-     */
     public Client() {
         super();
-        config = new Config();
+        config = new ClientConfig();
     }
 
 }

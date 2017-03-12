@@ -57,7 +57,7 @@ public class ApplicationTest {
 
     /**
      * Test to Marshall Java Objects into an Application.xml file.
-     * 
+     *
      * @throws JAXBException the JAXB exception
      * @throws FileNotFoundException the file not found exception
      */
@@ -170,7 +170,7 @@ public class ApplicationTest {
 
     /**
      * Test to UnMarshall Application.xml file into Java Objects.
-     * 
+     *
      * @throws JAXBException the JAXB exception
      * @throws FileNotFoundException the file not found exception
      */
@@ -194,7 +194,7 @@ public class ApplicationTest {
 
     /**
      * Verify.
-     * 
+     *
      * @param name the name
      */
     private void verify(final String name) {
