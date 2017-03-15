@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 /**
  * TimeStampTest.
  *
- * @author <author@wicast.net>
+
  */
 public class TimeStampTest {
 

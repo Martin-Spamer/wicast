@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * TimeStamp.
  *
- * @author <author@wicast.net>
+
  */
 public class TimeStamp {
     /**

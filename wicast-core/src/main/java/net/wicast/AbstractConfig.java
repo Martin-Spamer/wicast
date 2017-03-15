@@ -45,7 +45,7 @@ import org.xml.sax.SAXException;
 /**
  * An Abstract Configuration Class for holding the Configuration from XML.
  *
- * @author <author@wicast.net>
+
  */
 public abstract class AbstractConfig implements ConfigInterface {
 

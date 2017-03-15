@@ -27,8 +27,6 @@ import net.wicast.AbstractConfig;
 
 /**
  * ConfigTest.
- *
- * @author <author@wicast.net>
  */
 public class ConfigTest {
 

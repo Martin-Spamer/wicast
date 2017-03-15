@@ -25,12 +25,22 @@ import org.junit.Test;
  */
 public class AbstractConfigTest {
 
+    /**
+     * The MockConfig Class.
+     */
     public class MockConfig extends AbstractConfig {
+        
+        /* (non-Javadoc)
+         * @see net.wicast.ConfigInterface#loadProperties()
+         */
         @Override
         public boolean loadProperties() {
             return false;
         }
 
+        /* (non-Javadoc)
+         * @see net.wicast.ConfigInterface#loadXml()
+         */
         @Override
         public boolean loadXml() {
             return false;

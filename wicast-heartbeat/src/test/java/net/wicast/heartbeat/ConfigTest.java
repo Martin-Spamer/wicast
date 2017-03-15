@@ -27,7 +27,7 @@ import org.junit.Test;
 /**
  * ConfigTest.
  *
- * @author <author@wicast.net> 20 Jun 2013
+ 20 Jun 2013
  */
 public class ConfigTest {
 

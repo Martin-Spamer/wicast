@@ -19,7 +19,7 @@ package net.wicast.heartbeat;
 /**
  * HeartBeatException.
  *
- * @author <author@wicast.net>
+
  */
 public class HeartBeatException extends Exception {
 

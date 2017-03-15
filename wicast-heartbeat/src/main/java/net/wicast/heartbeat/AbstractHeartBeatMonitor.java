@@ -9,7 +9,7 @@ import java.net.SocketException;
 /**
  * AbstractHeartBeatMonitor.
  *
- * @author <author@wicast.net>
+
  */
 public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 

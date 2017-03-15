@@ -30,7 +30,7 @@ import net.wicast.heartbeat.HeartBeatException;
 /**
  * TimeBeat.
  *
- * @author <author@wicast.net>
+
  */
 public class TimeBeat extends AbstractHeartBeat {
 

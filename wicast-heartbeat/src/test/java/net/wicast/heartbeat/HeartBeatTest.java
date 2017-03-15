@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 /**
  * HeartBeatTest.
  *
- * @author <author@wicast.net>
+
  */
 public class HeartBeatTest {
 

@@ -8,7 +8,7 @@ import java.net.SocketException;
 /**
  * HeartBeatTest.
  *
- * @author <author@wicast.net>
+
  */
 public class HeartBeat extends AbstractHeartBeat {
 

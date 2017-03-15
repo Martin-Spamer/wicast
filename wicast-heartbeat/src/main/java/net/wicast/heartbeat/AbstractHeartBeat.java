@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
 /**
  * AbstractHeartBeat.
  *
- * @author <author@wicast.net>
+
  */
 public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
 

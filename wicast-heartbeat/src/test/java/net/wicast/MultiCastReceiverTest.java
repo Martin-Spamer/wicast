@@ -10,7 +10,7 @@ import org.junit.Test;
 /**
  * MultiCastReceiverTest.
  *
- * @author <author@wicast.net> 20 Jun 2013
+ 20 Jun 2013
  */
 public class MultiCastReceiverTest {
 
