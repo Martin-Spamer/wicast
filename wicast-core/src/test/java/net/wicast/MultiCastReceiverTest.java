@@ -16,7 +16,7 @@
  */
 package net.wicast;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -30,7 +30,8 @@ public class MultiCastReceiverTest {
      */
     @Test
     public void testMultiCastReceiver() {
-        fail("Not yet implemented");
+        final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
+        assertNotNull(multiCastReceiver);
     }
 
 }

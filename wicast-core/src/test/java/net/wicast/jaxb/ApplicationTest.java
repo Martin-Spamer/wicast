@@ -21,6 +21,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -177,12 +178,14 @@ public class ApplicationTest {
     @Test
     public void testUnMarshallApplication() throws JAXBException, FileNotFoundException {
         ApplicationTest.log.info("testUnMarshallApplication");
-
         final JAXBContext jc = JAXBContext.newInstance("net.wicast.config");
         final Unmarshaller u = jc.createUnmarshaller();
         // u.setValidating(true);
-        final Application application = (Application) u.unmarshal(
-                this.getClass().getClassLoader().getResourceAsStream("Application.xml"));
+        final Class<? extends ApplicationTest> thisClass = this.getClass();
+        final ClassLoader thisClassLoader = thisClass.getClassLoader();
+        final String configFilename = "WiCastApplicationXml/Application.xml";
+        final InputStream resourceAsStream = thisClassLoader.getResourceAsStream(configFilename);
+        final Application application = (Application) u.unmarshal(resourceAsStream);
         assertNotNull(application);
         verify(application.getName());
         verify(application.getDescription());

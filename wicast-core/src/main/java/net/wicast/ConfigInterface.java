@@ -22,38 +22,4 @@ package net.wicast;
  */
 public interface ConfigInterface {
 
-    /**
-     * Load.
-     *
-     * @return true, if successful
-     */
-    boolean load();
-
-    /**
-     * Load properties.
-     *
-     * @return true, if successful
-     */
-    boolean loadProperties();
-
-    /**
-     * Load xml.
-     *
-     * @return true, if successful
-     */
-    boolean loadXml();
-
-    /**
-     * Save as properties.
-     *
-     * @return true, if successful
-     */
-    boolean saveAsProperties();
-
-    /**
-     * Save as xml.
-     *
-     * @return true, if successful
-     */
-    boolean saveAsXml();
 }

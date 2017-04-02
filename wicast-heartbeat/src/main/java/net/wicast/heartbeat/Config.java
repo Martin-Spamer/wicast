@@ -16,44 +16,16 @@
  */
 package net.wicast.heartbeat;
 
-import java.io.File;
-
 import net.wicast.AbstractConfig;
 
-/**
- * The Config Class.
- */
 public class Config extends AbstractConfig {
 
     public Config() {
+        super();
     }
 
-    public Config(final File file) {
-    }
-
-    public Config(final String xmlString) {
-    }
-
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#loadProperties()
-     */
-    @Override
-    public boolean loadProperties() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#loadXml()
-     */
-    @Override
-    public boolean loadXml() {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    public Config subConfig(final String string) {
-        return null;
+    public Config(final String filename) {
+        super(filename);
     }
 
 }

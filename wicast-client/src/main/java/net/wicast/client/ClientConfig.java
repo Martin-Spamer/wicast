@@ -18,16 +18,9 @@ package net.wicast.client;
 
 import net.wicast.AbstractConfig;
 
+/**
+ * The ClientConfig Class.
+ */
 public class ClientConfig extends AbstractConfig {
-
-    @Override
-    public boolean loadProperties() {
-        return false;
-    }
-
-    @Override
-    public boolean loadXml() {
-        return false;
-    }
 
 }

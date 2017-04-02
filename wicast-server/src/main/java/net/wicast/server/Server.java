@@ -16,12 +16,11 @@
  */
 package net.wicast.server;
 
-import net.wicast.MainApp;
+public class Server {
 
-public class Server extends MainApp {
+    protected ServerConfig config;
 
     public Server() {
-        super();
         this.config = new ServerConfig();
     }
 

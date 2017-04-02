@@ -16,6 +16,12 @@
  */
 package net.wicast;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -27,14 +33,28 @@ import org.w3c.dom.NodeList;
  * The ApplicationScanner Class.
  */
 public class ApplicationScanner {
-    private final Document document;
+
+    private static final Logger log = LoggerFactory.getLogger(ApplicationScanner.class);
+    private static DocumentBuilderFactory documentBuilderFactory = null;
+    private static DocumentBuilder documentBuilder = null;
+    private static Document document = null;
+
+    public ApplicationScanner() {
+        ApplicationScanner.documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        try {
+            ApplicationScanner.documentBuilder = ApplicationScanner.documentBuilderFactory.newDocumentBuilder();
+            ApplicationScanner.document = documentBuilder.newDocument();
+        } catch (final ParserConfigurationException parserConfigurationException) {
+            ApplicationScanner.log.error(parserConfigurationException.toString());
+        }
+    }
 
     /**
      * Create new ApplicationScanner with org.w3c.dom.Document.
      *
      * @param document the document
      */
-    public ApplicationScanner(final org.w3c.dom.Document document) {
+    public ApplicationScanner(final Document document) {
         this.document = document;
     }
 

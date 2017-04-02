@@ -16,7 +16,6 @@
  */
 package net.wicast;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -37,18 +36,18 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  * An Abstract Configuration Class for holding the Configuration from XML.
- *
-
  */
 public abstract class AbstractConfig implements ConfigInterface {
 
+    private static final String XML_TO_PROPERTIES = "fromXml.properties";
+    private static final String PROPERTIES_TO_PROPERTIES = "fromProperties.properties";
     private static final Logger log = LoggerFactory.getLogger(AbstractConfig.class);
     private static DocumentBuilderFactory documentBuilderFactory = null;
     private static DocumentBuilder documentBuilder = null;
@@ -58,16 +57,14 @@ public abstract class AbstractConfig implements ConfigInterface {
         try {
             AbstractConfig.documentBuilder = AbstractConfig.documentBuilderFactory.newDocumentBuilder();
         } catch (final ParserConfigurationException parserConfigurationException) {
-            AbstractConfig.log.error("{}", parserConfigurationException);
+            AbstractConfig.log.error(parserConfigurationException.toString());
         }
     }
 
     private final Properties properties = new Properties();
     private final Properties propertiesFromXml = new Properties();
-
-    private org.w3c.dom.Document configDocument = null;
-
-    private Element configElement = null;
+    private final Document configDocument = null;
+    private final Element configElement = null;
     private NodeList context = null;
 
     private int index = 0;
@@ -87,17 +84,19 @@ public abstract class AbstractConfig implements ConfigInterface {
         // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
         loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(toName())));
 
-        try {
-            final InputStream resourceAsStream = this.getClass()
-                                                     .getClassLoader()
-                                                     .getResourceAsStream("Application.xml");
-            this.configDocument = AbstractConfig.documentBuilder.parse(resourceAsStream);
-            this.configElement = this.configDocument.getDocumentElement();
-        } catch (final SAXException e) {
-            AbstractConfig.log.error("{}", e);
-        } catch (final IOException e) {
-            AbstractConfig.log.error("{}", e);
-        }
+    }
+
+    /**
+     * @param filename
+     */
+    public AbstractConfig(final String filename) {
+        // use this variation for packaged configuration.
+        // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
+        loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(filename)));
+
+        // use this variation for packaged configuration.
+        // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
+        loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(filename)));
     }
 
     /**
@@ -150,24 +149,6 @@ public abstract class AbstractConfig implements ConfigInterface {
         return this.configElement.getTagName();
     }
 
-    /* (non-Javadoc)
-     * @see net.wicast.ConfigInterface#load()
-     */
-    @Override
-    public boolean load() {
-        return false;
-    }
-
-    /**
-     * Load.
-     *
-     * @param file the file
-     * @return true, if successful
-     */
-    public boolean load(final File file) {
-        return false;
-    }
-
     /**
      * Load from property file.
      *
@@ -208,18 +189,17 @@ public abstract class AbstractConfig implements ConfigInterface {
      *
      * @return true is successful otherwise false
      */
-    @Override
     public boolean saveAsProperties() {
         FileOutputStream fileOutputStream;
         try {
-            fileOutputStream = new FileOutputStream("fromProperties-out.properties");
+            fileOutputStream = new FileOutputStream(PROPERTIES_TO_PROPERTIES);
 
             try {
-                this.properties.store(fileOutputStream, "comment properties.store");
+                this.properties.store(fileOutputStream, "properties.store");
 
-                fileOutputStream = new FileOutputStream("propertiesFromXml-out.properties");
+                fileOutputStream = new FileOutputStream(XML_TO_PROPERTIES);
                 try {
-                    this.propertiesFromXml.store(fileOutputStream, "comment propertiesFromXml.store");
+                    this.propertiesFromXml.store(fileOutputStream, "propertiesFromXml.store");
                 } catch (final IOException e) {
                     AbstractConfig.log.error("{}", e);
                 }
@@ -237,7 +217,6 @@ public abstract class AbstractConfig implements ConfigInterface {
      *
      * @return true is successful otherwise false
      */
-    @Override
     public boolean saveAsXml() {
         final String encoding = "UTF-8";
         FileOutputStream fileOutputStream;
@@ -245,13 +224,13 @@ public abstract class AbstractConfig implements ConfigInterface {
             fileOutputStream = new FileOutputStream("fromProperties.xml");
 
             try {
-                String comment = "comment properties.storeToXML";
+                String comment = "properties.storeToXML";
                 this.properties.storeToXML(fileOutputStream, comment, encoding);
 
                 fileOutputStream = new FileOutputStream("propertiesFromXml.xml");
 
                 try {
-                    comment = "comment propertiesFromXml.storeToXML";
+                    comment = "propertiesFromXml.storeToXML";
                     this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
                 } catch (final IOException e) {
                     AbstractConfig.log.error("{}", e);

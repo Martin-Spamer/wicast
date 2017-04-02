@@ -1,34 +1,36 @@
-// Copyright (C) 2013 The Test People
-// All rights reserved. Duplication or distribution prohibited
+/**
+ * This file is part of Automated Testing Framework for Java (atf4j).
+ *
+ * Atf4j is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Atf4j is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with atf4j.  If not, see http://www.gnu.org/licenses/.
+ */
 
 package net.wicast;
-
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
 /**
  * MultiCastRelayTest.
- *
- 20 Jun 2013
+ * 20 Jun 2013
  */
 public class MultiCastRelayTest {
-
-    /**
-     * Test method for
-     * {@link net.wicast.relay.MultiCastRelay#main(java.lang.String[])}.
-     */
-    @Test
-    public final void testMain() {
-        fail("Not yet implemented"); // TODO
-    }
 
     /**
      * Test method for {@link net.wicast.relay.MultiCastRelay#MultiCastRelay()}.
      */
     @Test
     public final void testMultiCastRelay() {
-        fail("Not yet implemented"); // TODO
+        new MultiCastRelay();
     }
 
 }

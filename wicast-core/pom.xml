@@ -6,7 +6,7 @@
 	<groupId>net.wicast</groupId>
 	<artifactId>wicast-core</artifactId>
 	<version>0.2.0-SNAPSHOT</version>
-	<name>Multicast HeartBeat</name>
+	<name>Multicast Core</name>
 	<url>http://wicast.net</url>
 
 	<parent>
@@ -68,7 +68,7 @@
 						</goals>
 						<configuration>
 							<schemaIncludes>
-								<include>jaxb/WiCastApplicationXml/*.xsd</include>
+								<include>WiCastApplicationXml/*.xsd</include>
 							</schemaIncludes>
 							<episodeFile>${project.build.directory}/generated-sources/xjc/META-INF/jaxb-WiCastApplicationXml.episode</episodeFile>
 							<generatePackage>net.wicast.config</generatePackage>

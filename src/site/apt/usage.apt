@@ -1,0 +1,14 @@
+           ------
+            Title
+            ------
+            ------
+             Date
+            ------
+ WiCast : Wireless Multi-Casting framework project
+
+Section wicast.net usage
+
+	<dependency>
+	    <groupId>net.wicastj</groupId>
+	    <artifactId>wicast</artifactId>
+	</dependency>

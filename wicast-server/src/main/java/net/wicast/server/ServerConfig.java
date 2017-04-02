@@ -20,14 +20,4 @@ import net.wicast.AbstractConfig;
 
 public class ServerConfig extends AbstractConfig {
 
-    @Override
-    public boolean loadProperties() {
-        return false;
-    }
-
-    @Override
-    public boolean loadXml() {
-        return false;
-    }
-
 }

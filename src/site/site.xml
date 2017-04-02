@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="WiCast : Wireless Multicast Framework for Java"
+	xmlns="http://maven.apache.org/DECORATION/1.6.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
+	<publishDate position="right" />
+	<version position="right" />
+	<bannerLeft>
+		<name>Maven</name>
+		<src>http://maven.apache.org/images/apache-maven-project.png</src>
+		<href>http://maven.apache.org/</href>
+	</bannerLeft>
+
+	<bannerRight>
+		<src>http://maven.apache.org/images/maven-small.gif</src>
+	</bannerRight>
+
+	<body>
+		<links>
+			<item name="GitHub" href="https://github.com/Martin-Spamer/wicast" />
+			<item name="Issues" href="https://github.com/Martin-Spamer/wicast/issues" />
+		</links>
+
+		<menu name="Overview">
+			<item name="Index" href="index.html" />
+			<item name="About" href="about.html" />
+			<item name="Usage" href="usage.html" />
+			<item name="Issue Tracking" href="issue-tracking.html" />
+			<item name="Report" href="poject-report.html" />
+			<item name="Release Notes" href="release-notes.html" />
+			<item name="Roadmap" href="roadmap.html" />
+			<item name="Download" href="download.html" />
+			<item name="FAQ" href="faq.html" />
+			<item name="WiCast API" href="apidocs/index.html" />
+			<item name="WiCast Test API" href="testapidocs/index.html" />
+		</menu>
+
+	</body>
+	<skin>
+		<groupId>org.apache.maven.skins</groupId>
+		<artifactId>maven-fluido-skin</artifactId>
+		<version>1.6</version>
+	</skin>
+	<custom>
+		<fluidoSkin>
+			<googleSearch>
+				<sitesearch />
+			</googleSearch>
+		</fluidoSkin>
+	</custom>
+</project>

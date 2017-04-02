@@ -14,37 +14,58 @@
  * You should have received a copy of the GNU General Public License
  * along with atf4j.  If not, see http://www.gnu.org/licenses/.
  */
-// All rights reserved. Duplication or distribution prohibited
-
-package net.wicast.heartbeat;
+package net.wicast;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import net.wicast.AbstractConfig;
+import net.wicast.ConfigInterface;
 
 /**
  * ConfigTest.
- * 20 Jun 2013
  */
 public class ConfigTest {
+    private static final Logger log = LoggerFactory.getLogger(ConfigTest.class);
+
+    /**
+     * MockConfig Class.
+     */
+    private class MockConfig extends AbstractConfig {
+        public MockConfig() {
+            super();
+        }
+    }
 
     /**
      * Test method for {@link net.wicast.Config#Config()}.
+     *
+     * @throws Exception the exception
      */
     @Test
-    public final void testConfig() {
-        assertNotNull(new Config());
+    public void testConfig() throws Exception {
+        final AbstractConfig config = new MockConfig();
+        assertNotNull(config);
+
+        ConfigTest.log.info(config.toString());
+        ConfigTest.log.info(config.xmlFoo());
+        assertTrue(config.saveAsProperties());
+        assertTrue(config.saveAsXml());
+        config.dumpToLog();
+
     }
 
     /**
      * Test method for {@link net.wicast.Config#toString()}.
      */
     @Test
-    public final void testToString() {
-        final Config testInstance = new Config();
-        assertNotNull(testInstance);
-        assertNotNull(testInstance.toString());
-        testInstance.dumpToLog();
+    public void testToString() {
+        final ConfigInterface config = new MockConfig();
+        assertNotNull(config);
+        log.info(config.toString());
     }
-
 }
