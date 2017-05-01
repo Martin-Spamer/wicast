@@ -24,12 +24,12 @@
 			<item name="Index" href="index.html" />
 			<item name="About" href="about.html" />
 			<item name="Usage" href="usage.html" />
-			<item name="Issue Tracking" href="issue-tracking.html" />
+			<item name="FAQ" href="faq.html" />
+			<item name="Download" href="download.html" />
 			<item name="Report" href="poject-report.html" />
 			<item name="Release Notes" href="release-notes.html" />
+			<item name="Issue Tracking" href="issue-tracking.html" />
 			<item name="Roadmap" href="roadmap.html" />
-			<item name="Download" href="download.html" />
-			<item name="FAQ" href="faq.html" />
 			<item name="WiCast API" href="apidocs/index.html" />
 			<item name="WiCast Test API" href="testapidocs/index.html" />
 		</menu>
