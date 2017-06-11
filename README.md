@@ -1,7 +1,7 @@
-WiCast
+# WiCast
 ======
 
-WiCast
+WiCast Wireless MultiCasting
 
 	<dependency>
 		<groupId>net.wicast</groupId>
@@ -9,4 +9,3 @@ WiCast
 		<packaging>jar</packaging>
 		<version>1.0-SNAPSHOT</version>
 	</dependency>
-
