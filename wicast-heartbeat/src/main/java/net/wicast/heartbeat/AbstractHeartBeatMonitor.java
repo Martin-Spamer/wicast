@@ -16,9 +16,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
     /**
      * AbstractHeartBeatMonitor.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public AbstractHeartBeatMonitor(InetAddress groupAddress, int portNo) throws HeartBeatException {
         super(groupAddress, portNo);
@@ -27,9 +27,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
     /**
      * AbstractHeartBeat.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public AbstractHeartBeatMonitor(String groupAddress, int portNo) throws HeartBeatException {
         super(groupAddress, portNo);
@@ -38,8 +38,8 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
     /**
      * Beat.
      *
-     * @param message the message
-     * @throws HeartBeatException the heart beat exception
+ * message
+ * heart beat exception
      * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
      */
     @Override
@@ -68,7 +68,7 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
     /**
      * Monitor.
      *
-     * @throws HeartBeatException the heart beat exception
+ * heart beat exception
      */
     protected void monitor() throws HeartBeatException {
         try {

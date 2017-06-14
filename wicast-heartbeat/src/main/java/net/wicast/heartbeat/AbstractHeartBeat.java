@@ -2,16 +2,16 @@
  * This file is part of Automated Testing Framework for Java (atf4j).
  *
  * Atf4j is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * GNU General Public License as published by
+ * License, or
  * (at your option) any later version.
  *
- * Atf4j is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * hope that it will be useful,
+ * implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * GNU General Public License
  * along with atf4j.  If not, see http://www.gnu.org/licenses/.
  */
 package net.wicast.heartbeat;
@@ -40,9 +40,9 @@ public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
     /**
      * AbstractHeartBeat.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public AbstractHeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
         this.groupAddress = groupAddress;
@@ -53,9 +53,9 @@ public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
     /**
      * AbstractHeartBeat.
      *
-     * @param groupAddressString the group address string
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address string
+ * port no
+ * heart beat exception
      */
     public AbstractHeartBeat(final String groupAddressString, final int portNo) throws HeartBeatException {
         try {
@@ -71,9 +71,9 @@ public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
     /**
      * Join group.
      *
-     * @param groupAddressIn the group address in
-     * @param portNoIn the port no in
-     * @throws HeartBeatException the heart beat exception
+ * group address in
+ * port no in
+ * heart beat exception
      */
     protected void joinGroup(final InetAddress groupAddressIn, final int portNoIn) throws HeartBeatException {
         try {

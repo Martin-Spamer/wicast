@@ -2,16 +2,16 @@
  * This file is part of Automated Testing Framework for Java (atf4j).
  *
  * Atf4j is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * GNU General Public License as published by
+ * License, or
  * (at your option) any later version.
  *
- * Atf4j is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * hope that it will be useful,
+ * implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * GNU General Public License
  * along with atf4j.  If not, see http://www.gnu.org/licenses/.
  */
 package net.wicast.heartbeat.time;
@@ -39,9 +39,9 @@ public class TimeBeat extends AbstractHeartBeat {
     /**
      * AbstractHeartBeat.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public TimeBeat(final String groupAddress, final int portNo) throws HeartBeatException {
         super(groupAddress, portNo);
@@ -50,9 +50,9 @@ public class TimeBeat extends AbstractHeartBeat {
     /**
      * AbstractHeartBeatMonitor.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public TimeBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
         super(groupAddress, portNo);
@@ -61,8 +61,8 @@ public class TimeBeat extends AbstractHeartBeat {
     /**
      * Beat.
      *
-     * @param message the message
-     * @throws HeartBeatException the heart beat exception
+ * message
+ * heart beat exception
      * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
      */
     @Override

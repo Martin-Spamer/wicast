@@ -44,13 +44,13 @@ public class MultiCastRelay {
 		public boolean receiveByMulticastSocket(final String group, final int port) {
 			boolean status = false;
 			try {
-				// Create the socket and bind it to port 'port'.
+				// * socket and bind it to port 'port'.
 				final MulticastSocket socket = new MulticastSocket(port);
 
-				// join the multicast group
+				// * multicast group
 				socket.joinGroup(InetAddress.getByName(group));
 
-				// Now the socket is set up and we are ready to receive packets
+				// * socket is set up and we are ready to receive packets
 				// Create a DatagramPacket and do a receive
 				final byte input[] = new byte[1024];
 				final DatagramPacket packet = new DatagramPacket(input, input.length);
@@ -62,9 +62,9 @@ public class MultiCastRelay {
 				MultiCastRelay.log.info("length: " + packet.getLength());
 				System.out.write(packet.getData(), 0, packet.getLength());
 
-				// And when we have finished receiving data leave the multicast
+				// * multicast
 				// group and
-				// close the socket
+				// * socket
 				socket.leaveGroup(InetAddress.getByName(group));
 				socket.close();
 				status = true;
@@ -133,10 +133,10 @@ public class MultiCastRelay {
 		/**
 		 * Sending to a Multicast Group. You can send to a multicast socket
 		 * using either a DatagramSocket or a MulticastSocket. What makes it
-		 * multicast is the address that is in the datagram. If the address is a
-		 * multicast address, the datagram will reach the multicast members in
-		 * the group. You only need to use MulticastSocket if you want to
-		 * control the time-to-live of the datagram.
+		 * address is a
+		 * multicast members in
+		 * group. You only need to use MulticastSocket if you want to
+		 * datagram.
 		 *
 		 * @param group multicast group address as String "X.X.X.X".
 		 * @param port sending port as int.
@@ -163,9 +163,9 @@ public class MultiCastRelay {
 		/**
 		 * Send Datagram to Multicast Group by Socket.
 		 *
-		 * @param group the group
-		 * @param port the port
-		 * @param output the output
+		 * group
+		 * port
+		 * output
 		 * @return boolean
 		 */
 		public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
@@ -195,7 +195,7 @@ public class MultiCastRelay {
 	/**
 	 * main entry point for this class.
 	 *
-	 * @param args the command line arguments
+	 * command line arguments
 	 */
 	public static void main(final String[] args) {
 		MultiCastRelay.log.trace(System.getProperties().toString());

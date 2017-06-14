@@ -26,7 +26,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- * An Abstract Configuration Class for holding the Configuration from XML.
+ * Configuration from XML.
  */
 public abstract class AbstractConfig implements ConfigInterface {
 
@@ -54,8 +54,8 @@ public abstract class AbstractConfig implements ConfigInterface {
     private int index = 0;
 
     /**
-     * default Constructor. loads the default configuration from jar, then loads
-     * override configuration from a file. with the same filename as classname +
+ * default configuration from jar, then loads
+ * same filename as classname +
      * ".xml".
      */
     public AbstractConfig() {
@@ -96,7 +96,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * return first Element with Tag Name.
      *
-     * @param elementName the element name
+ * element name
      * @return Element
      */
     protected Element firstElementByTagName(final String elementName) {
@@ -107,7 +107,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * get attribute from current element.
      *
-     * @param attributeName the attribute name
+ * attribute name
      * @return attribute value as String.
      */
     protected String getAttribute(final String attributeName) {
@@ -117,7 +117,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * return a NodeList of nested Elements.
      *
-     * @param elementName the element name
+ * element name
      * @return org.w3c.dom.NodeList
      */
     protected NodeList getElementsByTagName(final String elementName) {
@@ -136,7 +136,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * Load from property file.
      *
-     * @param inputStream the input stream
+ * input stream
      */
     private void loadFromPropertyFile(final InputStream inputStream) {
         try {
@@ -149,7 +149,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * Load from xml file.
      *
-     * @param inputStream the input stream
+ * input stream
      */
     private void loadFromXmlFile(final InputStream inputStream) {
         try {
@@ -234,7 +234,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * To name.
      *
-     * @return the string
+ * string
      */
     private String toName() {
         return this.getClass().getSimpleName();
@@ -243,8 +243,8 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * To property filename.
      *
-     * @param filename the filename
-     * @return the string
+ * filename
+ * string
      */
     private String toPropertyFilename(final String filename) {
         return String.format("%s.properties", filename);
@@ -263,8 +263,8 @@ public abstract class AbstractConfig implements ConfigInterface {
     /**
      * To xml filename.
      *
-     * @param filename the filename
-     * @return the string
+ * filename
+ * string
      */
     private String toXmlFilename(final String filename) {
         return String.format("%s.xml", filename);

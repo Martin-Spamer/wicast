@@ -5,7 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * A Class for testing the Config class
+ * Config class
  *
  * @author
  * @version 0.1

@@ -2,16 +2,16 @@
  * This file is part of Automated Testing Framework for Java (atf4j).
  *
  * Atf4j is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * GNU General Public License as published by
+ * License, or
  * (at your option) any later version.
  *
- * Atf4j is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * hope that it will be useful,
+ * implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
+ * GNU General Public License
  * along with atf4j.  If not, see http://www.gnu.org/licenses/.
  */
 package net.wicast.jaxb;
@@ -59,8 +59,8 @@ public class ApplicationTest {
     /**
      * Test to Marshall Java Objects into an Application.xml file.
      *
-     * @throws JAXBException the JAXB exception
-     * @throws FileNotFoundException the file not found exception
+ * JAXB exception
+ * file not found exception
      */
     @Test
     public void testMarshallApplication() throws JAXBException, FileNotFoundException {
@@ -172,8 +172,8 @@ public class ApplicationTest {
     /**
      * Test to UnMarshall Application.xml file into Java Objects.
      *
-     * @throws JAXBException the JAXB exception
-     * @throws FileNotFoundException the file not found exception
+ * JAXB exception
+ * file not found exception
      */
     @Test
     public void testUnMarshallApplication() throws JAXBException, FileNotFoundException {
@@ -198,7 +198,7 @@ public class ApplicationTest {
     /**
      * Verify.
      *
-     * @param name the name
+ * name
      */
     private void verify(final String name) {
         assertNotNull(name);

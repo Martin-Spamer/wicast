@@ -10,7 +10,7 @@ import org.junit.Test;
 public class AbstractConfigTest {
 
     /**
-     * The MockConfig Class.
+ * MockConfig Class.
      */
     public class MockConfig extends AbstractConfig {
     }

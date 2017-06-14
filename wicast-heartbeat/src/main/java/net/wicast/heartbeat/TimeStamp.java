@@ -22,7 +22,7 @@ public class TimeStamp {
     /**
      * To string.
      *
-     * @return the string
+ * string
      * @see java.lang.Object#toString()
      */
     @Override

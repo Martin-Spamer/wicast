@@ -15,9 +15,9 @@ public class HeartBeat extends AbstractHeartBeat {
     /**
      * HeartBeatTest.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public HeartBeat(InetAddress groupAddress, int portNo) throws HeartBeatException {
         super(groupAddress, portNo);
@@ -26,9 +26,9 @@ public class HeartBeat extends AbstractHeartBeat {
     /**
      * HeartBeatTest.
      *
-     * @param groupAddress the group address
-     * @param portNo the port no
-     * @throws HeartBeatException the heart beat exception
+ * group address
+ * port no
+ * heart beat exception
      */
     public HeartBeat(String groupAddress, int portNo) throws HeartBeatException {
         super(groupAddress, portNo);
@@ -37,8 +37,8 @@ public class HeartBeat extends AbstractHeartBeat {
     /**
      * Beat.
      *
-     * @param message the message
-     * @throws HeartBeatException the heart beat exception
+ * message
+ * heart beat exception
      * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
      */
     @Override
