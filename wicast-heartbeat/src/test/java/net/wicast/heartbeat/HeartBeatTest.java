@@ -27,7 +27,6 @@ import org.slf4j.LoggerFactory;
 
 /**
  * HeartBeatTest.
- *
  */
 public class HeartBeatTest {
 

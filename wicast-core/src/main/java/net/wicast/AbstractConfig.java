@@ -30,290 +30,282 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractConfig implements ConfigInterface {
 
-    private static final String XML_TO_PROPERTIES = "fromXml.properties";
-    private static final String PROPERTIES_TO_PROPERTIES = "fromProperties.properties";
-    private static final Logger log = LoggerFactory.getLogger(AbstractConfig.class);
-    private static DocumentBuilderFactory documentBuilderFactory = null;
-    private static DocumentBuilder documentBuilder = null;
+	private static final String XML_TO_PROPERTIES = "fromXml.properties";
+	private static final String PROPERTIES_TO_PROPERTIES = "fromProperties.properties";
+	private static final Logger log = LoggerFactory.getLogger(AbstractConfig.class);
+	private static DocumentBuilderFactory documentBuilderFactory = null;
+	private static DocumentBuilder documentBuilder = null;
 
-    static {
-        AbstractConfig.documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        try {
-            AbstractConfig.documentBuilder = AbstractConfig.documentBuilderFactory.newDocumentBuilder();
-        } catch (final ParserConfigurationException parserConfigurationException) {
-            AbstractConfig.log.error(parserConfigurationException.toString());
-        }
-    }
+	static {
+		AbstractConfig.documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		try {
+			AbstractConfig.documentBuilder = AbstractConfig.documentBuilderFactory.newDocumentBuilder();
+		} catch (final ParserConfigurationException parserConfigurationException) {
+			AbstractConfig.log.error(parserConfigurationException.toString());
+		}
+	}
 
-    private final Properties properties = new Properties();
-    private final Properties propertiesFromXml = new Properties();
-    private final Document configDocument = null;
-    private final Element configElement = null;
-    private NodeList context = null;
+	private final Properties properties = new Properties();
+	private final Properties propertiesFromXml = new Properties();
+	private final Document configDocument = null;
+	private final Element configElement = null;
+	private NodeList context = null;
 
-    private int index = 0;
+	private int index = 0;
 
-    /**
- * default configuration from jar, then loads
- * same filename as classname +
-     * ".xml".
-     */
-    public AbstractConfig() {
+	/**
+	 * default configuration from jar with 
+	 * from same filename as classname + ".xml".
+	 */
+	public AbstractConfig() {
+		// use this variation for packaged configuration.
+		// loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
+		loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(toName())));
 
-        // use this variation for packaged configuration.
-        // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
-        loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(toName())));
+		// use this variation for packaged configuration.
+		// loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
+		loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(toName())));
+	}
 
-        // use this variation for packaged configuration.
-        // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
-        loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(toName())));
+	/**
+	 * @param filename
+	 */
+	public AbstractConfig(final String filename) {
+		// use this variation for packaged configuration.
+		// loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
+		loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(filename)));
 
-    }
+		// use this variation for packaged configuration.
+		// loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
+		loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(filename)));
+	}
 
-    /**
-     * @param filename
-     */
-    public AbstractConfig(final String filename) {
-        // use this variation for packaged configuration.
-        // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
-        loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(filename)));
+	/**
+	 * Dump to log.
+	 */
+	public void dumpToLog() {
+		AbstractConfig.log.info(xmlFoo());
+		AbstractConfig.log.info(xmlToString(this.configDocument));
+		AbstractConfig.log.info(this.properties.toString());
+		AbstractConfig.log.info(this.propertiesFromXml.toString());
+	}
 
-        // use this variation for packaged configuration.
-        // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
-        loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(filename)));
-    }
+	/**
+	 * return first Element with Tag Name.
+	 *
+	 * @return Element
+	 */
+	protected Element firstElementByTagName(final String elementName) {
+		this.context = this.configElement.getElementsByTagName(elementName);
+		return (Element) this.context.item(this.index = 0);
+	}
 
-    /**
-     * Dump to log.
-     */
-    public void dumpToLog() {
-        AbstractConfig.log.info(xmlFoo());
-        AbstractConfig.log.info(xmlToString(this.configDocument));
-        AbstractConfig.log.info(this.properties.toString());
-        AbstractConfig.log.info(this.propertiesFromXml.toString());
-    }
+	/**
+	 * get attribute from current element.
+	 *
+	 * @return attribute value as String.
+	 */
+	protected String getAttribute(final String attributeName) {
+		return this.configElement.getAttribute(attributeName);
+	}
 
-    /**
-     * return first Element with Tag Name.
-     *
- * element name
-     * @return Element
-     */
-    protected Element firstElementByTagName(final String elementName) {
-        this.context = this.configElement.getElementsByTagName(elementName);
-        return (Element) this.context.item(this.index = 0);
-    }
+	/**
+	 * return a NodeList of nested Elements.
+	 *
+	 * @return org.w3c.dom.NodeList
+	 */
+	protected NodeList getElementsByTagName(final String elementName) {
+		return this.configElement.getElementsByTagName(elementName);
+	}
 
-    /**
-     * get attribute from current element.
-     *
- * attribute name
-     * @return attribute value as String.
-     */
-    protected String getAttribute(final String attributeName) {
-        return this.configElement.getAttribute(attributeName);
-    }
+	/**
+	 * get Tag Name of element.
+	 *
+	 * @return element name as String
+	 */
+	protected String getTagName() {
+		return this.configElement.getTagName();
+	}
 
-    /**
-     * return a NodeList of nested Elements.
-     *
- * element name
-     * @return org.w3c.dom.NodeList
-     */
-    protected NodeList getElementsByTagName(final String elementName) {
-        return this.configElement.getElementsByTagName(elementName);
-    }
+	/**
+	 * Load from property file.
+	 *
+	 */
+	private void loadFromPropertyFile(final InputStream inputStream) {
+		try {
+			this.properties.load(inputStream);
+		} catch (final Exception e) {
+			AbstractConfig.log.error("{}", e);
+		}
+	}
 
-    /**
-     * get Tag Name of element.
-     *
-     * @return element name as String
-     */
-    protected String getTagName() {
-        return this.configElement.getTagName();
-    }
+	/**
+	 * Load from xml file.
+	 *
+	 */
+	private void loadFromXmlFile(final InputStream inputStream) {
+		try {
+			this.properties.load(inputStream);
+		} catch (final Exception e) {
+			AbstractConfig.log.error("{}", e);
+		}
+	}
 
-    /**
-     * Load from property file.
-     *
- * input stream
-     */
-    private void loadFromPropertyFile(final InputStream inputStream) {
-        try {
-            this.properties.load(inputStream);
-        } catch (final Exception e) {
-            AbstractConfig.log.error("{}", e);
-        }
-    }
+	/**
+	 * return next Element.
+	 *
+	 * @return Element
+	 */
+	protected Element nextElementByTagName() {
+		return (Element) this.context.item(++this.index);
+	}
 
-    /**
-     * Load from xml file.
-     *
- * input stream
-     */
-    private void loadFromXmlFile(final InputStream inputStream) {
-        try {
-            this.properties.load(inputStream);
-        } catch (final Exception e) {
-            AbstractConfig.log.error("{}", e);
-        }
-    }
+	/**
+	 * Save as properties.
+	 *
+	 * @return true is successful otherwise false
+	 */
+	public boolean saveAsProperties() {
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream = new FileOutputStream(PROPERTIES_TO_PROPERTIES);
 
-    /**
-     * return next Element.
-     *
-     * @return Element
-     */
-    protected Element nextElementByTagName() {
-        return (Element) this.context.item(++this.index);
-    }
+			try {
+				this.properties.store(fileOutputStream, "properties.store");
 
-    /**
-     * Save as properties.
-     *
-     * @return true is successful otherwise false
-     */
-    public boolean saveAsProperties() {
-        FileOutputStream fileOutputStream;
-        try {
-            fileOutputStream = new FileOutputStream(PROPERTIES_TO_PROPERTIES);
+				fileOutputStream = new FileOutputStream(XML_TO_PROPERTIES);
+				try {
+					this.propertiesFromXml.store(fileOutputStream, "propertiesFromXml.store");
+				} catch (final IOException e) {
+					AbstractConfig.log.error("{}", e);
+				}
+			} catch (final IOException e) {
+				AbstractConfig.log.error("{}", e);
+			}
+		} catch (final FileNotFoundException e) {
+			AbstractConfig.log.error("{}", e);
+		}
+		return true;
+	}
 
-            try {
-                this.properties.store(fileOutputStream, "properties.store");
+	/**
+	 * Save as xml.
+	 *
+	 * @return true is successful otherwise false
+	 */
+	public boolean saveAsXml() {
+		final String encoding = "UTF-8";
+		FileOutputStream fileOutputStream;
+		try {
+			fileOutputStream = new FileOutputStream("fromProperties.xml");
 
-                fileOutputStream = new FileOutputStream(XML_TO_PROPERTIES);
-                try {
-                    this.propertiesFromXml.store(fileOutputStream, "propertiesFromXml.store");
-                } catch (final IOException e) {
-                    AbstractConfig.log.error("{}", e);
-                }
-            } catch (final IOException e) {
-                AbstractConfig.log.error("{}", e);
-            }
-        } catch (final FileNotFoundException e) {
-            AbstractConfig.log.error("{}", e);
-        }
-        return true;
-    }
+			try {
+				String comment = "properties.storeToXML";
+				this.properties.storeToXML(fileOutputStream, comment, encoding);
 
-    /**
-     * Save as xml.
-     *
-     * @return true is successful otherwise false
-     */
-    public boolean saveAsXml() {
-        final String encoding = "UTF-8";
-        FileOutputStream fileOutputStream;
-        try {
-            fileOutputStream = new FileOutputStream("fromProperties.xml");
+				fileOutputStream = new FileOutputStream("propertiesFromXml.xml");
 
-            try {
-                String comment = "properties.storeToXML";
-                this.properties.storeToXML(fileOutputStream, comment, encoding);
+				try {
+					comment = "propertiesFromXml.storeToXML";
+					this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
+				} catch (final IOException e) {
+					AbstractConfig.log.error("{}", e);
+				}
 
-                fileOutputStream = new FileOutputStream("propertiesFromXml.xml");
+			} catch (final IOException e) {
+				AbstractConfig.log.error("{}", e);
+			}
 
-                try {
-                    comment = "propertiesFromXml.storeToXML";
-                    this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
-                } catch (final IOException e) {
-                    AbstractConfig.log.error("{}", e);
-                }
+		} catch (final Exception e) {
+			AbstractConfig.log.error("{}", e);
+		}
 
-            } catch (final IOException e) {
-                AbstractConfig.log.error("{}", e);
-            }
+		return true;
+	}
 
-        } catch (final Exception e) {
-            AbstractConfig.log.error("{}", e);
-        }
+	/**
+	 * To name.
+	 *
+	* string
+	 */
+	private String toName() {
+		return this.getClass().getSimpleName();
+	}
 
-        return true;
-    }
+	/**
+	 * To property filename.
+	 *
+	* filename
+	* string
+	 */
+	private String toPropertyFilename(final String filename) {
+		return String.format("%s.properties", filename);
+	}
 
-    /**
-     * To name.
-     *
- * string
-     */
-    private String toName() {
-        return this.getClass().getSimpleName();
-    }
+	/**
+	 * toString returns this configuration as XML String.
+	 *
+	 * @return string representation of this object.
+	 */
+	@Override
+	public String toString() {
+		return null != this.configElement ? xmlToString(this.configElement) : "null";
+	}
 
-    /**
-     * To property filename.
-     *
- * filename
- * string
-     */
-    private String toPropertyFilename(final String filename) {
-        return String.format("%s.properties", filename);
-    }
+	/**
+	 * To xml filename.
+	 *
+	* filename
+	* string
+	 */
+	private String toXmlFilename(final String filename) {
+		return String.format("%s.xml", filename);
+	}
 
-    /**
-     * toString returns this configuration as XML String.
-     *
-     * @return string representation of this object.
-     */
-    @Override
-    public String toString() {
-        return null != this.configElement ? xmlToString(this.configElement) : "null";
-    }
+	/**
+	 * xmlFoo.
+	 *
+	 * @return in xml as String Object.
+	 */
+	public String xmlFoo() {
+		final StringWriter writer = new StringWriter();
+		try {
+			final DOMSource domSource = new DOMSource(this.configDocument);
+			final StreamResult result = new StreamResult(writer);
+			final TransformerFactory tf = TransformerFactory.newInstance();
+			final Transformer transformer = tf.newTransformer();
+			transformer.transform(domSource, result);
+		} catch (final TransformerConfigurationException e) {
+			AbstractConfig.log.error("{}", e);
+		} catch (final TransformerFactoryConfigurationError e) {
+			AbstractConfig.log.error("{}", e);
+		} catch (final TransformerException e) {
+			AbstractConfig.log.error("{}", e);
+		}
+		return writer.toString();
+	}
 
-    /**
-     * To xml filename.
-     *
- * filename
- * string
-     */
-    private String toXmlFilename(final String filename) {
-        return String.format("%s.xml", filename);
-    }
-
-    /**
-     * xmlFoo.
-     *
-     * @return in xml as String Object.
-     */
-    public String xmlFoo() {
-        final StringWriter writer = new StringWriter();
-        try {
-            final DOMSource domSource = new DOMSource(this.configDocument);
-            final StreamResult result = new StreamResult(writer);
-            final TransformerFactory tf = TransformerFactory.newInstance();
-            final Transformer transformer = tf.newTransformer();
-            transformer.transform(domSource, result);
-        } catch (final TransformerConfigurationException e) {
-            AbstractConfig.log.error("{}", e);
-        } catch (final TransformerFactoryConfigurationError e) {
-            AbstractConfig.log.error("{}", e);
-        } catch (final TransformerException e) {
-            AbstractConfig.log.error("{}", e);
-        }
-        return writer.toString();
-    }
-
-    /**
-     * return configuration node as a XML String.
-     *
-     * @param node org.w3c.dom.Node
-     * @return element CDATA as String.
-     */
-    protected String xmlToString(final Node node) {
-        StringBuffer text = new StringBuffer("");
-        if (node != null) {
-            final String value = node.getNodeValue();
-            if (value != null) {
-                text = new StringBuffer(value);
-            }
-            if (node.hasChildNodes()) {
-                final NodeList children = node.getChildNodes();
-                for (int i = 0; i < children.getLength(); i++) {
-                    text.append(xmlToString(children.item(i)));
-                }
-            }
-        }
-        return text.toString();
-    }
+	/**
+	 * return configuration node as a XML String.
+	 *
+	 * @param node org.w3c.dom.Node
+	 * @return element CDATA as String.
+	 */
+	protected String xmlToString(final Node node) {
+		StringBuffer text = new StringBuffer("");
+		if (node != null) {
+			final String value = node.getNodeValue();
+			if (value != null) {
+				text = new StringBuffer(value);
+			}
+			if (node.hasChildNodes()) {
+				final NodeList children = node.getChildNodes();
+				for (int i = 0; i < children.getLength(); i++) {
+					text.append(xmlToString(children.item(i)));
+				}
+			}
+		}
+		return text.toString();
+	}
 
 }

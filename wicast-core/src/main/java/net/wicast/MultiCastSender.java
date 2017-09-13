@@ -6,7 +6,6 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
-import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,19 +28,10 @@ public class MultiCastSender {
 		super();
 	}
 
-	public MultiCastSender(String[] args) {
-		this();
-		this.log.trace(System.getProperties().toString());
-		this.log.debug("args[]={}", Arrays.toString(args));
-	}
-
 	/**
 	 * Sending to a Multicast Group.
 	 * You can send to a multicast socket using either a DatagramSocket
-	* address that
-	* datagram
-	* group. You only need to use
-	* datagram.
+	 * address that datagram group. You only need to use datagram.
 	 *
 	 * @param group multicast group address as String "X.X.X.X".
 	 * @param port sending port as int.
@@ -68,9 +58,6 @@ public class MultiCastSender {
 	/**
 	 * Send Datagram to Multicast Group by Socket.
 	 *
-	* group
-	* port
-	* output
 	 * @return boolean
 	 */
 	public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
@@ -90,15 +77,6 @@ public class MultiCastSender {
 			this.log.error("{}", exception);
 		}
 		return status;
-	}
-
-	/**
-	 * main entry point for this class.
-	 *
-	 * command line arguments
-	 */
-	public static void main(final String[] args) {
-		final MultiCastSender multiCastSender = new MultiCastSender(args);
 	}
 
 }

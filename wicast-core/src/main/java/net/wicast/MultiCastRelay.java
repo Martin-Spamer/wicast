@@ -13,22 +13,15 @@ import org.slf4j.LoggerFactory;
 
 /**
  * MultiCastRelay <author@wicast.net>
+ * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
  *
  * @version 0.3
  * @since 0.2
+ * @date 01-10-2009
  */
 public class MultiCastRelay {
 
-	/**
-	 * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
-	 *
-	 * @author
-	 * @version 0.3
-	 * @since 0.1
-	 * @date 01-10-2009
-	 */
 	public class MultiCastReceiver extends java.lang.Thread {
-
 		/**
 		 * Creates a new instance of MultiCastReceiver.
 		 */
@@ -65,9 +58,6 @@ public class MultiCastRelay {
 
 				System.out.write(packet.getData(), 0, packet.getLength());
 
-				// * multicast
-				// group and
-				// * socket
 				socket.leaveGroup(InetAddress.getByName(group));
 				socket.close();
 				status = true;
@@ -100,14 +90,6 @@ public class MultiCastRelay {
 		}
 	}
 
-	/**
-	 * MultiCastSender, send datagrams to Multicast group.
-	 *
-	 * @author
-	 * @version 0.3
-	 * @since 0.1
-	 * @date 01-10-2009
-	 */
 	public class MultiCastSender extends java.lang.Thread {
 
 		/**
@@ -139,12 +121,11 @@ public class MultiCastRelay {
 		}
 
 		/**
-		 * Sending to a Multicast Group. You can send to a multicast socket
-		 * using either a DatagramSocket or a MulticastSocket. What makes it
-		 * address is a
-		 * multicast members in
-		 * group. You only need to use MulticastSocket if you want to
-		 * datagram.
+		 * Sending to a Multicast Group.
+		 *
+		 * You can send to a multicast socket using either a DatagramSocket
+		 * or a MulticastSocket. The address must be a multicast group. You
+		 * only need to use MulticastSocket if you want to datagram.
 		 *
 		 * @param group multicast group address as String "X.X.X.X".
 		 * @param port sending port as int.
@@ -171,9 +152,6 @@ public class MultiCastRelay {
 		/**
 		 * Send Datagram to Multicast Group by Socket.
 		 *
-		 * group
-		 * port
-		 * output
 		 * @return boolean
 		 */
 		public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {

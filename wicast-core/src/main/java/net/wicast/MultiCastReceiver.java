@@ -6,7 +6,6 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
-import java.util.Arrays;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,15 +26,6 @@ public class MultiCastReceiver {
 	 */
 	public MultiCastReceiver() {
 		super();
-	}
-
-	/**
-	 * Creates a new instance of MultiCastReceiver.
-	 */
-	public MultiCastReceiver(final String[] args) {
-		this();
-		this.log.trace(System.getProperties().toString());
-		this.log.debug("args[]={}", Arrays.toString(args));
 	}
 
 	/**
@@ -78,12 +68,4 @@ public class MultiCastReceiver {
 		return status;
 	}
 
-	/**
-	 * main entry point for this class.
-	 *
-	* command line arguments
-	 */
-	public static void main(final String[] args) {
-		final MultiCastReceiver multiCastReceiver = new MultiCastReceiver(args);
-	}
 }
