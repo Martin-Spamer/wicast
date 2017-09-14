@@ -13,10 +13,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/**
- * ApplicationScanner Class.
- */
 public class ApplicationScanner {
+
 	private static final Logger log = LoggerFactory.getLogger(ApplicationScanner.class);
 
 	public ApplicationScanner() {

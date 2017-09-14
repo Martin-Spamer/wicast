@@ -33,13 +33,11 @@ public abstract class AbstractConfig implements ConfigInterface {
 	private static final String XML_TO_PROPERTIES = "fromXml.properties";
 	private static final String PROPERTIES_TO_PROPERTIES = "fromProperties.properties";
 	private static final Logger log = LoggerFactory.getLogger(AbstractConfig.class);
-	private static DocumentBuilderFactory documentBuilderFactory = null;
-	private static DocumentBuilder documentBuilder = null;
 
 	static {
-		AbstractConfig.documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {
-			AbstractConfig.documentBuilder = AbstractConfig.documentBuilderFactory.newDocumentBuilder();
+			final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 		} catch (final ParserConfigurationException parserConfigurationException) {
 			log.error(parserConfigurationException.toString());
 		}
@@ -50,7 +48,6 @@ public abstract class AbstractConfig implements ConfigInterface {
 	private final Document configDocument = null;
 	private final Element configElement = null;
 	private NodeList context = null;
-
 	private int index = 0;
 
 	/**
