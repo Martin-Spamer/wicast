@@ -1,19 +1,3 @@
-/**
- * This file is part of Automated Testing Framework for Java (atf4j).
- *
- * Atf4j is free software: you can redistribute it and/or modify
- * GNU General Public License as published by
- * License, or
- * (at your option) any later version.
- *
- * hope that it will be useful,
- * implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * GNU General Public License
- * along with atf4j.  If not, see http://www.gnu.org/licenses/.
- */
 package net.wicast.heartbeat.time;
 
 import java.io.IOException;
@@ -29,61 +13,57 @@ import net.wicast.heartbeat.HeartBeatException;
 
 /**
  * TimeBeat.
- *
-
  */
 public class TimeBeat extends AbstractHeartBeat {
 
-    private static final Logger log = LoggerFactory.getLogger(TimeBeat.class);
+	private static final Logger log = LoggerFactory.getLogger(TimeBeat.class);
 
-    /**
-     * AbstractHeartBeat.
-     *
- * group address
- * port no
- * heart beat exception
-     */
-    public TimeBeat(final String groupAddress, final int portNo) throws HeartBeatException {
-        super(groupAddress, portNo);
-    }
+	/**
+	 * AbstractHeartBeat.
+	 *
+	* group address
+	* port no
+	* heart beat exception
+	 */
+	public TimeBeat(final String groupAddress, final int portNo) throws HeartBeatException {
+		super(groupAddress, portNo);
+	}
 
-    /**
-     * AbstractHeartBeatMonitor.
-     *
- * group address
- * port no
- * heart beat exception
-     */
-    public TimeBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
-        super(groupAddress, portNo);
-    }
+	/**
+	 * AbstractHeartBeatMonitor.
+	 *
+	* group address
+	* port no
+	* heart beat exception
+	 */
+	public TimeBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
+		super(groupAddress, portNo);
+	}
 
-    /**
-     * Beat.
-     *
- * message
- * heart beat exception
-     * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
-     */
-    @Override
-    public void beat(final String message) throws HeartBeatException {
-        try {
-            try {
-                this.multicastSocket.joinGroup(this.groupAddress);
+	/**
+	 * Beat.
+	 *
+	* message
+	* heart beat exception
+	 * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
+	 */
+	@Override
+	public void beat(final String message) throws HeartBeatException {
+		try {
+			try {
+				this.multicastSocket.joinGroup(this.groupAddress);
 
-                final DatagramPacket outBoundDatagramPacket = new DatagramPacket(message.getBytes(),
-                        message.length(),
-                        this.groupAddress,
-                        this.portNo);
+				final DatagramPacket outBoundDatagramPacket = new DatagramPacket(message.getBytes(), message.length(),
+				        this.groupAddress, this.portNo);
 
-                this.multicastSocket.send(outBoundDatagramPacket);
-            } catch (final SocketException socketException) {
-                log.error("{}", socketException);
-                throw new HeartBeatException(socketException);
-            }
-        } catch (final IOException ioException) {
-            log.error("{}", ioException);
-            throw new HeartBeatException(ioException);
-        }
-    }
+				this.multicastSocket.send(outBoundDatagramPacket);
+			} catch (final SocketException socketException) {
+				log.error("{}", socketException);
+				throw new HeartBeatException(socketException);
+			}
+		} catch (final IOException ioException) {
+			log.error("{}", ioException);
+			throw new HeartBeatException(ioException);
+		}
+	}
 }

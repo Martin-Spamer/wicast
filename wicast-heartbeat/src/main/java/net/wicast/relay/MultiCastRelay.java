@@ -56,10 +56,10 @@ public class MultiCastRelay {
 				final DatagramPacket packet = new DatagramPacket(input, input.length);
 				socket.receive(packet);
 
-				MultiCastRelay.log.info("Multicast Received");
-				MultiCastRelay.log.info("from: " + packet.getAddress().toString());
-				MultiCastRelay.log.info("port: " + packet.getPort());
-				MultiCastRelay.log.info("length: " + packet.getLength());
+				log.info("Multicast Received");
+				log.info("from: " + packet.getAddress().toString());
+				log.info("port: " + packet.getPort());
+				log.info("length: " + packet.getLength());
 				System.out.write(packet.getData(), 0, packet.getLength());
 
 				// * multicast
@@ -198,7 +198,7 @@ public class MultiCastRelay {
 	 * command line arguments
 	 */
 	public static void main(final String[] args) {
-		MultiCastRelay.log.trace(System.getProperties().toString());
+		log.trace(System.getProperties().toString());
 
 		new MultiCastRelay();
 	}

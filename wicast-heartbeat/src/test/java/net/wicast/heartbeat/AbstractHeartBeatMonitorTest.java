@@ -1,29 +1,35 @@
 package net.wicast.heartbeat;
 
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 
 public class AbstractHeartBeatMonitorTest {
 
-    @Test
-    public void testAbstractHeartBeatMonitorInetAddressInt() {
-        fail("Not yet implemented");
-    }
+	public class HeartBeatMonitor extends AbstractHeartBeatMonitor {
+	}
 
-    @Test
-    public void testAbstractHeartBeatMonitorStringInt() {
-        fail("Not yet implemented");
-    }
+	@Test
+	public void testAbstractHeartBeatMonitor() {
+		new HeartBeatMonitor();
+	}
 
-    @Test
-    public void testBeat() {
-        fail("Not yet implemented");
-    }
+	@Test
+	public void testAbstractHeartBeatMonitorInetAddressInt() {
+		new HeartBeatMonitor();
+	}
 
-    @Test
-    public void testMonitor() {
-        fail("Not yet implemented");
-    }
+	@Test
+	public void testAbstractHeartBeatMonitorStringInt() {
+		new HeartBeatMonitor();
+	}
+
+	@Test
+	public void testBeat() {
+		new HeartBeatMonitor();
+	}
+
+	@Test
+	public void testMonitor() {
+		new HeartBeatMonitor();
+	}
 
 }

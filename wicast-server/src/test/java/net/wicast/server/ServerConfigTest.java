@@ -3,7 +3,7 @@ package net.wicast.server;
 import org.junit.Test;
 
 /**
- * A UnitTest for ServerConfig objects.
+ * A UnitTest for ServerConfiguration objects.
  */
 public class ServerConfigTest {
 

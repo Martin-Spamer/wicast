@@ -41,7 +41,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 		try {
 			AbstractConfig.documentBuilder = AbstractConfig.documentBuilderFactory.newDocumentBuilder();
 		} catch (final ParserConfigurationException parserConfigurationException) {
-			AbstractConfig.log.error(parserConfigurationException.toString());
+			log.error(parserConfigurationException.toString());
 		}
 	}
 
@@ -54,7 +54,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	private int index = 0;
 
 	/**
-	 * default configuration from jar with 
+	 * default configuration from jar with
 	 * from same filename as classname + ".xml".
 	 */
 	public AbstractConfig() {
@@ -84,10 +84,10 @@ public abstract class AbstractConfig implements ConfigInterface {
 	 * Dump to log.
 	 */
 	public void dumpToLog() {
-		AbstractConfig.log.info(xmlFoo());
-		AbstractConfig.log.info(xmlToString(this.configDocument));
-		AbstractConfig.log.info(this.properties.toString());
-		AbstractConfig.log.info(this.propertiesFromXml.toString());
+		log.info(xmlFoo());
+		log.info(xmlToString(this.configDocument));
+		log.info(this.properties.toString());
+		log.info(this.propertiesFromXml.toString());
 	}
 
 	/**
@@ -135,7 +135,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 		try {
 			this.properties.load(inputStream);
 		} catch (final Exception e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		}
 	}
 
@@ -147,7 +147,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 		try {
 			this.properties.load(inputStream);
 		} catch (final Exception e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		}
 	}
 
@@ -177,13 +177,13 @@ public abstract class AbstractConfig implements ConfigInterface {
 				try {
 					this.propertiesFromXml.store(fileOutputStream, "propertiesFromXml.store");
 				} catch (final IOException e) {
-					AbstractConfig.log.error("{}", e);
+					log.error("{}", e);
 				}
 			} catch (final IOException e) {
-				AbstractConfig.log.error("{}", e);
+				log.error("{}", e);
 			}
 		} catch (final FileNotFoundException e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		}
 		return true;
 	}
@@ -209,15 +209,15 @@ public abstract class AbstractConfig implements ConfigInterface {
 					comment = "propertiesFromXml.storeToXML";
 					this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
 				} catch (final IOException e) {
-					AbstractConfig.log.error("{}", e);
+					log.error("{}", e);
 				}
 
 			} catch (final IOException e) {
-				AbstractConfig.log.error("{}", e);
+				log.error("{}", e);
 			}
 
 		} catch (final Exception e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		}
 
 		return true;
@@ -276,11 +276,11 @@ public abstract class AbstractConfig implements ConfigInterface {
 			final Transformer transformer = tf.newTransformer();
 			transformer.transform(domSource, result);
 		} catch (final TransformerConfigurationException e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		} catch (final TransformerFactoryConfigurationError e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		} catch (final TransformerException e) {
-			AbstractConfig.log.error("{}", e);
+			log.error("{}", e);
 		}
 		return writer.toString();
 	}

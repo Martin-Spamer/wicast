@@ -13,7 +13,7 @@ public class MultiCastReceiverTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
 	/**
-	 * Unit Test for test multi cast receiver.
+	 * Unit Test for test multicast receiver.
 	 */
 	@Test
 	public void testMultiCastReceiver() {

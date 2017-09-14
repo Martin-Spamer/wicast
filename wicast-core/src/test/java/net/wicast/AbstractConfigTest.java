@@ -5,24 +5,24 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 /**
- * A UnitTest for AbstractConfig objects.
+ * A UnitTest for AbstractConfiguration objects.
  */
 public class AbstractConfigTest {
 
-    /**
- * MockConfig Class.
-     */
-    public class MockConfig extends AbstractConfig {
-    }
+	/**
+	* Mock Configuration Class.
+	 */
+	public class MockConfig extends AbstractConfig {
+	}
 
-    /**
-     * Unit Test for test abstract config.
-     */
-    @Test
-    public void testAbstractConfig() {
-        final MockConfig mockConfig = new MockConfig();
-        assertNotNull(mockConfig);
-        mockConfig.dumpToLog();
-    }
+	/**
+	 * Unit Test for test abstract Configuration.
+	 */
+	@Test
+	public void testAbstractConfig() {
+		final MockConfig mockConfig = new MockConfig();
+		assertNotNull(mockConfig);
+		mockConfig.dumpToLog();
+	}
 
 }

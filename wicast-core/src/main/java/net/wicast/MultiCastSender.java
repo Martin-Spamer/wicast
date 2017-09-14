@@ -48,9 +48,9 @@ public class MultiCastSender {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			this.log.error("{}", socketException);
+			log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			this.log.error("{}", ioException);
+			log.error("{}", ioException);
 		}
 		return status;
 	}
@@ -70,11 +70,11 @@ public class MultiCastSender {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			this.log.error("{}", socketException);
+			log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			this.log.error("{}", ioException);
+			log.error("{}", ioException);
 		} catch (final Exception exception) {
-			this.log.error("{}", exception);
+			log.error("{}", exception);
 		}
 		return status;
 	}
