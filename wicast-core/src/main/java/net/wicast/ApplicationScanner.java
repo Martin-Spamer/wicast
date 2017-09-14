@@ -17,36 +17,24 @@ import org.w3c.dom.NodeList;
  * ApplicationScanner Class.
  */
 public class ApplicationScanner {
-
 	private static final Logger log = LoggerFactory.getLogger(ApplicationScanner.class);
-	private static DocumentBuilderFactory documentBuilderFactory = null;
-	private static DocumentBuilder documentBuilder = null;
-	private static Document document = null;
 
 	public ApplicationScanner() {
-		ApplicationScanner.documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {
-			ApplicationScanner.documentBuilder = documentBuilderFactory.newDocumentBuilder();
-			ApplicationScanner.document = documentBuilder.newDocument();
+			final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+			final Document document = documentBuilder.newDocument();
+			visitDocument(document);
 		} catch (final ParserConfigurationException parserConfigurationException) {
 			log.error(parserConfigurationException.toString());
 		}
 	}
 
 	/**
-	 * Create new ApplicationScanner with org.w3c.dom.Document.
-	 *
-	 * document
-	 */
-	public ApplicationScanner(final Document document) {
-		this.document = document;
-	}
-
-	/**
 	 * Scan through org.w3c.dom.Document document.
 	 */
-	public void visitDocument() {
-		final Element element = this.document.getDocumentElement();
+	public void visitDocument(final Document document) {
+		final Element element = document.getDocumentElement();
 		if (element != null && element.getTagName().equals("wicast:Application")) {
 			visitElement_wicast_Application(element);
 		}
