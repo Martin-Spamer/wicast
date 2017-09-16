@@ -1,13 +1,9 @@
 package net.wicast.heartbeat;
 
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * AbstractHeartBeat.
@@ -27,7 +23,7 @@ public abstract class AbstractHeartBeat extends Thread implements IHeartBeat {
 		try {
 			this.groupAddress = InetAddress.getByName("");
 		} catch (final UnknownHostException e) {
-			e.printStackTrace();
+			log.error("{}", e.toString());
 		}
 	}
 
