@@ -33,86 +33,88 @@ public class ApplicationScanner {
 	 */
 	public void visitDocument(final Document document) {
 		final Element element = document.getDocumentElement();
-		if (element != null && element.getTagName().equals("wicast:Application")) {
-			visitElement_wicast_Application(element);
-		}
-		if (element != null && element.getTagName().equals("Name")) {
-			visitElement_Name(element);
-		}
-		if (element != null && element.getTagName().equals("Version")) {
-			visitElement_Version(element);
-		}
-		if (element != null && element.getTagName().equals("Description")) {
-			visitElement_Description(element);
-		}
-		if (element != null && element.getTagName().equals("Url")) {
-			visitElement_Url(element);
-		}
-		if (element != null && element.getTagName().equals("Organization")) {
-			visitElement_Organization(element);
-		}
-		if (element != null && element.getTagName().equals("Licenses")) {
-			visitElement_Licenses(element);
-		}
-		if (element != null && element.getTagName().equals("Licence")) {
-			visitElement_Licence(element);
-		}
-		if (element != null && element.getTagName().equals("Id")) {
-			visitElement_Id(element);
-		}
-		if (element != null && element.getTagName().equals("Title")) {
-			visitElement_Title(element);
-		}
-		if (element != null && element.getTagName().equals("Properties")) {
-			visitElement_Properties(element);
-		}
-		if (element != null && element.getTagName().equals("Encoding")) {
-			visitElement_Encoding(element);
-		}
-		if (element != null && element.getTagName().equals("Core")) {
-			visitElement_Core(element);
-		}
-		if (element != null && element.getTagName().equals("Tools")) {
-			visitElement_Tools(element);
-		}
-		if (element != null && element.getTagName().equals("Tool")) {
-			visitElement_Tool(element);
-		}
-		if (element != null && element.getTagName().equals("name")) {
-			visitElement_name(element);
-		}
-		if (element != null && element.getTagName().equals("class")) {
-			visitElement_class(element);
-		}
-		if (element != null && element.getTagName().equals("Server")) {
-			visitElement_Server(element);
-		}
-		if (element != null && element.getTagName().equals("Scheduler")) {
-			visitElement_Scheduler(element);
-		}
-		if (element != null && element.getTagName().equals("Task")) {
-			visitElement_Task(element);
-		}
-		if (element != null && element.getTagName().equals("Channel")) {
-			visitElement_Channel(element);
-		}
-		if (element != null && element.getTagName().equals("Message")) {
-			visitElement_Message(element);
-		}
-		if (element != null && element.getTagName().equals("Uri")) {
-			visitElement_Uri(element);
-		}
-		if (element != null && element.getTagName().equals("File")) {
-			visitElement_File(element);
-		}
-		if (element != null && element.getTagName().equals("WebAdmin")) {
-			visitElement_WebAdmin(element);
-		}
-		if (element != null && element.getTagName().equals("Port")) {
-			visitElement_Port(element);
-		}
-		if (element != null && element.getTagName().equals("Client")) {
-			visitElement_Client(element);
+		if (element != null) {
+			if (element.getTagName().equals("Application")) {
+				visitElement_wicast_Application(element);
+			}
+			if (element.getTagName().equals("Name")) {
+				visitElement_Name(element);
+			}
+			if (element.getTagName().equals("Version")) {
+				visitElement_Version(element);
+			}
+			if (element.getTagName().equals("Description")) {
+				visitElement_Description(element);
+			}
+			if (element.getTagName().equals("Url")) {
+				visitElement_Url(element);
+			}
+			if (element.getTagName().equals("Organization")) {
+				visitElement_Organization(element);
+			}
+			if (element.getTagName().equals("Licenses")) {
+				visitElement_Licenses(element);
+			}
+			if (element.getTagName().equals("Licence")) {
+				visitElement_Licence(element);
+			}
+			if (element.getTagName().equals("Id")) {
+				visitElement_Id(element);
+			}
+			if (element.getTagName().equals("Title")) {
+				visitElement_Title(element);
+			}
+			if (element.getTagName().equals("Properties")) {
+				visitElement_Properties(element);
+			}
+			if (element.getTagName().equals("Encoding")) {
+				visitElement_Encoding(element);
+			}
+			if (element.getTagName().equals("Core")) {
+				visitElement_Core(element);
+			}
+			if (element.getTagName().equals("Tools")) {
+				visitElement_Tools(element);
+			}
+			if (element.getTagName().equals("Tool")) {
+				visitElement_Tool(element);
+			}
+			if (element.getTagName().equals("name")) {
+				visitElement_name(element);
+			}
+			if (element.getTagName().equals("class")) {
+				visitElement_class(element);
+			}
+			if (element.getTagName().equals("Server")) {
+				visitElement_Server(element);
+			}
+			if (element.getTagName().equals("Scheduler")) {
+				visitElement_Scheduler(element);
+			}
+			if (element.getTagName().equals("Task")) {
+				visitElement_Task(element);
+			}
+			if (element.getTagName().equals("Channel")) {
+				visitElement_Channel(element);
+			}
+			if (element.getTagName().equals("Message")) {
+				visitElement_Message(element);
+			}
+			if (element.getTagName().equals("Uri")) {
+				visitElement_Uri(element);
+			}
+			if (element.getTagName().equals("File")) {
+				visitElement_File(element);
+			}
+			if (element.getTagName().equals("WebAdmin")) {
+				visitElement_WebAdmin(element);
+			}
+			if (element.getTagName().equals("Port")) {
+				visitElement_Port(element);
+			}
+			if (element.getTagName().equals("Client")) {
+				visitElement_Client(element);
+			}
 		}
 	}
 
