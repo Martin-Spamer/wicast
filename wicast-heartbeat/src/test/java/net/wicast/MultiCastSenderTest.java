@@ -1,5 +1,7 @@
 package net.wicast;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 
 /**
@@ -14,7 +16,8 @@ public class MultiCastSenderTest {
 	 */
 	@Test
 	public final void testMultiCastSender() {
-		new MultiCastSender();
+		final MultiCastSender multiCastSender = new MultiCastSender();
+		assertNotNull(multiCastSender);
 	}
 
 }

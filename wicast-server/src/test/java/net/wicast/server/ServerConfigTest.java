@@ -1,4 +1,7 @@
+
 package net.wicast.server;
+
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -7,12 +10,14 @@ import org.junit.Test;
  */
 public class ServerConfigTest {
 
-    /**
-     * Test.
-     */
-    @Test
-    public void testServerConfig() {
-        new ServerConfig();
-    }
+	/**
+	 * Test.
+	 */
+	@Test
+	public void testServerConfig() {
+		final ServerConfig serverConfig = new ServerConfig();
+		assertNotNull(serverConfig);
+
+	}
 
 }

@@ -1,11 +1,9 @@
 package net.wicast;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * ConfigTest.
@@ -17,9 +15,6 @@ public class ConfigTest {
 	 * Mock Configuration Class.
 	 */
 	private class MockConfig extends AbstractConfig {
-		public MockConfig() {
-			super();
-		}
 	}
 
 	/**

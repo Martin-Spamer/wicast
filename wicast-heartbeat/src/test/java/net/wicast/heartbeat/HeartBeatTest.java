@@ -1,16 +1,11 @@
 package net.wicast.heartbeat;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
+import java.net.*;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * HeartBeatTest.
@@ -18,11 +13,10 @@ import org.slf4j.LoggerFactory;
 public class HeartBeatTest {
 
 	private static final Logger log = LoggerFactory.getLogger(HeartBeatTest.class);
-	private static final int portNo = 1;
-
 	private static final String invalidGroupAddressString = "127.0.0.1";
 	// 224.0.0.1 is local subnet only, closest multicast equivalent to 127.0.0.1
 	private static final String validGroupAddressString = "224.0.0.1";
+	private static final int portNo = 1;
 
 	/**
 	 * Command Pattern [GOF] execute method.

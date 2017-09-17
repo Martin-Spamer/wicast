@@ -1,5 +1,7 @@
 package net.wicast.heartbeat;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 
 public class AbstractHeartBeatTest {
@@ -12,7 +14,8 @@ public class AbstractHeartBeatTest {
 
 	@Test
 	public final void testMockHeartBeat() {
-		new MockHeartBeat();
+		final MockHeartBeat mockHeartBeat = new MockHeartBeat();
+		assertNotNull(mockHeartBeat);
 	}
 
 }

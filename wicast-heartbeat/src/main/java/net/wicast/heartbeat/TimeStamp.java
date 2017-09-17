@@ -1,8 +1,7 @@
 package net.wicast.heartbeat;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 
 /**
  * TimeStamp.
@@ -20,7 +19,6 @@ public class TimeStamp {
 	/**
 	 * To string.
 	 *
-	* string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

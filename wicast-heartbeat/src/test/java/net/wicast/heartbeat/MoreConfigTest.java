@@ -1,8 +1,9 @@
 package net.wicast.heartbeat;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 import net.wicast.AbstractConfig;
 
@@ -18,6 +19,7 @@ public class MoreConfigTest {
 		try {
 			log.debug("--- test0 : named configuration file does not exist.");
 			final AbstractConfig config = new Config("missing.xml");
+			assertNotNull(config);
 			log.debug(config.toString());
 		} catch (final Exception exception) {
 			log.error(exception.toString());
@@ -36,6 +38,7 @@ public class MoreConfigTest {
 		try {
 			log.debug("--- test1 : load default configuration file.");
 			final Config config = new Config();
+			assertNotNull(config);
 			log.debug(config.toString());
 		} catch (final java.lang.Exception exception) {
 			log.debug(exception.toString());
@@ -54,6 +57,7 @@ public class MoreConfigTest {
 		try {
 			log.debug("--- test2 : test load a named configuration file.");
 			final Config config = new Config("Application.xml");
+			assertNotNull(config);
 			log.debug("config" + config.toString());
 		} catch (final java.lang.Exception exception) {
 			log.debug(exception.toString());

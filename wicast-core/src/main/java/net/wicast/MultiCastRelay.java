@@ -16,6 +16,7 @@ import org.slf4j.*;
  * @date 01-10-2009
  */
 public class MultiCastRelay {
+	private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
 
 	/**
 	 * class MultiCastReceiverThread.
@@ -167,8 +168,6 @@ public class MultiCastRelay {
 			return status;
 		}
 	}
-
-	private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
 
 	/**
 	 * main entry point for this class.

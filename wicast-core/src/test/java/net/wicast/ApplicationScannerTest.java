@@ -1,5 +1,7 @@
 package net.wicast;
 
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
 
 public class ApplicationScannerTest {
@@ -10,7 +12,8 @@ public class ApplicationScannerTest {
 	 */
 	@Test
 	public void testApplicationScanner() {
-		new ApplicationScanner();
+		final ApplicationScanner applicationScanner = new ApplicationScanner();
+		assertNotNull(applicationScanner);
 	}
 
 }
