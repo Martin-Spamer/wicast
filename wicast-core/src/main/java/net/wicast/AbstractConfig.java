@@ -1,29 +1,16 @@
+
 package net.wicast;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.Properties;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.slf4j.*;
+import org.w3c.dom.*;
 
 /**
  * Configuration from XML.
@@ -65,7 +52,9 @@ public abstract class AbstractConfig implements ConfigInterface {
 	}
 
 	/**
-	 * @param filename
+	 * Instantiates a new abstract config.
+	 *
+	 * @param filename the filename
 	 */
 	public AbstractConfig(final String filename) {
 		// use this variation for packaged configuration.
@@ -90,6 +79,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * return first Element with Tag Name.
 	 *
+	 * @param elementName the element name
 	 * @return Element
 	 */
 	protected Element firstElementByTagName(final String elementName) {
@@ -100,6 +90,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * get attribute from current element.
 	 *
+	 * @param attributeName the attribute name
 	 * @return attribute value as String.
 	 */
 	protected String getAttribute(final String attributeName) {
@@ -109,6 +100,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * return a NodeList of nested Elements.
 	 *
+	 * @param elementName the element name
 	 * @return org.w3c.dom.NodeList
 	 */
 	protected NodeList getElementsByTagName(final String elementName) {
@@ -127,6 +119,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * Load from property file.
 	 *
+	 * @param inputStream the input stream
 	 */
 	private void loadFromPropertyFile(final InputStream inputStream) {
 		try {
@@ -139,6 +132,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * Load from xml file.
 	 *
+	 * @param inputStream the input stream
 	 */
 	private void loadFromXmlFile(final InputStream inputStream) {
 		try {
@@ -223,7 +217,9 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * To name.
 	 *
-	* string
+	 * string
+	 *
+	 * @return the string
 	 */
 	private String toName() {
 		return this.getClass().getSimpleName();
@@ -232,8 +228,11 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * To property filename.
 	 *
-	* filename
-	* string
+	 * filename
+	 * string
+	 *
+	 * @param filename the filename
+	 * @return the string
 	 */
 	private String toPropertyFilename(final String filename) {
 		return String.format("%s.properties", filename);
@@ -252,8 +251,11 @@ public abstract class AbstractConfig implements ConfigInterface {
 	/**
 	 * To xml filename.
 	 *
-	* filename
-	* string
+	 * filename
+	 * string
+	 *
+	 * @param filename the filename
+	 * @return the string
 	 */
 	private String toXmlFilename(final String filename) {
 		return String.format("%s.xml", filename);

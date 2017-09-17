@@ -1,3 +1,4 @@
+
 package net.wicast;
 
 import java.io.IOException;
@@ -19,13 +20,6 @@ import org.slf4j.LoggerFactory;
 public class MultiCastReceiver {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
-
-	/**
-	 * Instantiates a new multi cast receiver.
-	 */
-	public MultiCastReceiver() {
-		super();
-	}
 
 	/**
 	 * receive datagrams by joining a multicast socket.

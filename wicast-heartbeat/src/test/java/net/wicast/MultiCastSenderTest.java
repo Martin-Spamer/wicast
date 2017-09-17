@@ -10,7 +10,7 @@ public class MultiCastSenderTest {
 
 	/**
 	 * Test method for
-	 * {@link net.wicast.server.MultiCastSender#MultiCastSender()}.
+	 * {@link net.wicast.MultiCastSenderThread.MultiCastSender#MultiCastSender()}.
 	 */
 	@Test
 	public final void testMultiCastSender() {

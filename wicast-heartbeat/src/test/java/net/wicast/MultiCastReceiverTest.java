@@ -10,7 +10,7 @@ public class MultiCastReceiverTest {
 
 	/**
 	 * Test method for
-	 * {@link net.wicast.client.MultiCastReceiver#MultiCastReceiver()}.
+	 * {@link net.wicast.MultiCastReceiverThread.MultiCastReceiver#MultiCastReceiver()}.
 	 */
 	@Test
 	public final void testMultiCastReceiver() {

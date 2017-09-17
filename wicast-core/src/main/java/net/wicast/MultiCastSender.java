@@ -1,14 +1,10 @@
+
 package net.wicast;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketException;
+import java.net.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * MultiCastSender, send datagrams to Multicast group.
@@ -20,13 +16,6 @@ import org.slf4j.LoggerFactory;
 public class MultiCastSender {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
-
-	/**
-	 * Creates a new instance of MultiCasterSender.
-	 */
-	public MultiCastSender() {
-		super();
-	}
 
 	/**
 	 * Sending to a Multicast Group.
@@ -48,9 +37,9 @@ public class MultiCastSender {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			log.error("{}", socketException);
+			this.log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			log.error("{}", ioException);
+			this.log.error("{}", ioException);
 		}
 		return status;
 	}
@@ -58,6 +47,9 @@ public class MultiCastSender {
 	/**
 	 * Send Datagram to Multicast Group by Socket.
 	 *
+	 * @param group the group
+	 * @param port the port
+	 * @param output the output
 	 * @return boolean
 	 */
 	public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
@@ -70,11 +62,11 @@ public class MultiCastSender {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			log.error("{}", socketException);
+			this.log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			log.error("{}", ioException);
+			this.log.error("{}", ioException);
 		} catch (final Exception exception) {
-			log.error("{}", exception);
+			this.log.error("{}", exception);
 		}
 		return status;
 	}

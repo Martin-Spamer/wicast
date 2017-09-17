@@ -1,3 +1,4 @@
+
 package net.wicast;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -13,10 +14,16 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+/**
+ * class ApplicationScanner.
+ */
 public class ApplicationScanner {
 
 	private static final Logger log = LoggerFactory.getLogger(ApplicationScanner.class);
 
+	/**
+	 * Instantiates a new application scanner.
+	 */
 	public ApplicationScanner() {
 		final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 		try {
@@ -30,6 +37,8 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through org.w3c.dom.Document document.
+	 *
+	 * @param document the document
 	 */
 	public void visitDocument(final Document document) {
 		final Element element = document.getDocumentElement();
@@ -120,8 +129,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Channel.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Channel(final Element element) {
 		final NamedNodeMap attrs = element.getAttributes();
@@ -158,8 +169,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named class.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_class(final Element element) {
 		// <class>
@@ -187,8 +200,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Client.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Client(final Element element) {
 		// <Client>
@@ -216,8 +231,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Core.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Core(final Element element) {
 		// <Core>
@@ -245,8 +262,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Description.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Description(final Element element) {
 		// <Description>
@@ -274,8 +293,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Encoding.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Encoding(final Element element) {
 		// <Encoding>
@@ -303,8 +324,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named File.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_File(final Element element) {
 		// <File>
@@ -329,8 +352,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Id.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Id(final Element element) {
 		// <Id>
@@ -355,8 +380,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Licence.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Licence(final Element element) {
 		// <Licence>
@@ -393,8 +420,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Licenses.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Licenses(final Element element) {
 		// <Licenses>
@@ -422,8 +451,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Message.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Message(final Element element) {
 		// <Message>
@@ -457,8 +488,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named name.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_name(final Element element) {
 		// <name>
@@ -486,8 +519,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Name.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Name(final Element element) {
 		// <Name>
@@ -515,8 +550,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Organization.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Organization(final Element element) {
 		// <Organization>
@@ -544,8 +581,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Port.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Port(final Element element) {
 		// <Port>
@@ -573,8 +612,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Properties.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Properties(final Element element) {
 		// <Properties>
@@ -602,8 +643,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Scheduler.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Scheduler(final Element element) {
 		// <Scheduler>
@@ -639,8 +682,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Server.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Server(final Element element) {
 		// <Server>
@@ -671,8 +716,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Task.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Task(final Element element) {
 		// <Task>
@@ -708,8 +755,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Title.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Title(final Element element) {
 		// <Title>
@@ -734,8 +783,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Tool.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Tool(final Element element) {
 		// <Tool>
@@ -774,8 +825,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Tools.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Tools(final Element element) {
 		// <Tools>
@@ -803,8 +856,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Uri.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Uri(final Element element) {
 		// <Uri>
@@ -829,8 +884,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Url.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Url(final Element element) {
 		// <Url>
@@ -858,8 +915,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Version.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_Version(final Element element) {
 		// <Version>
@@ -887,8 +946,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named WebAdmin.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_WebAdmin(final Element element) {
 		// <WebAdmin>
@@ -927,8 +988,10 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named wicast:Application.
-	 *
+	 * 
 	 * element
+	 *
+	 * @param element the element
 	 */
 	void visitElement_wicast_Application(final Element element) {
 		// <wicast:Application>

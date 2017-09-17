@@ -1,15 +1,11 @@
+
 package net.wicast;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketException;
+import java.net.*;
 import java.util.Arrays;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * MultiCastRelay <author@wicast.net>
@@ -21,13 +17,10 @@ import org.slf4j.LoggerFactory;
  */
 public class MultiCastRelay {
 
-	public class MultiCastReceiver extends java.lang.Thread {
-		/**
-		 * Creates a new instance of MultiCastReceiver.
-		 */
-		public MultiCastReceiver() {
-		}
-
+	/**
+	 * class MultiCastReceiverThread.
+	 */
+	public class MultiCastReceiverThread extends java.lang.Thread {
 		/**
 		 * receive datagrams by joining a multicast socket.
 		 *
@@ -90,14 +83,10 @@ public class MultiCastRelay {
 		}
 	}
 
-	public class MultiCastSender extends java.lang.Thread {
-
-		/**
-		 * Creates a new instance of MultiCasterSender.
-		 */
-		public MultiCastSender() {
-		}
-
+	/**
+	 * class MultiCastSenderThread.
+	 */
+	public class MultiCastSenderThread extends java.lang.Thread {
 		/*
 		 * (non-Javadoc)
 		 *
@@ -152,6 +141,9 @@ public class MultiCastRelay {
 		/**
 		 * Send Datagram to Multicast Group by Socket.
 		 *
+		 * @param group the group
+		 * @param port the port
+		 * @param output the output
 		 * @return boolean
 		 */
 		public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
@@ -182,6 +174,8 @@ public class MultiCastRelay {
 	 * main entry point for this class.
 	 *
 	 * command line arguments
+	 *
+	 * @param args the arguments
 	 */
 	public static void main(final String[] args) {
 		log.trace(System.getProperties().toString());
@@ -190,11 +184,14 @@ public class MultiCastRelay {
 		new MultiCastRelay().start();
 	}
 
+	/**
+	 * Start.
+	 */
 	public void start() {
-		final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
+		final MultiCastReceiverThread multiCastReceiver = new MultiCastReceiverThread();
 		multiCastReceiver.start();
 
-		final MultiCastSender multiCastSender = new MultiCastSender();
+		final MultiCastSenderThread multiCastSender = new MultiCastSenderThread();
 		multiCastSender.start();
 	}
 
