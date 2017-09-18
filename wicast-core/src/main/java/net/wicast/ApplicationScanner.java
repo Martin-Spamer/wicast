@@ -1,21 +1,13 @@
 
 package net.wicast;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.Attr;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.slf4j.*;
+import org.w3c.dom.*;
 
 /**
- * class ApplicationScanner.
+ * Application Scanner class.
  */
 public class ApplicationScanner {
 
@@ -129,7 +121,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Channel.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -169,7 +161,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named class.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -200,7 +192,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Client.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -231,7 +223,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Core.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -262,7 +254,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Description.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -293,7 +285,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Encoding.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -324,7 +316,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named File.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -352,7 +344,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Id.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -380,7 +372,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Licence.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -420,7 +412,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Licenses.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -451,7 +443,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Message.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -488,7 +480,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named name.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -519,7 +511,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Name.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -550,7 +542,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Organization.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -581,7 +573,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Port.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -612,7 +604,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Properties.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -643,7 +635,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Scheduler.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -682,7 +674,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Server.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -716,7 +708,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Task.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -755,7 +747,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Title.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -783,7 +775,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Tool.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -825,7 +817,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Tools.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -856,7 +848,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Uri.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -884,7 +876,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Url.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -915,7 +907,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named Version.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -946,7 +938,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named WebAdmin.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element
@@ -988,7 +980,7 @@ public class ApplicationScanner {
 
 	/**
 	 * Scan through Element named wicast:Application.
-	 * 
+	 *
 	 * element
 	 *
 	 * @param element the element

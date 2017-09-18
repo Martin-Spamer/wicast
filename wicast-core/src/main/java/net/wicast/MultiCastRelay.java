@@ -1,4 +1,3 @@
-
 package net.wicast;
 
 import java.io.IOException;
@@ -8,18 +7,13 @@ import java.util.Arrays;
 import org.slf4j.*;
 
 /**
- * MultiCastRelay <author@wicast.net>
- * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
- *
- * @version 0.3
- * @since 0.2
- * @date 01-10-2009
+ * MultiCastRelay
  */
 public class MultiCastRelay {
 	private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
 
 	/**
-	 * class MultiCastReceiverThread.
+	 * MultiCastReceiverThread class.
 	 */
 	public class MultiCastReceiverThread extends java.lang.Thread {
 		/**

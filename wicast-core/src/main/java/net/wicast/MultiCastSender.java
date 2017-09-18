@@ -1,4 +1,3 @@
-
 package net.wicast;
 
 import java.io.IOException;
@@ -8,10 +7,6 @@ import org.slf4j.*;
 
 /**
  * MultiCastSender, send datagrams to Multicast group.
- * <author@wicast.net>
- *
- * @version 0.3
- * @date 01-10-2009
  */
 public class MultiCastSender {
 
