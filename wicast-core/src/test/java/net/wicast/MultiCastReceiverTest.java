@@ -3,13 +3,13 @@ package net.wicast;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * A UnitTest for MultiCastReceiver objects.
  */
 public class MultiCastReceiverTest {
+
 	private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
 	/**
@@ -19,6 +19,7 @@ public class MultiCastReceiverTest {
 	public void testMultiCastReceiver() {
 		final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
 		assertNotNull(multiCastReceiver);
+		LOG.info("{}", multiCastReceiver);
 	}
 
 }

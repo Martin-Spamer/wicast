@@ -1,13 +1,19 @@
+
 package net.wicast;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
+/**
+ * MultiCast Sender Test class.
+ */
 public class MultiCastSenderTest {
 
 	private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
+	/**
+	 * Unit Test to multi cast sender.
+	 */
 	@Test
 	public void testMultiCastSender() {
 		final MultiCastSender multiCastSender = new MultiCastSender();
