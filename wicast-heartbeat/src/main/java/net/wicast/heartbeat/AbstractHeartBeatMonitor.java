@@ -1,3 +1,4 @@
+
 package net.wicast.heartbeat;
 
 import java.io.IOException;
@@ -11,9 +12,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 	/**
 	 * AbstractHeartBeatMonitor.
 	 *
-	* group address
-	* port no
-	* heart beat exception
+	 * @param groupAddress the group address
+	 * @param portNo the port no
+	 * @throws HeartBeatException the heart beat exception
 	 */
 	public AbstractHeartBeatMonitor(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
@@ -22,9 +23,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 	/**
 	 * AbstractHeartBeat.
 	 *
-	* group address
-	* port no
-	* heart beat exception
+	 * @param groupAddress the group address
+	 * @param portNo the port no
+	 * @throws HeartBeatException the heart beat exception
 	 */
 	public AbstractHeartBeatMonitor(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
@@ -33,9 +34,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 	/**
 	 * Beat.
 	 *
-	* message
-	* heart beat exception
-	 * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
+	 * @param message the message
+	 * @throws HeartBeatException the heart beat exception
+	 * @see net.wicast.heartbeat.HeartBeatInterface#beat(java.lang.String)
 	 */
 	@Override
 	public void beat(final String message) throws HeartBeatException {
@@ -47,21 +48,19 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 				        this.groupAddress, this.portNo);
 
 				this.multicastSocket.send(outBoundDatagramPacket);
-			} catch (final SocketException socketException) {
-				socketException.printStackTrace(System.err);
-				throw new HeartBeatException(socketException);
+			} catch (final SocketException exception) {
+				log.error("{}", exception);
+				throw new HeartBeatException(exception);
 			}
-		} catch (final IOException ioException) {
-			ioException.printStackTrace(System.err);
-			throw new HeartBeatException(ioException);
+		} catch (final IOException exception) {
+			log.error("{}", exception);
+			throw new HeartBeatException(exception);
 		}
-
 	}
 
 	/**
 	 * Monitor.
-	 *
-	* heart beat exception
+	 * @throws HeartBeatException the heart beat exception
 	 */
 	protected void monitor() throws HeartBeatException {
 		try {
@@ -70,12 +69,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 			final DatagramPacket inboundDatagramPacket = new DatagramPacket(buffer, buffer.length);
 			this.multicastSocket.receive(inboundDatagramPacket);
 			this.multicastSocket.leaveGroup(this.groupAddress);
-		} catch (final IOException ioException) {
-
-			ioException.printStackTrace(System.err);
-			throw new HeartBeatException(ioException);
+		} catch (final IOException exception) {
+			log.error("{}", exception);
+			throw new HeartBeatException(exception);
 		}
-
 	}
-
 }

@@ -1,22 +1,31 @@
+
 package net.wicast.heartbeat;
 
 import java.io.IOException;
 import java.net.*;
 
 /**
- * HeartBeatTest.
+ * HeartBeat.
  */
 public class HeartBeat extends AbstractHeartBeat {
 
 	/**
-	 * HeartBeatTest.
+	 * HeartBeat.
+	 *
+	 * @param groupAddress the group address
+	 * @param portNo the port no
+	 * @throws HeartBeatException the heart beat exception
 	 */
 	public HeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
 
 	/**
-	 * HeartBeatTest.
+	 * HeartBeat.
+	 *
+	 * @param groupAddress the group address
+	 * @param portNo the port no
+	 * @throws HeartBeatException the heart beat exception
 	 */
 	public HeartBeat(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
@@ -25,9 +34,9 @@ public class HeartBeat extends AbstractHeartBeat {
 	/**
 	 * Beat.
 	 *
-	* message
-	* heart beat exception
-	 * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
+	 * @param message the message
+	 * @throws HeartBeatException the heart beat exception
+	 * @see net.wicast.heartbeat.HeartBeatInterface#beat(java.lang.String)
 	 */
 	@Override
 	public void beat(final String message) throws HeartBeatException {
@@ -39,13 +48,13 @@ public class HeartBeat extends AbstractHeartBeat {
 				        this.groupAddress, this.portNo);
 
 				this.multicastSocket.send(outBoundDatagramPacket);
-			} catch (final SocketException socketException) {
-				socketException.printStackTrace(System.err);
-				throw new HeartBeatException(socketException);
+			} catch (final SocketException exception) {
+				log.error("{}", exception);
+				throw new HeartBeatException(exception);
 			}
-		} catch (final IOException ioException) {
-			ioException.printStackTrace(System.err);
-			throw new HeartBeatException(ioException);
+		} catch (final IOException exception) {
+			log.error("{}", exception);
+			throw new HeartBeatException(exception);
 		}
 
 	}
@@ -61,8 +70,8 @@ public class HeartBeat extends AbstractHeartBeat {
 		final TimeStamp timeStamp = new TimeStamp();
 		try {
 			beat(timeStamp.toString() + "-" + this.getClass().toString());
-		} catch (final HeartBeatException heartBeatException) {
-			heartBeatException.printStackTrace(System.err);
+		} catch (final HeartBeatException exception) {
+			log.error("{}", exception);
 			this.stop();
 		}
 	}

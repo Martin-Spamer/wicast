@@ -1,7 +1,8 @@
+
 package net.wicast;
 
 /**
- * Configuration Interface
+ * Configuration Interface.
  */
 public interface ConfigInterface {
 

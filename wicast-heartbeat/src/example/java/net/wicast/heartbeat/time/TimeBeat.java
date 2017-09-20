@@ -1,15 +1,11 @@
 package net.wicast.heartbeat.time;
 
 import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.SocketException;
+import java.net.*;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
-import net.wicast.heartbeat.AbstractHeartBeat;
-import net.wicast.heartbeat.HeartBeatException;
+import net.wicast.heartbeat.*;
 
 /**
  * TimeBeat.
@@ -20,10 +16,6 @@ public class TimeBeat extends AbstractHeartBeat {
 
 	/**
 	 * AbstractHeartBeat.
-	 *
-	* group address
-	* port no
-	* heart beat exception
 	 */
 	public TimeBeat(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
@@ -31,10 +23,6 @@ public class TimeBeat extends AbstractHeartBeat {
 
 	/**
 	 * AbstractHeartBeatMonitor.
-	 *
-	* group address
-	* port no
-	* heart beat exception
 	 */
 	public TimeBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
@@ -42,10 +30,7 @@ public class TimeBeat extends AbstractHeartBeat {
 
 	/**
 	 * Beat.
-	 *
-	* message
-	* heart beat exception
-	 * @see net.wicast.heartbeat.IHeartBeat#beat(java.lang.String)
+	 * @see net.wicast.heartbeat.HeartBeatInterface#beat(java.lang.String)
 	 */
 	@Override
 	public void beat(final String message) throws HeartBeatException {

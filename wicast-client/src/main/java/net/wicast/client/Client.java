@@ -1,3 +1,4 @@
+
 package net.wicast.client;
 
 /**
@@ -5,13 +6,13 @@ package net.wicast.client;
  */
 public class Client {
 
-	protected ClientConfig config;
+	protected WicastClientConfig config;
 
 	/**
 	 * Instantiates a new client.
 	 */
 	public Client() {
-		this.config = new ClientConfig();
+		this.config = new WicastClientConfig();
 	}
 
 }

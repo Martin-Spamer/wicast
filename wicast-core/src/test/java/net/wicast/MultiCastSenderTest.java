@@ -14,7 +14,7 @@ public class MultiCastSenderTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
 	/**
-	 * Unit Test to multi cast sender.
+	 * Unit Test to multicast sender.
 	 */
 	@Test
 	public void testSendByDatagramSocket() {

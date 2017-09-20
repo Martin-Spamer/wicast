@@ -13,7 +13,7 @@ public class MultiCastRelayTest {
 	private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelayTest.class);
 
 	/**
-	 * Unit Test to multi cast relay.
+	 * Unit Test to multicast relay.
 	 */
 	@Test
 	public void testMultiCastRelay() {

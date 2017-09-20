@@ -1,3 +1,4 @@
+
 package net.wicast.heartbeat;
 
 /**
@@ -16,7 +17,7 @@ public class HeartBeatException extends Exception {
 	/**
 	 * HeartBeatException.
 	 *
-	* message
+	 * @param message the message
 	 */
 	public HeartBeatException(final String message) {
 		super(message);
@@ -25,8 +26,8 @@ public class HeartBeatException extends Exception {
 	/**
 	 * HeartBeatException.
 	 *
-	* message
-	* cause
+	 * @param message the message
+	 * @param cause the cause
 	 */
 	public HeartBeatException(final String message, final Throwable cause) {
 		super(message, cause);
@@ -35,7 +36,7 @@ public class HeartBeatException extends Exception {
 	/**
 	 * HeartBeatException.
 	 *
-	* cause
+	 * @param cause the cause
 	 */
 	public HeartBeatException(final Throwable cause) {
 		super(cause);

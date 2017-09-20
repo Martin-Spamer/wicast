@@ -1,23 +1,15 @@
 package net.wicast.jaxb;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.*;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
-import net.wicast.config.Application;
-import net.wicast.config.ObjectFactory;
+import net.wicast.config.*;
 
 /**
  * Test for JAXB generate root element Application.
@@ -181,8 +173,6 @@ public class ApplicationTest {
 
 	/**
 	 * Verify.
-	 *
-	* name
 	 */
 	private void verify(final String name) {
 		assertNotNull(name);

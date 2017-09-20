@@ -1,3 +1,4 @@
+
 package net.wicast.heartbeat;
 
 import static org.junit.Assert.*;
@@ -20,8 +21,10 @@ public class HeartBeatTest {
 
 	/**
 	 * Command Pattern [GOF] execute method.
-	 *
+	 * 
 	 * test instance
+	 *
+	 * @param testInstance the test instance
 	 */
 	@Test
 	private final void execute(final HeartBeat testInstance) {

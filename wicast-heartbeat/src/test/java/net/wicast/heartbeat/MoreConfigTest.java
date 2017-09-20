@@ -1,3 +1,4 @@
+
 package net.wicast.heartbeat;
 
 import static org.junit.Assert.assertNotNull;
@@ -7,6 +8,9 @@ import org.slf4j.*;
 
 import net.wicast.AbstractConfig;
 
+/**
+ * class MoreConfigTest.
+ */
 public class MoreConfigTest {
 
 	private static final Logger log = LoggerFactory.getLogger(MoreConfigTest.class);
@@ -18,7 +22,7 @@ public class MoreConfigTest {
 	public void test0() {
 		try {
 			log.debug("--- test0 : named configuration file does not exist.");
-			final AbstractConfig config = new Config("missing.xml");
+			final AbstractConfig config = new HeartBeatConfig("missing.xml");
 			assertNotNull(config);
 			log.debug(config.toString());
 		} catch (final Exception exception) {
@@ -37,10 +41,10 @@ public class MoreConfigTest {
 	public void test1() {
 		try {
 			log.debug("--- test1 : load default configuration file.");
-			final Config config = new Config();
+			final HeartBeatConfig config = new HeartBeatConfig();
 			assertNotNull(config);
 			log.debug(config.toString());
-		} catch (final java.lang.Exception exception) {
+		} catch (final Exception exception) {
 			log.debug(exception.toString());
 		}
 	}
@@ -56,10 +60,10 @@ public class MoreConfigTest {
 	public void test2() {
 		try {
 			log.debug("--- test2 : test load a named configuration file.");
-			final Config config = new Config("Application.xml");
+			final HeartBeatConfig config = new HeartBeatConfig("Application.xml");
 			assertNotNull(config);
 			log.debug("config" + config.toString());
-		} catch (final java.lang.Exception exception) {
+		} catch (final Exception exception) {
 			log.debug(exception.toString());
 		}
 	}

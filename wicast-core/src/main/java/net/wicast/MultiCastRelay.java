@@ -1,3 +1,4 @@
+
 package net.wicast;
 
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.util.Arrays;
 import org.slf4j.*;
 
 /**
- * MultiCastRelay
+ * MultiCastRelay.
  */
 public class MultiCastRelay {
 

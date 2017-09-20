@@ -70,6 +70,7 @@ public abstract class AbstractConfig implements ConfigInterface {
 	 * Dump to log.
 	 */
 	public void dumpToLog() {
+		log.info("{}", this.getClass().getSimpleName());
 		log.info(xmlFoo());
 		log.info(xmlToString(this.configDocument));
 		log.info(this.properties.toString());

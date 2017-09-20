@@ -1,3 +1,4 @@
+
 package net.wicast.heartbeat;
 
 import java.text.SimpleDateFormat;
@@ -19,6 +20,7 @@ public class TimeStamp {
 	/**
 	 * To string.
 	 *
+	 * @return the string
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

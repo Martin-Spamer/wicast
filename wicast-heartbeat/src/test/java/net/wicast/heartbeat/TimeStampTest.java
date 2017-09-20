@@ -1,3 +1,4 @@
+
 package net.wicast.heartbeat;
 
 import static org.junit.Assert.assertNotNull;

@@ -15,7 +15,7 @@ public class ServerConfigTest {
 	 */
 	@Test
 	public void testServerConfig() {
-		final ServerConfig serverConfig = new ServerConfig();
+		final WicastServerConfig serverConfig = new WicastServerConfig();
 		assertNotNull(serverConfig);
 
 	}
