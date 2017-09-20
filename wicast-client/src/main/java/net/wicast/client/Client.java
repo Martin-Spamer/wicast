@@ -4,7 +4,7 @@ package net.wicast.client;
 /**
  * Client Class.
  */
-public class Client {
+public final class Client {
 
 	protected WicastClientConfig config;
 

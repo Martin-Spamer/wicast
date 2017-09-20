@@ -20,7 +20,7 @@ public class AbstractHeartBeatMonitorTest {
 	 * class HeartBeatMonitor.
 	 */
 	public class HeartBeatMonitor extends AbstractHeartBeatMonitor {
-		
+
 		/**
 		 * Instantiates a new heart beat monitor.
 		 *
