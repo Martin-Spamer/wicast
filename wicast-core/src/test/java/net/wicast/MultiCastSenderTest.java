@@ -1,6 +1,8 @@
 
 package net.wicast;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.slf4j.*;
 
@@ -15,10 +17,25 @@ public class MultiCastSenderTest {
 	 * Unit Test to multi cast sender.
 	 */
 	@Test
-	public void testMultiCastSender() {
+	public void testSendByDatagramSocket() {
 		final MultiCastSender multiCastSender = new MultiCastSender();
-		LOG.debug("{}", multiCastSender.sendByDatagramSocket("228.1.2.3", 1234, "<WICAST type=1/>".getBytes()));
-		LOG.debug("{}", multiCastSender.sendByMulticastSocket("228.1.2.3", 1234, "<WICAST type=2/>".getBytes()));
+		assertNotNull(multiCastSender);
+		final boolean sendByDatagramSocket = multiCastSender.sendByDatagramSocket("228.1.2.3", 1234,
+		        "<WICAST type=1/>".getBytes());
+		assertTrue(sendByDatagramSocket);
+		LOG.debug("{}", sendByDatagramSocket);
 	}
 
+	/**
+	 * Unit Test to multi cast sender.
+	 */
+	@Test
+	public void testSendByMulticastSocket() {
+		final MultiCastSender multiCastSender = new MultiCastSender();
+		assertNotNull(multiCastSender);
+		final boolean sendByMulticastSocket = multiCastSender.sendByMulticastSocket("228.1.2.3", 1234,
+		        "<WICAST type=2/>".getBytes());
+		assertTrue(sendByMulticastSocket);
+		LOG.debug("{}", sendByMulticastSocket);
+	}
 }
