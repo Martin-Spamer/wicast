@@ -19,7 +19,7 @@ public class MultiCastReceiverTest {
 	public void testMultiCastReceiver() {
 		final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
 		assertNotNull(multiCastReceiver);
-		LOG.info("{}", multiCastReceiver);
+		MultiCastReceiverTest.LOG.info("{}", multiCastReceiver);
 	}
 
 }

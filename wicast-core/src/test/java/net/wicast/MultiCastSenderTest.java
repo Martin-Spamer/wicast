@@ -23,7 +23,7 @@ public class MultiCastSenderTest {
 		final boolean sendByDatagramSocket = multiCastSender.sendByDatagramSocket("228.1.2.3", 1234,
 		        "<WICAST type=1/>".getBytes());
 		assertTrue(sendByDatagramSocket);
-		LOG.debug("{}", sendByDatagramSocket);
+		MultiCastSenderTest.LOG.debug("{}", sendByDatagramSocket);
 	}
 
 	/**
@@ -36,6 +36,6 @@ public class MultiCastSenderTest {
 		final boolean sendByMulticastSocket = multiCastSender.sendByMulticastSocket("228.1.2.3", 1234,
 		        "<WICAST type=2/>".getBytes());
 		assertTrue(sendByMulticastSocket);
-		LOG.debug("{}", sendByMulticastSocket);
+		MultiCastSenderTest.LOG.debug("{}", sendByMulticastSocket);
 	}
 }

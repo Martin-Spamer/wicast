@@ -6,7 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 import org.slf4j.*;
 
-import net.wicast.AbstractConfig;
+import net.wicast.AbstractXmlConfig;
 
 /**
  * class MoreConfigTest.
@@ -22,7 +22,7 @@ public class MoreConfigTest {
 	public void test0() {
 		try {
 			log.debug("--- test0 : named configuration file does not exist.");
-			final AbstractConfig config = new HeartBeatConfig("missing.xml");
+			final AbstractXmlConfig config = new HeartBeatConfig("missing.xml");
 			assertNotNull(config);
 			log.debug(config.toString());
 		} catch (final Exception exception) {

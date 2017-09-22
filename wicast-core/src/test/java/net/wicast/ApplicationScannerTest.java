@@ -3,8 +3,11 @@ package net.wicast;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
+import org.slf4j.*;
 
 public class ApplicationScannerTest {
+
+	private static final Logger LOG = LoggerFactory.getLogger(ApplicationScannerTest.class);
 
 	/**
 	 * Test method for
@@ -14,6 +17,7 @@ public class ApplicationScannerTest {
 	public void testApplicationScanner() {
 		final ApplicationScanner applicationScanner = new ApplicationScanner();
 		assertNotNull(applicationScanner);
+		ApplicationScannerTest.LOG.info("{}", applicationScanner.toString());
 	}
 
 }

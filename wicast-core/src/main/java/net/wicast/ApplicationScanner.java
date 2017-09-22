@@ -1,4 +1,5 @@
 
+
 package net.wicast;
 
 import javax.xml.parsers.*;
@@ -23,7 +24,7 @@ public class ApplicationScanner {
 			final Document document = documentBuilder.newDocument();
 			visitDocument(document);
 		} catch (final ParserConfigurationException parserConfigurationException) {
-			log.error(parserConfigurationException.toString());
+			ApplicationScanner.log.error(parserConfigurationException.toString());
 		}
 	}
 

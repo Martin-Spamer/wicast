@@ -14,7 +14,7 @@ public class ConfigTest {
 	/**
 	 * Mock Configuration Class.
 	 */
-	private class MockConfig extends AbstractConfig {
+	private class MockConfig extends AbstractXmlConfig {
 	}
 
 	/**
@@ -24,10 +24,10 @@ public class ConfigTest {
 	 */
 	@Test
 	public void testConfig() throws Exception {
-		final AbstractConfig config = new MockConfig();
+		final AbstractXmlConfig config = new MockConfig();
 		assertNotNull(config);
-		log.info(config.toString());
-		log.info(config.xmlFoo());
+		ConfigTest.log.info(config.toString());
+		ConfigTest.log.info(config.toXml());
 		assertTrue(config.saveAsProperties());
 		assertTrue(config.saveAsXml());
 		config.dumpToLog();
@@ -38,8 +38,8 @@ public class ConfigTest {
 	 */
 	@Test
 	public void testToString() {
-		final AbstractConfig config = new MockConfig();
+		final AbstractXmlConfig config = new MockConfig();
 		assertNotNull(config);
-		log.info(config.toString());
+		ConfigTest.log.info(config.toString());
 	}
 }

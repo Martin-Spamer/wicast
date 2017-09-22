@@ -1,4 +1,5 @@
 
+
 package net.wicast;
 
 import java.io.IOException;
@@ -32,11 +33,11 @@ public class MultiCastReceiver {
 			final DatagramPacket packet = new DatagramPacket(input, input.length);
 			socket.receive(packet);
 
-			this.log.info("Multicast Received");
-			this.log.info("from: " + packet.getAddress().toString());
-			this.log.info("port: " + packet.getPort());
+			log.info("Multicast Received");
+			log.info("from: " + packet.getAddress().toString());
+			log.info("port: " + packet.getPort());
 			final int length = packet.getLength();
-			this.log.info("length: " + length);
+			log.info("length: " + length);
 			final byte[] data = packet.getData();
 			System.out.write(data, 0, length);
 
@@ -44,11 +45,11 @@ public class MultiCastReceiver {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			this.log.error("{}", socketException);
+			log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			this.log.error("{}", ioException);
+			log.error("{}", ioException);
 		} catch (final Exception exception) {
-			this.log.error("{}", exception);
+			log.error("{}", exception);
 		}
 		return status;
 	}

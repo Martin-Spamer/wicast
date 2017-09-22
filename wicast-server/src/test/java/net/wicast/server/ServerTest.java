@@ -6,18 +6,18 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 /**
- * A UnitTest for Server objects.
+ * Unit Test for WiCast Server.
  */
 public class ServerTest {
 
 	/**
-	 * Unit Test for test server.
+	 * Unit Test for wicast server.
 	 */
 	@Test
 	public void testServer() {
 		final Server server = new Server();
 		assertNotNull(server);
-
+		assertNotNull(server.start());
 	}
 
 }

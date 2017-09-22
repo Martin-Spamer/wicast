@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>properties.storeToXML</comment>
+<entry key="encoding">UTF-8</entry>
+<entry key="&lt;application&gt;"/>
+<entry key="core">net.wicast</entry>
+<entry key="server.scheduler.channel.2">server.scheduler.channel.2</entry>
+<entry key="server.scheduler.channel.1">server.scheduler.channel.1</entry>
+<entry key="server.class">net.wicast.server</entry>
+<entry key="server.name">net.wicast.server.name</entry>
+<entry key="&lt;/application&gt;"/>
+<entry key="client.class">net.wicast.client</entry>
+<entry key="&lt;?xml">version="1.0" encoding="UTF-8"?&gt;</entry>
+<entry key="server.WebAdmin.class">org.eclipse.jetty.server.Server</entry>
+<entry key="server.scheduler.class">net.wicast.scheduler</entry>
+<entry key="server.scheduler.name">net.wicast.scheduler.name</entry>
+<entry key="server.WebAdmin.Port">8080</entry>
+<entry key="client.name">net.wicast.client.name</entry>
+</properties>

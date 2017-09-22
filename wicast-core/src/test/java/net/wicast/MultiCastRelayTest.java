@@ -19,7 +19,7 @@ public class MultiCastRelayTest {
 	public void testMultiCastRelay() {
 		final MultiCastRelay multiCastRelay = new MultiCastRelay();
 		assertNotNull(multiCastRelay);
-		LOG.info("{}", multiCastRelay);
+		MultiCastRelayTest.LOG.info("{}", multiCastRelay);
 	}
 
 }

@@ -2,17 +2,21 @@
 package net.wicast.client;
 
 /**
- * Client Class.
+ * MultiCast Client Class.
  */
 public final class Client {
 
-	protected WicastClientConfig config;
+	protected ClientConfig config;
 
 	/**
 	 * Instantiates a new client.
 	 */
 	public Client() {
-		this.config = new WicastClientConfig();
+		this.config = new ClientConfig();
+	}
+
+	public Client start() {
+		return this;
 	}
 
 }

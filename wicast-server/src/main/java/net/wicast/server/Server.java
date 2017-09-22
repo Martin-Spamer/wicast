@@ -2,17 +2,21 @@
 package net.wicast.server;
 
 /**
- * Multicast Server class.
+ * MultiCast Server class.
  */
 public class Server {
 
-	protected WicastServerConfig config;
+	protected ServerConfig config;
 
 	/**
 	 * Instantiates a new server.
 	 */
 	public Server() {
-		this.config = new WicastServerConfig();
+		this.config = new ServerConfig();
+	}
+
+	public Server start() {
+		return this;
 	}
 
 }
