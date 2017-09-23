@@ -2,7 +2,7 @@
 package net.wicast.heartbeat;
 
 /**
- * HeartBeatInterface.
+ * Heart Beat Interface.
  */
 public interface HeartBeatInterface {
 
