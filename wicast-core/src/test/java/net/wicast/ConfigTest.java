@@ -20,12 +20,12 @@ public class ConfigTest {
 	/**
 	 * Test method for {@link net.wicast.Config#Config()}.
 	 *
-	* exception
+	 * exception
 	 */
 	@Test
 	public void testConfig() throws Exception {
 		final AbstractXmlConfig config = new MockConfig();
-		assertNotNull(config);
+		assertNotNull("Value cannot be null", config);
 		ConfigTest.log.info(config.toString());
 		ConfigTest.log.info(config.toXml());
 		assertTrue(config.saveAsProperties());
@@ -39,7 +39,7 @@ public class ConfigTest {
 	@Test
 	public void testToString() {
 		final AbstractXmlConfig config = new MockConfig();
-		assertNotNull(config);
+		assertNotNull("Value cannot be null", config);
 		ConfigTest.log.info(config.toString());
 	}
 }

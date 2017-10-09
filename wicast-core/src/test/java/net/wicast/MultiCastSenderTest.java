@@ -19,7 +19,7 @@ public class MultiCastSenderTest {
 	@Test
 	public void testSendByDatagramSocket() {
 		final MultiCastSender multiCastSender = new MultiCastSender();
-		assertNotNull(multiCastSender);
+		assertNotNull("Value cannot be null", multiCastSender);
 		final boolean sendByDatagramSocket = multiCastSender.sendByDatagramSocket("228.1.2.3", 1234,
 		        "<WICAST type=1/>".getBytes());
 		assertTrue(sendByDatagramSocket);
@@ -32,7 +32,7 @@ public class MultiCastSenderTest {
 	@Test
 	public void testSendByMulticastSocket() {
 		final MultiCastSender multiCastSender = new MultiCastSender();
-		assertNotNull(multiCastSender);
+		assertNotNull("Value cannot be null", multiCastSender);
 		final boolean sendByMulticastSocket = multiCastSender.sendByMulticastSocket("228.1.2.3", 1234,
 		        "<WICAST type=2/>".getBytes());
 		assertTrue(sendByMulticastSocket);

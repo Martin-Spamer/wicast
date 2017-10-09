@@ -16,8 +16,8 @@ public class ServerTest {
 	@Test
 	public void testServer() {
 		final Server server = new Server();
-		assertNotNull(server);
-		assertNotNull(server.start());
+		assertNotNull("Value cannot be null",server);
+		assertNotNull("Value cannot be null",server.start());
 	}
 
 }

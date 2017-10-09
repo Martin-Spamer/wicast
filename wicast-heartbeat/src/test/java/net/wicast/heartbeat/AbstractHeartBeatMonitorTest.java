@@ -62,7 +62,7 @@ public class AbstractHeartBeatMonitorTest {
 	@Test
 	public void testAbstractHeartBeatMonitor() throws HeartBeatException {
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor();
-		assertNotNull(heartBeatMonitor);
+		assertNotNull("Value cannot be null",heartBeatMonitor);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class AbstractHeartBeatMonitorTest {
 	@Test
 	public void testAbstractHeartBeatMonitorStringInt() throws HeartBeatException {
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor("224.0.0.1", 1);
-		assertNotNull(heartBeatMonitor);
+		assertNotNull("Value cannot be null",heartBeatMonitor);
 	}
 
 	/**
@@ -86,7 +86,7 @@ public class AbstractHeartBeatMonitorTest {
 	public void testAbstractHeartBeatMonitorInetAddressInt() throws HeartBeatException, UnknownHostException {
 		final InetAddress inetAddress = InetAddress.getByName("224.0.0.1");
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor(inetAddress, 1);
-		assertNotNull(heartBeatMonitor);
+		assertNotNull("Value cannot be null",heartBeatMonitor);
 	}
 
 	/**
@@ -97,7 +97,7 @@ public class AbstractHeartBeatMonitorTest {
 	@Test
 	public void testBeat() throws HeartBeatException {
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor();
-		assertNotNull(heartBeatMonitor);
+		assertNotNull("Value cannot be null",heartBeatMonitor);
 		heartBeatMonitor.beat("testBeat");
 	}
 

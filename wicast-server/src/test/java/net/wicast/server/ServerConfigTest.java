@@ -19,7 +19,7 @@ public class ServerConfigTest {
 	@Test
 	public void testServerConfig() {
 		final ServerConfig serverConfig = new ServerConfig();
-		assertNotNull(serverConfig);
+		assertNotNull("Value cannot be null",serverConfig);
 	}
 
 }

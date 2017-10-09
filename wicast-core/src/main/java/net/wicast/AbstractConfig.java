@@ -1,5 +1,4 @@
 
-
 package net.wicast;
 
 import java.io.*;
@@ -114,7 +113,9 @@ public abstract class AbstractConfig implements ConfigInterface {
 		return String.format("%s.properties", configFilename);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

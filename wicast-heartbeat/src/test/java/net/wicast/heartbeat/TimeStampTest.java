@@ -1,12 +1,10 @@
 
 package net.wicast.heartbeat;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
 /**
  * TimeStampTest.
@@ -21,10 +19,10 @@ public class TimeStampTest {
 	@Test
 	public final void test() {
 		final TimeStamp testTimeStamp1 = new TimeStamp();
-		assertNotNull(testTimeStamp1);
+		assertNotNull("Value cannot be null", testTimeStamp1);
 
 		final TimeStamp testTimeStamp2 = new TimeStamp();
-		assertNotNull("not null", testTimeStamp2);
+		assertNotNull("Value cannot be null", testTimeStamp2);
 		assertNotSame("Not same", testTimeStamp1, testTimeStamp2);
 
 		log.info("{}", testTimeStamp1);

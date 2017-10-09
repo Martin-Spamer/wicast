@@ -16,7 +16,7 @@ public class MultiCastRelayTest {
 	@Test
 	public final void testMultiCastRelay() {
 		final MultiCastRelay multiCastRelay = new MultiCastRelay();
-		assertNotNull(multiCastRelay);
+		assertNotNull("Value cannot be null",multiCastRelay);
 	}
 
 }

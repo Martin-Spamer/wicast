@@ -16,8 +16,8 @@ public class ClientTest {
 	@Test
 	public void testClient() {
 		final Client client = new Client();
-		assertNotNull(client);
-		assertNotNull(client.start());
+		assertNotNull("Value cannot be null", client);
+		assertNotNull("Value cannot be null", client.start());
 	}
 
 }

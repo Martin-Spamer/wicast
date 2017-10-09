@@ -25,7 +25,7 @@ public class TimeStamp {
 	 */
 	@Override
 	public String toString() {
-		return new SimpleDateFormat(TimeStamp.FORMAT).format(this.time);
+		return new SimpleDateFormat(TimeStamp.FORMAT,Locale.getDefault()).format(this.time);
 	}
 
 }

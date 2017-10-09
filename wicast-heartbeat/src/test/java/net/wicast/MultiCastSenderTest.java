@@ -17,7 +17,7 @@ public class MultiCastSenderTest {
 	@Test
 	public final void testMultiCastSender() {
 		final MultiCastSender multiCastSender = new MultiCastSender();
-		assertNotNull(multiCastSender);
+		assertNotNull("Value cannot be null",multiCastSender);
 	}
 
 }

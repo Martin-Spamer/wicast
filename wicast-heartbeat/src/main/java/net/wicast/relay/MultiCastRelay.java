@@ -172,7 +172,7 @@ public class MultiCastRelay {
 	public static void main(final String[] args) {
 		log.trace(System.getProperties().toString());
 		final MultiCastRelay multiCastRelay = new MultiCastRelay();
-		assertNotNull(multiCastRelay);
+		assertNotNull("Value cannot be null",multiCastRelay);
 	}
 
 	/**

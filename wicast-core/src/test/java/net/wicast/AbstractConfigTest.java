@@ -38,7 +38,7 @@ public class AbstractConfigTest {
 	public void testAbstractConfig() {
 		AbstractConfigTest.LOG.info("testAbstractConfig");
 		final AbstractXmlConfig invalidConfig = new MockConfig();
-		assertNotNull(invalidConfig);
+		assertNotNull("Value cannot be null", invalidConfig);
 		invalidConfig.dumpToLog();
 	}
 
@@ -46,7 +46,7 @@ public class AbstractConfigTest {
 	public void testMockConfig() {
 		AbstractConfigTest.LOG.info("testAbstractConfig");
 		final AbstractXmlConfig invalidConfig = new MockConfig();
-		assertNotNull(invalidConfig);
+		assertNotNull("Value cannot be null", invalidConfig);
 		invalidConfig.getProperty("key");
 		invalidConfig.getProperty("key", "defaultValue");
 	}
@@ -55,7 +55,7 @@ public class AbstractConfigTest {
 	public void testMissingConfig() {
 		AbstractConfigTest.LOG.info("testMissingConfig");
 		final AbstractXmlConfig missingConfig = new MissingConfig();
-		assertNotNull(missingConfig);
+		assertNotNull("Value cannot be null", missingConfig);
 		missingConfig.dumpToLog();
 	}
 
@@ -63,7 +63,7 @@ public class AbstractConfigTest {
 	public void testInvalidConfig() {
 		AbstractConfigTest.LOG.info("testInvalidConfig");
 		final AbstractXmlConfig invalidConfig = new InvalidConfig();
-		assertNotNull(invalidConfig);
+		assertNotNull("Value cannot be null", invalidConfig);
 		invalidConfig.dumpToLog();
 	}
 }

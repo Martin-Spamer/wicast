@@ -1,26 +1,13 @@
 package net.wicast.jaxb;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import javax.xml.bind.JAXBElement;
 
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.slf4j.*;
 
-import net.wicast.config.Application;
-import net.wicast.config.Channel;
-import net.wicast.config.Client;
-import net.wicast.config.Licence;
-import net.wicast.config.Licenses;
-import net.wicast.config.Message;
-import net.wicast.config.ObjectFactory;
-import net.wicast.config.Server;
-import net.wicast.config.Task;
-import net.wicast.config.Tool;
-import net.wicast.config.Tools;
-import net.wicast.config.WebAdmin;
+import net.wicast.config.*;
 
 /**
  * Test for JAXB ObjectFactory.
@@ -34,13 +21,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateApplication() {
-		log.info("createApplication");
+		ObjectFactoryTest.log.info("createApplication");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Application result = instance.createApplication();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -48,14 +35,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateChannel() {
-		log.info("createChannel");
+		ObjectFactoryTest.log.info("createChannel");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 
 		final Channel channel = instance.createChannel();
-		assertNotNull(channel);
-		log.info(channel.toString());
+		assertNotNull("Value cannot be null", channel);
+		ObjectFactoryTest.log.info(channel.toString());
 	}
 
 	/**
@@ -63,13 +50,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateClient() {
-		log.info("createClient");
+		ObjectFactoryTest.log.info("createClient");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Client result = instance.createClient();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -77,14 +64,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateCore() {
-		log.info("createCore");
+		ObjectFactoryTest.log.info("createCore");
 		final String value = "Core";
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<String> result = instance.createCore(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -92,14 +79,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateDescription() {
-		log.info("createDescription");
+		ObjectFactoryTest.log.info("createDescription");
 		final String value = "Description";
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<String> result = instance.createDescription(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -107,13 +94,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateLicence() {
-		log.info("createLicence");
+		ObjectFactoryTest.log.info("createLicence");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Licence result = instance.createLicence();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -121,13 +108,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateLicenses() {
-		log.info("createLicenses");
+		ObjectFactoryTest.log.info("createLicenses");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Licenses result = instance.createLicenses();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -135,13 +122,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateMessage() {
-		log.info("createMessage");
+		ObjectFactoryTest.log.info("createMessage");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Message result = instance.createMessage();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -149,14 +136,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateName() {
-		log.info("createName");
+		ObjectFactoryTest.log.info("createName");
 		final String value = "Name";
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<String> result = instance.createName(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -164,14 +151,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateOrganization() {
-		log.info("createOrganization");
+		ObjectFactoryTest.log.info("createOrganization");
 		final String value = "Organisation";
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<String> result = instance.createOrganization(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -179,14 +166,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreatePort() {
-		log.info("createPort");
+		ObjectFactoryTest.log.info("createPort");
 		final Integer value = 65555;
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<Integer> result = instance.createPort(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	// /**
@@ -196,10 +183,10 @@ public class ObjectFactoryTest {
 	// public void testCreateProperties() {
 	// log.info("createProperties");
 	// final ObjectFactory instance = new ObjectFactory();
-	// assertNotNull(instance);
+	// assertNotNull("Value cannot be null",instance);
 	// assertTrue(instance instanceof ObjectFactory);
 	// final Properties result = instance.createProperties();
-	// assertNotNull(result);
+	// assertNotNull("Value cannot be null",result);
 	// log.info(result.toString());
 	// }
 
@@ -210,10 +197,10 @@ public class ObjectFactoryTest {
 	// public void testCreateScheduler() {
 	// log.info("createScheduler");
 	// final ObjectFactory instance = new ObjectFactory();
-	// assertNotNull(instance);
+	// assertNotNull("Value cannot be null",instance);
 	// assertTrue(instance instanceof ObjectFactory);
 	// final Scheduler result = instance.createScheduler();
-	// assertNotNull(result);
+	// assertNotNull("Value cannot be null",result);
 	// log.info(result.toString());
 	// }
 
@@ -222,13 +209,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateServer() {
-		log.info("createServer");
+		ObjectFactoryTest.log.info("createServer");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Server result = instance.createServer();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -236,13 +223,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateTask() {
-		log.info("createTask");
+		ObjectFactoryTest.log.info("createTask");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Task result = instance.createTask();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -250,13 +237,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateTool() {
-		log.info("createTool");
+		ObjectFactoryTest.log.info("createTool");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Tool result = instance.createTool();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -264,13 +251,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateTools() {
-		log.info("createTools");
+		ObjectFactoryTest.log.info("createTools");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final Tools result = instance.createTools();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -278,14 +265,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateUrl() {
-		log.info("createUrl");
+		ObjectFactoryTest.log.info("createUrl");
 		final String value = "Uri";
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<String> result = instance.createUrl(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -293,14 +280,14 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateVersion() {
-		log.info("createVersion");
+		ObjectFactoryTest.log.info("createVersion");
 		final String value = "Version";
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final JAXBElement<String> result = instance.createVersion(value);
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 	/**
@@ -308,13 +295,13 @@ public class ObjectFactoryTest {
 	 */
 	@Test
 	public void testCreateWebAdmin() {
-		log.info("createWebAdmin");
+		ObjectFactoryTest.log.info("createWebAdmin");
 		final ObjectFactory instance = new ObjectFactory();
-		assertNotNull(instance);
+		assertNotNull("Value cannot be null", instance);
 		assertTrue(instance instanceof ObjectFactory);
 		final WebAdmin result = instance.createWebAdmin();
-		assertNotNull(result);
-		log.info(result.toString());
+		assertNotNull("Value cannot be null", result);
+		ObjectFactoryTest.log.info(result.toString());
 	}
 
 }

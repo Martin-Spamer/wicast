@@ -15,7 +15,7 @@ public class ClientConfigTest {
 	@Test
 	public void testClientConfig() {
 		final ClientConfig clientConfig = new ClientConfig();
-		assertNotNull(clientConfig);
+		assertNotNull("Value cannot be null", clientConfig);
 	}
 
 }

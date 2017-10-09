@@ -23,7 +23,7 @@ public class MoreConfigTest {
 		try {
 			log.debug("--- test0 : named configuration file does not exist.");
 			final AbstractXmlConfig config = new HeartBeatConfig("missing.xml");
-			assertNotNull(config);
+			assertNotNull("Value cannot be null",config);
 			log.debug(config.toString());
 		} catch (final Exception exception) {
 			log.error(exception.toString());
@@ -42,7 +42,7 @@ public class MoreConfigTest {
 		try {
 			log.debug("--- test1 : load default configuration file.");
 			final HeartBeatConfig config = new HeartBeatConfig();
-			assertNotNull(config);
+			assertNotNull("Value cannot be null",config);
 			log.debug(config.toString());
 		} catch (final Exception exception) {
 			log.debug(exception.toString());
@@ -61,7 +61,7 @@ public class MoreConfigTest {
 		try {
 			log.debug("--- test2 : test load a named configuration file.");
 			final HeartBeatConfig config = new HeartBeatConfig("Application.xml");
-			assertNotNull(config);
+			assertNotNull("Value cannot be null",config);
 			log.debug("config" + config.toString());
 		} catch (final Exception exception) {
 			log.debug(exception.toString());

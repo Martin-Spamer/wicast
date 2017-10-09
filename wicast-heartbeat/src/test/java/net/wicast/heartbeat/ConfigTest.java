@@ -15,7 +15,7 @@ public class ConfigTest {
 	 */
 	@Test
 	public final void testConfig() {
-		assertNotNull(new HeartBeatConfig());
+		assertNotNull("Value cannot be null",new HeartBeatConfig());
 	}
 
 	/**
@@ -24,8 +24,8 @@ public class ConfigTest {
 	@Test
 	public final void testToString() {
 		final HeartBeatConfig testInstance = new HeartBeatConfig();
-		assertNotNull(testInstance);
-		assertNotNull(testInstance.toString());
+		assertNotNull("Value cannot be null",testInstance);
+		assertNotNull("Value cannot be null",testInstance.toString());
 		testInstance.dumpToLog();
 	}
 

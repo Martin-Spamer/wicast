@@ -28,7 +28,7 @@ public class AbstractHeartBeatTest {
 	@Test
 	public final void testMockHeartBeat() {
 		final MockHeartBeat mockHeartBeat = new MockHeartBeat();
-		assertNotNull(mockHeartBeat);
+		assertNotNull("Value cannot be null",mockHeartBeat);
 	}
 
 }

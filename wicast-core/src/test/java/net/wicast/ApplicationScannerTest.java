@@ -16,7 +16,7 @@ public class ApplicationScannerTest {
 	@Test
 	public void testApplicationScanner() {
 		final ApplicationScanner applicationScanner = new ApplicationScanner();
-		assertNotNull(applicationScanner);
+		assertNotNull("Value cannot be null", applicationScanner);
 		ApplicationScannerTest.LOG.info("{}", applicationScanner.toString());
 	}
 

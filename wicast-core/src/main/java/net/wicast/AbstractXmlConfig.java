@@ -1,5 +1,4 @@
 
-
 package net.wicast;
 
 import java.io.*;
@@ -67,7 +66,9 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
 		loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(filename)));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see net.wicast.ConfigInterface#getProperty(java.lang.String)
 	 */
 	@Override
@@ -75,8 +76,11 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
 		return key;
 	}
 
-	/* (non-Javadoc)
-	 * @see net.wicast.ConfigInterface#getProperty(java.lang.String, java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see net.wicast.ConfigInterface#getProperty(java.lang.String,
+	 * java.lang.String)
 	 */
 	@Override
 	public String getProperty(final String key, final String defaultValue) {

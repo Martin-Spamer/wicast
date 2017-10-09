@@ -66,7 +66,7 @@ public class HeartBeatTest {
 		try {
 			final InetAddress badGroupAddress = InetAddress.getByName(HeartBeatTest.invalidGroupAddressString);
 			final HeartBeat testInstance = new HeartBeat(badGroupAddress, HeartBeatTest.portNo);
-			assertNotNull(testInstance);
+			assertNotNull("Value cannot be null",testInstance);
 			execute(testInstance);
 		} catch (final HeartBeatException heartBeatException) {
 			assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
@@ -86,7 +86,7 @@ public class HeartBeatTest {
 		// HeartBeat testInstance = new HeartBeat();
 		try {
 			final HeartBeat testInstance = new HeartBeat("xx.xx.xx.xx", HeartBeatTest.portNo);
-			assertNotNull(testInstance);
+			assertNotNull("Value cannot be null",testInstance);
 			fail("implementation error");
 		} catch (final HeartBeatException heartBeatException) {
 			assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
@@ -145,7 +145,7 @@ public class HeartBeatTest {
 	public final void testHeartBeatGoodGroupString() {
 		try {
 			final HeartBeat testInstance = new HeartBeat(HeartBeatTest.validGroupAddressString, HeartBeatTest.portNo);
-			assertNotNull(testInstance);
+			assertNotNull("Value cannot be null",testInstance);
 			execute(testInstance);
 		} catch (final HeartBeatException heartBeatException) {
 			fail("unexpected error " + heartBeatException.getLocalizedMessage());
@@ -161,7 +161,7 @@ public class HeartBeatTest {
 		try {
 			final InetAddress goodGroupAddress = InetAddress.getByName(HeartBeatTest.validGroupAddressString);
 			final HeartBeat testInstance = new HeartBeat(goodGroupAddress, HeartBeatTest.portNo);
-			assertNotNull(testInstance);
+			assertNotNull("Value cannot be null",testInstance);
 			execute(testInstance);
 		} catch (final HeartBeatException heartBeatException) {
 			fail("unexpected error " + heartBeatException.getLocalizedMessage());
@@ -179,7 +179,7 @@ public class HeartBeatTest {
 		try {
 			final InetAddress validGroupAddress = InetAddress.getByName(HeartBeatTest.validGroupAddressString);
 			final HeartBeat testInstance = new HeartBeat(validGroupAddress, HeartBeatTest.portNo);
-			assertNotNull(testInstance);
+			assertNotNull("Value cannot be null",testInstance);
 			execute(testInstance);
 		} catch (final HeartBeatException heartBeatException) {
 			assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
@@ -199,7 +199,7 @@ public class HeartBeatTest {
 		try {
 			final InetAddress nullGroupAddress = null;
 			final HeartBeat testInstance = new HeartBeat(nullGroupAddress, HeartBeatTest.portNo);
-			assertNotNull(testInstance);
+			assertNotNull("Value cannot be null",testInstance);
 			execute(testInstance);
 		} catch (final NullPointerException nullPointerException) {
 			// expected error for test is HeartBeatException - ignore.
