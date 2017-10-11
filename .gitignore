@@ -1,0 +1,14 @@
+
+# Maven
+*/target/**
+*/pom.xml.versionsBackup
+
+# Eclipse
+.classpath
+.project
+.metadata/
+.settings/
+*.class
+*.jar
+*.war
+*.ear
