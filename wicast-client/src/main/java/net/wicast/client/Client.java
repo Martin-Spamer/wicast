@@ -12,9 +12,14 @@ public final class Client {
 	 * Instantiates a new client.
 	 */
 	public Client() {
-		config = new ClientConfig();
+		this.config = new ClientConfig();
 	}
 
+	/**
+	 * Start.
+	 *
+	 * @return the client
+	 */
 	public Client start() {
 		return this;
 	}

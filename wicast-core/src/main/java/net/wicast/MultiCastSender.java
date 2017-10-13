@@ -9,7 +9,7 @@ import org.slf4j.*;
 /**
  * MultiCastSender, send datagrams to Multicast group.
  */
-public class MultiCastSender {
+public final class MultiCastSender {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
@@ -33,9 +33,9 @@ public class MultiCastSender {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			log.error("{}", socketException);
+			this.log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			log.error("{}", ioException);
+			this.log.error("{}", ioException);
 		}
 		return status;
 	}
@@ -58,11 +58,11 @@ public class MultiCastSender {
 			socket.close();
 			status = true;
 		} catch (final SocketException socketException) {
-			log.error("{}", socketException);
+			this.log.error("{}", socketException);
 		} catch (final IOException ioException) {
-			log.error("{}", ioException);
+			this.log.error("{}", ioException);
 		} catch (final Exception exception) {
-			log.error("{}", exception);
+			this.log.error("{}", exception);
 		}
 		return status;
 	}

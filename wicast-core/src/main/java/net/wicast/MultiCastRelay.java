@@ -10,7 +10,7 @@ import org.slf4j.*;
 /**
  * MultiCast Relay.
  */
-public class MultiCastRelay {
+public final class MultiCastRelay {
 
 	private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
 

@@ -15,6 +15,11 @@ public class Server {
 		this.config = new ServerConfig();
 	}
 
+	/**
+	 * Start.
+	 *
+	 * @return the server
+	 */
 	public Server start() {
 		return this;
 	}

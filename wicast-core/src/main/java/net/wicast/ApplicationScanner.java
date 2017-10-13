@@ -9,7 +9,7 @@ import org.w3c.dom.*;
 /**
  * Application Scanner class.
  */
-public class ApplicationScanner {
+public final class ApplicationScanner {
 
 	private static final Logger log = LoggerFactory.getLogger(ApplicationScanner.class);
 
