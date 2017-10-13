@@ -9,6 +9,17 @@ import java.net.*;
  */
 public class HeartBeat extends AbstractHeartBeat {
 
+	private static final String ADDRESS = "224.0.0.1";
+	private static final int PORT = 1;
+
+	/**
+	 * Instantiates a new heart beat.
+	 * @throws HeartBeatException
+	 */
+	public HeartBeat() throws HeartBeatException {
+		super(ADDRESS, PORT);
+	}
+
 	/**
 	 * HeartBeat.
 	 *
@@ -29,6 +40,14 @@ public class HeartBeat extends AbstractHeartBeat {
 	 */
 	public HeartBeat(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
+	}
+
+	/**
+	 * Beat.
+	 * @throws HeartBeatException
+	 */
+	public void beat() throws HeartBeatException {
+		beat(new TimeStamp().toString());
 	}
 
 	/**
@@ -56,7 +75,6 @@ public class HeartBeat extends AbstractHeartBeat {
 			log.error("{}", exception);
 			throw new HeartBeatException(exception);
 		}
-
 	}
 
 	/**

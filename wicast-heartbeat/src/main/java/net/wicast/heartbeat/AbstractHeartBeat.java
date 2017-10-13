@@ -7,9 +7,10 @@ import java.net.*;
 import org.slf4j.*;
 
 /**
- * AbstractHeartBeat.
+ * AbstractHeartBeat class.
  */
 public abstract class AbstractHeartBeat extends Thread implements HeartBeatInterface {
+
 	protected static final Logger log = LoggerFactory.getLogger(AbstractHeartBeat.class);
 	protected InetAddress groupAddress;
 	protected int portNo;
@@ -20,9 +21,9 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
 	 */
 	public AbstractHeartBeat() {
 		super();
-		this.portNo = 0;
+		this.portNo = 1;
 		try {
-			this.groupAddress = InetAddress.getByName("");
+			this.groupAddress = InetAddress.getByName("wicast.net");
 		} catch (final UnknownHostException e) {
 			log.error("{}", e.toString());
 		}

@@ -8,16 +8,12 @@ import java.net.*;
 import org.junit.Test;
 
 /**
- * class AbstractHeartBeatMonitorTest.
+ * AbstractHeartBeatMonitorTest class.
  */
 public class AbstractHeartBeatMonitorTest {
-	private static final String invalidGroupAddressString = "127.0.0.1";
-	// 224.0.0.1 is local subnet only, closest multicast equivalent to 127.0.0.1
-	private static final String validGroupAddressString = "224.0.0.1";
-	private static final int portNo = 1;
 
 	/**
-	 * class HeartBeatMonitor.
+	 * HeartBeatMonitor class.
 	 */
 	public class HeartBeatMonitor extends AbstractHeartBeatMonitor {
 
@@ -62,7 +58,7 @@ public class AbstractHeartBeatMonitorTest {
 	@Test
 	public void testAbstractHeartBeatMonitor() throws HeartBeatException {
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor();
-		assertNotNull("Value cannot be null",heartBeatMonitor);
+		assertNotNull("Value cannot be null", heartBeatMonitor);
 	}
 
 	/**
@@ -73,7 +69,7 @@ public class AbstractHeartBeatMonitorTest {
 	@Test
 	public void testAbstractHeartBeatMonitorStringInt() throws HeartBeatException {
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor("224.0.0.1", 1);
-		assertNotNull("Value cannot be null",heartBeatMonitor);
+		assertNotNull("Value cannot be null", heartBeatMonitor);
 	}
 
 	/**
@@ -86,7 +82,7 @@ public class AbstractHeartBeatMonitorTest {
 	public void testAbstractHeartBeatMonitorInetAddressInt() throws HeartBeatException, UnknownHostException {
 		final InetAddress inetAddress = InetAddress.getByName("224.0.0.1");
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor(inetAddress, 1);
-		assertNotNull("Value cannot be null",heartBeatMonitor);
+		assertNotNull("Value cannot be null", heartBeatMonitor);
 	}
 
 	/**
@@ -97,8 +93,7 @@ public class AbstractHeartBeatMonitorTest {
 	@Test
 	public void testBeat() throws HeartBeatException {
 		final HeartBeatMonitor heartBeatMonitor = new HeartBeatMonitor();
-		assertNotNull("Value cannot be null",heartBeatMonitor);
+		assertNotNull("Value cannot be null", heartBeatMonitor);
 		heartBeatMonitor.beat("testBeat");
 	}
-
 }
