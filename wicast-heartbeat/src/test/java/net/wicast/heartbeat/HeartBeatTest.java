@@ -28,7 +28,7 @@ public class HeartBeatTest {
 		// HeartBeat testInstance = new HeartBeat();
 		try {
 			final HeartBeat heartBeat = new HeartBeat();
-			assertNotNull("Value cannot be null", heartBeat);
+			assertNull("Value cannot be null", heartBeat);
 			heartBeat.beat();
 		} catch (final HeartBeatException heartBeatException) {
 			assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
@@ -106,7 +106,7 @@ public class HeartBeatTest {
 		// HeartBeat testInstance = new HeartBeat();
 		try {
 			final HeartBeat testInstance = new HeartBeat("224.0.0.1", HeartBeatTest.PORT);
-			assertNull(testInstance);
+			assertNotNull(testInstance);
 		} catch (final HeartBeatException heartBeatException) {
 			assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
 			LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());

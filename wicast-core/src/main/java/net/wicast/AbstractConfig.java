@@ -67,8 +67,8 @@ public abstract class AbstractConfig implements ConfigInterface {
 		if (resourceAsStream != null) {
 			try {
 				this.properties.load(resourceAsStream);
-			} catch (final IOException e) {
-				this.log.error(e.toString());
+			} catch (final IOException exception) {
+				this.log.error(exception.toString());
 			}
 		}
 	}

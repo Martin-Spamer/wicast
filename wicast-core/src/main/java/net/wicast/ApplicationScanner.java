@@ -126,7 +126,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Channel(final Element element) {
+	public void visitElement_Channel(final Element element) {
 		final NamedNodeMap attrs = element.getAttributes();
 		for (int i = 0; i < attrs.getLength(); i++) {
 			final Attr attr = (Attr) attrs.item(i);
@@ -166,7 +166,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_class(final Element element) {
+	public void visitElement_class(final Element element) {
 		// <class>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -197,7 +197,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Client(final Element element) {
+	public void visitElement_Client(final Element element) {
 		// <Client>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -228,7 +228,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Core(final Element element) {
+	public void visitElement_Core(final Element element) {
 		// <Core>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -259,7 +259,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Description(final Element element) {
+	public void visitElement_Description(final Element element) {
 		// <Description>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -290,7 +290,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Encoding(final Element element) {
+	public void visitElement_Encoding(final Element element) {
 		// <Encoding>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -321,7 +321,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_File(final Element element) {
+	public void visitElement_File(final Element element) {
 		// <File>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -349,7 +349,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Id(final Element element) {
+	public void visitElement_Id(final Element element) {
 		// <Id>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -377,7 +377,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Licence(final Element element) {
+	public void visitElement_Licence(final Element element) {
 		// <Licence>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -417,7 +417,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Licenses(final Element element) {
+	public void visitElement_Licenses(final Element element) {
 		// <Licenses>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -448,7 +448,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Message(final Element element) {
+	public void visitElement_Message(final Element element) {
 		// <Message>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -485,7 +485,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_name(final Element element) {
+	public void visitElement_name(final Element element) {
 		// <name>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -516,7 +516,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Name(final Element element) {
+	public void visitElement_Name(final Element element) {
 		// <Name>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -547,7 +547,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Organization(final Element element) {
+	public void visitElement_Organization(final Element element) {
 		// <Organization>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -578,7 +578,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Port(final Element element) {
+	public void visitElement_Port(final Element element) {
 		// <Port>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -609,7 +609,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Properties(final Element element) {
+	public void visitElement_Properties(final Element element) {
 		// <Properties>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -640,7 +640,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Scheduler(final Element element) {
+	public void visitElement_Scheduler(final Element element) {
 		// <Scheduler>
 		// element.getValue();
 		final NamedNodeMap attrs = element.getAttributes();
@@ -679,7 +679,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Server(final Element element) {
+	public void visitElement_Server(final Element element) {
 		// <Server>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -713,7 +713,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Task(final Element element) {
+	public void visitElement_Task(final Element element) {
 		// <Task>
 		// element.getValue();
 		final NamedNodeMap attrs = element.getAttributes();
@@ -752,7 +752,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Title(final Element element) {
+	public void visitElement_Title(final Element element) {
 		// <Title>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -780,7 +780,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Tool(final Element element) {
+	public void visitElement_Tool(final Element element) {
 		// <Tool>
 		// element.getValue();
 		final NamedNodeMap attrs = element.getAttributes();
@@ -822,7 +822,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Tools(final Element element) {
+	public void visitElement_Tools(final Element element) {
 		// <Tools>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -853,7 +853,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Uri(final Element element) {
+	public void visitElement_Uri(final Element element) {
 		// <Uri>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -881,7 +881,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Url(final Element element) {
+	public void visitElement_Url(final Element element) {
 		// <Url>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -912,7 +912,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_Version(final Element element) {
+	public void visitElement_Version(final Element element) {
 		// <Version>
 		// element.getValue();
 		final NodeList nodes = element.getChildNodes();
@@ -943,7 +943,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_WebAdmin(final Element element) {
+	public void visitElement_WebAdmin(final Element element) {
 		// <WebAdmin>
 		// element.getValue();
 		final NamedNodeMap attrs = element.getAttributes();
@@ -985,7 +985,7 @@ public final class ApplicationScanner {
 	 *
 	 * @param element the element
 	 */
-	void visitElement_wicast_Application(final Element element) {
+	public void visitElement_wicast_Application(final Element element) {
 		// <wicast:Application>
 		// element.getValue();
 		final NamedNodeMap attrs = element.getAttributes();

@@ -49,11 +49,11 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 
 				this.multicastSocket.send(outBoundDatagramPacket);
 			} catch (final SocketException exception) {
-				log.error("{}", exception);
+				log.error(exception.toString());
 				throw new HeartBeatException(exception);
 			}
 		} catch (final IOException exception) {
-			log.error("{}", exception);
+			log.error(exception.toString());
 			throw new HeartBeatException(exception);
 		}
 	}

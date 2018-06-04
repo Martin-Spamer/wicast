@@ -135,8 +135,8 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
 	protected void loadFromPropertyFile(final InputStream inputStream) {
 		try {
 			this.properties.load(inputStream);
-		} catch (final Exception e) {
-			AbstractXmlConfig.log.error("{}", e);
+		} catch (final Exception exception) {
+			AbstractXmlConfig.log.error(exception.toString());
 		}
 	}
 
@@ -148,8 +148,8 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
 	protected void loadFromXmlFile(final InputStream inputStream) {
 		try {
 			this.properties.load(inputStream);
-		} catch (final Exception e) {
-			AbstractXmlConfig.log.error("{}", e);
+		} catch (final Exception exception) {
+			AbstractXmlConfig.log.error(exception.toString());
 		}
 	}
 
@@ -178,14 +178,14 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
 				fileOutputStream = new FileOutputStream(AbstractXmlConfig.XML_TO_PROPERTIES);
 				try {
 					this.propertiesFromXml.store(fileOutputStream, "propertiesFromXml.store");
-				} catch (final IOException e) {
-					AbstractXmlConfig.log.error("{}", e);
+				} catch (final IOException exception) {
+					AbstractXmlConfig.log.error(exception.toString());
 				}
-			} catch (final IOException e) {
-				AbstractXmlConfig.log.error("{}", e);
+			} catch (final IOException exception) {
+				AbstractXmlConfig.log.error(exception.toString());
 			}
-		} catch (final FileNotFoundException e) {
-			AbstractXmlConfig.log.error("{}", e);
+		} catch (final FileNotFoundException exception) {
+			AbstractXmlConfig.log.error(exception.toString());
 		}
 		return true;
 	}
@@ -210,14 +210,14 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
 				try {
 					comment = "propertiesFromXml.storeToXML";
 					this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
-				} catch (final IOException e) {
-					AbstractXmlConfig.log.error("{}", e);
+				} catch (final IOException exception) {
+					AbstractXmlConfig.log.error(exception.toString());
 				}
-			} catch (final IOException e) {
-				AbstractXmlConfig.log.error("{}", e);
+			} catch (final IOException exception) {
+				AbstractXmlConfig.log.error(exception.toString());
 			}
-		} catch (final Exception e) {
-			AbstractXmlConfig.log.error("{}", e);
+		} catch (final Exception exception) {
+			AbstractXmlConfig.log.error(exception.toString());
 		}
 		return true;
 	}
