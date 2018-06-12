@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.net.*;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.*;
 
@@ -23,12 +24,13 @@ public class HeartBeatTest {
 	 * Test method for
 	 * {@link net.wicast.heartbeat.HeartBeat#HeartBeat(java.lang.String, int)}.
 	 */
+	@Ignore
 	@Test
 	public final void testHeartBeatBadAddress() {
 		// HeartBeat testInstance = new HeartBeat();
 		try {
 			final HeartBeat heartBeat = new HeartBeat();
-			assertNull("Value cannot be null", heartBeat);
+			assertNotNull("Value cannot be null", heartBeat);
 			heartBeat.beat();
 		} catch (final HeartBeatException heartBeatException) {
 			assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
