@@ -4,6 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
 	<publishDate position="right" />
 	<version position="right" />
+
 	<bannerLeft>
 		<name>Maven</name>
 		<src>http://maven.apache.org/images/apache-maven-project.png</src>
@@ -26,7 +27,7 @@
 			<item name="Usage" href="usage.html" />
 			<item name="FAQ" href="faq.html" />
 			<item name="Download" href="download.html" />
-			<item name="Report" href="poject-report.html" />
+			<item name="Report" href="poject-reports.html" />
 			<item name="Release Notes" href="release-notes.html" />
 			<item name="Issue Tracking" href="issue-tracking.html" />
 			<item name="Roadmap" href="roadmap.html" />
@@ -35,11 +36,13 @@
 		</menu>
 
 	</body>
+
 	<skin>
 		<groupId>org.apache.maven.skins</groupId>
 		<artifactId>maven-fluido-skin</artifactId>
 		<version>1.6</version>
 	</skin>
+
 	<custom>
 		<fluidoSkin>
 			<googleSearch>
@@ -47,4 +50,5 @@
 			</googleSearch>
 		</fluidoSkin>
 	</custom>
+
 </project>
