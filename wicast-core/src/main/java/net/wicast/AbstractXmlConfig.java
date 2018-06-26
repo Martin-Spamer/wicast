@@ -28,15 +28,31 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractXmlConfig implements ConfigInterface {
 
+    /** The Constant XML_TO_PROPERTIES. */
     private static final String XML_TO_PROPERTIES = "./target/fromXml.properties";
+    
+    /** The Constant PROPERTIES_TO_PROPERTIES. */
     private static final String PROPERTIES_TO_PROPERTIES = "./target/fromProperties.properties";
+    
+    /** The log. */
     protected final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
 
+    /** The properties. */
     private final Properties properties = new Properties();
+    
+    /** The properties from xml. */
     private final Properties propertiesFromXml = new Properties();
+    
+    /** The config document. */
     private final Document configDocument = null;
+    
+    /** The config element. */
     private final Element configElement = null;
+    
+    /** The context. */
     private NodeList context = null;
+    
+    /** The index. */
     private int index = 0;
 
     /**

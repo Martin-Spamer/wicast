@@ -1,8 +1,9 @@
+
 package net.wicast;
 
-import static org.junit.Assert.assertNotNull;
-
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * MultiCastSenderTest.
@@ -10,14 +11,14 @@ import org.junit.Test;
  */
 public class MultiCastSenderTest {
 
-	/**
-	 * Test method for
-	 * {@link net.wicast.MultiCastSenderThread.MultiCastSender#MultiCastSender()}.
-	 */
-	@Test
-	public final void testMultiCastSender() {
-		final MultiCastSender multiCastSender = new MultiCastSender();
-		assertNotNull("Value cannot be null",multiCastSender);
-	}
+    /**
+     * Test method for
+     * {@link net.wicast.MultiCastSenderThread.MultiCastSender#MultiCastSender()}.
+     */
+    @Test
+    public final void testMultiCastSender() {
+        final MultiCastSender multiCastSender = new MultiCastSender();
+        assertNotNull("Value cannot be null", multiCastSender);
+    }
 
 }

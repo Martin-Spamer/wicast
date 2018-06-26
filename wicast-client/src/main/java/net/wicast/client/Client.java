@@ -6,6 +6,7 @@ package net.wicast.client;
  */
 public final class Client {
 
+    /** The config. */
     protected ClientConfig config;
 
     /**

@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class MultiCastSender {
 
+    /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastSender.class);
 
     /**
