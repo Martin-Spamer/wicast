@@ -15,5 +15,5 @@
 /log4j/
 
 # Maven
-target/**
+/target/**
 */pom.xml.versionsBackup
