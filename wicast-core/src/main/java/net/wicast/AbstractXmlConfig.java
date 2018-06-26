@@ -31,8 +31,8 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractXmlConfig implements ConfigInterface {
 
-    private static final String XML_TO_PROPERTIES = "fromXml.properties";
-    private static final String PROPERTIES_TO_PROPERTIES = "fromProperties.properties";
+    private static final String XML_TO_PROPERTIES = "./target/fromXml.properties";
+    private static final String PROPERTIES_TO_PROPERTIES = "./target/fromProperties.properties";
     private static final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
 
     static {
@@ -213,13 +213,13 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
         final String encoding = "UTF-8";
         FileOutputStream fileOutputStream;
         try {
-            fileOutputStream = new FileOutputStream("fromProperties.xml");
+            fileOutputStream = new FileOutputStream("./target/fromProperties.xml");
 
             try {
                 String comment = "properties.storeToXML";
                 this.properties.storeToXML(fileOutputStream, comment, encoding);
 
-                fileOutputStream = new FileOutputStream("propertiesFromXml.xml");
+                fileOutputStream = new FileOutputStream("./target/propertiesFromXml.xml");
 
                 try {
                     comment = "propertiesFromXml.storeToXML";
