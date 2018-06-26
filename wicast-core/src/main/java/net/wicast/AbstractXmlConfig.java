@@ -34,7 +34,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
     /** The Constant PROPERTIES_TO_PROPERTIES. */
     private static final String PROPERTIES_TO_PROPERTIES = "./target/fromProperties.properties";
     
-    /** The log. */
+    /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
 
     /** The properties. */
