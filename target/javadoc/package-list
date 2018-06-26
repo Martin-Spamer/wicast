@@ -1,9 +1,0 @@
-net.wicast
-net.wicast.client
-net.wicast.config
-net.wicast.heartbeat
-net.wicast.heartbeat.time
-net.wicast.jaxb
-net.wicast.relay
-net.wicast.server
-net.wicast.test
