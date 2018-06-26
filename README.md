@@ -2,6 +2,14 @@
 
 WiCast Wireless MultiCasting
 
+## Usage
+
+### Clone to your local
+
+### Build with Maven
+
+### Add dependency to your project
+
 	<dependency>
 		<groupId>net.wicast</groupId>
 		<artifactId>wicast</artifactId>
