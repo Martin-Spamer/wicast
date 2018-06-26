@@ -6,22 +6,22 @@ package net.wicast.client;
  */
 public final class Client {
 
-	protected ClientConfig config;
+    protected ClientConfig config;
 
-	/**
-	 * Instantiates a new client.
-	 */
-	public Client() {
-		this.config = new ClientConfig();
-	}
+    /**
+     * Instantiates a new client.
+     */
+    public Client() {
+        this.config = new ClientConfig();
+    }
 
-	/**
-	 * Start.
-	 *
-	 * @return the client
-	 */
-	public Client start() {
-		return this;
-	}
+    /**
+     * Start.
+     *
+     * @return the client
+     */
+    public Client start() {
+        return this;
+    }
 
 }

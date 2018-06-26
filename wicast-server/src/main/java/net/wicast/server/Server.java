@@ -6,22 +6,22 @@ package net.wicast.server;
  */
 public class Server {
 
-	protected ServerConfig config;
+    protected ServerConfig config;
 
-	/**
-	 * Instantiates a new server.
-	 */
-	public Server() {
-		this.config = new ServerConfig();
-	}
+    /**
+     * Instantiates a new server.
+     */
+    public Server() {
+        this.config = new ServerConfig();
+    }
 
-	/**
-	 * Start.
-	 *
-	 * @return the server
-	 */
-	public Server start() {
-		return this;
-	}
+    /**
+     * Start.
+     *
+     * @return the server
+     */
+    public Server start() {
+        return this;
+    }
 
 }

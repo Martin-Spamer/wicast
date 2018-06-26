@@ -6,8 +6,9 @@
     <Name>ApplicationName</Name>
     <Version>1.0.0</Version>
     <Description>Application Description</Description>
-    <Url>www.application.example</Url>
+    <Url>http://application.example</Url>
     <Organization>Application Organisation</Organization>
+
     <Licenses>
         <Licence>
             <Id>licence-id</Id>
@@ -47,15 +48,9 @@
                     <Name>channel-name</Name>
                     <Address>224.255.255.255</Address>
                     <Port>100</Port>
-                    <Message>
-                        CDATAMessage<![CDATA[]]>
-                    </Message>
-                    <Message>
-                        <Uri></Uri>
-                    </Message>
-                    <Message>
-                        <File></File>
-                    </Message>
+                    <Message>CDATAMessage<![CDATA[]]></Message>
+                    <Message><Uri></Uri></Message>
+                    <Message><File>message.xml</File></Message>
                 </Channel>
             </Service>
         </Schedule>
