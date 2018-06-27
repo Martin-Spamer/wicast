@@ -45,16 +45,15 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
     public void beat(final String message) throws HeartBeatException {
         try {
             try {
-                this.multicastSocket.joinGroup(this.groupAddress);
+                multicastSocket.joinGroup(groupAddress);
 
-                final DatagramPacket outBoundDatagramPacket = 
-                        new DatagramPacket(
-                                message.getBytes(), 
-                                message.length(),
-                                this.groupAddress, 
-                                this.portNo);
+                final DatagramPacket outBoundDatagramPacket = new DatagramPacket(
+                        message.getBytes(),
+                        message.length(),
+                        groupAddress,
+                        portNo);
 
-                this.multicastSocket.send(outBoundDatagramPacket);
+                multicastSocket.send(outBoundDatagramPacket);
             } catch (final SocketException exception) {
                 log.error(exception.toString());
                 throw new HeartBeatException(exception);
@@ -67,16 +66,16 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 
     /**
      * Monitor.
-     * 
+     *
      * @throws HeartBeatException the heart beat exception
      */
     protected void monitor() throws HeartBeatException {
         try {
-            this.multicastSocket = new MulticastSocket(this.portNo);
+            multicastSocket = new MulticastSocket(portNo);
             final byte[] buffer = new byte[1000];
             final DatagramPacket inboundDatagramPacket = new DatagramPacket(buffer, buffer.length);
-            this.multicastSocket.receive(inboundDatagramPacket);
-            this.multicastSocket.leaveGroup(this.groupAddress);
+            multicastSocket.receive(inboundDatagramPacket);
+            multicastSocket.leaveGroup(groupAddress);
         } catch (final IOException exception) {
             log.error("{}", exception);
             throw new HeartBeatException(exception);

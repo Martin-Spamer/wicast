@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 public class ServerConfigTest {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(ServerConfigTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ServerConfigTest.class);
 
     /**
      * Unit Test for server configuration.

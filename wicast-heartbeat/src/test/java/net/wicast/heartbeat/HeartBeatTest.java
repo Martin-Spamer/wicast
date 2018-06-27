@@ -1,11 +1,6 @@
 
 package net.wicast.heartbeat;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -14,13 +9,18 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 /**
  * HeartBeatTest.
  */
 @Ignore
 public class HeartBeatTest {
 
-    private static final Logger LOG  = LoggerFactory.getLogger(HeartBeatTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HeartBeatTest.class);
     private static final String LOOPBACK = "127.0.0.1";
     // 224.0.0.1 is local subnet only, closest multicast equivalent to 127.0.0.1
     private static final String VALID_ADDRESS = "224.0.0.1";

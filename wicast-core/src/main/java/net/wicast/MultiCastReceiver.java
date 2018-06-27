@@ -37,11 +37,11 @@ public final class MultiCastReceiver {
             final DatagramPacket packet = new DatagramPacket(input, input.length);
             socket.receive(packet);
 
-            LOG.info("Multicast Received");
-            LOG.info("from: " + packet.getAddress().toString());
-            LOG.info("port: " + packet.getPort());
+            LOG.debug("Multicast Received");
+            LOG.debug("from: {}", packet.getAddress().toString());
+            LOG.debug("port: {}", packet.getPort());
             final int length = packet.getLength();
-            LOG.info("length: " + length);
+            LOG.debug("length: {}", length);
             final byte[] data = packet.getData();
             System.out.write(data, 0, length);
 

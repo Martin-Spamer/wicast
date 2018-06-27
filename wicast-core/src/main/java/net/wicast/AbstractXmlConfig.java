@@ -28,31 +28,35 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractXmlConfig implements ConfigInterface {
 
-    /** The Constant XML_TO_PROPERTIES. */
+    private static final String TARGET_PROPERTIES_FROM_XML_XML = "./target/propertiesFromXml.xml";
+
+    private static final String TARGET_FROM_PROPERTIES_XML = "./target/fromProperties.xml";
+
+    /** XML_TO_PROPERTIES. */
     private static final String XML_TO_PROPERTIES = "./target/fromXml.properties";
     
-    /** The Constant PROPERTIES_TO_PROPERTIES. */
+    /** PROPERTIES_TO_PROPERTIES. */
     private static final String PROPERTIES_TO_PROPERTIES = "./target/fromProperties.properties";
     
     /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
 
-    /** The properties. */
+    /** loaded properties. */
     private final Properties properties = new Properties();
     
-    /** The properties from xml. */
+    /** properties from xml. */
     private final Properties propertiesFromXml = new Properties();
     
-    /** The config document. */
+    /** config document. */
     private final Document configDocument = null;
     
-    /** The config element. */
+    /** config element. */
     private final Element configElement = null;
     
-    /** The context. */
+    /** context. */
     private NodeList context = null;
     
-    /** The index. */
+    /** current index. */
     private int index = 0;
 
     /**
@@ -62,12 +66,12 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
     public AbstractXmlConfig() {
         // use this variation for packaged configuration.
         // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
-        ClassLoader classLoader = this.getClass().getClassLoader();
+        final ClassLoader classLoader = this.getClass().getClassLoader();
         loadFromXmlFile(classLoader.getResourceAsStream(toXmlFilename(toName())));
 
         // use this variation for packaged configuration.
         // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
-        loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(toName())));
+        loadFromPropertyFile(classLoader.getResourceAsStream(toPropertyFilename(toName())));
     }
 
     /**
@@ -78,12 +82,12 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
     public AbstractXmlConfig(final String filename) {
         // use this variation for packaged configuration.
         // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
-        ClassLoader classLoader = this.getClass().getClassLoader();
+        final ClassLoader classLoader = this.getClass().getClassLoader();
         loadFromXmlFile(classLoader.getResourceAsStream(toXmlFilename(filename)));
 
         // use this variation for packaged configuration.
         // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
-        loadFromPropertyFile(this.getClass().getClassLoader().getResourceAsStream(toPropertyFilename(filename)));
+        loadFromPropertyFile(classLoader.getResourceAsStream(toPropertyFilename(filename)));
     }
 
     /*
@@ -93,7 +97,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
      */
     @Override
     public String getProperty(final String key) {
-        return key;
+        return this.properties.getProperty(key);
     }
 
     /*
@@ -104,7 +108,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
      */
     @Override
     public String getProperty(final String key, final String defaultValue) {
-        return defaultValue;
+        return this.properties.getProperty(key, defaultValue);
     }
 
     /**
@@ -219,13 +223,13 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
         final String encoding = "UTF-8";
         FileOutputStream fileOutputStream;
         try {
-            fileOutputStream = new FileOutputStream("./target/fromProperties.xml");
+            fileOutputStream = new FileOutputStream(TARGET_FROM_PROPERTIES_XML);
 
             try {
                 String comment = "properties.storeToXML";
                 this.properties.storeToXML(fileOutputStream, comment, encoding);
 
-                fileOutputStream = new FileOutputStream("./target/propertiesFromXml.xml");
+                fileOutputStream = new FileOutputStream(TARGET_PROPERTIES_FROM_XML_XML);
 
                 try {
                     comment = "propertiesFromXml.storeToXML";
@@ -301,7 +305,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
      * @return element CDATA as String.
      */
     protected String xmlToString(final Node node) {
-        StringBuffer text = new StringBuffer("");
+        StringBuffer text = new StringBuffer();
         if (node != null) {
             final String value = node.getNodeValue();
             if (value != null) {
@@ -310,7 +314,9 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
             if (node.hasChildNodes()) {
                 final NodeList children = node.getChildNodes();
                 for (int i = 0; i < children.getLength(); i++) {
-                    text.append(xmlToString(children.item(i)));
+                    Node item = children.item(i);
+                    String xmlString = xmlToString(item);
+                    text.append(xmlString);
                 }
             }
         }
@@ -321,11 +327,12 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
      * Dump to log.
      */
     public void dumpToLog() {
-        this.log.info("{}.dumpToLog", this.getClass().getSimpleName());
-        this.log.info(toXml());
-        this.log.info(xmlToString(this.configDocument));
-        this.log.info(this.properties.toString());
-        this.log.info(this.propertiesFromXml.toString());
+        final String simpleName = this.getClass().getSimpleName();
+        log.info("{}.dumpToLog", simpleName);
+        log.info("{}",toXml());
+        log.info("{}",xmlToString(this.configDocument));
+        log.info("{}",properties.toString());
+        log.info("{}",propertiesFromXml.toString());
     }
 
     /**

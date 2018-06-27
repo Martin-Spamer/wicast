@@ -13,7 +13,7 @@ public class Server {
      * Instantiates a new server.
      */
     public Server() {
-        this.config = new ServerConfig();
+        config = new ServerConfig();
     }
 
     /**

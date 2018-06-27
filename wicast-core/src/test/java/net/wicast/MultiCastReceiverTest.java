@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 public class MultiCastReceiverTest {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastSenderTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
     /**
      * Unit Test for test multicast receiver.

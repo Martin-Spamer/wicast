@@ -12,9 +12,9 @@ import static org.junit.Assert.assertTrue;
  * ConfigTest.
  */
 public class ConfigTest {
-    
+
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(ConfigTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ConfigTest.class);
 
     /**
      * Mock Configuration Class.
@@ -24,7 +24,7 @@ public class ConfigTest {
 
     /**
      * Test method for {@link net.wicast.Config#Config()}.
-     * 
+     *
      * exception
      *
      * @throws Exception the exception

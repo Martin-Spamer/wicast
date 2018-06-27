@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class MultiCastRelay {
 
-    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastRelay.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelay.class);
 
     /**
      * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
@@ -66,9 +66,9 @@ public class MultiCastRelay {
             } catch (final SocketException exception) {
                 LOG.error("{}", exception);
             } catch (final IOException exception) {
-                LOG.info("{}", exception);
+                LOG.error("{}", exception);
             } catch (final Exception exception) {
-                LOG.info("{}", exception);
+                LOG.error("{}", exception);
             }
             return status;
         }
@@ -145,7 +145,7 @@ public class MultiCastRelay {
 
         /**
          * Send Datagram to Multicast Group by Socket.
-         * 
+         *
          * @return boolean
          */
         public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
@@ -162,9 +162,9 @@ public class MultiCastRelay {
             } catch (final SocketException exception) {
                 LOG.error("{}", exception);
             } catch (final IOException exception) {
-                LOG.info("{}", exception);
+                LOG.error("{}", exception);
             } catch (final Exception exception) {
-                LOG.info("{}", exception);
+                LOG.error("{}", exception);
             }
             return status;
         }

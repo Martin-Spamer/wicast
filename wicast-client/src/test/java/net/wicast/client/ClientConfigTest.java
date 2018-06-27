@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 public class ClientConfigTest {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(ClientConfigTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ClientConfigTest.class);
 
     /**
      * Unit Test for client configuration.

@@ -13,7 +13,7 @@ public final class Client {
      * Instantiates a new client.
      */
     public Client() {
-        this.config = new ClientConfig();
+        config = new ClientConfig();
     }
 
     /**

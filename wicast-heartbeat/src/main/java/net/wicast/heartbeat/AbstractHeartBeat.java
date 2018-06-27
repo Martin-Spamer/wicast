@@ -24,9 +24,9 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
      */
     public AbstractHeartBeat() {
         super();
-        this.portNo = 1;
+        portNo = 1;
         try {
-            this.groupAddress = InetAddress.getByName("wicast.net");
+            groupAddress = InetAddress.getByName("wicast.net");
         } catch (final UnknownHostException e) {
             log.error("{}", e.toString());
         }
@@ -54,9 +54,9 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
      */
     public AbstractHeartBeat(final String groupAddressString, final int portNo) throws HeartBeatException {
         try {
-            this.groupAddress = InetAddress.getByName(groupAddressString);
+            groupAddress = InetAddress.getByName(groupAddressString);
             this.portNo = portNo;
-            joinGroup(this.groupAddress, this.portNo);
+            joinGroup(groupAddress, this.portNo);
         } catch (final UnknownHostException exception) {
             log.error("{}", exception);
             throw new HeartBeatException(exception);
@@ -72,11 +72,11 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
      */
     protected void joinGroup(final InetAddress groupAddressIn, final int portNoIn) throws HeartBeatException {
         try {
-            this.multicastSocket = new MulticastSocket(portNoIn);
+            multicastSocket = new MulticastSocket(portNoIn);
 
             try {
-                this.multicastSocket.setTimeToLive(Thread.MIN_PRIORITY);
-                this.multicastSocket.joinGroup(groupAddressIn);
+                multicastSocket.setTimeToLive(Thread.MIN_PRIORITY);
+                multicastSocket.joinGroup(groupAddressIn);
             } catch (final SocketException exception) {
                 log.error("{}", exception.getLocalizedMessage());
                 throw new HeartBeatException(exception);

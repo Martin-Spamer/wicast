@@ -14,7 +14,7 @@ import static org.junit.Assert.assertTrue;
 public class MultiCastSenderTest {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastSenderTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
     /**
      * Unit Test to multicast sender.
