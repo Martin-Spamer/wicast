@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="WiCast : Wireless Multicast Framework for Java"
-	xmlns="http://maven.apache.org/DECORATION/1.6.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/DECORATION/1.6.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
 	<publishDate position="right" />
 	<version position="right" />
@@ -17,8 +18,10 @@
 
 	<body>
 		<links>
-			<item name="GitHub" href="https://github.com/Martin-Spamer/wicast" />
-			<item name="Issues" href="https://github.com/Martin-Spamer/wicast/issues" />
+			<item name="GitHub"
+				href="https://github.com/Martin-Spamer/wicast" />
+			<item name="Issues"
+				href="https://github.com/Martin-Spamer/wicast/issues" />
 		</links>
 
 		<menu name="Overview">
