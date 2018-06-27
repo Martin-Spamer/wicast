@@ -8,12 +8,12 @@ import org.slf4j.LoggerFactory;
 import static org.junit.Assert.assertNotNull;
 
 /**
- * The Class ClientConfigTest.
+ * Unit tests for ClientConfig class.
  */
 public class ClientConfigTest {
 
-    /** The Constant LOG. */
-    private static final Logger LOG = LoggerFactory.getLogger(ClientConfigTest.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(ClientConfigTest.class);
 
     /**
      * Unit Test for client configuration.

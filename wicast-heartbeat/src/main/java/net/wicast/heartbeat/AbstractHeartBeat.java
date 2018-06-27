@@ -14,8 +14,7 @@ import org.slf4j.LoggerFactory;
  * AbstractHeartBeat class.
  */
 public abstract class AbstractHeartBeat extends Thread implements HeartBeatInterface {
-
-    protected static final Logger log = LoggerFactory.getLogger(AbstractHeartBeat.class);
+    protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
     protected InetAddress groupAddress;
     protected int portNo;
     protected MulticastSocket multicastSocket;

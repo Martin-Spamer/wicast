@@ -47,8 +47,12 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
             try {
                 this.multicastSocket.joinGroup(this.groupAddress);
 
-                final DatagramPacket outBoundDatagramPacket = new DatagramPacket(message.getBytes(), message.length(),
-                        this.groupAddress, this.portNo);
+                final DatagramPacket outBoundDatagramPacket = 
+                        new DatagramPacket(
+                                message.getBytes(), 
+                                message.length(),
+                                this.groupAddress, 
+                                this.portNo);
 
                 this.multicastSocket.send(outBoundDatagramPacket);
             } catch (final SocketException exception) {

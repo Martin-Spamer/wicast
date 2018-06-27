@@ -15,8 +15,8 @@ import org.slf4j.LoggerFactory;
  */
 public final class MultiCastReceiver {
 
-    /** The Constant LOG. */
-    private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastReceiver.class);
 
     /**
      * receive datagrams by joining a multicast socket.

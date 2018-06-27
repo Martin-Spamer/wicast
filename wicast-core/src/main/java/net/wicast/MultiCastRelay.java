@@ -17,22 +17,15 @@ import org.slf4j.LoggerFactory;
  */
 public final class MultiCastRelay {
 
-    /** The Constant log. */
-    private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
-
-    /**
-     * Constructor.
-     */
-    public MultiCastRelay() {
-        super();
-    }
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastRelay.class);
 
     /**
      * MultiCastReceiverThread class.
      */
-    public class MultiCastReceiverThread extends java.lang.Thread {
+    public class MultiCastReceiverThread extends Thread {
         /**
-         * receive datagrams by joining a multicast socket.
+         * A persistent threat to receive datagrams by joining a multicast socket.
          *
          * @param group multicast group address as String "X.X.X.X".
          * @param port receiver port as int.
@@ -54,22 +47,23 @@ public final class MultiCastRelay {
                 final DatagramPacket packet = new DatagramPacket(input, input.length);
                 socket.receive(packet);
 
-                MultiCastRelay.log.info("Multicast Received");
-                MultiCastRelay.log.info("from: " + packet.getAddress().toString());
-                MultiCastRelay.log.info("port: " + packet.getPort());
-                MultiCastRelay.log.info("length: " + packet.getLength());
+                LOG.debug("Multicast Received");
+                LOG.debug("from: " + packet.getAddress().toString());
+                LOG.debug("port: " + packet.getPort());
+                LOG.debug("length: " + packet.getLength());
 
+                // TODO something with this
                 System.out.write(packet.getData(), 0, packet.getLength());
 
                 socket.leaveGroup(InetAddress.getByName(group));
                 socket.close();
                 status = true;
             } catch (final SocketException socketException) {
-                MultiCastRelay.log.error("{}", socketException);
+                LOG.error("{}", socketException);
             } catch (final IOException ioException) {
-                MultiCastRelay.log.error("{}", ioException);
+                LOG.error("{}", ioException);
             } catch (final Exception exception) {
-                MultiCastRelay.log.error("{}", exception);
+                LOG.error("{}", exception);
             }
             return status;
         }
@@ -115,7 +109,7 @@ public final class MultiCastRelay {
                     count++;
                 }
             } catch (final InterruptedException exception) {
-                MultiCastRelay.log.error("{}", exception);
+                LOG.error("{}", exception);
             }
         }
 
@@ -141,9 +135,9 @@ public final class MultiCastRelay {
                 socket.close();
                 status = true;
             } catch (final SocketException socketException) {
-                MultiCastRelay.log.error("{}", socketException);
+                LOG.error("{}", socketException);
             } catch (final IOException ioException) {
-                MultiCastRelay.log.error("{}", ioException);
+                LOG.error("{}", ioException);
             }
             return status;
         }
@@ -168,11 +162,11 @@ public final class MultiCastRelay {
                 socket.close();
                 status = true;
             } catch (final SocketException socketException) {
-                MultiCastRelay.log.error("{}", socketException);
+                LOG.error("{}", socketException);
             } catch (final IOException ioException) {
-                MultiCastRelay.log.error("{}", ioException);
+                LOG.error("{}", ioException);
             } catch (final Exception exception) {
-                MultiCastRelay.log.error("{}", exception);
+                LOG.error("{}", exception);
             }
             return status;
         }
@@ -186,8 +180,8 @@ public final class MultiCastRelay {
      * @param args the arguments
      */
     public static void main(final String[] args) {
-        MultiCastRelay.log.trace(System.getProperties().toString());
-        MultiCastRelay.log.debug("args[]={}", Arrays.toString(args));
+        LOG.trace(System.getProperties().toString());
+        LOG.debug("args[] = {}", Arrays.toString(args));
 
         new MultiCastRelay().start();
     }

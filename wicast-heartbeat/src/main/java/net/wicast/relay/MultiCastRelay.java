@@ -23,7 +23,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class MultiCastRelay {
 
-    private static final Logger log = LoggerFactory.getLogger(MultiCastRelay.class);
+    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastRelay.class);
 
     /**
      * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
@@ -51,24 +51,24 @@ public class MultiCastRelay {
                 final DatagramPacket packet = new DatagramPacket(input, input.length);
                 socket.receive(packet);
 
-                log.info("Multicast Received");
-                log.info("from: " + packet.getAddress().toString());
-                log.info("port: " + packet.getPort());
-                log.info("length: " + packet.getLength());
+                LOG.debug("Multicast Received");
+                LOG.debug("from: " + packet.getAddress().toString());
+                LOG.debug("port: " + packet.getPort());
+                LOG.debug("length: " + packet.getLength());
+
+                // TODO Something about this
                 System.out.write(packet.getData(), 0, packet.getLength());
 
-                // * multicast
-                // group and
-                // * socket
+                /* multicast group and socket */
                 socket.leaveGroup(InetAddress.getByName(group));
                 socket.close();
                 status = true;
             } catch (final SocketException exception) {
-                log.error("{}", exception);
+                LOG.error("{}", exception);
             } catch (final IOException exception) {
-                log.info("{}", exception);
+                LOG.info("{}", exception);
             } catch (final Exception exception) {
-                log.info("{}", exception);
+                LOG.info("{}", exception);
             }
             return status;
         }
@@ -86,7 +86,7 @@ public class MultiCastRelay {
                     sleep(1000);
                 }
             } catch (final InterruptedException exception) {
-                log.error("{}", exception);
+                LOG.error("{}", exception);
             }
         }
     }
@@ -111,7 +111,7 @@ public class MultiCastRelay {
                     count++;
                 }
             } catch (final InterruptedException exception) {
-                log.error("{}", exception);
+                LOG.error("{}", exception);
             }
         }
 
@@ -136,9 +136,9 @@ public class MultiCastRelay {
                 socket.close();
                 status = true;
             } catch (final SocketException exception) {
-                log.error("{}", exception);
+                LOG.error("{}", exception);
             } catch (final IOException exception) {
-                log.error("{}", exception);
+                LOG.error("{}", exception);
             }
             return status;
         }
@@ -160,11 +160,11 @@ public class MultiCastRelay {
                 socket.close();
                 status = true;
             } catch (final SocketException exception) {
-                log.error("{}", exception);
+                LOG.error("{}", exception);
             } catch (final IOException exception) {
-                log.info("{}", exception);
+                LOG.info("{}", exception);
             } catch (final Exception exception) {
-                log.info("{}", exception);
+                LOG.info("{}", exception);
             }
             return status;
         }
@@ -176,7 +176,7 @@ public class MultiCastRelay {
      * command line arguments
      */
     public static void main(final String[] args) {
-        log.trace(System.getProperties().toString());
+        LOG.trace(System.getProperties().toString());
         final MultiCastRelay multiCastRelay = new MultiCastRelay();
         assertNotNull("Value cannot be null", multiCastRelay);
     }

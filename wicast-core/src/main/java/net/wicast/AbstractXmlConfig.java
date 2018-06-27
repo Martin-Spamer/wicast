@@ -62,7 +62,8 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
     public AbstractXmlConfig() {
         // use this variation for packaged configuration.
         // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
-        loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(toName())));
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        loadFromXmlFile(classLoader.getResourceAsStream(toXmlFilename(toName())));
 
         // use this variation for packaged configuration.
         // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));
@@ -77,7 +78,8 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
     public AbstractXmlConfig(final String filename) {
         // use this variation for packaged configuration.
         // loadFromXmlFile(this.getClass().getResourceAsStream(toXmlFilename(this.toName())));
-        loadFromXmlFile(this.getClass().getClassLoader().getResourceAsStream(toXmlFilename(filename)));
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        loadFromXmlFile(classLoader.getResourceAsStream(toXmlFilename(filename)));
 
         // use this variation for packaged configuration.
         // loadFromPropertyFile(this.getClass().getResourceAsStream(toPropertyFilename(this.toName())));

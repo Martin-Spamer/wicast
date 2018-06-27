@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ServerConfigTest {
 
-    /** The Constant LOG. */
-    private static final Logger LOG = LoggerFactory.getLogger(ServerConfigTest.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(ServerConfigTest.class);
 
     /**
      * Unit Test for server configuration.

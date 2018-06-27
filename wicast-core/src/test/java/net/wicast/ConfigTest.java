@@ -13,8 +13,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class ConfigTest {
     
-    /** The Constant log. */
-    private static final Logger log = LoggerFactory.getLogger(ConfigTest.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(ConfigTest.class);
 
     /**
      * Mock Configuration Class.
@@ -33,8 +33,8 @@ public class ConfigTest {
     public void testConfig() throws Exception {
         final AbstractXmlConfig config = new MockConfig();
         assertNotNull("Value cannot be null", config);
-        ConfigTest.log.info(config.toString());
-        ConfigTest.log.info(config.toXml());
+        LOG.info(config.toString());
+        LOG.info(config.toXml());
         assertTrue(config.saveAsProperties());
         assertTrue(config.saveAsXml());
         config.dumpToLog();
@@ -47,6 +47,6 @@ public class ConfigTest {
     public void testToString() {
         final AbstractXmlConfig config = new MockConfig();
         assertNotNull("Value cannot be null", config);
-        ConfigTest.log.info(config.toString());
+        LOG.info(config.toString());
     }
 }

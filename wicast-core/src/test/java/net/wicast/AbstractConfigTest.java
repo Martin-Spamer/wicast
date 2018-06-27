@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNotNull;
  */
 public class AbstractConfigTest {
 
-    /** The Constant LOG. */
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigTest.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(AbstractConfigTest.class);
 
     /**
      * Mock Configuration.
@@ -38,7 +38,7 @@ public class AbstractConfigTest {
      */
     @Test
     public void testAbstractConfig() {
-        AbstractConfigTest.LOG.info("testAbstractConfig");
+        LOG.info("testAbstractConfig");
         final AbstractXmlConfig invalidConfig = new MockConfig();
         assertNotNull("Value cannot be null", invalidConfig);
         invalidConfig.dumpToLog();
@@ -49,7 +49,7 @@ public class AbstractConfigTest {
      */
     @Test
     public void testMockConfig() {
-        AbstractConfigTest.LOG.info("testAbstractConfig");
+        LOG.info("testAbstractConfig");
         final AbstractXmlConfig invalidConfig = new MockConfig();
         assertNotNull("Value cannot be null", invalidConfig);
         invalidConfig.getProperty("key");
@@ -61,7 +61,7 @@ public class AbstractConfigTest {
      */
     @Test
     public void testMissingConfig() {
-        AbstractConfigTest.LOG.info("testMissingConfig");
+        LOG.info("testMissingConfig");
         final AbstractXmlConfig missingConfig = new MissingConfig();
         assertNotNull("Value cannot be null", missingConfig);
         missingConfig.dumpToLog();
@@ -72,7 +72,7 @@ public class AbstractConfigTest {
      */
     @Test
     public void testInvalidConfig() {
-        AbstractConfigTest.LOG.info("testInvalidConfig");
+        LOG.info("testInvalidConfig");
         final AbstractXmlConfig invalidConfig = new InvalidConfig();
         assertNotNull("Value cannot be null", invalidConfig);
         invalidConfig.dumpToLog();
