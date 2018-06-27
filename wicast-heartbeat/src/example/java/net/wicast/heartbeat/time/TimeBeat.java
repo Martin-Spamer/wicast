@@ -12,7 +12,7 @@ import net.wicast.heartbeat.*;
  */
 public class TimeBeat extends AbstractHeartBeat {
 
-	private static final Logger log = LoggerFactory.getLogger(TimeBeat.class);
+	private static final Logger LOG  = LoggerFactory.getLogger(TimeBeat.class);
 
 	/**
 	 * AbstractHeartBeat.

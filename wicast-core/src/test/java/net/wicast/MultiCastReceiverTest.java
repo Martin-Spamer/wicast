@@ -12,8 +12,8 @@ import static org.junit.Assert.assertNotNull;
  */
 public class MultiCastReceiverTest {
 
-    /** The Constant LOG. */
-    private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
     /**
      * Unit Test for test multicast receiver.
@@ -22,7 +22,7 @@ public class MultiCastReceiverTest {
     public void testMultiCastReceiver() {
         final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
         assertNotNull("Value cannot be null", multiCastReceiver);
-        MultiCastReceiverTest.LOG.info("{}", multiCastReceiver);
+        LOG.info("{}", multiCastReceiver);
     }
 
 }

@@ -13,8 +13,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class MultiCastSenderTest {
 
-    /** The Constant LOG. */
-    private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
+    /** provide logging. */
+    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
     /**
      * Unit Test to multicast sender.
@@ -27,7 +27,7 @@ public class MultiCastSenderTest {
                 1234,
                 "<WICAST type=1/>".getBytes());
         assertTrue(sendByDatagramSocket);
-        MultiCastSenderTest.LOG.debug("{}", sendByDatagramSocket);
+        LOG.debug("{}", sendByDatagramSocket);
     }
 
     /**
@@ -41,6 +41,6 @@ public class MultiCastSenderTest {
                 1234,
                 "<WICAST type=2/>".getBytes());
         assertTrue(sendByMulticastSocket);
-        MultiCastSenderTest.LOG.debug("{}", sendByMulticastSocket);
+        LOG.debug("{}", sendByMulticastSocket);
     }
 }

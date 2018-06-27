@@ -6,7 +6,7 @@ package net.wicast.client;
  */
 public final class Client {
 
-    /** The config. */
+    /** Configuration for Multicast client class. */
     protected ClientConfig config;
 
     /**
@@ -25,4 +25,12 @@ public final class Client {
         return this;
     }
 
+    /**
+     * Stop.
+     *
+     * @return the client
+     */
+    public Client stop() {
+        return this;
+    }
 }

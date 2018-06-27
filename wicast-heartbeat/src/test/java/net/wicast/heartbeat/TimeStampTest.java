@@ -11,7 +11,7 @@ import org.slf4j.*;
  */
 public class TimeStampTest {
 
-	private static final Logger log = LoggerFactory.getLogger(TimeStampTest.class);
+	private static final Logger LOG  = LoggerFactory.getLogger(TimeStampTest.class);
 
 	/**
 	 * test case for TimeStamp.
@@ -25,12 +25,12 @@ public class TimeStampTest {
 		assertNotNull("Value cannot be null", testTimeStamp2);
 		assertNotSame("Not same", testTimeStamp1, testTimeStamp2);
 
-		log.info("{}", testTimeStamp1);
-		log.info("{}", testTimeStamp1.time);
-		log.info("{}", testTimeStamp1.toString());
-		log.info("{}", testTimeStamp2);
-		log.info("{}", testTimeStamp2.time);
-		log.info(testTimeStamp2.toString());
-		log.info(TimeStamp.FORMAT);
+		LOG.trace("{}", testTimeStamp1);
+		LOG.trace("{}", testTimeStamp1.time);
+		LOG.trace("{}", testTimeStamp1.toString());
+		LOG.trace("{}", testTimeStamp2);
+		LOG.trace("{}", testTimeStamp2.time);
+		LOG.trace(testTimeStamp2.toString());
+		LOG.trace(TimeStamp.FORMAT);
 	}
 }

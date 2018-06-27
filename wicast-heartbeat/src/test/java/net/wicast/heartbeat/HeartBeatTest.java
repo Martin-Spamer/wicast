@@ -20,7 +20,7 @@ import org.slf4j.LoggerFactory;
 @Ignore
 public class HeartBeatTest {
 
-    private static final Logger LOG = LoggerFactory.getLogger(HeartBeatTest.class);
+    private static final Logger LOG  = LoggerFactory.getLogger(HeartBeatTest.class);
     private static final String LOOPBACK = "127.0.0.1";
     // 224.0.0.1 is local subnet only, closest multicast equivalent to 127.0.0.1
     private static final String VALID_ADDRESS = "224.0.0.1";

@@ -13,7 +13,7 @@ import net.wicast.AbstractXmlConfig;
  */
 public class MoreConfigTest {
 
-	private static final Logger log = LoggerFactory.getLogger(MoreConfigTest.class);
+	private static final Logger LOG  = LoggerFactory.getLogger(MoreConfigTest.class);
 
 	/**
 	 * fail to load none existing configuration file. <code> </code>
@@ -21,12 +21,12 @@ public class MoreConfigTest {
 	@Test
 	public void test0() {
 		try {
-			log.debug("--- test0 : named configuration file does not exist.");
+			LOG.debug("--- test0 : named configuration file does not exist.");
 			final AbstractXmlConfig config = new HeartBeatConfig("missing.xml");
 			assertNotNull("Value cannot be null",config);
-			log.debug(config.toString());
+			LOG.debug(config.toString());
 		} catch (final Exception exception) {
-			log.error(exception.toString());
+			LOG.error(exception.toString());
 		}
 	}
 
@@ -34,18 +34,18 @@ public class MoreConfigTest {
 	 * test load default configuration file.
 	 * <code>
 	 * 	Config config = new Config();
-	 *  log.debug(config.toString());
+	 *  LOG.debug(config.toString());
 	 * </code>
 	 */
 	@Test
 	public void test1() {
 		try {
-			log.debug("--- test1 : load default configuration file.");
+			LOG.debug("--- test1 : load default configuration file.");
 			final HeartBeatConfig config = new HeartBeatConfig();
 			assertNotNull("Value cannot be null",config);
-			log.debug(config.toString());
+			LOG.debug(config.toString());
 		} catch (final Exception exception) {
-			log.debug(exception.toString());
+			LOG.debug(exception.toString());
 		}
 	}
 
@@ -53,18 +53,18 @@ public class MoreConfigTest {
 	 * test load a named configuration file.
 	 * <code>
 	 * 	Config config = new Config("Application.xml");
-	 *  log.debug( config.toString() ) ;
+	 *  LOG.debug( config.toString() ) ;
 	 *  </code>
 	 */
 	@Test
 	public void test2() {
 		try {
-			log.debug("--- test2 : test load a named configuration file.");
+			LOG.debug("--- test2 : test load a named configuration file.");
 			final HeartBeatConfig config = new HeartBeatConfig("Application.xml");
 			assertNotNull("Value cannot be null",config);
-			log.debug("config" + config.toString());
+			LOG.debug("config" + config.toString());
 		} catch (final Exception exception) {
-			log.debug(exception.toString());
+			LOG.debug(exception.toString());
 		}
 	}
 }
