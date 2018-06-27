@@ -16,7 +16,8 @@ import org.slf4j.LoggerFactory;
  */
 public final class MultiCastSender {
 
-    private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    /** The Constant LOG. */
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastSender.class);
 
     /**
      * Constructor.
@@ -24,7 +25,7 @@ public final class MultiCastSender {
     public MultiCastSender() {
         super();
     }
-    
+
     /**
      * Sending to a Multicast Group.
      * You can send to a multicast socket using either a DatagramSocket
@@ -45,9 +46,9 @@ public final class MultiCastSender {
             socket.close();
             status = true;
         } catch (final SocketException socketException) {
-            this.log.error("{}", socketException);
+            LOG.error("{}", socketException);
         } catch (final IOException ioException) {
-            this.log.error("{}", ioException);
+            LOG.error("{}", ioException);
         }
         return status;
     }
@@ -70,11 +71,11 @@ public final class MultiCastSender {
             socket.close();
             status = true;
         } catch (final SocketException socketException) {
-            this.log.error("{}", socketException);
+            LOG.error("{}", socketException);
         } catch (final IOException ioException) {
-            this.log.error("{}", ioException);
+            LOG.error("{}", ioException);
         } catch (final Exception exception) {
-            this.log.error("{}", exception);
+            LOG.error("{}", exception);
         }
         return status;
     }

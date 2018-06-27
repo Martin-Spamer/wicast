@@ -15,7 +15,8 @@ import org.slf4j.LoggerFactory;
  */
 public final class MultiCastReceiver {
 
-    private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    /** The Constant LOG. */
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
 
     /**
      * receive datagrams by joining a multicast socket.
@@ -36,11 +37,11 @@ public final class MultiCastReceiver {
             final DatagramPacket packet = new DatagramPacket(input, input.length);
             socket.receive(packet);
 
-            this.log.info("Multicast Received");
-            this.log.info("from: " + packet.getAddress().toString());
-            this.log.info("port: " + packet.getPort());
+            LOG.info("Multicast Received");
+            LOG.info("from: " + packet.getAddress().toString());
+            LOG.info("port: " + packet.getPort());
             final int length = packet.getLength();
-            this.log.info("length: " + length);
+            LOG.info("length: " + length);
             final byte[] data = packet.getData();
             System.out.write(data, 0, length);
 
@@ -48,11 +49,11 @@ public final class MultiCastReceiver {
             socket.close();
             status = true;
         } catch (final SocketException socketException) {
-            this.log.error("{}", socketException);
+            LOG.error("{}", socketException);
         } catch (final IOException ioException) {
-            this.log.error("{}", ioException);
+            LOG.error("{}", ioException);
         } catch (final Exception exception) {
-            this.log.error("{}", exception);
+            LOG.error("{}", exception);
         }
         return status;
     }

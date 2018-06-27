@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class MultiCastReceiverTest {
 
+    /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastSenderTest.class);
 
     /**

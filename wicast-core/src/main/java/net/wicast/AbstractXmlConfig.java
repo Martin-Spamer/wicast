@@ -8,9 +8,6 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.Properties;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -31,24 +28,31 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractXmlConfig implements ConfigInterface {
 
-    private static final String XML_TO_PROPERTIES = "fromXml.properties";
-    private static final String PROPERTIES_TO_PROPERTIES = "fromProperties.properties";
-    private static final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
+    /** The Constant XML_TO_PROPERTIES. */
+    private static final String XML_TO_PROPERTIES = "./target/fromXml.properties";
+    
+    /** The Constant PROPERTIES_TO_PROPERTIES. */
+    private static final String PROPERTIES_TO_PROPERTIES = "./target/fromProperties.properties";
+    
+    /** provides logging. */
+    protected final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
 
-    static {
-        final DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        try {
-            final DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        } catch (final ParserConfigurationException parserConfigurationException) {
-            AbstractXmlConfig.log.error(parserConfigurationException.toString());
-        }
-    }
-
+    /** The properties. */
     private final Properties properties = new Properties();
+    
+    /** The properties from xml. */
     private final Properties propertiesFromXml = new Properties();
+    
+    /** The config document. */
     private final Document configDocument = null;
+    
+    /** The config element. */
     private final Element configElement = null;
+    
+    /** The context. */
     private NodeList context = null;
+    
+    /** The index. */
     private int index = 0;
 
     /**
@@ -150,7 +154,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
         try {
             this.properties.load(inputStream);
         } catch (final Exception exception) {
-            AbstractXmlConfig.log.error(exception.toString());
+            this.log.error(exception.toString());
         }
     }
 
@@ -163,7 +167,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
         try {
             this.properties.load(inputStream);
         } catch (final Exception exception) {
-            AbstractXmlConfig.log.error(exception.toString());
+            this.log.error(exception.toString());
         }
     }
 
@@ -193,13 +197,13 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
                 try {
                     this.propertiesFromXml.store(fileOutputStream, "propertiesFromXml.store");
                 } catch (final IOException exception) {
-                    AbstractXmlConfig.log.error(exception.toString());
+                    this.log.error(exception.toString());
                 }
             } catch (final IOException exception) {
-                AbstractXmlConfig.log.error(exception.toString());
+                this.log.error(exception.toString());
             }
         } catch (final FileNotFoundException exception) {
-            AbstractXmlConfig.log.error(exception.toString());
+            this.log.error(exception.toString());
         }
         return true;
     }
@@ -213,25 +217,25 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
         final String encoding = "UTF-8";
         FileOutputStream fileOutputStream;
         try {
-            fileOutputStream = new FileOutputStream("fromProperties.xml");
+            fileOutputStream = new FileOutputStream("./target/fromProperties.xml");
 
             try {
                 String comment = "properties.storeToXML";
                 this.properties.storeToXML(fileOutputStream, comment, encoding);
 
-                fileOutputStream = new FileOutputStream("propertiesFromXml.xml");
+                fileOutputStream = new FileOutputStream("./target/propertiesFromXml.xml");
 
                 try {
                     comment = "propertiesFromXml.storeToXML";
                     this.propertiesFromXml.storeToXML(fileOutputStream, comment, encoding);
                 } catch (final IOException exception) {
-                    AbstractXmlConfig.log.error(exception.toString());
+                    this.log.error(exception.toString());
                 }
             } catch (final IOException exception) {
-                AbstractXmlConfig.log.error(exception.toString());
+                this.log.error(exception.toString());
             }
         } catch (final Exception exception) {
-            AbstractXmlConfig.log.error(exception.toString());
+            this.log.error(exception.toString());
         }
         return true;
     }
@@ -279,11 +283,11 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
             final Transformer transformer = tf.newTransformer();
             transformer.transform(domSource, result);
         } catch (final TransformerConfigurationException e) {
-            AbstractXmlConfig.log.error("{}", e);
+            this.log.error("{}", e);
         } catch (final TransformerFactoryConfigurationError e) {
-            AbstractXmlConfig.log.error("{}", e);
+            this.log.error("{}", e);
         } catch (final TransformerException e) {
-            AbstractXmlConfig.log.error("{}", e);
+            this.log.error("{}", e);
         }
         return writer.toString();
     }
@@ -315,11 +319,11 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
      * Dump to log.
      */
     public void dumpToLog() {
-        AbstractXmlConfig.log.info("{}.dumpToLog", this.getClass().getSimpleName());
-        AbstractXmlConfig.log.info(toXml());
-        AbstractXmlConfig.log.info(xmlToString(this.configDocument));
-        AbstractXmlConfig.log.info(this.properties.toString());
-        AbstractXmlConfig.log.info(this.propertiesFromXml.toString());
+        this.log.info("{}.dumpToLog", this.getClass().getSimpleName());
+        this.log.info(toXml());
+        this.log.info(xmlToString(this.configDocument));
+        this.log.info(this.properties.toString());
+        this.log.info(this.propertiesFromXml.toString());
     }
 
     /**

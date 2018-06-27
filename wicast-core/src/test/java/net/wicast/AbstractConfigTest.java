@@ -12,6 +12,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class AbstractConfigTest {
 
+    /** The Constant LOG. */
     private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigTest.class);
 
     /**
@@ -43,6 +44,9 @@ public class AbstractConfigTest {
         invalidConfig.dumpToLog();
     }
 
+    /**
+     * Unit test to mock config.
+     */
     @Test
     public void testMockConfig() {
         AbstractConfigTest.LOG.info("testAbstractConfig");
@@ -52,6 +56,9 @@ public class AbstractConfigTest {
         invalidConfig.getProperty("key", "defaultValue");
     }
 
+    /**
+     * Unit test to missing config.
+     */
     @Test
     public void testMissingConfig() {
         AbstractConfigTest.LOG.info("testMissingConfig");
@@ -60,6 +67,9 @@ public class AbstractConfigTest {
         missingConfig.dumpToLog();
     }
 
+    /**
+     * Unit test to invalid config.
+     */
     @Test
     public void testInvalidConfig() {
         AbstractConfigTest.LOG.info("testInvalidConfig");

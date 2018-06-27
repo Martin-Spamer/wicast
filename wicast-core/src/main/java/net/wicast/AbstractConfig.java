@@ -13,8 +13,13 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractConfig implements ConfigInterface {
 
+    /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    
+    /** The properties. */
     protected final Properties properties = new Properties();
+    
+    /** The property filename. */
     protected final String propertyFilename;
 
     /**

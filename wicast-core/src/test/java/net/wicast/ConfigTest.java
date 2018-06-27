@@ -12,6 +12,8 @@ import static org.junit.Assert.assertTrue;
  * ConfigTest.
  */
 public class ConfigTest {
+    
+    /** The Constant log. */
     private static final Logger log = LoggerFactory.getLogger(ConfigTest.class);
 
     /**
@@ -22,8 +24,10 @@ public class ConfigTest {
 
     /**
      * Test method for {@link net.wicast.Config#Config()}.
-     *
+     * 
      * exception
+     *
+     * @throws Exception the exception
      */
     @Test
     public void testConfig() throws Exception {

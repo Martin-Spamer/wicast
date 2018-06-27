@@ -6,6 +6,7 @@ package net.wicast.server;
  */
 public class Server {
 
+    /** The config. */
     protected ServerConfig config;
 
     /**
