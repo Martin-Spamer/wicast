@@ -40,6 +40,7 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
      * @throws HeartBeatException the heart beat exception
      */
     public AbstractHeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
+        super();
         this.groupAddress = groupAddress;
         this.portNo = portNo;
         joinGroup(this.groupAddress, this.portNo);
@@ -53,6 +54,7 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
      * @throws HeartBeatException the heart beat exception
      */
     public AbstractHeartBeat(final String groupAddressString, final int portNo) throws HeartBeatException {
+        super();
         try {
             groupAddress = InetAddress.getByName(groupAddressString);
             this.portNo = portNo;

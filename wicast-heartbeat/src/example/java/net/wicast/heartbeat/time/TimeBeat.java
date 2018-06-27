@@ -8,23 +8,23 @@ import org.slf4j.*;
 import net.wicast.heartbeat.*;
 
 /**
- * TimeBeat.
+ * HeartBeat.
  */
-public class TimeBeat extends AbstractHeartBeat {
+public class HeartBeat extends AbstractHeartBeat {
 
-	private static final Logger LOG  = LoggerFactory.getLogger(TimeBeat.class);
+	private static final Logger LOG  = LoggerFactory.getLogger(HeartBeat.class);
 
 	/**
 	 * AbstractHeartBeat.
 	 */
-	public TimeBeat(final String groupAddress, final int portNo) throws HeartBeatException {
+	public HeartBeat(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
 
 	/**
 	 * AbstractHeartBeatMonitor.
 	 */
-	public TimeBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
+	public HeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
 
