@@ -28,16 +28,11 @@ import org.w3c.dom.NodeList;
  */
 public abstract class AbstractXmlConfig implements ConfigInterface {
 
-    private static final String TARGET_PROPERTIES_FROM_XML_XML = "./target/propertiesFromXml.xml";
-
+    private static final String TARGET_PROPERTIES_FROM_XML = "./target/propertiesFromXml.xml";
     private static final String TARGET_FROM_PROPERTIES_XML = "./target/fromProperties.xml";
-
-    /** XML_TO_PROPERTIES. */
     private static final String XML_TO_PROPERTIES = "./target/fromXml.properties";
-    
-    /** PROPERTIES_TO_PROPERTIES. */
     private static final String PROPERTIES_TO_PROPERTIES = "./target/fromProperties.properties";
-    
+
     /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(AbstractXmlConfig.class);
 
@@ -229,7 +224,7 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
                 String comment = "properties.storeToXML";
                 this.properties.storeToXML(fileOutputStream, comment, encoding);
 
-                fileOutputStream = new FileOutputStream(TARGET_PROPERTIES_FROM_XML_XML);
+                fileOutputStream = new FileOutputStream(TARGET_PROPERTIES_FROM_XML);
 
                 try {
                     comment = "propertiesFromXml.storeToXML";
@@ -289,11 +284,11 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
             final Transformer transformer = tf.newTransformer();
             transformer.transform(domSource, result);
         } catch (final TransformerConfigurationException e) {
-            this.log.error("{}", e);
+            log.error(e.getLocalizedMessage());
         } catch (final TransformerFactoryConfigurationError e) {
-            this.log.error("{}", e);
+            log.error(e.getLocalizedMessage());
         } catch (final TransformerException e) {
-            this.log.error("{}", e);
+            log.error(e.getLocalizedMessage());
         }
         return writer.toString();
     }

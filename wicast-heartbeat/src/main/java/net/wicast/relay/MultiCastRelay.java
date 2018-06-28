@@ -63,12 +63,12 @@ public class MultiCastRelay {
                 socket.leaveGroup(InetAddress.getByName(group));
                 socket.close();
                 status = true;
-            } catch (final SocketException exception) {
-                LOG.error("{}", exception);
-            } catch (final IOException exception) {
-                LOG.error("{}", exception);
-            } catch (final Exception exception) {
-                LOG.error("{}", exception);
+            } catch (final SocketException e) {
+                LOG.error(e.getLocalizedMessage());
+            } catch (final IOException e) {
+                LOG.error(e.getLocalizedMessage());
+            } catch (final Exception e) {
+                LOG.error(e.getLocalizedMessage());
             }
             return status;
         }
@@ -85,8 +85,8 @@ public class MultiCastRelay {
                     receiveByMulticastSocket("228.1.2.3", 1234);
                     sleep(1000);
                 }
-            } catch (final InterruptedException exception) {
-                LOG.error("{}", exception);
+            } catch (final InterruptedException e) {
+                LOG.error(e.getLocalizedMessage());
             }
         }
     }
@@ -110,8 +110,8 @@ public class MultiCastRelay {
                     sleep(1000);
                     count++;
                 }
-            } catch (final InterruptedException exception) {
-                LOG.error("{}", exception);
+            } catch (final InterruptedException e) {
+                LOG.error(e.getLocalizedMessage());
             }
         }
 
@@ -132,13 +132,15 @@ public class MultiCastRelay {
                 final DatagramSocket socket = new DatagramSocket();
                 final InetAddress groupAddr = InetAddress.getByName(group);
                 final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, port);
+
                 socket.send(packet);
+
                 socket.close();
                 status = true;
-            } catch (final SocketException exception) {
-                LOG.error("{}", exception);
-            } catch (final IOException exception) {
-                LOG.error("{}", exception);
+            } catch (final SocketException e) {
+                LOG.error(e.getLocalizedMessage());
+            } catch (final IOException e) {
+                LOG.error(e.getLocalizedMessage());
             }
             return status;
         }
@@ -152,19 +154,26 @@ public class MultiCastRelay {
             boolean status = false;
             try {
                 //
-                final int timeToLive = 1;
                 final MulticastSocket socket = new MulticastSocket();
                 final InetAddress byName = InetAddress.getByName(group);
                 final DatagramPacket packet = new DatagramPacket(output, output.length, byName, port);
-                socket.send(packet, (byte) timeToLive);
+
+                // final byte timeToLive = 1;
+                // socket.send(packet, timeToLive);
+                
+                int ttl = socket.getTimeToLive(); 
+                socket.setTimeToLive(ttl);
+                socket.send(packet);
+                socket.setTimeToLive(ttl);
+                
                 socket.close();
                 status = true;
-            } catch (final SocketException exception) {
-                LOG.error("{}", exception);
-            } catch (final IOException exception) {
-                LOG.error("{}", exception);
-            } catch (final Exception exception) {
-                LOG.error("{}", exception);
+            } catch (final SocketException e) {
+                LOG.error(e.getLocalizedMessage());
+            } catch (final IOException e) {
+                LOG.error(e.getLocalizedMessage());
+            } catch (final Exception e) {
+                LOG.error(e.getLocalizedMessage());
             }
             return status;
         }

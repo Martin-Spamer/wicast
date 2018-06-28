@@ -43,11 +43,11 @@ public class HeartBeat extends AbstractHeartBeat {
 
 				this.multicastSocket.send(outBoundDatagramPacket);
 			} catch (final SocketException socketException) {
-				log.error("{}", socketException);
+				log.error( socketException);
 				throw new HeartBeatException(socketException);
 			}
 		} catch (final IOException ioException) {
-			log.error("{}", ioException);
+			log.error( ioException);
 			throw new HeartBeatException(ioException);
 		}
 	}

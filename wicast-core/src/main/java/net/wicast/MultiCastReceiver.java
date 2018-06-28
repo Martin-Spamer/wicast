@@ -17,7 +17,23 @@ public final class MultiCastReceiver {
 
     /** provide logging. */
     private static final Logger LOG  = LoggerFactory.getLogger(MultiCastReceiver.class);
+    private String group;
+    private int port;
 
+    public MultiCastReceiver() {
+        super();
+    }
+
+    public MultiCastReceiver(String group, int port) {
+        super();
+        this.group = group;
+        this.port = port;
+    }
+
+    public boolean receiveByMulticastSocket() {
+        return receiveByMulticastSocket(this.group, this.port);
+        }
+        
     /**
      * receive datagrams by joining a multicast socket.
      *
@@ -43,17 +59,17 @@ public final class MultiCastReceiver {
             final int length = packet.getLength();
             LOG.debug("length: {}", length);
             final byte[] data = packet.getData();
-            System.out.write(data, 0, length);
+            LOG.trace("data = {}", new String(data));
 
             socket.leaveGroup(InetAddress.getByName(group));
             socket.close();
             status = true;
         } catch (final SocketException socketException) {
-            LOG.error("{}", socketException);
+            LOG.error(socketException.getLocalizedMessage());
         } catch (final IOException ioException) {
-            LOG.error("{}", ioException);
+            LOG.error(ioException.getLocalizedMessage());
         } catch (final Exception exception) {
-            LOG.error("{}", exception);
+            LOG.error(exception.toString());
         }
         return status;
     }

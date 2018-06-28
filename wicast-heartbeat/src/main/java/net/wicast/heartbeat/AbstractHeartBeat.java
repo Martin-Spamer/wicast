@@ -28,7 +28,7 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
         try {
             groupAddress = InetAddress.getByName("wicast.net");
         } catch (final UnknownHostException e) {
-            log.error("{}", e.toString());
+            log.error( e.toString());
         }
     }
 
@@ -59,9 +59,9 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
             groupAddress = InetAddress.getByName(groupAddressString);
             this.portNo = portNo;
             joinGroup(groupAddress, this.portNo);
-        } catch (final UnknownHostException exception) {
-            log.error("{}", exception);
-            throw new HeartBeatException(exception);
+        } catch (final UnknownHostException e) {
+            log.error(e.getLocalizedMessage());
+            throw new HeartBeatException(e);
         }
     }
 
@@ -80,12 +80,12 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
                 multicastSocket.setTimeToLive(Thread.MIN_PRIORITY);
                 multicastSocket.joinGroup(groupAddressIn);
             } catch (final SocketException exception) {
-                log.error("{}", exception.getLocalizedMessage());
+                log.error( exception.getLocalizedMessage());
                 throw new HeartBeatException(exception);
             }
-        } catch (final IOException exception) {
-            log.error("{}", exception);
-            throw new HeartBeatException(exception);
+        } catch (final IOException e) {
+            log.error(e.getLocalizedMessage());
+            throw new HeartBeatException(e);
         }
     }
 }

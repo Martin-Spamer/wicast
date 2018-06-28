@@ -76,9 +76,9 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
             final DatagramPacket inboundDatagramPacket = new DatagramPacket(buffer, buffer.length);
             multicastSocket.receive(inboundDatagramPacket);
             multicastSocket.leaveGroup(groupAddress);
-        } catch (final IOException exception) {
-            log.error("{}", exception);
-            throw new HeartBeatException(exception);
+        } catch (final IOException e) {
+            log.error(e.getLocalizedMessage());
+            throw new HeartBeatException(e);
         }
     }
 }

@@ -72,11 +72,11 @@ public class HeartBeat extends AbstractHeartBeat {
 
                 multicastSocket.send(outBoundDatagramPacket);
             } catch (final SocketException exception) {
-                log.error("{}", exception);
+                log.error(exception.getLocalizedMessage());
                 throw new HeartBeatException(exception);
             }
         } catch (final IOException exception) {
-            log.error("{}", exception);
+            log.error( exception.getLocalizedMessage());
             throw new HeartBeatException(exception);
         }
     }
@@ -93,7 +93,7 @@ public class HeartBeat extends AbstractHeartBeat {
         try {
             beat(timeStamp.toString() + "-" + this.getClass().toString());
         } catch (final HeartBeatException exception) {
-            log.error("{}", exception);
+            log.error(exception.getLocalizedMessage());
             this.stop();
         }
     }

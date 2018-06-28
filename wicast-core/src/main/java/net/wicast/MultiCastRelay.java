@@ -59,11 +59,11 @@ public final class MultiCastRelay {
                 socket.close();
                 status = true;
             } catch (final SocketException socketException) {
-                LOG.error("{}", socketException);
+                LOG.error(socketException.getLocalizedMessage());
             } catch (final IOException ioException) {
-                LOG.error("{}", ioException);
+                LOG.error(ioException.getLocalizedMessage());
             } catch (final Exception exception) {
-                LOG.error("{}", exception);
+                LOG.error(exception.toString());
             }
             return status;
         }
@@ -83,6 +83,7 @@ public final class MultiCastRelay {
                     sleep(1000);
                 }
             } catch (final InterruptedException exception) {
+                LOG.error(exception.getLocalizedMessage());
             }
         }
     }
@@ -109,7 +110,9 @@ public final class MultiCastRelay {
                     count++;
                 }
             } catch (final InterruptedException exception) {
-                LOG.error("{}", exception);
+                LOG.error(exception.getLocalizedMessage());
+            } catch (final Exception exception) {
+                LOG.error(exception.toString());
             }
         }
 
@@ -135,9 +138,11 @@ public final class MultiCastRelay {
                 socket.close();
                 status = true;
             } catch (final SocketException socketException) {
-                LOG.error("{}", socketException);
+                LOG.error(socketException.getLocalizedMessage());
             } catch (final IOException ioException) {
-                LOG.error("{}", ioException);
+                LOG.error(ioException.getLocalizedMessage());
+            } catch (final Exception exception) {
+                LOG.error(exception.toString());
             }
             return status;
         }
@@ -153,20 +158,29 @@ public final class MultiCastRelay {
         public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
             boolean status = false;
             try {
-                //
-                final int timeToLive = 1;
                 final MulticastSocket socket = new MulticastSocket();
-                final DatagramPacket packet = new DatagramPacket(output, output.length, InetAddress.getByName(group),
+                final DatagramPacket packet = new DatagramPacket(
+                        output, 
+                        output.length, 
+                        InetAddress.getByName(group),
                         port);
-                socket.send(packet, (byte) timeToLive);
+
+                // final int timeToLive = 1;
+                // socket.send(packet, (byte) timeToLive);
+
+                int ttl = socket.getTimeToLive(); 
+                socket.setTimeToLive(ttl);
+                socket.send(packet);
+                socket.setTimeToLive(ttl);
+                
                 socket.close();
                 status = true;
             } catch (final SocketException socketException) {
-                LOG.error("{}", socketException);
+                LOG.error(socketException.getLocalizedMessage());
             } catch (final IOException ioException) {
-                LOG.error("{}", ioException);
+                LOG.error(ioException.getLocalizedMessage());
             } catch (final Exception exception) {
-                LOG.error("{}", exception);
+                LOG.error(exception.toString());
             }
             return status;
         }
