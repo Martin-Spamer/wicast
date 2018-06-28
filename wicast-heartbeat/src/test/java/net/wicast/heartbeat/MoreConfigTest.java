@@ -63,7 +63,7 @@ public class MoreConfigTest {
             LOG.debug("--- test2 : test load a named configuration file.");
             final HeartBeatConfig config = new HeartBeatConfig("Application.xml");
             assertNotNull("Value cannot be null", config);
-            LOG.debug("config" + config.toString());
+            LOG.debug("config = {}", config.toString());
         } catch (final Exception exception) {
             LOG.debug(exception.toString());
         }

@@ -305,16 +305,16 @@ public abstract class AbstractXmlConfig implements ConfigInterface {
      * @return element CDATA as String.
      */
     protected String xmlToString(final Node node) {
-        StringBuffer text = new StringBuffer();
+        final StringBuffer text = new StringBuffer();
         if (node != null) {
             final String value = node.getNodeValue();
             if (value != null) {
-                text = new StringBuffer(value);
+                text.append(value);
             }
             if (node.hasChildNodes()) {
                 final NodeList children = node.getChildNodes();
                 for (int i = 0; i < children.getLength(); i++) {
-                    Node item = children.item(i);
+                    final Node item = children.item(i);
                     String xmlString = xmlToString(item);
                     text.append(xmlString);
                 }

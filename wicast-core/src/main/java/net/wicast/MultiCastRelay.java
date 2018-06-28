@@ -48,9 +48,9 @@ public final class MultiCastRelay {
                 socket.receive(packet);
 
                 LOG.debug("Multicast Received");
-                LOG.debug("from: " + packet.getAddress().toString());
-                LOG.debug("port: " + packet.getPort());
-                LOG.debug("length: " + packet.getLength());
+                LOG.debug("from: {}", packet.getAddress().toString());
+                LOG.debug("port: {}", packet.getPort());
+                LOG.debug("length: {}", packet.getLength());
 
                 // TODO something with this
                 System.out.write(packet.getData(), 0, packet.getLength());

@@ -40,10 +40,10 @@ public class HeartBeatTest {
             heartBeat.beat();
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
-            fail("implementation error unexpected exception" + exception.getLocalizedMessage());
+            fail("implementation error unexpected exception " + exception.getLocalizedMessage());
         }
     }
 
@@ -60,7 +60,7 @@ public class HeartBeatTest {
             heartBeat.beat();
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -79,7 +79,7 @@ public class HeartBeatTest {
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -98,7 +98,7 @@ public class HeartBeatTest {
             assertNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -117,7 +117,7 @@ public class HeartBeatTest {
             assertNotNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -167,7 +167,7 @@ public class HeartBeatTest {
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -204,7 +204,7 @@ public class HeartBeatTest {
             assertNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
