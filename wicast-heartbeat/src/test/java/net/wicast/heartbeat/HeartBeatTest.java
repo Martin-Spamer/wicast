@@ -75,7 +75,7 @@ public class HeartBeatTest {
     public final void testHeartBeatBadIP() {
         // HeartBeat testInstance = new HeartBeat();
         try {
-            final HeartBeat testInstance = new HeartBeat("xx.xx.xx.xx", HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat("xx.xx.xx.xx", HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
@@ -94,7 +94,7 @@ public class HeartBeatTest {
     public final void testHeartBeatEmptyGroupAddressString() {
         try {
             // HeartBeat testInstance = new HeartBeat();
-            final HeartBeat testInstance = new HeartBeat("", HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat("", HeartBeatTest.PORT);
             assertNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
@@ -113,7 +113,7 @@ public class HeartBeatTest {
     public final void testHeartBeatGoodAddress() {
         // HeartBeat testInstance = new HeartBeat();
         try {
-            final HeartBeat testInstance = new HeartBeat("224.0.0.1", HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat("224.0.0.1", HeartBeatTest.PORT);
             assertNotNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
@@ -131,7 +131,7 @@ public class HeartBeatTest {
     @Test
     public final void testHeartBeatGoodGroupString() {
         try {
-            final HeartBeat testInstance = new HeartBeat(HeartBeatTest.VALID_ADDRESS, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(HeartBeatTest.VALID_ADDRESS, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             fail("unexpected error " + heartBeatException.getLocalizedMessage());
@@ -146,7 +146,7 @@ public class HeartBeatTest {
     public final void testHeartBeatGoogGroupIP() {
         try {
             final InetAddress goodGroupAddress = InetAddress.getByName(HeartBeatTest.VALID_ADDRESS);
-            final HeartBeat testInstance = new HeartBeat(goodGroupAddress, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(goodGroupAddress, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             fail("unexpected error " + heartBeatException.getLocalizedMessage());
@@ -163,7 +163,7 @@ public class HeartBeatTest {
     public final void testHeartBeatInetAddressInt() {
         try {
             final InetAddress validGroupAddress = InetAddress.getByName(HeartBeatTest.VALID_ADDRESS);
-            final HeartBeat testInstance = new HeartBeat(validGroupAddress, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(validGroupAddress, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
@@ -182,7 +182,7 @@ public class HeartBeatTest {
     public final void testHeartBeatNullGroupAddress() {
         try {
             final InetAddress nullGroupAddress = null;
-            final HeartBeat testInstance = new HeartBeat(nullGroupAddress, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(nullGroupAddress, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final NullPointerException nullPointerException) {
             // expected error for test is HeartBeatException - ignore.
@@ -200,7 +200,7 @@ public class HeartBeatTest {
         try {
             // HeartBeat testInstance = new HeartBeat();
             final String nullGroupAddressString = null;
-            final HeartBeat testInstance = new HeartBeat(nullGroupAddressString, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(nullGroupAddressString, HeartBeatTest.PORT);
             assertNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));

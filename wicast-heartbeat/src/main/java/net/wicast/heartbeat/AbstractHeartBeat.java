@@ -18,6 +18,7 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
     protected InetAddress groupAddress;
     protected int portNo;
     protected MulticastSocket multicastSocket;
+    protected boolean exit;
 
     /**
      * AbstractHeartBeat.

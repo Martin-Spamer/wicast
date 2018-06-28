@@ -13,7 +13,6 @@ public class HeartBeat extends AbstractHeartBeat {
 
     private static final String ADDRESS = "224.0.0.1";
     private static final int PORT = 1;
-
     /**
      * Instantiates a new heart beat.
      *
@@ -91,10 +90,15 @@ public class HeartBeat extends AbstractHeartBeat {
     public void run() {
         final TimeStamp timeStamp = new TimeStamp();
         try {
-            beat(timeStamp.toString() + "-" + this.getClass().toString());
+            String message = String.format("%s - %s", timeStamp, this.getClass().getSimpleName());
+            beat(message);
         } catch (final HeartBeatException exception) {
             log.error(exception.getLocalizedMessage());
-            this.stop();
+            this.exit();
         }
+    }
+
+    private void exit() {
+        this.exit = true;
     }
 }
