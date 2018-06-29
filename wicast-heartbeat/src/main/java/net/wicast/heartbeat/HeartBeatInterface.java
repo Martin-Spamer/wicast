@@ -12,6 +12,6 @@ public interface HeartBeatInterface {
      * @param message the message
      * @throws HeartBeatException the heart beat exception
      */
-    public void beat(final String message) throws HeartBeatException;
+    void beat(final String message) throws HeartBeatException;
 
 }

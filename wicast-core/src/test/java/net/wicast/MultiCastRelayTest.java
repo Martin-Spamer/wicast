@@ -22,7 +22,8 @@ public class MultiCastRelayTest {
     public void testMultiCastRelay() {
         final MultiCastRelay multiCastRelay = new MultiCastRelay();
         assertNotNull("Value cannot be null", multiCastRelay);
-        LOG.info("{}", multiCastRelay);
+        final String string = multiCastRelay.toString();
+        LOG.info(string);
     }
 
 }

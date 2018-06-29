@@ -5,76 +5,60 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 /**
- * A UnitTest for AbstractConfiguration objects.
+ * Unit tests for the abstract configuration class.
  */
 public class AbstractConfigTest {
 
-    /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigTest.class);
 
-    /**
-     * Mock Configuration.
-     */
-    public class MockConfig extends AbstractXmlConfig {
+    public class TestConfig extends AbstractConfig {
+    }
+
+    public class EmptyConfig extends AbstractConfig {
+    }
+
+    public class MissingConfig extends AbstractConfig {
     }
 
     /**
-     * Missing Configuration.
-     */
-    public class MissingConfig extends AbstractXmlConfig {
-    }
-
-    /**
-     * Invalid Configuration.
-     */
-    public class InvalidConfig extends AbstractXmlConfig {
-    }
-
-    /**
-     * Unit Test for test abstract Configuration.
+     * Test method for {@link net.wicast.HeartBeatConfig#Config()}.
      */
     @Test
-    public void testAbstractConfig() {
-        LOG.info("testAbstractConfig");
-        final AbstractXmlConfig invalidConfig = new MockConfig();
-        assertNotNull("Value cannot be null", invalidConfig);
-        invalidConfig.dumpToLog();
+    public final void testConfig() {
+        final ConfigInterface config = new TestConfig();
+        assertNotNull("Value cannot be null", config);
+    }
+
+    @Test
+    public final void testMissingConfig() {
+        final ConfigInterface config = new MissingConfig();
+        assertNotNull("Value cannot be null", config);
+    }
+
+    @Test
+    public final void testEmptyConfig() {
+        final EmptyConfig config = new EmptyConfig();
+        assertNotNull("Value cannot be null", config);
+        assertNull(config.getProperty("key"));
+        assertEquals("default", config.getProperty("key", "default"));
     }
 
     /**
-     * Unit test to mock config.
+     * Test method for {@link net.wicast.HeartBeatConfig#Config()}.
      */
     @Test
-    public void testMockConfig() {
-        LOG.info("testAbstractConfig");
-        final AbstractXmlConfig invalidConfig = new MockConfig();
-        assertNotNull("Value cannot be null", invalidConfig);
-        invalidConfig.getProperty("key");
-        invalidConfig.getProperty("key", "defaultValue");
+    public final void testConfigSetGet() {
+        final ConfigInterface config = new TestConfig();
+        assertNotNull("Value cannot be null", config);
+        assertEquals("value", config.getProperty("key"));
+        assertEquals("default", config.getProperty("missing-key", "default"));
+        assertNotNull("Value cannot be null", config.toString());
+        LOG.debug("config = {}", config);
     }
 
-    /**
-     * Unit test to missing config.
-     */
-    @Test
-    public void testMissingConfig() {
-        LOG.info("testMissingConfig");
-        final AbstractXmlConfig missingConfig = new MissingConfig();
-        assertNotNull("Value cannot be null", missingConfig);
-        missingConfig.dumpToLog();
-    }
-
-    /**
-     * Unit test to invalid config.
-     */
-    @Test
-    public void testInvalidConfig() {
-        LOG.info("testInvalidConfig");
-        final AbstractXmlConfig invalidConfig = new InvalidConfig();
-        assertNotNull("Value cannot be null", invalidConfig);
-        invalidConfig.dumpToLog();
-    }
 }

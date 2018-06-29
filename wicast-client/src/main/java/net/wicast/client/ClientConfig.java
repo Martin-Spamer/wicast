@@ -1,11 +1,8 @@
 
 package net.wicast.client;
 
-import net.wicast.AbstractXmlConfig;
+import net.wicast.WiCastConfig;
 
-/**
- * WiCast Client Configuration Class.
- */
-public class ClientConfig extends AbstractXmlConfig {
+public class ClientConfig extends WiCastConfig {
 
 }

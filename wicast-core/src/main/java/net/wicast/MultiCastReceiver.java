@@ -16,15 +16,24 @@ import org.slf4j.LoggerFactory;
 public final class MultiCastReceiver {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastReceiver.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
+    private WiCastConfig config;
     private String group;
     private int port;
 
     public MultiCastReceiver() {
         super();
+        this.config = new WiCastConfig();
     }
 
-    public MultiCastReceiver(String group, int port) {
+    public MultiCastReceiver(final WiCastConfig config) {
+        super();
+        this.config = config;
+        this.group = config.getGroup();
+        this.port = config.getPort();
+    }
+
+    public MultiCastReceiver(final String group, final int port) {
         super();
         this.group = group;
         this.port = port;
@@ -32,8 +41,8 @@ public final class MultiCastReceiver {
 
     public boolean receiveByMulticastSocket() {
         return receiveByMulticastSocket(this.group, this.port);
-        }
-        
+    }
+
     /**
      * receive datagrams by joining a multicast socket.
      *
@@ -72,6 +81,15 @@ public final class MultiCastReceiver {
             LOG.error(exception.toString());
         }
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s [group=%s, port=%s, config=%s]",
+                this.getClass().getSimpleName(),
+                this.group,
+                this.port,
+                this.config);
     }
 
 }

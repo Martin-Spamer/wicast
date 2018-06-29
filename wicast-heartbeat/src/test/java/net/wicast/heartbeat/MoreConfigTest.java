@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertNotNull;
 
-import net.wicast.AbstractXmlConfig;
+import net.wicast.AbstractConfig;
 
 /**
  * class MoreConfigTest.
@@ -23,7 +23,7 @@ public class MoreConfigTest {
     public void test0() {
         try {
             LOG.debug("--- test0 : named configuration file does not exist.");
-            final AbstractXmlConfig config = new HeartBeatConfig("missing.xml");
+            final AbstractConfig config = new HeartBeatConfig("missing.xml");
             assertNotNull("Value cannot be null", config);
             LOG.debug(config.toString());
         } catch (final Exception exception) {

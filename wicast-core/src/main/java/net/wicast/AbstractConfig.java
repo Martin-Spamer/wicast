@@ -8,26 +8,35 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertNotNull;
+
 /**
  * An abstract Configuration class.
+ *
+ * This class is a thin wrapper around the <code>Properties</code> class, it
+ * will load the properties file with the same name as the class from the
+ * resources classpath.
+ *
+ * <code>AppConfig extends AbstractConfig</code>
+ *
+ * This will load the 'AppConfig.properties' file from the jar.
+ * The 'AppConfig.properties' files should be placed in the project folder
+ * src/main/resources.
+ *
  */
 public abstract class AbstractConfig implements ConfigInterface {
 
     /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
-    
-    /** The properties. */
     protected final Properties properties = new Properties();
-    
-    /** The property filename. */
-    protected final String propertyFilename;
+    protected String propertyFilename;
 
     /**
      * Instantiates a new abstract configuration.
      */
     public AbstractConfig() {
-        this.propertyFilename = this.getClass().getSimpleName();
-        loadFromPropertyFile(this.propertyFilename);
+        super();
+        loadPropertyFileFrom(defaultFilename());
     }
 
     /**
@@ -37,7 +46,17 @@ public abstract class AbstractConfig implements ConfigInterface {
      */
     public AbstractConfig(final String configFilename) {
         this.propertyFilename = configFilename;
-        loadFromPropertyFile(configFilename);
+        loadPropertyFileFrom(configFilename);
+    }
+
+    /**
+     * Default filename.
+     *
+     * @return the string
+     */
+    protected String defaultFilename() {
+        this.propertyFilename = this.getClass().getSimpleName();
+        return this.propertyFilename;
     }
 
     /**
@@ -47,8 +66,29 @@ public abstract class AbstractConfig implements ConfigInterface {
      *
      * @param configFilename the Configuration filename
      */
-    private void loadFromPropertyFile(final String configFilename) {
-        loadFromPropertyFile(inputStream(toPropertyFilename(configFilename)));
+    protected void loadPropertyFileFrom(final String configFilename) {
+        final InputStream inputStream = inputStream(toPropertyFilename(configFilename));
+        if (inputStream != null) {
+            loadPropertyFileFrom(inputStream);
+        } else {
+            this.log.warn("Using class default values, property file '{}' not found.", configFilename);
+        }
+    }
+
+    /**
+     * Load from property file.
+     *
+     * resource as stream
+     *
+     * @param resourceAsStream the resource as stream
+     */
+    protected void loadPropertyFileFrom(final InputStream resourceAsStream) {
+        assertNotNull(resourceAsStream);
+        try {
+            this.properties.load(resourceAsStream);
+        } catch (final IOException exception) {
+            this.log.error(exception.toString());
+        }
     }
 
     /**
@@ -64,54 +104,7 @@ public abstract class AbstractConfig implements ConfigInterface {
     }
 
     /**
-     * Load from property file.
-     *
-     * resource as stream
-     *
-     * @param resourceAsStream the resource as stream
-     */
-    public void loadFromPropertyFile(final InputStream resourceAsStream) {
-        if (resourceAsStream != null) {
-            try {
-                this.properties.load(resourceAsStream);
-            } catch (final IOException exception) {
-                this.log.error(exception.toString());
-            }
-        }
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see framework.config.ConfigInterface#getProperty(java.lang.String)
-     */
-    @Override
-    public String getProperty(final String key) {
-        String property = System.getProperty(key);
-        if (property == null) {
-            property = this.properties.getProperty(key);
-        }
-        return property;
-    }
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see framework.config.ConfigInterface#getProperty(java.lang.String,
-     * java.lang.String)
-     */
-    @Override
-    public String getProperty(final String key, final String defaultValue) {
-        String property = System.getProperty(key);
-        if (property == null) {
-            property = this.properties.getProperty(key, defaultValue);
-        }
-        return property;
-    }
-
-    /**
      * To property filename.
-     *
      *
      * @param configFilename the Configuration filename
      * @return the string
@@ -123,12 +116,45 @@ public abstract class AbstractConfig implements ConfigInterface {
     /*
      * (non-Javadoc)
      *
+     * @see framework.config.ConfigInterface#getProperty(java.lang.String)
+     */
+    @Override
+    public String getProperty(final String key) {
+        final String property = System.getProperty(key);
+        if (property == null) {
+            return this.properties.getProperty(key);
+        } else {
+            this.log.warn("Using system property value '{}' for '{}'", property, key);
+            return property;
+        }
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see framework.config.ConfigInterface#getProperty(java.lang.String,
+     * java.lang.String)
+     */
+    @Override
+    public String getProperty(final String key, final String defaultValue) {
+        final String property = System.getProperty(key);
+        if (property == null) {
+            return this.properties.getProperty(key, defaultValue);
+        } else {
+            this.log.warn("Using system property value '{}' for '{}'", property, key);
+            return property;
+        }
+    }
+
+    /*
+     * (non-Javadoc)
+     *
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
-        final String prettyProperties = prettyProperties(this.properties);
-        return String.format("properties = %s", prettyProperties);
+        final String className = this.getClass().getSimpleName();
+        return String.format("%s [properties=%s]", className, prettyProperties(this.properties));
     }
 
     /**
@@ -137,8 +163,29 @@ public abstract class AbstractConfig implements ConfigInterface {
      * @param properties the properties
      * @return the string
      */
-    private String prettyProperties(final Properties properties) {
-        return properties.toString().replace("{", "{\n\t").replace(", ", "\n\t").replace("}", "\n\t}");
+    protected String prettyProperties(final Properties properties) {
+        if (properties == null) {
+            return "{null}";
+        } else if (properties.isEmpty()) {
+            return "{empty}";
+        } else {
+            return prettyProperties(properties.toString());
+        }
+    }
+
+    /**
+     * Pretty Format the properties.
+     *
+     * @param properties the properties as String.
+     * @return the properties as a formated String.
+     */
+    protected String prettyProperties(final String properties) {
+        return properties
+            .replace("[", "[\n\t")
+            .replace("{", "{\n\t")
+            .replace(", ", "\n\t")
+            .replace("}", "\n\t}")
+            .replace("]", "\n\t]}");
     }
 
 }

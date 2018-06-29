@@ -34,6 +34,7 @@ public class HeartBeat extends AbstractHeartBeat {
 	 */
 	@Override
 	public void beat(final String message) throws HeartBeatException {
+		LOG.trace(message);
 		try {
 			try {
 				this.multicastSocket.joinGroup(this.groupAddress);

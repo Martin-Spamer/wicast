@@ -1,12 +1,12 @@
 
 package net.wicast.heartbeat;
 
-import net.wicast.AbstractXmlConfig;
+import net.wicast.AbstractConfig;
 
 /**
  * Configuration class.
  */
-public class HeartBeatConfig extends AbstractXmlConfig {
+public class HeartBeatConfig extends AbstractConfig {
 
     /**
      * Instantiates a new Configuration.
