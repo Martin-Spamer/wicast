@@ -2,11 +2,20 @@
 
 WiCast Wireless MultiCasting
 
-## Usage
+## Usage 
 
-### Clone to your local
+You can clone the project locally for building with Maven or importing into an IDE as a Maven project.
 
-### Build with Maven
+### Clone the project locally
+
+	git clone https://github.com/Martin-Spamer/wicast.git
+
+### Import Project, Build and Install using Maven
+
+Import the project into your choosen IDE as a Maven project, it can be run as JUnit test cases, to expose its behaviour or installed into your local repository to be used as a dependency.
+
+	mvn install
+
 
 ### Add dependency to your project
 
