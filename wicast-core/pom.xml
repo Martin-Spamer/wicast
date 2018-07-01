@@ -7,14 +7,14 @@
 	<groupId>net.wicast</groupId>
 	<artifactId>wicast-core</artifactId>
 	<packaging>jar</packaging>
-	<version>0.6.0-SNAPSHOT</version>
+	<version>0.7.0-SNAPSHOT</version>
 	<name>Multicast Core</name>
 	<url>http://wicast.net</url>
 
 	<parent>
 		<groupId>net.wicast</groupId>
 		<artifactId>wicast</artifactId>
-		<version>0.6.0-SNAPSHOT</version>
+		<version>0.7.0-SNAPSHOT</version>
 	</parent>
 
 	<build>
@@ -23,6 +23,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.7.0</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
