@@ -1,5 +1,8 @@
 language: java
+branches:
+  only:
+  - master
 jdk:
-- oraclejdk8
+  - openjdk8
 script:
-- "mvn install"
+  - "mvn site"

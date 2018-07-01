@@ -10,9 +10,9 @@ You can clone the project locally for building with Maven or importing into an I
 
 	git clone https://github.com/Martin-Spamer/wicast.git
 
-### Build and Install using Maven
+### Import Project, Build and Install using Maven
 
-Us Maven to build and install WiCast into your local repository.
+Import the project into your choosen IDE as a Maven project, it can be run as JUnit test cases, to expose its behaviour or installed into your local repository to be used as a dependency.
 
 	mvn install
 

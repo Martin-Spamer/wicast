@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 public class MultiCastRelayTest {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastRelayTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelayTest.class);
 
     /**
      * Unit Test to multicast relay.
@@ -22,7 +22,8 @@ public class MultiCastRelayTest {
     public void testMultiCastRelay() {
         final MultiCastRelay multiCastRelay = new MultiCastRelay();
         assertNotNull("Value cannot be null", multiCastRelay);
-        MultiCastRelayTest.LOG.info("{}", multiCastRelay);
+        final String string = multiCastRelay.toString();
+        LOG.info(string);
     }
 
 }

@@ -1,5 +1,5 @@
 
-package net.wicast.client;
+package net.wicast.heartbeat;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -9,17 +9,16 @@ import static org.junit.Assert.assertNotNull;
 
 import static org.junit.Assume.assumeNotNull;
 
-public class ClientConfigTest {
+/**
+ * Unit tests for heartbeat configuration class.
+ */
+public class HeartBeatConfigTest {
 
-    /** provide logging. */
-    private static final Logger LOG = LoggerFactory.getLogger(ClientConfigTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HeartBeatConfigTest.class);
 
-    /**
-     * Unit Test for client configuration.
-     */
     @Test
-    public void testClientConfig() {
-        final ClientConfig config = new ClientConfig();
+    public final void testHeartBeatConfig() {
+        final HeartBeatConfig config = new HeartBeatConfig();
         assumeNotNull(config);
         final String string = config.toString();
         assertNotNull(string);

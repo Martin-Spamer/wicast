@@ -13,10 +13,9 @@ public class HeartBeat extends AbstractHeartBeat {
 
     private static final String ADDRESS = "224.0.0.1";
     private static final int PORT = 1;
-
     /**
      * Instantiates a new heart beat.
-     * 
+     *
      * @throws HeartBeatException
      */
     public HeartBeat() throws HeartBeatException {
@@ -47,7 +46,7 @@ public class HeartBeat extends AbstractHeartBeat {
 
     /**
      * Beat.
-     * 
+     *
      * @throws HeartBeatException
      */
     public void beat() throws HeartBeatException {
@@ -65,18 +64,18 @@ public class HeartBeat extends AbstractHeartBeat {
     public void beat(final String message) throws HeartBeatException {
         try {
             try {
-                this.multicastSocket.joinGroup(this.groupAddress);
+                multicastSocket.joinGroup(groupAddress);
 
                 final DatagramPacket outBoundDatagramPacket = new DatagramPacket(message.getBytes(), message.length(),
-                        this.groupAddress, this.portNo);
+                        groupAddress, portNo);
 
-                this.multicastSocket.send(outBoundDatagramPacket);
+                multicastSocket.send(outBoundDatagramPacket);
             } catch (final SocketException exception) {
-                log.error("{}", exception);
+                log.error(exception.getLocalizedMessage());
                 throw new HeartBeatException(exception);
             }
         } catch (final IOException exception) {
-            log.error("{}", exception);
+            log.error( exception.getLocalizedMessage());
             throw new HeartBeatException(exception);
         }
     }
@@ -91,10 +90,15 @@ public class HeartBeat extends AbstractHeartBeat {
     public void run() {
         final TimeStamp timeStamp = new TimeStamp();
         try {
-            beat(timeStamp.toString() + "-" + this.getClass().toString());
+            String message = String.format("%s - %s", timeStamp, this.getClass().getSimpleName());
+            beat(message);
         } catch (final HeartBeatException exception) {
-            log.error("{}", exception);
-            this.stop();
+            log.error(exception.getLocalizedMessage());
+            this.exit();
         }
+    }
+
+    private void exit() {
+        this.exit = true;
     }
 }

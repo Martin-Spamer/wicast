@@ -7,21 +7,22 @@ import org.slf4j.LoggerFactory;
 
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Server Configuration Unit Tests.
- */
+import static org.junit.Assume.assumeNotNull;
+
 public class ServerConfigTest {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(ServerConfigTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ServerConfigTest.class);
 
     /**
      * Unit Test for server configuration.
      */
     @Test
     public void testServerConfig() {
-        final ServerConfig serverConfig = new ServerConfig();
-        assertNotNull("Value cannot be null", serverConfig);
+        final ServerConfig config = new ServerConfig();
+        assumeNotNull(config);
+        final String string = config.toString();
+        assertNotNull(string);
+        LOG.info(string);
     }
-
 }

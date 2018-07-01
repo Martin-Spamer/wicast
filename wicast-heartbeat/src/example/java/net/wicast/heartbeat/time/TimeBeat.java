@@ -8,23 +8,23 @@ import org.slf4j.*;
 import net.wicast.heartbeat.*;
 
 /**
- * TimeBeat.
+ * HeartBeat.
  */
-public class TimeBeat extends AbstractHeartBeat {
+public class HeartBeat extends AbstractHeartBeat {
 
-	private static final Logger LOG  = LoggerFactory.getLogger(TimeBeat.class);
+	private static final Logger LOG  = LoggerFactory.getLogger(HeartBeat.class);
 
 	/**
 	 * AbstractHeartBeat.
 	 */
-	public TimeBeat(final String groupAddress, final int portNo) throws HeartBeatException {
+	public HeartBeat(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
 
 	/**
 	 * AbstractHeartBeatMonitor.
 	 */
-	public TimeBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
+	public HeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
 
@@ -34,6 +34,7 @@ public class TimeBeat extends AbstractHeartBeat {
 	 */
 	@Override
 	public void beat(final String message) throws HeartBeatException {
+		LOG.trace(message);
 		try {
 			try {
 				this.multicastSocket.joinGroup(this.groupAddress);
@@ -43,11 +44,11 @@ public class TimeBeat extends AbstractHeartBeat {
 
 				this.multicastSocket.send(outBoundDatagramPacket);
 			} catch (final SocketException socketException) {
-				log.error("{}", socketException);
+				log.error( socketException);
 				throw new HeartBeatException(socketException);
 			}
 		} catch (final IOException ioException) {
-			log.error("{}", ioException);
+			log.error( ioException);
 			throw new HeartBeatException(ioException);
 		}
 	}

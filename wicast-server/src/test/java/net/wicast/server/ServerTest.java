@@ -18,6 +18,7 @@ public class ServerTest {
         final Server server = new Server();
         assertNotNull("Value cannot be null", server);
         assertNotNull("Value cannot be null", server.start());
+        assertNotNull("Value cannot be null", server.exit());
     }
 
 }

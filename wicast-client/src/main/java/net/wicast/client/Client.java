@@ -6,20 +6,20 @@ package net.wicast.client;
  */
 public final class Client {
 
-    /** Configuration for Multicast client class. */
-    protected ClientConfig config;
+    protected final ClientConfig config;
 
     /**
      * Instantiates a new client.
      */
     public Client() {
+        super();
         this.config = new ClientConfig();
     }
 
     /**
      * Start.
      *
-     * @return the client
+     * @return this for a fluent interface.
      */
     public Client start() {
         return this;
@@ -28,9 +28,10 @@ public final class Client {
     /**
      * Stop.
      *
-     * @return the client
+     * @return this for a fluent interface.
      */
-    public Client stop() {
+    public Client exit() {
         return this;
     }
+
 }

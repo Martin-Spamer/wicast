@@ -1,11 +1,6 @@
 
 package net.wicast.heartbeat;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -14,13 +9,18 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
 /**
  * HeartBeatTest.
  */
 @Ignore
 public class HeartBeatTest {
 
-    private static final Logger LOG  = LoggerFactory.getLogger(HeartBeatTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HeartBeatTest.class);
     private static final String LOOPBACK = "127.0.0.1";
     // 224.0.0.1 is local subnet only, closest multicast equivalent to 127.0.0.1
     private static final String VALID_ADDRESS = "224.0.0.1";
@@ -40,10 +40,10 @@ public class HeartBeatTest {
             heartBeat.beat();
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
-            fail("implementation error unexpected exception" + exception.getLocalizedMessage());
+            fail("implementation error unexpected exception " + exception.getLocalizedMessage());
         }
     }
 
@@ -60,7 +60,7 @@ public class HeartBeatTest {
             heartBeat.beat();
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -75,11 +75,11 @@ public class HeartBeatTest {
     public final void testHeartBeatBadIP() {
         // HeartBeat testInstance = new HeartBeat();
         try {
-            final HeartBeat testInstance = new HeartBeat("xx.xx.xx.xx", HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat("xx.xx.xx.xx", HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getCause() instanceof java.net.UnknownHostException);
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -94,11 +94,11 @@ public class HeartBeatTest {
     public final void testHeartBeatEmptyGroupAddressString() {
         try {
             // HeartBeat testInstance = new HeartBeat();
-            final HeartBeat testInstance = new HeartBeat("", HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat("", HeartBeatTest.PORT);
             assertNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -113,11 +113,11 @@ public class HeartBeatTest {
     public final void testHeartBeatGoodAddress() {
         // HeartBeat testInstance = new HeartBeat();
         try {
-            final HeartBeat testInstance = new HeartBeat("224.0.0.1", HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat("224.0.0.1", HeartBeatTest.PORT);
             assertNotNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -131,7 +131,7 @@ public class HeartBeatTest {
     @Test
     public final void testHeartBeatGoodGroupString() {
         try {
-            final HeartBeat testInstance = new HeartBeat(HeartBeatTest.VALID_ADDRESS, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(HeartBeatTest.VALID_ADDRESS, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             fail("unexpected error " + heartBeatException.getLocalizedMessage());
@@ -146,7 +146,7 @@ public class HeartBeatTest {
     public final void testHeartBeatGoogGroupIP() {
         try {
             final InetAddress goodGroupAddress = InetAddress.getByName(HeartBeatTest.VALID_ADDRESS);
-            final HeartBeat testInstance = new HeartBeat(goodGroupAddress, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(goodGroupAddress, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             fail("unexpected error " + heartBeatException.getLocalizedMessage());
@@ -163,11 +163,11 @@ public class HeartBeatTest {
     public final void testHeartBeatInetAddressInt() {
         try {
             final InetAddress validGroupAddress = InetAddress.getByName(HeartBeatTest.VALID_ADDRESS);
-            final HeartBeat testInstance = new HeartBeat(validGroupAddress, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(validGroupAddress, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());
@@ -182,7 +182,7 @@ public class HeartBeatTest {
     public final void testHeartBeatNullGroupAddress() {
         try {
             final InetAddress nullGroupAddress = null;
-            final HeartBeat testInstance = new HeartBeat(nullGroupAddress, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(nullGroupAddress, HeartBeatTest.PORT);
             assertNotNull("Value cannot be null", testInstance);
         } catch (final NullPointerException nullPointerException) {
             // expected error for test is HeartBeatException - ignore.
@@ -200,11 +200,11 @@ public class HeartBeatTest {
         try {
             // HeartBeat testInstance = new HeartBeat();
             final String nullGroupAddressString = null;
-            final HeartBeat testInstance = new HeartBeat(nullGroupAddressString, HeartBeatTest.PORT);
+            final AbstractHeartBeat testInstance = new HeartBeat(nullGroupAddressString, HeartBeatTest.PORT);
             assertNull(testInstance);
         } catch (final HeartBeatException heartBeatException) {
             assertTrue(heartBeatException.getLocalizedMessage().contains("Not a multicast address"));
-            LOG.debug("Expected:" + heartBeatException.getLocalizedMessage());
+            LOG.debug("Expected: {}", heartBeatException.getLocalizedMessage());
             // expected error for test is HeartBeatException - ignore.
         } catch (final Exception exception) {
             fail("implementation error unexpected exception" + exception.getLocalizedMessage());

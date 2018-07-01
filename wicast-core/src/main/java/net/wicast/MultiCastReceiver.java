@@ -16,7 +16,32 @@ import org.slf4j.LoggerFactory;
 public final class MultiCastReceiver {
 
     /** provide logging. */
-    private static final Logger LOG  = LoggerFactory.getLogger(MultiCastReceiver.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
+    private WiCastConfig config;
+    private String group;
+    private int port;
+
+    public MultiCastReceiver() {
+        super();
+        this.config = new WiCastConfig();
+    }
+
+    public MultiCastReceiver(final WiCastConfig config) {
+        super();
+        this.config = config;
+        this.group = config.getGroup();
+        this.port = config.getPort();
+    }
+
+    public MultiCastReceiver(final String group, final int port) {
+        super();
+        this.group = group;
+        this.port = port;
+    }
+
+    public boolean receiveByMulticastSocket() {
+        return receiveByMulticastSocket(this.group, this.port);
+    }
 
     /**
      * receive datagrams by joining a multicast socket.
@@ -37,25 +62,34 @@ public final class MultiCastReceiver {
             final DatagramPacket packet = new DatagramPacket(input, input.length);
             socket.receive(packet);
 
-            LOG.info("Multicast Received");
-            LOG.info("from: " + packet.getAddress().toString());
-            LOG.info("port: " + packet.getPort());
+            LOG.debug("Multicast Received");
+            LOG.debug("from: {}", packet.getAddress().toString());
+            LOG.debug("port: {}", packet.getPort());
             final int length = packet.getLength();
-            LOG.info("length: " + length);
+            LOG.debug("length: {}", length);
             final byte[] data = packet.getData();
-            System.out.write(data, 0, length);
+            LOG.trace("data = {}", new String(data));
 
             socket.leaveGroup(InetAddress.getByName(group));
             socket.close();
             status = true;
         } catch (final SocketException socketException) {
-            LOG.error("{}", socketException);
+            LOG.error(socketException.getLocalizedMessage());
         } catch (final IOException ioException) {
-            LOG.error("{}", ioException);
+            LOG.error(ioException.getLocalizedMessage());
         } catch (final Exception exception) {
-            LOG.error("{}", exception);
+            LOG.error(exception.toString());
         }
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s [group=%s, port=%s, config=%s]",
+                this.getClass().getSimpleName(),
+                this.group,
+                this.port,
+                this.config);
     }
 
 }

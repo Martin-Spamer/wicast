@@ -1,13 +1,13 @@
 
 package net.wicast.heartbeat;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * AbstractHeartBeatMonitorTest class.
