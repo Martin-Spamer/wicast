@@ -16,14 +16,13 @@ Import the project into your choosen IDE as a Maven project, it can be run as JU
 
 	mvn install
 
-
 ### Add dependency to your project
 
 	<dependency>
 		<groupId>net.wicast</groupId>
 		<artifactId>wicast</artifactId>
 		<packaging>jar</packaging>
-		<version>1.0-SNAPSHOT</version>
+		<version>...</version>
 	</dependency>
 	
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3e7b555e65ed48059bb1bd88d40a1d57)](https://www.codacy.com/app/Martin-Spamer/wicast?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Martin-Spamer/wicast&amp;utm_campaign=Badge_Grade)
