@@ -1,8 +1,9 @@
 language: java
+jdk:
+  - openjdk7
+  - openjdk8
 branches:
   only:
   - master
-jdk:
-  - openjdk8
 script:
   - "mvn site"
