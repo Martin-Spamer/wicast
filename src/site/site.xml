@@ -40,18 +40,4 @@
 
 	</body>
 
-	<skin>
-		<groupId>org.apache.maven.skins</groupId>
-		<artifactId>maven-fluido-skin</artifactId>
-		<version>1.6</version>
-	</skin>
-
-	<custom>
-		<fluidoSkin>
-			<googleSearch>
-				<sitesearch />
-			</googleSearch>
-		</fluidoSkin>
-	</custom>
-
 </project>
