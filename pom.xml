@@ -15,9 +15,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<java.version>1.8</java.version>
 		<junit.version>4.12</junit.version>
 		<slf4j.version>1.7.25</slf4j.version>
 	</properties>
@@ -76,14 +73,6 @@
 			<version>${junit.version}</version>
 		</dependency>
 
-<!-- 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
--->
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
@@ -110,10 +99,6 @@
 					<version>3.7.0</version>
 					<configuration>
 						<encoding>UTF-8</encoding>
-						<!-- 
-						<source>${java.version}</source>
-						<target>${java.version}</target>
-						-->
 					</configuration>
 				</plugin>
 			
