@@ -7,13 +7,7 @@
 .project
 .metadata/
 .settings/
-*.class
-*.jar
-*.war
-*.ear
-
-/log4j/
 
 # Maven
 /pom.xml.versionsBackup
-/target/
+target/
