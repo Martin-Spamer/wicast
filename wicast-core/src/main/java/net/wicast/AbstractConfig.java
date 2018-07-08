@@ -99,8 +99,7 @@ public abstract class AbstractConfig implements ConfigInterface {
      */
     protected InputStream inputStream(final String resourceName) {
         final ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        final InputStream resourceAsStream = classloader.getResourceAsStream(resourceName);
-        return resourceAsStream;
+        return classloader.getResourceAsStream(resourceName);
     }
 
     /**
@@ -118,7 +117,6 @@ public abstract class AbstractConfig implements ConfigInterface {
      *
      * @see framework.config.ConfigInterface#getProperty(java.lang.String)
      */
-    @Override
     public String getProperty(final String key) {
         final String property = System.getProperty(key);
         if (property == null) {
@@ -135,7 +133,6 @@ public abstract class AbstractConfig implements ConfigInterface {
      * @see framework.config.ConfigInterface#getProperty(java.lang.String,
      * java.lang.String)
      */
-    @Override
     public String getProperty(final String key, final String defaultValue) {
         final String property = System.getProperty(key);
         if (property == null) {

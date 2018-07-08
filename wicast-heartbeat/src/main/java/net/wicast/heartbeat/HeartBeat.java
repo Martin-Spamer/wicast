@@ -16,7 +16,7 @@ public class HeartBeat extends AbstractHeartBeat {
     /**
      * Instantiates a new heart beat.
      *
-     * @throws HeartBeatException
+     * @throws HeartBeatException on failure.
      */
     public HeartBeat() throws HeartBeatException {
         super(ADDRESS, PORT);
@@ -47,7 +47,7 @@ public class HeartBeat extends AbstractHeartBeat {
     /**
      * Beat.
      *
-     * @throws HeartBeatException
+     * @throws HeartBeatException on failure.
      */
     public void beat() throws HeartBeatException {
         beat(new TimeStamp().toString());

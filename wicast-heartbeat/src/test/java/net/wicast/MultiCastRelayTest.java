@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
 public class MultiCastRelayTest {
 
     /**
-     * Test method for {@link net.wicast.relay.MultiCastRelay#MultiCastRelay()}.
+     * Test method for {@link net.wicast.MultiCastRelay}.
      */
     @Test
     public final void testMultiCastRelay() {

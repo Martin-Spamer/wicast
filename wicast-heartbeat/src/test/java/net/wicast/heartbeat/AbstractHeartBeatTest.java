@@ -21,6 +21,7 @@ public class AbstractHeartBeatTest {
          */
         @Override
         public void beat(final String message) throws HeartBeatException {
+            throw new HeartBeatException("MockHeartBeat");
         }
     }
 
