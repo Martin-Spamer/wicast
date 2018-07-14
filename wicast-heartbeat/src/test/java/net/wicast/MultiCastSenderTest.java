@@ -13,7 +13,7 @@ public class MultiCastSenderTest {
 
     /**
      * Test method for
-     * {@link net.wicast.MultiCastSenderThread.MultiCastSender#MultiCastSender()}.
+     * {@link net.wicast.MultiCastSender}.
      */
     @Test
     public final void testMultiCastSender() {

@@ -9,6 +9,6 @@
 Section wicast.net usage
 
 	<dependency>
-	    <groupId>net.wicastj</groupId>
+	    <groupId>net.wicast</groupId>
 	    <artifactId>wicast</artifactId>
 	</dependency>

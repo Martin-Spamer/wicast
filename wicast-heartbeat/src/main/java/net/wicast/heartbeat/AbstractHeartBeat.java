@@ -89,4 +89,6 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
             throw new HeartBeatException(e);
         }
     }
+
+    public abstract void beat(final String message) throws HeartBeatException;
 }

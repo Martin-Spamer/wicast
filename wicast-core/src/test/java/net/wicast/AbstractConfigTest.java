@@ -26,7 +26,7 @@ public class AbstractConfigTest {
     }
 
     /**
-     * Test method for {@link net.wicast.HeartBeatConfig#Config()}.
+     * Test method for {@link net.wicast.AbstractConfig}.
      */
     @Test
     public final void testConfig() {
@@ -49,7 +49,7 @@ public class AbstractConfigTest {
     }
 
     /**
-     * Test method for {@link net.wicast.HeartBeatConfig#Config()}.
+     * Test method for {@link net.wicast.AbstractConfig()}.
      */
     @Test
     public final void testConfigSetGet() {
