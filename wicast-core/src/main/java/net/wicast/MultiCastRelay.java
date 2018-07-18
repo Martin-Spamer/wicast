@@ -24,10 +24,10 @@ public final class MultiCastRelay {
 
         @Override
         public void run() {
-            final String group = this.config.getProperty("group", "228.1.2.3");
-            final String port = this.config.getProperty("group", "1234");
+            final String group = config.getProperty("group", "228.1.2.3");
+            final String port = config.getProperty("group", "1234");
             final int portNo = Integer.parseInt(port);
-            final String loop = this.config.getProperty("loop", "12");
+            final String loop = config.getProperty("loop", "12");
             final int max = Integer.parseInt(loop);
             int count = 0;
 
