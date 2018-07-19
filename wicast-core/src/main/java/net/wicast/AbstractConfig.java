@@ -86,8 +86,8 @@ public abstract class AbstractConfig implements ConfigInterface {
         assertNotNull(resourceAsStream);
         try {
             properties.load(resourceAsStream);
-        } catch (final IOException exception) {
-            log.error(exception.toString());
+        } catch (final IOException e) {
+            log.error(e.getLocalizedMessage(), e);
         }
     }
 

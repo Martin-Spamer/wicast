@@ -73,12 +73,12 @@ public final class MultiCastReceiver {
             socket.leaveGroup(InetAddress.getByName(group));
             socket.close();
             status = true;
-        } catch (final SocketException socketException) {
-            LOG.error(socketException.getLocalizedMessage());
-        } catch (final IOException ioException) {
-            LOG.error(ioException.getLocalizedMessage());
-        } catch (final Exception exception) {
-            LOG.error(exception.toString());
+        } catch (final SocketException e) {
+            LOG.error(e.getLocalizedMessage(),e);
+        } catch (final IOException e) {
+            LOG.error(e.getLocalizedMessage(),e);
+        } catch (final Exception e) {
+            LOG.error(e.getLocalizedMessage(),e);
         }
         return status;
     }

@@ -54,13 +54,13 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
                         portNo);
 
                 multicastSocket.send(outBoundDatagramPacket);
-            } catch (final SocketException exception) {
-                log.error(exception.toString());
-                throw new HeartBeatException(exception);
+            } catch (final SocketException e) {
+                log.error(e.getLocalizedMessage(),e);
+                throw new HeartBeatException(e);
             }
-        } catch (final IOException exception) {
-            log.error(exception.toString());
-            throw new HeartBeatException(exception);
+        } catch (final IOException e) {
+            log.error(e.getLocalizedMessage(),e);
+            throw new HeartBeatException(e);
         }
     }
 
@@ -77,7 +77,7 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
             multicastSocket.receive(inboundDatagramPacket);
             multicastSocket.leaveGroup(groupAddress);
         } catch (final IOException e) {
-            log.error(e.getLocalizedMessage());
+            log.error(e.getLocalizedMessage(),e);
             throw new HeartBeatException(e);
         }
     }

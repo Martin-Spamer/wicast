@@ -43,13 +43,13 @@ public class HeartBeat extends AbstractHeartBeat {
 				        this.groupAddress, this.portNo);
 
 				this.multicastSocket.send(outBoundDatagramPacket);
-			} catch (final SocketException socketException) {
-				log.error( socketException);
-				throw new HeartBeatException(socketException);
+			} catch (final SocketException e) {
+				log.error(e.getLocalizedMessage(),e);
+				throw new HeartBeatException(e);
 			}
-		} catch (final IOException ioException) {
-			log.error( ioException);
-			throw new HeartBeatException(ioException);
+		} catch (final IOException e) {
+            log.error(e.getLocalizedMessage(),e);
+			throw new HeartBeatException(e);
 		}
 	}
 }

@@ -71,13 +71,13 @@ public class HeartBeat extends AbstractHeartBeat {
                         groupAddress, portNo);
 
                 multicastSocket.send(outBoundDatagramPacket);
-            } catch (final SocketException exception) {
-                log.error(exception.getLocalizedMessage());
-                throw new HeartBeatException(exception);
+            } catch (final SocketException e) {
+                log.error(e.getLocalizedMessage(), e);
+                throw new HeartBeatException(e);
             }
-        } catch (final IOException exception) {
-            log.error(exception.getLocalizedMessage());
-            throw new HeartBeatException(exception);
+        } catch (final IOException e) {
+            log.error(e.getLocalizedMessage(), e);
+            throw new HeartBeatException(e);
         }
     }
 
@@ -93,8 +93,8 @@ public class HeartBeat extends AbstractHeartBeat {
         try {
             final String message = String.format("%s - %s", timeStamp, this.getClass().getSimpleName());
             beat(message);
-        } catch (final HeartBeatException exception) {
-            log.error(exception.getLocalizedMessage());
+        } catch (final HeartBeatException e) {
+            log.error(e.getLocalizedMessage(), e);
             exit();
         }
     }
