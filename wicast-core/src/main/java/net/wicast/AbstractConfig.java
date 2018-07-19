@@ -45,7 +45,7 @@ public abstract class AbstractConfig implements ConfigInterface {
      * @param configFilename the Configuration filename
      */
     public AbstractConfig(final String configFilename) {
-        this.propertyFilename = configFilename;
+        propertyFilename = configFilename;
         loadPropertyFileFrom(configFilename);
     }
 
@@ -55,8 +55,8 @@ public abstract class AbstractConfig implements ConfigInterface {
      * @return the string
      */
     protected String defaultFilename() {
-        this.propertyFilename = this.getClass().getSimpleName();
-        return this.propertyFilename;
+        propertyFilename = this.getClass().getSimpleName();
+        return propertyFilename;
     }
 
     /**
@@ -71,7 +71,7 @@ public abstract class AbstractConfig implements ConfigInterface {
         if (inputStream != null) {
             loadPropertyFileFrom(inputStream);
         } else {
-            this.log.warn("Using class default values, property file '{}' not found.", configFilename);
+            log.warn("Using class default values, property file '{}' not found.", configFilename);
         }
     }
 
@@ -85,9 +85,9 @@ public abstract class AbstractConfig implements ConfigInterface {
     protected void loadPropertyFileFrom(final InputStream resourceAsStream) {
         assertNotNull(resourceAsStream);
         try {
-            this.properties.load(resourceAsStream);
+            properties.load(resourceAsStream);
         } catch (final IOException exception) {
-            this.log.error(exception.toString());
+            log.error(exception.toString());
         }
     }
 
@@ -114,44 +114,43 @@ public abstract class AbstractConfig implements ConfigInterface {
 
     /*
      * (non-Javadoc)
-     *
      * @see framework.config.ConfigInterface#getProperty(java.lang.String)
      */
+    @Override
     public String getProperty(final String key) {
         final String property = System.getProperty(key);
         if (property == null) {
-            return this.properties.getProperty(key);
+            return properties.getProperty(key);
         } else {
-            this.log.warn("Using system property value '{}' for '{}'", property, key);
+            log.warn("Using system property value '{}' for '{}'", property, key);
             return property;
         }
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see framework.config.ConfigInterface#getProperty(java.lang.String,
      * java.lang.String)
      */
+    @Override
     public String getProperty(final String key, final String defaultValue) {
         final String property = System.getProperty(key);
         if (property == null) {
-            return this.properties.getProperty(key, defaultValue);
+            return properties.getProperty(key, defaultValue);
         } else {
-            this.log.warn("Using system property value '{}' for '{}'", property, key);
+            log.warn("Using system property value '{}' for '{}'", property, key);
             return property;
         }
     }
 
     /*
      * (non-Javadoc)
-     *
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
         final String className = this.getClass().getSimpleName();
-        return String.format("%s [properties=%s]", className, prettyProperties(this.properties));
+        return String.format("%s [properties=%s]", className, prettyProperties(properties));
     }
 
     /**

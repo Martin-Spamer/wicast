@@ -13,7 +13,7 @@ public class Server {
      */
     public Server() {
         super();
-        this.config = new ServerConfig();
+        config = new ServerConfig();
     }
 
     /**

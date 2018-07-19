@@ -13,42 +13,45 @@ public final class MultiCastRelay {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelay.class);
+    private boolean exit = false;
+    private final WiCastConfig config = new WiCastConfig();
 
     /**
      * MultiCastReceiverThread class.
      */
     public class MultiCastReceiverThread extends Thread {
-        private boolean exit = false;
-        private final WiCastConfig config = new WiCastConfig();
+        private static final String GROUP_KEY = "group";
+        private static final String DEFAULT_PORT = "1234";
+        private static final String DEFAULT_CHANNEL = "228.1.2.3";
         private final MultiCastReceiver receiver = new MultiCastReceiver();
 
         @Override
         public void run() {
-            final String group = config.getProperty("group", "228.1.2.3");
-            final String port = config.getProperty("group", "1234");
+            final String group = config.getProperty(GROUP_KEY, DEFAULT_CHANNEL);
+            final String port = config.getProperty(GROUP_KEY, DEFAULT_PORT);
             final int portNo = Integer.parseInt(port);
             final String loop = config.getProperty("loop", "12");
             final int max = Integer.parseInt(loop);
             int count = 0;
 
-            while (!this.exit) {
-                this.receiver.receiveByMulticastSocket(group, portNo);
+            while (!exit) {
+                receiver.receiveByMulticastSocket(group, portNo);
                 try {
                     Thread.sleep(1000);
-                } catch (final InterruptedException exception) {
-                    this.exit = true;
+                } catch (final InterruptedException e) {
+                    LOG.error(e.getLocalizedMessage(), e);
                     Thread.interrupted();
-                    LOG.error(exception.getLocalizedMessage());
+                    exit = true;
                 }
                 count++;
                 if (count >= max) {
-                    this.exit = true;
+                    exit = true;
                 }
             }
         }
 
         public void end() {
-            this.exit = true;
+            exit = true;
         }
     }
 
@@ -58,38 +61,36 @@ public final class MultiCastRelay {
      * class MultiCastSenderThread.
      */
     public class MultiCastSenderThread extends Thread {
-        private boolean exit = false;
-        private final WiCastConfig config = new WiCastConfig();
         private final MultiCastSender sender = new MultiCastSender();
 
         @Override
         public void run() {
-            final String group = this.config.getProperty("group", "228.1.2.3");
-            final String port = this.config.getProperty("group", "1234");
-            final String template = this.config.getProperty("message", "<WICAST count=%d/>");
+            final String group = config.getProperty("group", "228.1.2.3");
+            final String port = config.getProperty("group", "1234");
+            final String template = config.getProperty("message", "<WICAST count=%d/>");
             final int portNo = Integer.parseInt(port);
-            final String loop = this.config.getProperty("loop", "12");
+            final String loop = config.getProperty("loop", "12");
             final int max = Integer.parseInt(loop);
             int count = 0;
-            while (!this.exit) {
+            while (!exit) {
                 final String message = String.format(template, count);
-                this.sender.sendByDatagramSocket(group, portNo, message.getBytes());
+                sender.sendByDatagramSocket(group, portNo, message.getBytes());
                 try {
                     Thread.sleep(1000);
                 } catch (final InterruptedException exception) {
-                    this.exit = true;
+                    exit = true;
                     Thread.interrupted();
                     LOG.error(exception.getLocalizedMessage());
                 }
                 count++;
                 if (count >= max) {
-                    this.exit = true;
+                    exit = true;
                 }
             }
         }
 
         public void end() {
-            this.exit = true;
+            exit = true;
         }
     }
 
@@ -99,13 +100,13 @@ public final class MultiCastRelay {
      * Start.
      */
     public void start() {
-        this.multiCastReceiver = new MultiCastReceiverThread();
-        Runtime.getRuntime().addShutdownHook(this.multiCastReceiver);
-        this.multiCastReceiver.start();
+        multiCastReceiver = new MultiCastReceiverThread();
+        Runtime.getRuntime().addShutdownHook(multiCastReceiver);
+        multiCastReceiver.start();
 
-        this.multiCastSender = new MultiCastSenderThread();
-        Runtime.getRuntime().addShutdownHook(this.multiCastSender);
-        this.multiCastSender.start();
+        multiCastSender = new MultiCastSenderThread();
+        Runtime.getRuntime().addShutdownHook(multiCastSender);
+        multiCastSender.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -122,8 +123,8 @@ public final class MultiCastRelay {
     }
 
     public void end() {
-        this.multiCastReceiver.end();
-        this.multiCastSender.end();
+        multiCastReceiver.end();
+        multiCastSender.end();
     }
 
     /**

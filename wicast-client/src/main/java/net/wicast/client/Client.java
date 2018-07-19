@@ -6,14 +6,14 @@ package net.wicast.client;
  */
 public final class Client {
 
-    protected final ClientConfig config;
+    private final ClientConfig config;
 
     /**
      * Instantiates a new client.
      */
     public Client() {
         super();
-        this.config = new ClientConfig();
+        config = new ClientConfig();
     }
 
     /**
@@ -32,6 +32,11 @@ public final class Client {
      */
     public Client exit() {
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s[config=%s]", this.getClass().getSimpleName(), config);
     }
 
 }

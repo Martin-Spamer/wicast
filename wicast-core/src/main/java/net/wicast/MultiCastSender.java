@@ -27,9 +27,9 @@ public final class MultiCastSender {
      */
     public MultiCastSender() {
         super();
-        this.config = new WiCastConfig();
-        this.group = this.config.getGroup();
-        this.port = this.config.getPort();
+        config = new WiCastConfig();
+        group = config.getGroup();
+        port = config.getPort();
     }
 
     /**
@@ -40,8 +40,8 @@ public final class MultiCastSender {
     public MultiCastSender(final WiCastConfig config) {
         super();
         this.config = config;
-        this.group = config.getGroup();
-        this.port = config.getPort();
+        group = config.getGroup();
+        port = config.getPort();
     }
 
     /**
@@ -52,7 +52,7 @@ public final class MultiCastSender {
      */
     public MultiCastSender(final String group, final int port) {
         super();
-        this.config = new WiCastConfig();
+        config = new WiCastConfig();
         this.group = group;
         this.port = port;
     }
@@ -64,7 +64,7 @@ public final class MultiCastSender {
      * @return true, if send by datagram
      */
     public boolean sendByDatagram(final byte[] output) {
-        return sendByDatagramSocket(this.group, this.port, output);
+        return sendByDatagramSocket(group, port, output);
     }
 
     /**
@@ -105,7 +105,7 @@ public final class MultiCastSender {
      * @return true, if send by multicast socket
      */
     public boolean sendByMulticastSocket(final byte[] output) {
-        return sendByMulticastSocket(this.group, this.port, output);
+        return sendByMulticastSocket(group, port, output);
     }
 
     /**
@@ -144,11 +144,12 @@ public final class MultiCastSender {
 
     @Override
     public String toString() {
-        return String.format("%s [group=%s, port=%s, config=%s]",
-                this.getClass().getSimpleName(),
-                this.group,
-                this.port,
-                this.config);
+        return String
+            .format("%s [group=%s, port=%s, config=%s]",
+                    this.getClass().getSimpleName(),
+                    group,
+                    port,
+                    config);
     }
 
 }
