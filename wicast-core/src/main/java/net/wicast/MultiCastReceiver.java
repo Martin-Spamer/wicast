@@ -23,14 +23,14 @@ public final class MultiCastReceiver {
 
     public MultiCastReceiver() {
         super();
-        this.config = new WiCastConfig();
+        config = new WiCastConfig();
     }
 
     public MultiCastReceiver(final WiCastConfig config) {
         super();
         this.config = config;
-        this.group = config.getGroup();
-        this.port = config.getPort();
+        group = config.getGroup();
+        port = config.getPort();
     }
 
     public MultiCastReceiver(final String group, final int port) {
@@ -40,7 +40,7 @@ public final class MultiCastReceiver {
     }
 
     public boolean receiveByMulticastSocket() {
-        return receiveByMulticastSocket(this.group, this.port);
+        return receiveByMulticastSocket(group, port);
     }
 
     /**
@@ -85,11 +85,12 @@ public final class MultiCastReceiver {
 
     @Override
     public String toString() {
-        return String.format("%s [group=%s, port=%s, config=%s]",
-                this.getClass().getSimpleName(),
-                this.group,
-                this.port,
-                this.config);
+        return String
+            .format("%s [group=%s, port=%s, config=%s]",
+                    this.getClass().getSimpleName(),
+                    group,
+                    port,
+                    config);
     }
 
 }
