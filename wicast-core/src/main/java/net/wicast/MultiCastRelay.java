@@ -38,10 +38,10 @@ public final class MultiCastRelay {
                 receiver.receiveByMulticastSocket(group, portNo);
                 try {
                     Thread.sleep(1000);
-                } catch (final InterruptedException exception) {
-                    exit = true;
+                } catch (final InterruptedException e) {
+                    LOG.error(e.getLocalizedMessage(), e);
                     Thread.interrupted();
-                    LOG.error(exception.getLocalizedMessage());
+                    exit = true;
                 }
                 count++;
                 if (count >= max) {
