@@ -26,8 +26,8 @@ public class MoreConfigTest {
             final AbstractConfig config = new HeartBeatConfig("missing.xml");
             assertNotNull("Value cannot be null", config);
             LOG.debug(config.toString());
-        } catch (final Exception exception) {
-            LOG.error(exception.toString());
+        } catch (final Exception e) {
+            LOG.error(e.getLocalizedMessage(), e);
         }
     }
 

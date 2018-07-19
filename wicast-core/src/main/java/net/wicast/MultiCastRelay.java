@@ -77,10 +77,10 @@ public final class MultiCastRelay {
                 sender.sendByDatagramSocket(group, portNo, message.getBytes());
                 try {
                     Thread.sleep(1000);
-                } catch (final InterruptedException exception) {
+                } catch (final InterruptedException e) {
                     exit = true;
                     Thread.interrupted();
-                    LOG.error(exception.getLocalizedMessage());
+                    LOG.error(e.getLocalizedMessage(),e);
                 }
                 count++;
                 if (count >= max) {
