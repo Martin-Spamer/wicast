@@ -13,25 +13,22 @@ public final class MultiCastRelay {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelay.class);
+    private static final WiCastConfig config = new WiCastConfig();
     private boolean exit = false;
-    private final WiCastConfig config = new WiCastConfig();
 
     /**
      * MultiCastReceiverThread class.
      */
     public class MultiCastReceiverThread extends Thread {
-        private static final String GROUP_KEY = "group";
-        private static final String DEFAULT_PORT = "1234";
-        private static final String DEFAULT_CHANNEL = "228.1.2.3";
+        private static final String PORT = "1234";
+        private static final String CHANNEL_IN = "228.1.2.3";
+        private static final String CHANNEL_OUT = "228.4.5.6";
         private final MultiCastReceiver receiver = new MultiCastReceiver();
 
         @Override
         public void run() {
-            final String group = config.getProperty(GROUP_KEY, DEFAULT_CHANNEL);
-            final String port = config.getProperty(GROUP_KEY, DEFAULT_PORT);
-            final int portNo = Integer.parseInt(port);
-            final String loop = config.getProperty("loop", "12");
-            final int max = Integer.parseInt(loop);
+            final String group = config.getGroup();
+            final int portNo = config.getPort();
             int count = 0;
 
             while (!exit) {
@@ -43,8 +40,7 @@ public final class MultiCastRelay {
                     Thread.interrupted();
                     exit = true;
                 }
-                count++;
-                if (count >= max) {
+                if (++count >= 12) {
                     exit = true;
                 }
             }
@@ -65,12 +61,10 @@ public final class MultiCastRelay {
 
         @Override
         public void run() {
-            final String group = config.getProperty("group", "228.1.2.3");
-            final String port = config.getProperty("group", "1234");
-            final String template = config.getProperty("message", "<WICAST count=%d/>");
-            final int portNo = Integer.parseInt(port);
-            final String loop = config.getProperty("loop", "12");
-            final int max = Integer.parseInt(loop);
+            final String group = config.getGroup();
+            final int portNo = config.getPort();
+            final String template = "<WICAST count=%d/>";
+
             int count = 0;
             while (!exit) {
                 final String message = String.format(template, count);
@@ -82,8 +76,7 @@ public final class MultiCastRelay {
                     Thread.interrupted();
                     LOG.error(e.getLocalizedMessage(), e);
                 }
-                count++;
-                if (count >= max) {
+                if (++count >= 12) {
                     exit = true;
                 }
             }
