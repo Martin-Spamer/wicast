@@ -48,9 +48,6 @@ public class AbstractConfigTest {
         assertEquals("default", config.getProperty("key", "default"));
     }
 
-    /**
-     * Test method for {@link net.wicast.AbstractConfig()}.
-     */
     @Test
     public final void testConfigSetGet() {
         final ConfigInterface config = new TestConfig();

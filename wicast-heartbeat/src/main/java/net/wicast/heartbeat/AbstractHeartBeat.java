@@ -22,14 +22,17 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
 
     /**
      * AbstractHeartBeat.
+     * 
+     * @throws HeartBeatException
      */
-    public AbstractHeartBeat() {
+    public AbstractHeartBeat() throws HeartBeatException {
         super();
         portNo = 1;
         try {
             groupAddress = InetAddress.getByName("heartbeat.wicast.net");
         } catch (final UnknownHostException e) {
             log.error(e.getLocalizedMessage(), e);
+            throw new HeartBeatException(e);
         }
     }
 

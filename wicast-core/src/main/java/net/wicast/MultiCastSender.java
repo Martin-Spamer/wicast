@@ -70,7 +70,7 @@ public final class MultiCastSender {
     /**
      * Sends a message to a <code>Multicast</code> Group.
      *
-     * Sends using a <code>Datagram<code/> to a <code>Multicast</code> Group.
+     * Sends using a <code>Datagram</code> to a <code>Multicast</code> Group.
      *
      * @param group multicast group address as String "X.X.X.X".
      * @param port sending port as int.
