@@ -5,28 +5,28 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class AbstractChannel.
+ * An abstract Message class.
  */
-public abstract class AbstractChannel implements ChannelInterface {
+public class AbstractMessage implements MessageInterface {
 
     /** The log. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     /**
-     * Instantiates a new abstract channel.
+     * Instantiates a new abstract message.
      */
-    public AbstractChannel() {
+    public AbstractMessage() {
         super();
         log.info("{}", this.getClass().getSimpleName());
     }
 
     /*
      * (non-Javadoc)
-     * @see net.wicast.ChannelInterface#send(net.wicast.Message)
+     * @see net.wicast.MessageInterface#send(net.wicast.ChannelInterface)
      */
     @Override
-    public ChannelInterface send(final MessageInterface message) {
-        log.info("send({})", message);
+    public MessageInterface send(final ChannelInterface channel) {
+        log.info("send({})", channel);
         return this;
     }
 

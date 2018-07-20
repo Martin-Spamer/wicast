@@ -14,16 +14,26 @@ import org.slf4j.LoggerFactory;
  * AbstractHeartBeat class.
  */
 public abstract class AbstractHeartBeat extends Thread implements HeartBeatInterface {
+    
+    /** The log. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+    
+    /** The group address. */
     protected InetAddress groupAddress;
+    
+    /** The port no. */
     protected int portNo;
+    
+    /** The multicast socket. */
     protected MulticastSocket multicastSocket;
+    
+    /** The exit. */
     protected boolean exit;
 
     /**
      * AbstractHeartBeat.
-     * 
-     * @throws HeartBeatException
+     *
+     * @throws HeartBeatException the heart beat exception
      */
     public AbstractHeartBeat() throws HeartBeatException {
         super();
@@ -93,6 +103,9 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
         }
     }
 
+    /* (non-Javadoc)
+     * @see net.wicast.heartbeat.HeartBeatInterface#beat(java.lang.String)
+     */
     @Override
     public abstract void beat(final String message) throws HeartBeatException;
 }

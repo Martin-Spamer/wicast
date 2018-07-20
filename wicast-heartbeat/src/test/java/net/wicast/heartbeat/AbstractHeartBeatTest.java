@@ -14,6 +14,7 @@ import static org.junit.Assert.assertNotNull;
 @Ignore("work-in-progress")
 public class AbstractHeartBeatTest {
 
+    /** LOCALHOST 			constant. */
     private static final String LOCALHOST = "127.0.0.1";
 
     /**
@@ -65,7 +66,7 @@ public class AbstractHeartBeatTest {
     /**
      * Unit Test to mock heart beat.
      *
-     * @throws HeartBeatException
+     * @throws HeartBeatException the heart beat exception
      */
     @Test
     public final void testMockHeartBeat() throws HeartBeatException {
@@ -76,7 +77,7 @@ public class AbstractHeartBeatTest {
     /**
      * Unit Test to mock heart beat.
      *
-     * @throws Exception
+     * @throws Exception the exception
      */
     @Test
     public final void testMockHeartBeatString() throws Exception {
@@ -87,7 +88,7 @@ public class AbstractHeartBeatTest {
     /**
      * Unit Test to mock heart beat.
      *
-     * @throws Exception
+     * @throws Exception the exception
      */
     @Test
     public final void testMockHeartBeatGroupAddress() throws Exception {
@@ -99,7 +100,7 @@ public class AbstractHeartBeatTest {
     /**
      * Unit Test to mock heart beat.
      *
-     * @throws HeartBeatException
+     * @throws HeartBeatException the heart beat exception
      */
     @Test
     public final void testMockHeartBeatLocalHost() throws HeartBeatException {
@@ -110,7 +111,7 @@ public class AbstractHeartBeatTest {
     /**
      * Unit Test to mock heart beat.
      *
-     * @throws Exception
+     * @throws Exception the exception
      */
     @Test
     public final void testMockHeartBeatLocalHostGroupAddress() throws Exception {

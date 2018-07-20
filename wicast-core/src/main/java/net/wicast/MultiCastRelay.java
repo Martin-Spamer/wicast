@@ -13,18 +13,33 @@ public final class MultiCastRelay {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelay.class);
+    
+    /** config 			constant. */
     private static final WiCastConfig config = new WiCastConfig();
+    
+    /** The exit. */
     private boolean exit = false;
 
     /**
      * MultiCastReceiverThread class.
      */
     public class MultiCastReceiverThread extends Thread {
+        
+        /** PORT 			constant. */
         private static final String PORT = "1234";
+        
+        /** CHANNEL_IN 			constant. */
         private static final String CHANNEL_IN = "228.1.2.3";
+        
+        /** CHANNEL_OUT 			constant. */
         private static final String CHANNEL_OUT = "228.4.5.6";
+        
+        /** The receiver. */
         private final MultiCastReceiver receiver = new MultiCastReceiver();
 
+        /* (non-Javadoc)
+         * @see java.lang.Thread#run()
+         */
         @Override
         public void run() {
             final String group = config.getGroup();
@@ -46,19 +61,28 @@ public final class MultiCastRelay {
             }
         }
 
+        /**
+         * End.
+         */
         public void end() {
             exit = true;
         }
     }
 
+    /** The multi cast receiver. */
     private MultiCastReceiverThread multiCastReceiver;
 
     /**
      * class MultiCastSenderThread.
      */
     public class MultiCastSenderThread extends Thread {
+        
+        /** The sender. */
         private final MultiCastSender sender = new MultiCastSender();
 
+        /* (non-Javadoc)
+         * @see java.lang.Thread#run()
+         */
         @Override
         public void run() {
             final String group = config.getGroup();
@@ -82,11 +106,15 @@ public final class MultiCastRelay {
             }
         }
 
+        /**
+         * End.
+         */
         public void end() {
             exit = true;
         }
     }
 
+    /** The multi cast sender. */
     private MultiCastSenderThread multiCastSender;
 
     /**
@@ -115,6 +143,9 @@ public final class MultiCastRelay {
         });
     }
 
+    /**
+     * End.
+     */
     public void end() {
         multiCastReceiver.end();
         multiCastSender.end();

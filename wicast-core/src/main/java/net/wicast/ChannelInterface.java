@@ -12,6 +12,6 @@ public interface ChannelInterface {
      * @param message the message
      * @return the channel
      */
-    ChannelInterface send(Message message);
+    ChannelInterface send(MessageInterface message);
 
 }

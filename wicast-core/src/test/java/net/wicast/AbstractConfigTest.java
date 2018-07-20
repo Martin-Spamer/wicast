@@ -14,14 +14,24 @@ import static org.junit.Assert.assertNull;
  */
 public class AbstractConfigTest {
 
+    /** LOG 			constant. */
     private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigTest.class);
 
+    /**
+     * The Class TestConfig.
+     */
     public class TestConfig extends AbstractConfig {
     }
 
+    /**
+     * The Class EmptyConfig.
+     */
     public class EmptyConfig extends AbstractConfig {
     }
 
+    /**
+     * The Class MissingConfig.
+     */
     public class MissingConfig extends AbstractConfig {
     }
 
@@ -34,12 +44,18 @@ public class AbstractConfigTest {
         assertNotNull("Value cannot be null", config);
     }
 
+    /**
+     * Unit test to missing config.
+     */
     @Test
     public final void testMissingConfig() {
         final ConfigInterface config = new MissingConfig();
         assertNotNull("Value cannot be null", config);
     }
 
+    /**
+     * Unit test to empty config.
+     */
     @Test
     public final void testEmptyConfig() {
         final EmptyConfig config = new EmptyConfig();
@@ -48,6 +64,9 @@ public class AbstractConfigTest {
         assertEquals("default", config.getProperty("key", "default"));
     }
 
+    /**
+     * Unit test to config set get.
+     */
     @Test
     public final void testConfigSetGet() {
         final ConfigInterface config = new TestConfig();

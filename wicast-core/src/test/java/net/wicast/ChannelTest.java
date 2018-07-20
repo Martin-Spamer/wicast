@@ -8,10 +8,17 @@ import org.slf4j.LoggerFactory;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+/**
+ * Unit test class for Channel.
+ */
 public class ChannelTest {
 
+    /** LOG 			constant. */
     private static final Logger LOG = LoggerFactory.getLogger(ChannelTest.class);
 
+    /**
+     * Unit test to typical usage.
+     */
     @Test
     public void testTypicalUsage() {
         final ChannelInterface channel = new Channel();

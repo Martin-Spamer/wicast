@@ -21,6 +21,11 @@ public class TimeStamp {
      */
     public final Date time = Calendar.getInstance().getTime();
 
+    /**
+     * Now.
+     *
+     * @return the string
+     */
     public static String now() {
         return new TimeStamp().toString();
     }

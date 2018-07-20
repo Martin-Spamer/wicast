@@ -1,6 +1,9 @@
 
 package net.wicast;
 
-public class Channel extends AbstractChannel {
+/**
+ * The Class Channel.
+ */
+public final class Channel extends AbstractChannel {
 
 }

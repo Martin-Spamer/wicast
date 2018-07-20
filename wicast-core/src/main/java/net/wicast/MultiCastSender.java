@@ -18,8 +18,14 @@ public final class MultiCastSender {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastSender.class);
+    
+    /** The config. */
     private final WiCastConfig config;
+    
+    /** The group. */
     private final String group;
+    
+    /** The port. */
     private final int port;
 
     /**
@@ -142,6 +148,9 @@ public final class MultiCastSender {
         return status;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return String

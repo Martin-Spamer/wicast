@@ -11,7 +11,10 @@ import java.net.SocketException;
  */
 public class HeartBeat extends AbstractHeartBeat {
 
+    /** ADDRESS 			constant. */
     private static final String ADDRESS = "224.0.0.1";
+    
+    /** PORT 			constant. */
     private static final int PORT = 1;
 
     /**
@@ -99,6 +102,9 @@ public class HeartBeat extends AbstractHeartBeat {
         }
     }
 
+    /**
+     * Exit.
+     */
     private void exit() {
         exit = true;
     }

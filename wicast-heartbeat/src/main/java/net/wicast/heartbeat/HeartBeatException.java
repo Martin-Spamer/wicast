@@ -5,6 +5,8 @@ package net.wicast.heartbeat;
  * HeartBeatException.
  */
 public class HeartBeatException extends Exception {
+    
+    /** serialVersionUID 			constant. */
     private static final long serialVersionUID = 1L;
 
     /**

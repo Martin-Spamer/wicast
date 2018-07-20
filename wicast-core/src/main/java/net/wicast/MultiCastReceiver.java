@@ -17,15 +17,29 @@ public final class MultiCastReceiver {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
+
+    /** The config. */
     private WiCastConfig config;
+
+    /** The group. */
     private String group;
+
+    /** The port. */
     private int port;
 
+    /**
+     * Instantiates a new multi cast receiver.
+     */
     public MultiCastReceiver() {
         super();
         config = new WiCastConfig();
     }
 
+    /**
+     * Instantiates a new multi cast receiver.
+     *
+     * @param config the config
+     */
     public MultiCastReceiver(final WiCastConfig config) {
         super();
         this.config = config;
@@ -33,12 +47,23 @@ public final class MultiCastReceiver {
         port = config.getPort();
     }
 
+    /**
+     * Instantiates a new multi cast receiver.
+     *
+     * @param group the group
+     * @param port the port
+     */
     public MultiCastReceiver(final String group, final int port) {
         super();
         this.group = group;
         this.port = port;
     }
 
+    /**
+     * Receive by multicast socket.
+     *
+     * @return true, if successful
+     */
     public boolean receiveByMulticastSocket() {
         return receiveByMulticastSocket(group, port);
     }
@@ -83,6 +108,10 @@ public final class MultiCastReceiver {
         return status;
     }
 
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return String
