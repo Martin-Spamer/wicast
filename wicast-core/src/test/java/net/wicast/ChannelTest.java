@@ -17,7 +17,7 @@ public class ChannelTest {
 
     @Test
     public void testTypicalUsage() {
-        final Channel channel = new Channel();
+        final ChannelInterface channel = new Channel();
         assertNotNull(channel);
         assertEquals(channel, channel.send(new Message()));
         LOG.debug("{}", channel);

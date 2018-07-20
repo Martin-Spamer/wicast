@@ -7,7 +7,7 @@
 	<groupId>net.wicast</groupId>
 	<artifactId>wicast</artifactId>
 	<packaging>pom</packaging>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<name>Maven WiCast Project</name>
 	<description>WiFi Multicast project.</description>
 	<url>http://wicast.net</url>

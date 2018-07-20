@@ -80,7 +80,7 @@ public final class MultiCastRelay {
                 } catch (final InterruptedException e) {
                     exit = true;
                     Thread.interrupted();
-                    LOG.error(e.getLocalizedMessage(),e);
+                    LOG.error(e.getLocalizedMessage(), e);
                 }
                 count++;
                 if (count >= max) {

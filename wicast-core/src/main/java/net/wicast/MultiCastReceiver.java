@@ -74,11 +74,11 @@ public final class MultiCastReceiver {
             socket.close();
             status = true;
         } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(),e);
+            LOG.error(e.getLocalizedMessage(), e);
         } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(),e);
+            LOG.error(e.getLocalizedMessage(), e);
         } catch (final Exception e) {
-            LOG.error(e.getLocalizedMessage(),e);
+            LOG.error(e.getLocalizedMessage(), e);
         }
         return status;
     }
