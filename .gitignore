@@ -11,3 +11,4 @@
 # Maven
 /pom.xml.versionsBackup
 target/
+/bin/

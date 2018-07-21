@@ -14,8 +14,12 @@ import static org.junit.Assume.assumeNotNull;
  */
 public class HeartBeatConfigTest {
 
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(HeartBeatConfigTest.class);
 
+    /**
+     * Unit test to heart beat config.
+     */
     @Test
     public final void testHeartBeatConfig() {
         final HeartBeatConfig config = new HeartBeatConfig();

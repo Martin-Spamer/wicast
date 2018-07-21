@@ -9,6 +9,9 @@ import static org.junit.Assert.assertNotNull;
 
 import static org.junit.Assume.assumeNotNull;
 
+/**
+ * Unit test class for ServerConfig.
+ */
 public class ServerConfigTest {
 
     /** provide logging. */

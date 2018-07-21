@@ -13,18 +13,32 @@ import static org.junit.Assert.assertNotSame;
  */
 public class TimeStampTest {
 
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(TimeStampTest.class);
 
     /**
-     * test case for TimeStamp.
+     * Unit test case for the TimeStamp class.
      */
     @Test
-    public final void test() {
+    public final void testTimeStampNow() {
+        String testTimeStamp = TimeStamp.now();
+        assertNotNull("Value cannot be null", testTimeStamp);
+        LOG.debug("TimeStamp = {}");
+    }
+
+    /**
+     * Unit test case for the TimeStamp class.
+     */
+    @Test
+    public final void testTimeStamp() {
         final TimeStamp testTimeStamp1 = new TimeStamp();
         assertNotNull("Value cannot be null", testTimeStamp1);
+        LOG.debug("TimeStamp = {}", testTimeStamp1);
 
         final TimeStamp testTimeStamp2 = new TimeStamp();
         assertNotNull("Value cannot be null", testTimeStamp2);
+        LOG.debug("TimeStamp = {}", testTimeStamp2);
+
         assertNotSame("Not same", testTimeStamp1, testTimeStamp2);
 
         LOG.trace("{}", testTimeStamp1);
@@ -35,4 +49,5 @@ public class TimeStampTest {
         LOG.trace(testTimeStamp2.toString());
         LOG.trace(TimeStamp.TIMESTAMP_FORMAT);
     }
+
 }

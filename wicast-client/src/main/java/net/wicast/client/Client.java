@@ -6,6 +6,7 @@ package net.wicast.client;
  */
 public final class Client {
 
+    /** The config. */
     private final ClientConfig config;
 
     /**
@@ -34,6 +35,9 @@ public final class Client {
         return this;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return String.format("%s[config=%s]", this.getClass().getSimpleName(), config);

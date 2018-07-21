@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wicast>
+
+	<client>
+		<source id="" name="" ip="" port="" />
+		<source id="" name="" ip="" port="" />
+	</client>
+
+	<server>
+		<channel id="" name="" ip="" port="">
+			<data />
+		</channel>
+		<channel id="" name="" ip="" port="">
+			<data />
+		</channel>
+	</server>
+
+	<relay>
+		<source id="" name="" ip="" port="">
+			<destination id="" name="" ip="" port="" />
+		</source>
+		<source id="" name="" ip="" port="">
+			<destination id="" name="" ip="" port="" />
+		</source>
+	</relay>
+
+</wicast>

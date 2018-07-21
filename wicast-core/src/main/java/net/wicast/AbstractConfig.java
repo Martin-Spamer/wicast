@@ -28,7 +28,11 @@ public abstract class AbstractConfig implements ConfigInterface {
 
     /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+
+    /** The properties. */
     protected final Properties properties = new Properties();
+
+    /** The property filename. */
     protected String propertyFilename;
 
     /**
@@ -36,6 +40,7 @@ public abstract class AbstractConfig implements ConfigInterface {
      */
     public AbstractConfig() {
         super();
+        log.info("{}", this.getClass().getSimpleName());
         loadPropertyFileFrom(defaultFilename());
     }
 

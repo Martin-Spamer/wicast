@@ -18,8 +18,15 @@ public final class MultiCastSender {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastSender.class);
-    private final WiCastConfig config;
+
+    /** constant configuration. */
+    private WiCastConfig config = new ReceiverConfig();
+
+    /** multicast group address . */
     private final String group;
+    private InetAddress groupAddress;
+
+    /** multicast port. */
     private final int port;
 
     /**
@@ -27,7 +34,6 @@ public final class MultiCastSender {
      */
     public MultiCastSender() {
         super();
-        config = new WiCastConfig();
         group = config.getGroup();
         port = config.getPort();
     }
@@ -52,7 +58,6 @@ public final class MultiCastSender {
      */
     public MultiCastSender(final String group, final int port) {
         super();
-        config = new WiCastConfig();
         this.group = group;
         this.port = port;
     }
@@ -70,7 +75,7 @@ public final class MultiCastSender {
     /**
      * Sends a message to a <code>Multicast</code> Group.
      *
-     * Sends using a <code>Datagram<code/> to a <code>Multicast</code> Group.
+     * Sends using a <code>Datagram</code> to a <code>Multicast</code> Group.
      *
      * @param group multicast group address as String "X.X.X.X".
      * @param port sending port as int.
@@ -98,14 +103,24 @@ public final class MultiCastSender {
         return status;
     }
 
-    /**
-     * Send by multicast socket.
-     *
-     * @param output the output
-     * @return true, if send by multicast socket
-     */
-    public boolean sendByMulticastSocket(final byte[] output) {
-        return sendByMulticastSocket(group, port, output);
+    public boolean sendByDatagramSocket(final InetAddress groupAddr, final int port, final byte[] output) {
+        boolean status = false;
+        try {
+            final DatagramSocket socket = new DatagramSocket();
+            final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, port);
+
+            socket.send(packet);
+
+            socket.close();
+            status = true;
+        } catch (final SocketException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        } catch (final IOException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        } catch (final Exception e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return status;
     }
 
     /**
@@ -121,9 +136,6 @@ public final class MultiCastSender {
         try {
             final MulticastSocket socket = new MulticastSocket();
             final DatagramPacket packet = new DatagramPacket(output, output.length, InetAddress.getByName(group), port);
-
-            // final byte timeToLive = 1;
-            // socket.send(packet, timeToLive);
 
             final int ttl = socket.getTimeToLive();
             socket.setTimeToLive(ttl);
@@ -142,6 +154,38 @@ public final class MultiCastSender {
         return status;
     }
 
+    public boolean sendByMulticastSocket(final byte[] output) {
+        return sendByMulticastSocket(groupAddress, port, output);
+    }
+
+    public boolean sendByMulticastSocket(final InetAddress groupAddr, final int port, final byte[] output) {
+        boolean status = false;
+        try {
+            final MulticastSocket socket = new MulticastSocket();
+            InetAddress byName = InetAddress.getByName(group);
+            final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, port);
+
+            final int ttl = socket.getTimeToLive();
+            socket.setTimeToLive(ttl);
+            socket.send(packet);
+            socket.setTimeToLive(ttl);
+
+            socket.close();
+            status = true;
+        } catch (final SocketException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        } catch (final IOException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        } catch (final Exception e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return status;
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     @Override
     public String toString() {
         return String

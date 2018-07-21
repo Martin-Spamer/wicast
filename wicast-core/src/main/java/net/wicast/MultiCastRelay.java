@@ -7,31 +7,35 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * MultiCast Relay.
+ * A relay for multicast messages.
  */
 public final class MultiCastRelay {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelay.class);
+
+    /** constant configuration. */
+    private static final WiCastConfig CONFIG = new WiCastConfig();
+
+    /** The exit. */
     private boolean exit = false;
-    private final WiCastConfig config = new WiCastConfig();
 
     /**
      * MultiCastReceiverThread class.
      */
     public class MultiCastReceiverThread extends Thread {
-        private static final String GROUP_KEY = "group";
-        private static final String DEFAULT_PORT = "1234";
-        private static final String DEFAULT_CHANNEL = "228.1.2.3";
+
+        /** The receiver. */
         private final MultiCastReceiver receiver = new MultiCastReceiver();
 
+        /*
+         * (non-Javadoc)
+         * @see java.lang.Thread#run()
+         */
         @Override
         public void run() {
-            final String group = config.getProperty(GROUP_KEY, DEFAULT_CHANNEL);
-            final String port = config.getProperty(GROUP_KEY, DEFAULT_PORT);
-            final int portNo = Integer.parseInt(port);
-            final String loop = config.getProperty("loop", "12");
-            final int max = Integer.parseInt(loop);
+            final String group = CONFIG.getGroup();
+            final int portNo = CONFIG.getPort();
             int count = 0;
 
             while (!exit) {
@@ -43,34 +47,41 @@ public final class MultiCastRelay {
                     Thread.interrupted();
                     exit = true;
                 }
-                count++;
-                if (count >= max) {
+                if (++count >= 12) {
                     exit = true;
                 }
             }
         }
 
+        /**
+         * End.
+         */
         public void end() {
             exit = true;
         }
     }
 
+    /** The multi cast receiver. */
     private MultiCastReceiverThread multiCastReceiver;
 
     /**
      * class MultiCastSenderThread.
      */
     public class MultiCastSenderThread extends Thread {
+
+        /** The sender. */
         private final MultiCastSender sender = new MultiCastSender();
 
+        /*
+         * (non-Javadoc)
+         * @see java.lang.Thread#run()
+         */
         @Override
         public void run() {
-            final String group = config.getProperty("group", "228.1.2.3");
-            final String port = config.getProperty("group", "1234");
-            final String template = config.getProperty("message", "<WICAST count=%d/>");
-            final int portNo = Integer.parseInt(port);
-            final String loop = config.getProperty("loop", "12");
-            final int max = Integer.parseInt(loop);
+            final String group = CONFIG.getGroup();
+            final int portNo = CONFIG.getPort();
+            final String template = "<WICAST count=%d/>";
+
             int count = 0;
             while (!exit) {
                 final String message = String.format(template, count);
@@ -80,20 +91,23 @@ public final class MultiCastRelay {
                 } catch (final InterruptedException e) {
                     exit = true;
                     Thread.interrupted();
-                    LOG.error(e.getLocalizedMessage(),e);
+                    LOG.error(e.getLocalizedMessage(), e);
                 }
-                count++;
-                if (count >= max) {
+                if (++count >= 12) {
                     exit = true;
                 }
             }
         }
 
+        /**
+         * End.
+         */
         public void end() {
             exit = true;
         }
     }
 
+    /** The multi cast sender. */
     private MultiCastSenderThread multiCastSender;
 
     /**
@@ -122,6 +136,9 @@ public final class MultiCastRelay {
         });
     }
 
+    /**
+     * End.
+     */
     public void end() {
         multiCastReceiver.end();
         multiCastSender.end();
@@ -136,7 +153,7 @@ public final class MultiCastRelay {
      */
     public static void main(final String[] args) {
         LOG.info("args[] = {}", Arrays.toString(args));
-        LOG.info(System.getProperties().toString());
+        LOG.info("System properties {}", System.getProperties().toString());
         new MultiCastRelay().start();
     }
 

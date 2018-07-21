@@ -1,11 +1,9 @@
 
 package net.wicast;
 
-public class Channel {
-
-    public Channel send(final Message message) {
-        // TODO Auto-generated method stub
-        return this;
-    }
+/**
+ * Channel class.
+ */
+public final class Channel extends AbstractChannel {
 
 }

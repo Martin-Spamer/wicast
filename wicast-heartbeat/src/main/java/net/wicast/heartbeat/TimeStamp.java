@@ -22,6 +22,15 @@ public class TimeStamp {
     public final Date time = Calendar.getInstance().getTime();
 
     /**
+     * Now.
+     *
+     * @return the string
+     */
+    public static String now() {
+        return new TimeStamp().toString();
+    }
+
+    /**
      * Returns the timestamp as a string.
      *
      * @return the string
@@ -31,5 +40,4 @@ public class TimeStamp {
     public String toString() {
         return new SimpleDateFormat(TimeStamp.TIMESTAMP_FORMAT, Locale.getDefault()).format(time);
     }
-
 }

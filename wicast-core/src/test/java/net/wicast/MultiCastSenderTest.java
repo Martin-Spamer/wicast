@@ -35,9 +35,10 @@ public class MultiCastSenderTest {
     public void testSendByDatagramSocket() {
         final MultiCastSender multiCastSender = new MultiCastSender();
         assumeNotNull(multiCastSender);
-        final boolean sendByDatagramSocket = multiCastSender.sendByDatagramSocket("228.1.2.3",
-                1234,
-                "<WICAST type=1/>".getBytes());
+        final boolean sendByDatagramSocket = multiCastSender
+            .sendByDatagramSocket("228.1.2.3",
+                    1234,
+                    "<WICAST type=1/>".getBytes());
         assertTrue(sendByDatagramSocket);
         LOG.info("multiCastSender = {}", multiCastSender);
         LOG.info("sendByDatagramSocket = {}", sendByDatagramSocket);
@@ -50,9 +51,10 @@ public class MultiCastSenderTest {
     public void testSendByMulticastSocket() {
         final MultiCastSender multiCastSender = new MultiCastSender();
         assumeNotNull(multiCastSender);
-        final boolean sendByMulticastSocket = multiCastSender.sendByMulticastSocket("228.1.2.3",
-                1234,
-                "<WICAST type=2/>".getBytes());
+        final boolean sendByMulticastSocket = multiCastSender
+            .sendByMulticastSocket("228.1.2.3",
+                    1234,
+                    "<WICAST type=2/>".getBytes());
         assertTrue(sendByMulticastSocket);
         LOG.debug("multiCastSender = {}", multiCastSender);
         LOG.debug("sendByMulticastSocket = {}", sendByMulticastSocket);

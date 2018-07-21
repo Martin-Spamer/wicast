@@ -20,10 +20,17 @@ import static org.junit.Assert.fail;
 @Ignore
 public class HeartBeatTest {
 
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(HeartBeatTest.class);
+    
+    /** LOOPBACK 			constant. */
     private static final String LOOPBACK = "127.0.0.1";
+    
+    /** VALID_ADDRESS 			constant. */
     // 224.0.0.1 is local subnet only, closest multicast equivalent to 127.0.0.1
     private static final String VALID_ADDRESS = "224.0.0.1";
+    
+    /** PORT 			constant. */
     private static final int PORT = 1;
 
     /**
