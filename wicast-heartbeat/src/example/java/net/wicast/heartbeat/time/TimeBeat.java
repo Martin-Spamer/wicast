@@ -10,20 +10,14 @@ import net.wicast.heartbeat.*;
 /**
  * HeartBeat.
  */
-public class HeartBeat extends AbstractHeartBeat {
+public final class HeartBeat extends AbstractHeartBeat {
 
 	private static final Logger LOG  = LoggerFactory.getLogger(HeartBeat.class);
 
-	/**
-	 * AbstractHeartBeat.
-	 */
 	public HeartBeat(final String groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
 
-	/**
-	 * AbstractHeartBeatMonitor.
-	 */
 	public HeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
 		super(groupAddress, portNo);
 	}
