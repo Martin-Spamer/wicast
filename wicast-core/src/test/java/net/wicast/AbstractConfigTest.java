@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNull;
  */
 public class AbstractConfigTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigTest.class);
 
     /**

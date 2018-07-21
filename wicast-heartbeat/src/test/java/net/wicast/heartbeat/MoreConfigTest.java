@@ -12,7 +12,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class MoreConfigTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MoreConfigTest.class);
 
     /**

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class MessageTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MessageTest.class);
 
     /**

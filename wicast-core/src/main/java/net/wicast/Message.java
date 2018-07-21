@@ -2,7 +2,7 @@
 package net.wicast;
 
 /**
- * The Class Message.
+ * Message class.
  */
 public final class Message extends AbstractMessage {
 

@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
  */
 public class ChannelTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(ChannelTest.class);
 
     /**

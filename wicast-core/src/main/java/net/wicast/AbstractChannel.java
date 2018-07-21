@@ -1,16 +1,20 @@
 
 package net.wicast;
 
+import java.net.InetAddress;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class AbstractChannel.
+ * An abstract class for a Channel.
  */
 public abstract class AbstractChannel implements ChannelInterface {
 
-    /** The log. */
+    /** provide logging. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
+
+    protected InetAddress groupAddress;
 
     /**
      * Instantiates a new abstract channel.

@@ -18,21 +18,23 @@ public final class MultiCastReceiver {
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
 
-    /** The config. */
-    private WiCastConfig config;
+    /** constant configuration. */
+    private WiCastConfig config = new ReceiverConfig();
 
-    /** The group. */
-    private String group;
+    /** multicast group address . */
+    private final String group;
+    private InetAddress groupAddress;
 
-    /** The port. */
-    private int port;
+    /** multicast port. */
+    private final int port;
 
     /**
      * Instantiates a new multi cast receiver.
      */
     public MultiCastReceiver() {
         super();
-        config = new WiCastConfig();
+        group = config.getGroup();
+        port = config.getPort();
     }
 
     /**
@@ -43,8 +45,8 @@ public final class MultiCastReceiver {
     public MultiCastReceiver(final WiCastConfig config) {
         super();
         this.config = config;
-        group = config.getGroup();
-        port = config.getPort();
+        group = this.config.getGroup();
+        port = this.config.getPort();
     }
 
     /**
@@ -68,6 +70,10 @@ public final class MultiCastReceiver {
         return receiveByMulticastSocket(group, port);
     }
 
+    public boolean receiveByMulticastSocket(final String group, final String port) {
+        return receiveByMulticastSocket(group, Integer.parseInt(port));
+    }
+
     /**
      * receive datagrams by joining a multicast socket.
      *
@@ -88,14 +94,47 @@ public final class MultiCastReceiver {
             socket.receive(packet);
 
             LOG.debug("Multicast Received");
-            LOG.debug("from: {}", packet.getAddress().toString());
+            LOG.debug("from: {}", packet.getAddress());
             LOG.debug("port: {}", packet.getPort());
             final int length = packet.getLength();
             LOG.debug("length: {}", length);
             final byte[] data = packet.getData();
-            LOG.trace("data = {}", new String(data));
+            LOG.trace("data = {}", data);
 
             socket.leaveGroup(InetAddress.getByName(group));
+            socket.close();
+            status = true;
+        } catch (final SocketException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        } catch (final IOException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        } catch (final Exception e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return status;
+    }
+
+    public boolean receiveByMulticastSocket(final InetAddress groupAddress, final int port) {
+        boolean status = false;
+
+        try {
+            final MulticastSocket socket = new MulticastSocket(port);
+            socket.joinGroup(groupAddress);
+
+            // Create a DatagramPacket and do a receive
+            final byte input[] = new byte[1024];
+            final DatagramPacket packet = new DatagramPacket(input, input.length);
+            socket.receive(packet);
+
+            LOG.debug("Multicast Received");
+            LOG.debug("from: {}", packet.getAddress());
+            LOG.debug("port: {}", packet.getPort());
+            final int length = packet.getLength();
+            LOG.debug("length: {}", length);
+            final byte[] data = packet.getData();
+            LOG.trace("data = {}", data);
+
+            socket.leaveGroup(groupAddress);
             socket.close();
             status = true;
         } catch (final SocketException e) {

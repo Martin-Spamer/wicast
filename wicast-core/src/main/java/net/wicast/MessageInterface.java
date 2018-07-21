@@ -2,7 +2,7 @@
 package net.wicast;
 
 /**
- * The Interface MessageInterface.
+ * Message Interface.
  */
 public interface MessageInterface {
 

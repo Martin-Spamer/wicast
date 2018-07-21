@@ -2,20 +2,20 @@
 package net.wicast;
 
 /**
- * The Class WiCastConfig.
+ * WiCast configuration class.
  */
 public class WiCastConfig extends AbstractConfig {
 
-    /** PORT 			constant. */
+    /** PORT constant. */
     private static final String PORT = "1234";
-    
-    /** CHANNEL 			constant. */
+
+    /** CHANNEL constant. */
     private static final String CHANNEL = "228.1.1.1";
-    
-    /** CHANNEL_IN 			constant. */
+
+    /** CHANNEL_IN constant. */
     private static final String CHANNEL_IN = "228.2.2.2";
-    
-    /** CHANNEL_OUT 			constant. */
+
+    /** CHANNEL_OUT constant. */
     private static final String CHANNEL_OUT = "228.3.3.3";
 
     /**

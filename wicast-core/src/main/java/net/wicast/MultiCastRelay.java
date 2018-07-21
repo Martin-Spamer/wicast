@@ -7,16 +7,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * MultiCast Relay.
+ * A relay for multicast messages.
  */
 public final class MultiCastRelay {
 
     /** provide logging. */
     private static final Logger LOG = LoggerFactory.getLogger(MultiCastRelay.class);
-    
-    /** config 			constant. */
-    private static final WiCastConfig config = new WiCastConfig();
-    
+
+    /** constant configuration. */
+    private static final WiCastConfig CONFIG = new WiCastConfig();
+
     /** The exit. */
     private boolean exit = false;
 
@@ -24,26 +24,18 @@ public final class MultiCastRelay {
      * MultiCastReceiverThread class.
      */
     public class MultiCastReceiverThread extends Thread {
-        
-        /** PORT 			constant. */
-        private static final String PORT = "1234";
-        
-        /** CHANNEL_IN 			constant. */
-        private static final String CHANNEL_IN = "228.1.2.3";
-        
-        /** CHANNEL_OUT 			constant. */
-        private static final String CHANNEL_OUT = "228.4.5.6";
-        
+
         /** The receiver. */
         private final MultiCastReceiver receiver = new MultiCastReceiver();
 
-        /* (non-Javadoc)
+        /*
+         * (non-Javadoc)
          * @see java.lang.Thread#run()
          */
         @Override
         public void run() {
-            final String group = config.getGroup();
-            final int portNo = config.getPort();
+            final String group = CONFIG.getGroup();
+            final int portNo = CONFIG.getPort();
             int count = 0;
 
             while (!exit) {
@@ -76,17 +68,18 @@ public final class MultiCastRelay {
      * class MultiCastSenderThread.
      */
     public class MultiCastSenderThread extends Thread {
-        
+
         /** The sender. */
         private final MultiCastSender sender = new MultiCastSender();
 
-        /* (non-Javadoc)
+        /*
+         * (non-Javadoc)
          * @see java.lang.Thread#run()
          */
         @Override
         public void run() {
-            final String group = config.getGroup();
-            final int portNo = config.getPort();
+            final String group = CONFIG.getGroup();
+            final int portNo = CONFIG.getPort();
             final String template = "<WICAST count=%d/>";
 
             int count = 0;
@@ -160,7 +153,7 @@ public final class MultiCastRelay {
      */
     public static void main(final String[] args) {
         LOG.info("args[] = {}", Arrays.toString(args));
-        LOG.info(System.getProperties().toString());
+        LOG.info("System properties {}", System.getProperties().toString());
         new MultiCastRelay().start();
     }
 

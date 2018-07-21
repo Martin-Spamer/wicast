@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotSame;
  */
 public class TimeStampTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(TimeStampTest.class);
 
     /**

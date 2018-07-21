@@ -14,7 +14,7 @@ import static org.junit.Assume.assumeNotNull;
  */
 public class HeartBeatConfigTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(HeartBeatConfigTest.class);
 
     /**

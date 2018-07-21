@@ -20,7 +20,7 @@ import static org.junit.Assert.fail;
 @Ignore
 public class HeartBeatTest {
 
-    /** LOG 			constant. */
+    /** provides logging. */
     private static final Logger LOG = LoggerFactory.getLogger(HeartBeatTest.class);
     
     /** LOOPBACK 			constant. */

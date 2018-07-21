@@ -2,7 +2,7 @@
 package net.wicast;
 
 /**
- * The Class ReceiverConfig.
+ * WiCast receiver configuration.
  */
 public class ReceiverConfig extends WiCastConfig {
 
