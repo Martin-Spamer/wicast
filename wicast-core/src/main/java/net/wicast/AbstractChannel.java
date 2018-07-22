@@ -14,6 +14,7 @@ public abstract class AbstractChannel implements ChannelInterface {
     /** provide logging. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
+    /** The group address. */
     protected InetAddress groupAddress;
 
     /**
