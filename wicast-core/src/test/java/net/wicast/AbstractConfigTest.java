@@ -18,25 +18,32 @@ public class AbstractConfigTest {
     private static final Logger LOG = LoggerFactory.getLogger(AbstractConfigTest.class);
 
     /**
-     * The Class TestConfig.
+     * TestConfig class.
      */
     public class TestConfig extends AbstractConfig {
+        private TestConfig() {
+            super();
+        }
+
+        private TestConfig(final String configFilename) {
+            super(configFilename);
+        }
     }
 
     /**
-     * The Class EmptyConfig.
+     * EmptyConfig class.
      */
     public class EmptyConfig extends AbstractConfig {
     }
 
     /**
-     * The Class MissingConfig.
+     * MissingConfig class.
      */
     public class MissingConfig extends AbstractConfig {
     }
 
     /**
-     * Test method for {@link net.wicast.AbstractConfig}.
+     * Unit test a configuration.
      */
     @Test
     public final void testConfig() {
@@ -45,27 +52,25 @@ public class AbstractConfigTest {
     }
 
     /**
-     * Unit test to missing config.
+     * Unit test to configuration with filename as String.
      */
     @Test
-    public final void testMissingConfig() {
-        final ConfigInterface config = new MissingConfig();
+    public final void testConfigString() {
+        final ConfigInterface config = new TestConfig("Configuration");
         assertNotNull("Value cannot be null", config);
     }
 
     /**
-     * Unit test to empty config.
+     * Unit test to configuration with filename as String.
      */
     @Test
-    public final void testEmptyConfig() {
-        final EmptyConfig config = new EmptyConfig();
+    public final void testConfigMissing() {
+        final ConfigInterface config = new TestConfig("Missing");
         assertNotNull("Value cannot be null", config);
-        assertNull(config.getProperty("key"));
-        assertEquals("default", config.getProperty("key", "default"));
     }
 
     /**
-     * Unit test to config set get.
+     * Unit test configuration set get.
      */
     @Test
     public final void testConfigSetGet() {
@@ -75,6 +80,26 @@ public class AbstractConfigTest {
         assertEquals("default", config.getProperty("missing-key", "default"));
         assertNotNull("Value cannot be null", config.toString());
         LOG.debug("config = {}", config);
+    }
+
+    /**
+     * Unit test missing configuration.
+     */
+    @Test
+    public final void testMissingConfig() {
+        final ConfigInterface config = new MissingConfig();
+        assertNotNull("Value cannot be null", config);
+    }
+
+    /**
+     * Unit test empty configuration.
+     */
+    @Test
+    public final void testEmptyConfig() {
+        final EmptyConfig config = new EmptyConfig();
+        assertNotNull("Value cannot be null", config);
+        assertNull(config.getProperty("key"));
+        assertEquals("default", config.getProperty("key", "default"));
     }
 
 }

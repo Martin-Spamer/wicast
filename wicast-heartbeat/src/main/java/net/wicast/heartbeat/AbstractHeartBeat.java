@@ -17,6 +17,7 @@ import net.wicast.WiCastConfig;
  */
 public abstract class AbstractHeartBeat extends MulticastBase {
 
+    /** HEARTBEAT_WICAST_NET constant. */
     private static final String HEARTBEAT_WICAST_NET = "heartbeat.wicast.net";
 
     /** provides logging. */
@@ -36,13 +37,16 @@ public abstract class AbstractHeartBeat extends MulticastBase {
 
     /**
      * AbstractHeartBeat.
-     *
-     * @throws HeartBeatException the heart beat exception
      */
     public AbstractHeartBeat() {
         super();
     }
 
+    /**
+     * Instantiates a new abstract heart beat.
+     *
+     * @param config the config
+     */
     public AbstractHeartBeat(final WiCastConfig config) {
         super(config);
     }
@@ -77,6 +81,13 @@ public abstract class AbstractHeartBeat extends MulticastBase {
         }
     }
 
+    /**
+     * Initialise.
+     *
+     * @param groupAddress the group address
+     * @param portNo the port no
+     * @throws HeartBeatException the heart beat exception
+     */
     private void initialise(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
         this.groupAddress = groupAddress;
         port = portNo;
@@ -101,5 +112,11 @@ public abstract class AbstractHeartBeat extends MulticastBase {
         }
     }
 
+    /**
+     * Beat.
+     *
+     * @param message the message
+     * @throws HeartBeatException the heart beat exception
+     */
     public abstract void beat(final String message) throws HeartBeatException;
 }

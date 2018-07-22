@@ -24,8 +24,7 @@ public class MultiCastSenderTest {
     public void testMultiCastReceiver() {
         final MulticastBase multiCastSender = new MultiCastSender();
         assumeNotNull(multiCastSender);
-        final String string = multiCastSender.toString();
-        LOG.info(string);
+        LOG.info("{}", multiCastSender);
     }
 
     /**

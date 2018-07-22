@@ -23,7 +23,29 @@ public class MultiCastReceiverTest {
         final MultiCastReceiver multiCastReceiver = new MultiCastReceiver();
         assumeNotNull(multiCastReceiver);
         final String string = multiCastReceiver.toString();
-        LOG.info(string);
+        LOG.info("{}", string);
+    }
+
+    /**
+     * Unit test to multicast receiver channel port.
+     */
+    @Test
+    public void testMultiCastReceiverChannelPort() {
+        WiCastConfig config = new WiCastConfig();
+        final MultiCastReceiver multiCastReceiver = new MultiCastReceiver(config.defaultChannel(), config.getPort());
+        assumeNotNull(multiCastReceiver);
+        LOG.info("{}", multiCastReceiver);
+    }
+
+    /**
+     * Unit test to multicast receiver configuration.
+     */
+    @Test
+    public void testMultiCastReceiverConfig() {
+        WiCastConfig config = new WiCastConfig();
+        final MultiCastReceiver multiCastReceiver = new MultiCastReceiver(config);
+        assumeNotNull(multiCastReceiver);
+        LOG.info("{}", multiCastReceiver);
     }
 
 }

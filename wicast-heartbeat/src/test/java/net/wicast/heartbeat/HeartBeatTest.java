@@ -8,6 +8,9 @@ import org.junit.Test;
  */
 public class HeartBeatTest {
 
+    /**
+     * Unit test to heart beat.
+     */
     @Test
     public final void testHeartBeat() {
         new HeartBeat();

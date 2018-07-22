@@ -9,6 +9,9 @@ import java.net.DatagramPacket;
  */
 public class HeartBeat extends AbstractHeartBeat {
 
+    /**
+     * Instantiates a new heart beat.
+     */
     public HeartBeat() {
         super(new HeartBeatConfig());
     }

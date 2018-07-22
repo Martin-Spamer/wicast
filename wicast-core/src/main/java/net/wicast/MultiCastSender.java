@@ -18,8 +18,10 @@ import org.slf4j.LoggerFactory;
 public final class MultiCastSender extends MulticastBase {
 
     /**
-     * @param groupAddress
-     * @param portNo
+     * Instantiates a new multi cast sender.
+     *
+     * @param groupAddress the group address
+     * @param portNo the port no
      */
     private MultiCastSender(final InetAddress groupAddress, final int portNo) {
         super(groupAddress, portNo);

@@ -13,8 +13,10 @@ import java.net.UnknownHostException;
 public final class MultiCastReceiver extends MulticastBase {
 
     /**
-     * @param groupAddress
-     * @param portNo
+     * Instantiates a new multi cast receiver.
+     *
+     * @param groupAddress the group address
+     * @param portNo the port no
      */
     private MultiCastReceiver(final InetAddress groupAddress, final int portNo) {
         super(groupAddress, portNo);

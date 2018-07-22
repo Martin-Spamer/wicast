@@ -2,7 +2,6 @@
 package net.wicast;
 
 import java.net.InetAddress;
-import java.net.UnknownHostException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +17,9 @@ public abstract class MulticastBase {
     /** constant configuration. */
     protected WiCastConfig config = new WiCastConfig();
 
+    /** The channel. */
+    protected Channel channel;
+
     /** multicast group address . */
     protected InetAddress groupAddress;
 
@@ -28,6 +30,17 @@ public abstract class MulticastBase {
      * Instantiates a new multicast base.
      */
     public MulticastBase() {
+        channel = new Channel(config);
+        initialise(config.defaultChannel(), config.getPort());
+    }
+
+    /**
+     * Instantiates a new multicast base.
+     *
+     * @param channel the channel
+     */
+    public MulticastBase(final Channel channel) {
+        this.channel = channel;
         initialise(config.defaultChannel(), config.getPort());
     }
 
@@ -51,9 +64,24 @@ public abstract class MulticastBase {
         initialise(group, port);
     }
 
+    /**
+     * Instantiates a new multicast base.
+     *
+     * @param groupAddress the group address
+     * @param portNo the port no
+     */
     public MulticastBase(final InetAddress groupAddress, final int portNo) {
         this.groupAddress = groupAddress;
         this.portNo = portNo;
+    }
+
+    /**
+     * Initialise.
+     *
+     * @param channel the channel
+     */
+    protected void initialise(final Channel channel) {
+        this.channel = channel;
     }
 
     /**
@@ -63,16 +91,7 @@ public abstract class MulticastBase {
      * @param port the port
      */
     protected void initialise(final String group, final String port) {
-        try {
-            portNo = Integer.parseInt(port);
-        } catch (NumberFormatException e) {
-            log.error(e.getLocalizedMessage(), e);
-        }
-        try {
-            groupAddress = InetAddress.getByName(group);
-        } catch (UnknownHostException e) {
-            log.error(e.getLocalizedMessage(), e);
-        }
+        channel = new Channel(group, port);
     }
 
     /*
