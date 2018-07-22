@@ -1,0 +1,46 @@
+<?xml encoding="UTF-8"?>
+
+<!ELEMENT wicast (client,server,relay)>
+<!ATTLIST wicast
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT client (source)+>
+<!ATTLIST client
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT server (channel)+>
+<!ATTLIST server
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT relay (source)+>
+<!ATTLIST relay
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT channel (data)>
+<!ATTLIST channel
+  xmlns CDATA #FIXED ''
+  id CDATA #REQUIRED
+  ip CDATA #REQUIRED
+  name CDATA #REQUIRED
+  port CDATA #REQUIRED>
+
+<!ELEMENT data EMPTY>
+<!ATTLIST data
+  xmlns CDATA #FIXED ''>
+
+<!ELEMENT source (destination)?>
+<!ATTLIST source
+  xmlns CDATA #FIXED ''
+  address NMTOKEN #IMPLIED
+  id CDATA #REQUIRED
+  ip CDATA #REQUIRED
+  name CDATA #REQUIRED
+  port CDATA #REQUIRED>
+
+<!ELEMENT destination EMPTY>
+<!ATTLIST destination
+  xmlns CDATA #FIXED ''
+  id CDATA #REQUIRED
+  ip CDATA #REQUIRED
+  name CDATA #REQUIRED
+  port CDATA #REQUIRED>

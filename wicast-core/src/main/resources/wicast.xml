@@ -3,22 +3,22 @@
 <wicast>
 
 	<client>
-		<source id="" name="" ip="" port="" />
+		<source id="source-id" name="source-name" address="channel.wicast.net" ip="224.1.1.1" port="1234" />
 		<source id="" name="" ip="" port="" />
 	</client>
 
 	<server>
-		<channel id="" name="" ip="" port="">
+		<channel id="1" name="localhost" ip="127.0.0.1" port="1234">
 			<data />
 		</channel>
-		<channel id="" name="" ip="" port="">
+		<channel id="2" name="localhost" ip="127.0.0.2" port="1234">
 			<data />
 		</channel>
 	</server>
 
 	<relay>
-		<source id="" name="" ip="" port="">
-			<destination id="" name="" ip="" port="" />
+		<source id="" name="" ip="127.0.0.1" port="">
+			<destination id="" name="" ip="127.0.0.2" port="" />
 		</source>
 		<source id="" name="" ip="" port="">
 			<destination id="" name="" ip="" port="" />
