@@ -2,19 +2,18 @@
 package net.wicast.client;
 
 /**
- * MultiCast Client Class.
+ * A MultiCast Client Class.
  */
 public final class Client {
 
-    /** The config. */
-    private final ClientConfig config;
+    /** configuration. */
+    private final ClientConfig config = new ClientConfig();
 
     /**
      * Instantiates a new client.
      */
     public Client() {
         super();
-        config = new ClientConfig();
     }
 
     /**
@@ -35,7 +34,8 @@ public final class Client {
         return this;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override

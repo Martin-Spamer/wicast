@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * The Class MulticastBase.
+ * The MultiCastBase class.
  */
 public abstract class MulticastBase {
 
@@ -49,6 +49,11 @@ public abstract class MulticastBase {
      */
     public MulticastBase(final String group, final String port) {
         initialise(group, port);
+    }
+
+    public MulticastBase(final InetAddress groupAddress, final int portNo) {
+        this.groupAddress = groupAddress;
+        this.portNo = portNo;
     }
 
     /**

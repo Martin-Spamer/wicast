@@ -12,27 +12,35 @@ import java.net.UnknownHostException;
  */
 public final class MultiCastReceiver extends MulticastBase {
 
+    /**
+     * @param groupAddress
+     * @param portNo
+     */
+    private MultiCastReceiver(final InetAddress groupAddress, final int portNo) {
+        super(groupAddress, portNo);
+    }
+
     /** constant configuration. */
     private final WiCastConfig config = new ReceiverConfig();
 
     /**
-     * Instantiates a new multi cast receiver.
+     * Instantiates a new multicast receiver.
      */
     public MultiCastReceiver() {
         super();
     }
 
     /**
-     * Instantiates a new multi cast receiver.
+     * Instantiates a new multicast receiver.
      *
-     * @param config the config
+     * @param config the configuration.
      */
     public MultiCastReceiver(final WiCastConfig config) {
         super(config);
     }
 
     /**
-     * Instantiates a new multi cast receiver.
+     * Instantiates a new multicast receiver.
      *
      * @param group the group
      * @param port the port

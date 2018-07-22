@@ -62,11 +62,11 @@ public final class MultiCastRelay {
         }
     }
 
-    /** The multi cast receiver. */
-    private MultiCastReceiverThread multiCastReceiver;
+    /** The multicast receiver. */
+    private MultiCastReceiverThread multicastReceiver;
 
     /**
-     * class MultiCastSenderThread.
+     * MultiCastSenderThread class.
      */
     public class MultiCastSenderThread extends Thread {
 
@@ -108,20 +108,20 @@ public final class MultiCastRelay {
         }
     }
 
-    /** The multi cast sender. */
-    private MultiCastSenderThread multiCastSender;
+    /** The multicast sender. */
+    private MultiCastSenderThread multicastSender;
 
     /**
      * Start.
      */
     public void start() {
-        multiCastReceiver = new MultiCastReceiverThread();
-        Runtime.getRuntime().addShutdownHook(multiCastReceiver);
-        multiCastReceiver.start();
+        multicastReceiver = new MultiCastReceiverThread();
+        Runtime.getRuntime().addShutdownHook(multicastReceiver);
+        multicastReceiver.start();
 
-        multiCastSender = new MultiCastSenderThread();
-        Runtime.getRuntime().addShutdownHook(multiCastSender);
-        multiCastSender.start();
+        multicastSender = new MultiCastSenderThread();
+        Runtime.getRuntime().addShutdownHook(multicastSender);
+        multicastSender.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -141,8 +141,8 @@ public final class MultiCastRelay {
      * End.
      */
     public void end() {
-        multiCastReceiver.end();
-        multiCastSender.end();
+        multicastReceiver.end();
+        multicastSender.end();
     }
 
     /**
