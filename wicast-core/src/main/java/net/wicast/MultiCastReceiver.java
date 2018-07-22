@@ -5,60 +5,50 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.SocketException;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.net.UnknownHostException;
 
 /**
  * MultiCastReceiver, subscribe to Multicast group and receive datagrams.
  */
-public final class MultiCastReceiver {
-
-    /** provide logging. */
-    private static final Logger LOG = LoggerFactory.getLogger(MultiCastReceiver.class);
-
-    /** constant configuration. */
-    private WiCastConfig config = new ReceiverConfig();
-
-    /** multicast group address . */
-    private final String group;
-    private InetAddress groupAddress;
-
-    /** multicast port. */
-    private final int port;
-
-    /**
-     * Instantiates a new multi cast receiver.
-     */
-    public MultiCastReceiver() {
-        super();
-        group = config.getGroup();
-        port = config.getPort();
-    }
+public final class MultiCastReceiver extends MulticastBase {
 
     /**
      * Instantiates a new multi cast receiver.
      *
-     * @param config the config
+     * @param groupAddress the group address
+     * @param portNo the port no
      */
-    public MultiCastReceiver(final WiCastConfig config) {
+    private MultiCastReceiver(final InetAddress groupAddress, final int portNo) {
+        super(groupAddress, portNo);
+    }
+
+    /** constant configuration. */
+    private final WiCastConfig config = new ReceiverConfig();
+
+    /**
+     * Instantiates a new multicast receiver.
+     */
+    public MultiCastReceiver() {
         super();
-        this.config = config;
-        group = this.config.getGroup();
-        port = this.config.getPort();
     }
 
     /**
-     * Instantiates a new multi cast receiver.
+     * Instantiates a new multicast receiver.
+     *
+     * @param config the configuration.
+     */
+    public MultiCastReceiver(final WiCastConfig config) {
+        super(config);
+    }
+
+    /**
+     * Instantiates a new multicast receiver.
      *
      * @param group the group
      * @param port the port
      */
-    public MultiCastReceiver(final String group, final int port) {
-        super();
-        this.group = group;
-        this.port = port;
+    public MultiCastReceiver(final String group, final String port) {
+        super(group, port);
     }
 
     /**
@@ -67,11 +57,7 @@ public final class MultiCastReceiver {
      * @return true, if successful
      */
     public boolean receiveByMulticastSocket() {
-        return receiveByMulticastSocket(group, port);
-    }
-
-    public boolean receiveByMulticastSocket(final String group, final String port) {
-        return receiveByMulticastSocket(group, Integer.parseInt(port));
+        return receiveByMulticastSocket(groupAddress, portNo);
     }
 
     /**
@@ -81,39 +67,24 @@ public final class MultiCastReceiver {
      * @param port receiver port as int.
      * @return status as boolean result.
      */
-    public boolean receiveByMulticastSocket(final String group, final int port) {
-        boolean status = false;
-
+    public boolean receiveByMulticastSocket(final String group, final String port) {
         try {
-            final MulticastSocket socket = new MulticastSocket(port);
-            socket.joinGroup(InetAddress.getByName(group));
-
-            // Create a DatagramPacket and do a receive
-            final byte input[] = new byte[1024];
-            final DatagramPacket packet = new DatagramPacket(input, input.length);
-            socket.receive(packet);
-
-            LOG.debug("Multicast Received");
-            LOG.debug("from: {}", packet.getAddress());
-            LOG.debug("port: {}", packet.getPort());
-            final int length = packet.getLength();
-            LOG.debug("length: {}", length);
-            final byte[] data = packet.getData();
-            LOG.trace("data = {}", data);
-
-            socket.leaveGroup(InetAddress.getByName(group));
-            socket.close();
-            status = true;
-        } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
+            int portNo = Integer.parseInt(port);
+            final InetAddress groupAddr = InetAddress.getByName(group);
+            return receiveByMulticastSocket(groupAddr, portNo);
+        } catch (NumberFormatException | UnknownHostException e) {
+            log.error(e.getLocalizedMessage(), e);
         }
-        return status;
+        return false;
     }
 
+    /**
+     * Receive by multicast socket.
+     *
+     * @param groupAddress the group address
+     * @param port the port
+     * @return true, if successful
+     */
     public boolean receiveByMulticastSocket(final InetAddress groupAddress, final int port) {
         boolean status = false;
 
@@ -126,39 +97,21 @@ public final class MultiCastReceiver {
             final DatagramPacket packet = new DatagramPacket(input, input.length);
             socket.receive(packet);
 
-            LOG.debug("Multicast Received");
-            LOG.debug("from: {}", packet.getAddress());
-            LOG.debug("port: {}", packet.getPort());
+            log.debug("Multicast Received");
+            log.debug("from: {}", packet.getAddress());
+            log.debug("port: {}", packet.getPort());
             final int length = packet.getLength();
-            LOG.debug("length: {}", length);
+            log.debug("length: {}", length);
             final byte[] data = packet.getData();
-            LOG.trace("data = {}", data);
+            log.trace("data = {}", data);
 
             socket.leaveGroup(groupAddress);
             socket.close();
             status = true;
-        } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
+        } catch (IOException e) {
+            log.error(e.getLocalizedMessage(), e);
         }
         return status;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return String
-            .format("%s [group=%s, port=%s, config=%s]",
-                    this.getClass().getSimpleName(),
-                    group,
-                    port,
-                    config);
     }
 
 }

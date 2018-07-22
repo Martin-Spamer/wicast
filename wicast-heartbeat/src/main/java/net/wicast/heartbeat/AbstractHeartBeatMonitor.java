@@ -10,7 +10,7 @@ import java.net.SocketException;
 /**
  * AbstractHeartBeatMonitor.
  */
-public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
+public abstract class AbstractHeartBeatMonitor extends AbstractHeartBeat {
 
     /**
      * AbstractHeartBeatMonitor.
@@ -51,15 +51,15 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
                         message.getBytes(),
                         message.length(),
                         groupAddress,
-                        portNo);
+                        port);
 
                 multicastSocket.send(outBoundDatagramPacket);
             } catch (final SocketException e) {
-                log.error(e.getLocalizedMessage(),e);
+                log.error(e.getLocalizedMessage(), e);
                 throw new HeartBeatException(e);
             }
         } catch (final IOException e) {
-            log.error(e.getLocalizedMessage(),e);
+            log.error(e.getLocalizedMessage(), e);
             throw new HeartBeatException(e);
         }
     }
@@ -71,13 +71,13 @@ public class AbstractHeartBeatMonitor extends AbstractHeartBeat {
      */
     protected void monitor() throws HeartBeatException {
         try {
-            multicastSocket = new MulticastSocket(portNo);
+            multicastSocket = new MulticastSocket(port);
             final byte[] buffer = new byte[1000];
             final DatagramPacket inboundDatagramPacket = new DatagramPacket(buffer, buffer.length);
             multicastSocket.receive(inboundDatagramPacket);
             multicastSocket.leaveGroup(groupAddress);
         } catch (final IOException e) {
-            log.error(e.getLocalizedMessage(),e);
+            log.error(e.getLocalizedMessage(), e);
             throw new HeartBeatException(e);
         }
     }

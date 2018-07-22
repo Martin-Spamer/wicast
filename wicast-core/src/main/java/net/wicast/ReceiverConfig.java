@@ -4,6 +4,6 @@ package net.wicast;
 /**
  * WiCast receiver configuration.
  */
-public class ReceiverConfig extends WiCastConfig {
+public final class ReceiverConfig extends WiCastConfig {
 
 }

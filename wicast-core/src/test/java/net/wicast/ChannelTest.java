@@ -27,4 +27,25 @@ public class ChannelTest {
         LOG.debug("{}", channel);
     }
 
+    @Test
+    public void testChannel() {
+        final ChannelInterface channel = new Channel();
+        assertNotNull(channel);
+        Message message = new Message();
+        assertNotNull(message);
+        assertEquals(channel, channel.send(message));
+        LOG.debug("{}", channel);
+    }
+
+    @Test
+    public void testChannelConfig() {
+        ChannelConfig config = new ChannelConfig();
+        assertNotNull(config);
+        final ChannelInterface channel = new Channel(config);
+        assertNotNull(channel);
+        Message message = new Message();
+        assertNotNull(message);
+        assertEquals(channel, channel.send(message));
+        LOG.debug("{}", channel);
+    }
 }

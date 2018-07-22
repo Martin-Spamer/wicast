@@ -6,15 +6,14 @@ package net.wicast.server;
  */
 public class Server {
 
-    /** The config. */
-    protected final ServerConfig config;
+    /** configuration. */
+    protected final ServerConfig config = new ServerConfig();
 
     /**
      * Instantiates a new server.
      */
     public Server() {
         super();
-        config = new ServerConfig();
     }
 
     /**

@@ -4,46 +4,51 @@ package net.wicast.heartbeat;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
-import java.net.SocketException;
 import java.net.UnknownHostException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import net.wicast.MulticastBase;
+import net.wicast.WiCastConfig;
+
 /**
- * AbstractHeartBeat class.
+ * An abstract HeartBeat class.
  */
-public abstract class AbstractHeartBeat extends Thread implements HeartBeatInterface {
-    
+public abstract class AbstractHeartBeat extends MulticastBase {
+
+    /** HEARTBEAT_WICAST_NET constant. */
+    private static final String HEARTBEAT_WICAST_NET = "heartbeat.wicast.net";
+
     /** provides logging. */
     protected final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
-    
+
     /** The group address. */
     protected InetAddress groupAddress;
-    
+
     /** The port no. */
-    protected int portNo;
-    
+    protected int port;
+
     /** The multicast socket. */
     protected MulticastSocket multicastSocket;
-    
+
     /** The exit. */
     protected boolean exit;
 
     /**
      * AbstractHeartBeat.
-     *
-     * @throws HeartBeatException the heart beat exception
      */
-    public AbstractHeartBeat() throws HeartBeatException {
+    public AbstractHeartBeat() {
         super();
-        portNo = 1;
-        try {
-            groupAddress = InetAddress.getByName("heartbeat.wicast.net");
-        } catch (final UnknownHostException e) {
-            log.error(e.getLocalizedMessage(), e);
-            throw new HeartBeatException(e);
-        }
+    }
+
+    /**
+     * Instantiates a new abstract heart beat.
+     *
+     * @param config the config
+     */
+    public AbstractHeartBeat(final WiCastConfig config) {
+        super(config);
     }
 
     /**
@@ -54,29 +59,39 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
      * @throws HeartBeatException the heart beat exception
      */
     public AbstractHeartBeat(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
-        super();
-        this.groupAddress = groupAddress;
-        this.portNo = portNo;
-        joinGroup(this.groupAddress, this.portNo);
+        super(groupAddress, portNo);
     }
 
     /**
      * AbstractHeartBeat.
      *
-     * @param groupAddressString the group address string
+     * @param group the group address string
      * @param portNo the port no
      * @throws HeartBeatException the heart beat exception
      */
-    public AbstractHeartBeat(final String groupAddressString, final int portNo) throws HeartBeatException {
+    public AbstractHeartBeat(final String group, final int portNo) throws HeartBeatException {
         super();
         try {
-            groupAddress = InetAddress.getByName(groupAddressString);
-            this.portNo = portNo;
-            joinGroup(groupAddress, this.portNo);
+            port = portNo;
+            groupAddress = InetAddress.getByName(group);
+            initialise(groupAddress, portNo);
         } catch (final UnknownHostException e) {
             log.error(e.getLocalizedMessage(), e);
             throw new HeartBeatException(e);
         }
+    }
+
+    /**
+     * Initialise.
+     *
+     * @param groupAddress the group address
+     * @param portNo the port no
+     * @throws HeartBeatException the heart beat exception
+     */
+    private void initialise(final InetAddress groupAddress, final int portNo) throws HeartBeatException {
+        this.groupAddress = groupAddress;
+        port = portNo;
+        joinGroup(this.groupAddress, port);
     }
 
     /**
@@ -89,23 +104,19 @@ public abstract class AbstractHeartBeat extends Thread implements HeartBeatInter
     protected void joinGroup(final InetAddress groupAddressIn, final int portNoIn) throws HeartBeatException {
         try {
             multicastSocket = new MulticastSocket(portNoIn);
-
-            try {
-                multicastSocket.setTimeToLive(Thread.MIN_PRIORITY);
-                multicastSocket.joinGroup(groupAddressIn);
-            } catch (final SocketException e) {
-                log.error(e.getLocalizedMessage(), e);
-                throw new HeartBeatException(e);
-            }
-        } catch (final IOException e) {
+            multicastSocket.setTimeToLive(Thread.MIN_PRIORITY);
+            multicastSocket.joinGroup(groupAddressIn);
+        } catch (IOException e) {
             log.error(e.getLocalizedMessage(), e);
             throw new HeartBeatException(e);
         }
     }
 
-    /* (non-Javadoc)
-     * @see net.wicast.heartbeat.HeartBeatInterface#beat(java.lang.String)
+    /**
+     * Beat.
+     *
+     * @param message the message
+     * @throws HeartBeatException the heart beat exception
      */
-    @Override
     public abstract void beat(final String message) throws HeartBeatException;
 }

@@ -7,6 +7,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,28 +15,26 @@ import org.slf4j.LoggerFactory;
 /**
  * MultiCastSender, send datagrams to Multicast group.
  */
-public final class MultiCastSender {
+public final class MultiCastSender extends MulticastBase {
+
+    /**
+     * Instantiates a new multi cast sender.
+     *
+     * @param groupAddress the group address
+     * @param portNo the port no
+     */
+    private MultiCastSender(final InetAddress groupAddress, final int portNo) {
+        super(groupAddress, portNo);
+    }
 
     /** provide logging. */
-    private static final Logger LOG = LoggerFactory.getLogger(MultiCastSender.class);
-
-    /** constant configuration. */
-    private WiCastConfig config = new ReceiverConfig();
-
-    /** multicast group address . */
-    private final String group;
-    private InetAddress groupAddress;
-
-    /** multicast port. */
-    private final int port;
+    static final Logger LOG = LoggerFactory.getLogger(MultiCastSender.class);
 
     /**
      * Default Constructor.
      */
     public MultiCastSender() {
         super();
-        group = config.getGroup();
-        port = config.getPort();
     }
 
     /**
@@ -44,22 +43,17 @@ public final class MultiCastSender {
      * @param config the config
      */
     public MultiCastSender(final WiCastConfig config) {
-        super();
-        this.config = config;
-        group = config.getGroup();
-        port = config.getPort();
+        super(config);
     }
 
     /**
-     * Constructor.
+     * Instantiates a new multicast sender.
      *
      * @param group the group
      * @param port the port
      */
-    public MultiCastSender(final String group, final int port) {
-        super();
-        this.group = group;
-        this.port = port;
+    public MultiCastSender(final String group, final String port) {
+        super(group, port);
     }
 
     /**
@@ -69,102 +63,98 @@ public final class MultiCastSender {
      * @return true, if send by datagram
      */
     public boolean sendByDatagram(final byte[] output) {
-        return sendByDatagramSocket(group, port, output);
+        return sendByDatagramSocket(groupAddress, portNo, output);
     }
 
     /**
-     * Sends a message to a <code>Multicast</code> Group.
-     *
-     * Sends using a <code>Datagram</code> to a <code>Multicast</code> Group.
-     *
-     * @param group multicast group address as String "X.X.X.X".
-     * @param port sending port as int.
-     * @param output payload as byte array.
-     * @return status as boolean result.
-     */
-    public boolean sendByDatagramSocket(final String group, final int port, final byte[] output) {
-        boolean status = false;
-        try {
-            final DatagramSocket socket = new DatagramSocket();
-            final InetAddress groupAddr = InetAddress.getByName(group);
-            final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, port);
-
-            socket.send(packet);
-
-            socket.close();
-            status = true;
-        } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        }
-        return status;
-    }
-
-    public boolean sendByDatagramSocket(final InetAddress groupAddr, final int port, final byte[] output) {
-        boolean status = false;
-        try {
-            final DatagramSocket socket = new DatagramSocket();
-            final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, port);
-
-            socket.send(packet);
-
-            socket.close();
-            status = true;
-        } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final Exception e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        }
-        return status;
-    }
-
-    /**
-     * Send Datagram to Multicast Group by Socket.
+     * Send by datagram socket.
      *
      * @param group the group
      * @param port the port
      * @param output the output
-     * @return boolean
+     * @return true, if successful
      */
-    public boolean sendByMulticastSocket(final String group, final int port, final byte[] output) {
-        boolean status = false;
+    public boolean sendByDatagramSocket(final String group, final String port, final byte[] output) {
         try {
-            final MulticastSocket socket = new MulticastSocket();
-            final DatagramPacket packet = new DatagramPacket(output, output.length, InetAddress.getByName(group), port);
-
-            final int ttl = socket.getTimeToLive();
-            socket.setTimeToLive(ttl);
-            socket.send(packet);
-            socket.setTimeToLive(ttl);
-
-            socket.close();
-            status = true;
-        } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final Exception e) {
+            final int portNo = Integer.parseInt(port);
+            final InetAddress groupAddr = InetAddress.getByName(group);
+            return sendByDatagramSocket(groupAddr, portNo, output);
+        } catch (NumberFormatException | UnknownHostException e) {
             LOG.error(e.getLocalizedMessage(), e);
         }
-        return status;
+        return false;
     }
 
-    public boolean sendByMulticastSocket(final byte[] output) {
-        return sendByMulticastSocket(groupAddress, port, output);
-    }
-
-    public boolean sendByMulticastSocket(final InetAddress groupAddr, final int port, final byte[] output) {
+    /**
+     * Send by datagram socket.
+     *
+     * @param groupAddr the group addr
+     * @param port the port
+     * @param output the output
+     * @return true, if successful
+     */
+    protected boolean sendByDatagramSocket(final InetAddress groupAddr, final int port, final byte[] output) {
         boolean status = false;
         try {
-            final MulticastSocket socket = new MulticastSocket();
-            InetAddress byName = InetAddress.getByName(group);
+            final DatagramSocket socket = new DatagramSocket();
             final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, port);
 
+            try {
+                socket.send(packet);
+                socket.close();
+                status = true;
+            } catch (final IOException e) {
+                LOG.error(e.getLocalizedMessage(), e);
+            }
+        } catch (final SocketException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return status;
+    }
+
+    /**
+     * Send by multicast socket.
+     *
+     * @param output the output
+     * @return true, if successful
+     */
+    public boolean sendByMulticastSocket(final byte[] output) {
+        return sendByMulticastSocket(groupAddress, portNo, output);
+    }
+
+    /**
+     * Send by multicast socket.
+     *
+     * @param group the group
+     * @param port the port
+     * @param output the output
+     * @return true, if successful
+     */
+    public boolean sendByMulticastSocket(final String group, final String port, final byte[] output) {
+        try {
+            int portNo = Integer.parseInt(port);
+            final InetAddress groupAddr = InetAddress.getByName(group);
+            return sendByMulticastSocket(groupAddr, portNo, output);
+        } catch (NumberFormatException | UnknownHostException e) {
+            LOG.error(e.getLocalizedMessage(), e);
+        }
+        return false;
+    }
+
+    /**
+     * Send by multicast socket.
+     *
+     * @param groupAddr the group addr
+     * @param portNo the port
+     * @param output the output
+     * @return true, if successful
+     */
+    protected boolean sendByMulticastSocket(final InetAddress groupAddr, final int portNo, final byte[] output) {
+        boolean status = false;
+        try {
+            final MulticastSocket socket = new MulticastSocket();
+            final DatagramPacket packet = new DatagramPacket(output, output.length, groupAddr, portNo);
+
             final int ttl = socket.getTimeToLive();
             socket.setTimeToLive(ttl);
             socket.send(packet);
@@ -172,28 +162,10 @@ public final class MultiCastSender {
 
             socket.close();
             status = true;
-        } catch (final SocketException e) {
-            LOG.error(e.getLocalizedMessage(), e);
         } catch (final IOException e) {
-            LOG.error(e.getLocalizedMessage(), e);
-        } catch (final Exception e) {
             LOG.error(e.getLocalizedMessage(), e);
         }
         return status;
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        return String
-            .format("%s [group=%s, port=%s, config=%s]",
-                    this.getClass().getSimpleName(),
-                    group,
-                    port,
-                    config);
     }
 
 }

@@ -4,7 +4,7 @@ package net.wicast;
 /**
  * WiCast sender configuration.
  */
-public class SenderConfig extends WiCastConfig {
+public final class SenderConfig extends WiCastConfig {
 
     /**
      * Gets the message.

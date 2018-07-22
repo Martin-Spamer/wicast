@@ -1,6 +1,7 @@
 
 package net.wicast;
 
+import java.net.InetAddress;
 import java.util.Arrays;
 
 import org.slf4j.Logger;
@@ -34,8 +35,8 @@ public final class MultiCastRelay {
          */
         @Override
         public void run() {
-            final String group = CONFIG.getGroup();
-            final int portNo = CONFIG.getPort();
+            final InetAddress group = CONFIG.getGroup();
+            final int portNo = CONFIG.getPortNo();
             int count = 0;
 
             while (!exit) {
@@ -43,8 +44,8 @@ public final class MultiCastRelay {
                 try {
                     Thread.sleep(1000);
                 } catch (final InterruptedException e) {
-                    LOG.error(e.getLocalizedMessage(), e);
                     Thread.interrupted();
+                    LOG.error(e.getLocalizedMessage(), e);
                     exit = true;
                 }
                 if (++count >= 12) {
@@ -61,11 +62,11 @@ public final class MultiCastRelay {
         }
     }
 
-    /** The multi cast receiver. */
-    private MultiCastReceiverThread multiCastReceiver;
+    /** The multicast receiver. */
+    private MultiCastReceiverThread multicastReceiver;
 
     /**
-     * class MultiCastSenderThread.
+     * MultiCastSenderThread class.
      */
     public class MultiCastSenderThread extends Thread {
 
@@ -78,22 +79,22 @@ public final class MultiCastRelay {
          */
         @Override
         public void run() {
-            final String group = CONFIG.getGroup();
-            final int portNo = CONFIG.getPort();
+            final InetAddress group = CONFIG.getGroup();
+            final int portNo = CONFIG.getPortNo();
             final String template = "<WICAST count=%d/>";
 
             int count = 0;
             while (!exit) {
+                if (++count >= 12) {
+                    exit = true;
+                }
                 final String message = String.format(template, count);
                 sender.sendByDatagramSocket(group, portNo, message.getBytes());
                 try {
                     Thread.sleep(1000);
                 } catch (final InterruptedException e) {
-                    exit = true;
                     Thread.interrupted();
                     LOG.error(e.getLocalizedMessage(), e);
-                }
-                if (++count >= 12) {
                     exit = true;
                 }
             }
@@ -107,20 +108,20 @@ public final class MultiCastRelay {
         }
     }
 
-    /** The multi cast sender. */
-    private MultiCastSenderThread multiCastSender;
+    /** The multicast sender. */
+    private MultiCastSenderThread multicastSender;
 
     /**
      * Start.
      */
     public void start() {
-        multiCastReceiver = new MultiCastReceiverThread();
-        Runtime.getRuntime().addShutdownHook(multiCastReceiver);
-        multiCastReceiver.start();
+        multicastReceiver = new MultiCastReceiverThread();
+        Runtime.getRuntime().addShutdownHook(multicastReceiver);
+        multicastReceiver.start();
 
-        multiCastSender = new MultiCastSenderThread();
-        Runtime.getRuntime().addShutdownHook(multiCastSender);
-        multiCastSender.start();
+        multicastSender = new MultiCastSenderThread();
+        Runtime.getRuntime().addShutdownHook(multicastSender);
+        multicastSender.start();
 
         Runtime.getRuntime().addShutdownHook(new Thread() {
             @Override
@@ -140,8 +141,8 @@ public final class MultiCastRelay {
      * End.
      */
     public void end() {
-        multiCastReceiver.end();
-        multiCastSender.end();
+        multicastReceiver.end();
+        multicastSender.end();
     }
 
     /**
@@ -153,7 +154,7 @@ public final class MultiCastRelay {
      */
     public static void main(final String[] args) {
         LOG.info("args[] = {}", Arrays.toString(args));
-        LOG.info("System properties {}", System.getProperties().toString());
+        LOG.info("System properties {}", System.getProperties());
         new MultiCastRelay().start();
     }
 
